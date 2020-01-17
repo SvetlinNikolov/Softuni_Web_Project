@@ -1,0 +1,130 @@
+C:\Users\daxte\source\repos\Svetlinable.Web\Svetlinable.Web\bin\Debug\netcoreapp3.1\appsettings.Development.json
+C:\Users\daxte\source\repos\Svetlinable.Web\Svetlinable.Web\bin\Debug\netcoreapp3.1\appsettings.json
+C:\Users\daxte\source\repos\Svetlinable.Web\Svetlinable.Web\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
+C:\Users\daxte\source\repos\Svetlinable.Web\Svetlinable.Web\bin\Debug\netcoreapp3.1\Svetlinable.Web.StaticWebAssets.xml
+C:\Users\daxte\source\repos\Svetlinable.Web\Svetlinable.Web\bin\Debug\netcoreapp3.1\Svetlinable.Web.exe
+C:\Users\daxte\source\repos\Svetlinable.Web\Svetlinable.Web\bin\Debug\netcoreapp3.1\Svetlinable.Web.deps.json
+C:\Users\daxte\source\repos\Svetlinable.Web\Svetlinable.Web\bin\Debug\netcoreapp3.1\Svetlinable.Web.runtimeconfig.json
+C:\Users\daxte\source\repos\Svetlinable.Web\Svetlinable.Web\bin\Debug\netcoreapp3.1\Svetlinable.Web.runtimeconfig.dev.json
+C:\Users\daxte\source\repos\Svetlinable.Web\Svetlinable.Web\bin\Debug\netcoreapp3.1\Svetlinable.Web.dll
+C:\Users\daxte\source\repos\Svetlinable.Web\Svetlinable.Web\bin\Debug\netcoreapp3.1\Svetlinable.Web.pdb
+C:\Users\daxte\source\repos\Svetlinable.Web\Svetlinable.Web\bin\Debug\netcoreapp3.1\Svetlinable.Web.Views.dll
+C:\Users\daxte\source\repos\Svetlinable.Web\Svetlinable.Web\bin\Debug\netcoreapp3.1\Svetlinable.Web.Views.pdb
+C:\Users\daxte\source\repos\Svetlinable.Web\Svetlinable.Web\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.dll
+C:\Users\daxte\source\repos\Svetlinable.Web\Svetlinable.Web\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+C:\Users\daxte\source\repos\Svetlinable.Web\Svetlinable.Web\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Identity.UI.Views.V3.dll
+C:\Users\daxte\source\repos\Svetlinable.Web\Svetlinable.Web\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Identity.UI.Views.V4.dll
+C:\Users\daxte\source\repos\Svetlinable.Web\Svetlinable.Web\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Identity.UI.dll
+C:\Users\daxte\source\repos\Svetlinable.Web\Svetlinable.Web\bin\Debug\netcoreapp3.1\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Users\daxte\source\repos\Svetlinable.Web\Svetlinable.Web\bin\Debug\netcoreapp3.1\Microsoft.Bcl.HashCode.dll
+C:\Users\daxte\source\repos\Svetlinable.Web\Svetlinable.Web\bin\Debug\netcoreapp3.1\Microsoft.Data.SqlClient.dll
+C:\Users\daxte\source\repos\Svetlinable.Web\Svetlinable.Web\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.dll
+C:\Users\daxte\source\repos\Svetlinable.Web\Svetlinable.Web\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Abstractions.dll
+C:\Users\daxte\source\repos\Svetlinable.Web\Svetlinable.Web\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Design.dll
+C:\Users\daxte\source\repos\Svetlinable.Web\Svetlinable.Web\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Relational.dll
+C:\Users\daxte\source\repos\Svetlinable.Web\Svetlinable.Web\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.SqlServer.dll
+C:\Users\daxte\source\repos\Svetlinable.Web\Svetlinable.Web\bin\Debug\netcoreapp3.1\Microsoft.Identity.Client.dll
+C:\Users\daxte\source\repos\Svetlinable.Web\Svetlinable.Web\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+C:\Users\daxte\source\repos\Svetlinable.Web\Svetlinable.Web\bin\Debug\netcoreapp3.1\System.Configuration.ConfigurationManager.dll
+C:\Users\daxte\source\repos\Svetlinable.Web\Svetlinable.Web\bin\Debug\netcoreapp3.1\System.Runtime.Caching.dll
+C:\Users\daxte\source\repos\Svetlinable.Web\Svetlinable.Web\bin\Debug\netcoreapp3.1\System.Security.Cryptography.ProtectedData.dll
+C:\Users\daxte\source\repos\Svetlinable.Web\Svetlinable.Web\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.1\Microsoft.Data.SqlClient.dll
+C:\Users\daxte\source\repos\Svetlinable.Web\Svetlinable.Web\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.1\Microsoft.Data.SqlClient.dll
+C:\Users\daxte\source\repos\Svetlinable.Web\Svetlinable.Web\bin\Debug\netcoreapp3.1\runtimes\win-arm64\native\sni.dll
+C:\Users\daxte\source\repos\Svetlinable.Web\Svetlinable.Web\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\sni.dll
+C:\Users\daxte\source\repos\Svetlinable.Web\Svetlinable.Web\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\sni.dll
+C:\Users\daxte\source\repos\Svetlinable.Web\Svetlinable.Web\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.0\System.Runtime.Caching.dll
+C:\Users\daxte\source\repos\Svetlinable.Web\Svetlinable.Web\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Runtime.Caching.dll
+C:\Users\daxte\source\repos\Svetlinable.Web\Svetlinable.Web\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
+C:\Users\daxte\source\repos\Svetlinable.Web\Svetlinable.Web\obj\Debug\netcoreapp3.1\Svetlinable.Web.csprojAssemblyReference.cache
+C:\Users\daxte\source\repos\Svetlinable.Web\Svetlinable.Web\obj\Debug\netcoreapp3.1\staticwebassets\Svetlinable.Web.StaticWebAssets.Manifest.cache
+C:\Users\daxte\source\repos\Svetlinable.Web\Svetlinable.Web\obj\Debug\netcoreapp3.1\staticwebassets\Svetlinable.Web.StaticWebAssets.xml
+C:\Users\daxte\source\repos\Svetlinable.Web\Svetlinable.Web\obj\Debug\netcoreapp3.1\Svetlinable.Web.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\daxte\source\repos\Svetlinable.Web\Svetlinable.Web\obj\Debug\netcoreapp3.1\Svetlinable.Web.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\daxte\source\repos\Svetlinable.Web\Svetlinable.Web\obj\Debug\netcoreapp3.1\Svetlinable.Web.RazorAssemblyInfo.cache
+C:\Users\daxte\source\repos\Svetlinable.Web\Svetlinable.Web\obj\Debug\netcoreapp3.1\Svetlinable.Web.RazorAssemblyInfo.cs
+C:\Users\daxte\source\repos\Svetlinable.Web\Svetlinable.Web\obj\Debug\netcoreapp3.1\Svetlinable.Web.AssemblyInfoInputs.cache
+C:\Users\daxte\source\repos\Svetlinable.Web\Svetlinable.Web\obj\Debug\netcoreapp3.1\Svetlinable.Web.AssemblyInfo.cs
+C:\Users\daxte\source\repos\Svetlinable.Web\Svetlinable.Web\obj\Debug\netcoreapp3.1\Svetlinable.Web.TagHelpers.input.cache
+C:\Users\daxte\source\repos\Svetlinable.Web\Svetlinable.Web\obj\Debug\netcoreapp3.1\Svetlinable.Web.TagHelpers.output.cache
+C:\Users\daxte\source\repos\Svetlinable.Web\Svetlinable.Web\obj\Debug\netcoreapp3.1\Svetlinable.Web.RazorCoreGenerate.cache
+C:\Users\daxte\source\repos\Svetlinable.Web\Svetlinable.Web\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\_ViewStart.cshtml.g.cs
+C:\Users\daxte\source\repos\Svetlinable.Web\Svetlinable.Web\obj\Debug\netcoreapp3.1\Razor\Views\Home\Index.cshtml.g.cs
+C:\Users\daxte\source\repos\Svetlinable.Web\Svetlinable.Web\obj\Debug\netcoreapp3.1\Razor\Views\Home\Privacy.cshtml.g.cs
+C:\Users\daxte\source\repos\Svetlinable.Web\Svetlinable.Web\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Error.cshtml.g.cs
+C:\Users\daxte\source\repos\Svetlinable.Web\Svetlinable.Web\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_Layout.cshtml.g.cs
+C:\Users\daxte\source\repos\Svetlinable.Web\Svetlinable.Web\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_LoginPartial.cshtml.g.cs
+C:\Users\daxte\source\repos\Svetlinable.Web\Svetlinable.Web\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_ValidationScriptsPartial.cshtml.g.cs
+C:\Users\daxte\source\repos\Svetlinable.Web\Svetlinable.Web\obj\Debug\netcoreapp3.1\Razor\Views\_ViewImports.cshtml.g.cs
+C:\Users\daxte\source\repos\Svetlinable.Web\Svetlinable.Web\obj\Debug\netcoreapp3.1\Razor\Views\_ViewStart.cshtml.g.cs
+C:\Users\daxte\source\repos\Svetlinable.Web\Svetlinable.Web\obj\Debug\netcoreapp3.1\Svetlinable.Web.RazorTargetAssemblyInfo.cache
+C:\Users\daxte\source\repos\Svetlinable.Web\Svetlinable.Web\obj\Debug\netcoreapp3.1\Svetlinable.Web.RazorTargetAssemblyInfo.cs
+C:\Users\daxte\source\repos\Svetlinable.Web\Svetlinable.Web\obj\Debug\netcoreapp3.1\Svetlinable.Web.Views.pdb
+C:\Users\daxte\source\repos\Svetlinable.Web\Svetlinable.Web\obj\Debug\netcoreapp3.1\Svetlinable.Web.csproj.CopyComplete
+C:\Users\daxte\source\repos\Svetlinable.Web\Svetlinable.Web\obj\Debug\netcoreapp3.1\Svetlinable.Web.dll
+C:\Users\daxte\source\repos\Svetlinable.Web\Svetlinable.Web\obj\Debug\netcoreapp3.1\Svetlinable.Web.pdb
+D:\Github Repos\Softuni_Web_Project\Svetlinable\Svetlinable.Web\bin\Debug\netcoreapp3.1\appsettings.Development.json
+D:\Github Repos\Softuni_Web_Project\Svetlinable\Svetlinable.Web\bin\Debug\netcoreapp3.1\appsettings.json
+D:\Github Repos\Softuni_Web_Project\Svetlinable\Svetlinable.Web\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
+D:\Github Repos\Softuni_Web_Project\Svetlinable\Svetlinable.Web\bin\Debug\netcoreapp3.1\Svetlinable.Web.StaticWebAssets.xml
+D:\Github Repos\Softuni_Web_Project\Svetlinable\Svetlinable.Web\bin\Debug\netcoreapp3.1\Svetlinable.Web.exe
+D:\Github Repos\Softuni_Web_Project\Svetlinable\Svetlinable.Web\bin\Debug\netcoreapp3.1\Svetlinable.Web.deps.json
+D:\Github Repos\Softuni_Web_Project\Svetlinable\Svetlinable.Web\bin\Debug\netcoreapp3.1\Svetlinable.Web.runtimeconfig.json
+D:\Github Repos\Softuni_Web_Project\Svetlinable\Svetlinable.Web\bin\Debug\netcoreapp3.1\Svetlinable.Web.runtimeconfig.dev.json
+D:\Github Repos\Softuni_Web_Project\Svetlinable\Svetlinable.Web\bin\Debug\netcoreapp3.1\Svetlinable.Web.dll
+D:\Github Repos\Softuni_Web_Project\Svetlinable\Svetlinable.Web\bin\Debug\netcoreapp3.1\Svetlinable.Web.pdb
+D:\Github Repos\Softuni_Web_Project\Svetlinable\Svetlinable.Web\bin\Debug\netcoreapp3.1\Svetlinable.Web.Views.dll
+D:\Github Repos\Softuni_Web_Project\Svetlinable\Svetlinable.Web\bin\Debug\netcoreapp3.1\Svetlinable.Web.Views.pdb
+D:\Github Repos\Softuni_Web_Project\Svetlinable\Svetlinable.Web\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.dll
+D:\Github Repos\Softuni_Web_Project\Svetlinable\Svetlinable.Web\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+D:\Github Repos\Softuni_Web_Project\Svetlinable\Svetlinable.Web\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Identity.UI.Views.V3.dll
+D:\Github Repos\Softuni_Web_Project\Svetlinable\Svetlinable.Web\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Identity.UI.Views.V4.dll
+D:\Github Repos\Softuni_Web_Project\Svetlinable\Svetlinable.Web\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Identity.UI.dll
+D:\Github Repos\Softuni_Web_Project\Svetlinable\Svetlinable.Web\bin\Debug\netcoreapp3.1\Microsoft.Bcl.AsyncInterfaces.dll
+D:\Github Repos\Softuni_Web_Project\Svetlinable\Svetlinable.Web\bin\Debug\netcoreapp3.1\Microsoft.Bcl.HashCode.dll
+D:\Github Repos\Softuni_Web_Project\Svetlinable\Svetlinable.Web\bin\Debug\netcoreapp3.1\Microsoft.Data.SqlClient.dll
+D:\Github Repos\Softuni_Web_Project\Svetlinable\Svetlinable.Web\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.dll
+D:\Github Repos\Softuni_Web_Project\Svetlinable\Svetlinable.Web\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Abstractions.dll
+D:\Github Repos\Softuni_Web_Project\Svetlinable\Svetlinable.Web\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Design.dll
+D:\Github Repos\Softuni_Web_Project\Svetlinable\Svetlinable.Web\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Relational.dll
+D:\Github Repos\Softuni_Web_Project\Svetlinable\Svetlinable.Web\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.SqlServer.dll
+D:\Github Repos\Softuni_Web_Project\Svetlinable\Svetlinable.Web\bin\Debug\netcoreapp3.1\Microsoft.Identity.Client.dll
+D:\Github Repos\Softuni_Web_Project\Svetlinable\Svetlinable.Web\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+D:\Github Repos\Softuni_Web_Project\Svetlinable\Svetlinable.Web\bin\Debug\netcoreapp3.1\System.Configuration.ConfigurationManager.dll
+D:\Github Repos\Softuni_Web_Project\Svetlinable\Svetlinable.Web\bin\Debug\netcoreapp3.1\System.Runtime.Caching.dll
+D:\Github Repos\Softuni_Web_Project\Svetlinable\Svetlinable.Web\bin\Debug\netcoreapp3.1\System.Security.Cryptography.ProtectedData.dll
+D:\Github Repos\Softuni_Web_Project\Svetlinable\Svetlinable.Web\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.1\Microsoft.Data.SqlClient.dll
+D:\Github Repos\Softuni_Web_Project\Svetlinable\Svetlinable.Web\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.1\Microsoft.Data.SqlClient.dll
+D:\Github Repos\Softuni_Web_Project\Svetlinable\Svetlinable.Web\bin\Debug\netcoreapp3.1\runtimes\win-arm64\native\sni.dll
+D:\Github Repos\Softuni_Web_Project\Svetlinable\Svetlinable.Web\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\sni.dll
+D:\Github Repos\Softuni_Web_Project\Svetlinable\Svetlinable.Web\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\sni.dll
+D:\Github Repos\Softuni_Web_Project\Svetlinable\Svetlinable.Web\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.0\System.Runtime.Caching.dll
+D:\Github Repos\Softuni_Web_Project\Svetlinable\Svetlinable.Web\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Runtime.Caching.dll
+D:\Github Repos\Softuni_Web_Project\Svetlinable\Svetlinable.Web\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
+D:\Github Repos\Softuni_Web_Project\Svetlinable\Svetlinable.Web\obj\Debug\netcoreapp3.1\Svetlinable.Web.csprojAssemblyReference.cache
+D:\Github Repos\Softuni_Web_Project\Svetlinable\Svetlinable.Web\obj\Debug\netcoreapp3.1\staticwebassets\Svetlinable.Web.StaticWebAssets.Manifest.cache
+D:\Github Repos\Softuni_Web_Project\Svetlinable\Svetlinable.Web\obj\Debug\netcoreapp3.1\staticwebassets\Svetlinable.Web.StaticWebAssets.xml
+D:\Github Repos\Softuni_Web_Project\Svetlinable\Svetlinable.Web\obj\Debug\netcoreapp3.1\Svetlinable.Web.MvcApplicationPartsAssemblyInfo.cs
+D:\Github Repos\Softuni_Web_Project\Svetlinable\Svetlinable.Web\obj\Debug\netcoreapp3.1\Svetlinable.Web.MvcApplicationPartsAssemblyInfo.cache
+D:\Github Repos\Softuni_Web_Project\Svetlinable\Svetlinable.Web\obj\Debug\netcoreapp3.1\Svetlinable.Web.RazorAssemblyInfo.cache
+D:\Github Repos\Softuni_Web_Project\Svetlinable\Svetlinable.Web\obj\Debug\netcoreapp3.1\Svetlinable.Web.RazorAssemblyInfo.cs
+D:\Github Repos\Softuni_Web_Project\Svetlinable\Svetlinable.Web\obj\Debug\netcoreapp3.1\Svetlinable.Web.AssemblyInfoInputs.cache
+D:\Github Repos\Softuni_Web_Project\Svetlinable\Svetlinable.Web\obj\Debug\netcoreapp3.1\Svetlinable.Web.AssemblyInfo.cs
+D:\Github Repos\Softuni_Web_Project\Svetlinable\Svetlinable.Web\obj\Debug\netcoreapp3.1\Svetlinable.Web.TagHelpers.input.cache
+D:\Github Repos\Softuni_Web_Project\Svetlinable\Svetlinable.Web\obj\Debug\netcoreapp3.1\Svetlinable.Web.TagHelpers.output.cache
+D:\Github Repos\Softuni_Web_Project\Svetlinable\Svetlinable.Web\obj\Debug\netcoreapp3.1\Svetlinable.Web.RazorCoreGenerate.cache
+D:\Github Repos\Softuni_Web_Project\Svetlinable\Svetlinable.Web\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\_ViewStart.cshtml.g.cs
+D:\Github Repos\Softuni_Web_Project\Svetlinable\Svetlinable.Web\obj\Debug\netcoreapp3.1\Razor\Views\Home\Index.cshtml.g.cs
+D:\Github Repos\Softuni_Web_Project\Svetlinable\Svetlinable.Web\obj\Debug\netcoreapp3.1\Razor\Views\Home\Privacy.cshtml.g.cs
+D:\Github Repos\Softuni_Web_Project\Svetlinable\Svetlinable.Web\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Error.cshtml.g.cs
+D:\Github Repos\Softuni_Web_Project\Svetlinable\Svetlinable.Web\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_Layout.cshtml.g.cs
+D:\Github Repos\Softuni_Web_Project\Svetlinable\Svetlinable.Web\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_LoginPartial.cshtml.g.cs
+D:\Github Repos\Softuni_Web_Project\Svetlinable\Svetlinable.Web\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_ValidationScriptsPartial.cshtml.g.cs
+D:\Github Repos\Softuni_Web_Project\Svetlinable\Svetlinable.Web\obj\Debug\netcoreapp3.1\Razor\Views\_ViewImports.cshtml.g.cs
+D:\Github Repos\Softuni_Web_Project\Svetlinable\Svetlinable.Web\obj\Debug\netcoreapp3.1\Razor\Views\_ViewStart.cshtml.g.cs
+D:\Github Repos\Softuni_Web_Project\Svetlinable\Svetlinable.Web\obj\Debug\netcoreapp3.1\Svetlinable.Web.RazorTargetAssemblyInfo.cache
+D:\Github Repos\Softuni_Web_Project\Svetlinable\Svetlinable.Web\obj\Debug\netcoreapp3.1\Svetlinable.Web.RazorTargetAssemblyInfo.cs
+D:\Github Repos\Softuni_Web_Project\Svetlinable\Svetlinable.Web\obj\Debug\netcoreapp3.1\Svetlinable.Web.Views.pdb
+D:\Github Repos\Softuni_Web_Project\Svetlinable\Svetlinable.Web\obj\Debug\netcoreapp3.1\Svetlinable.Web.csproj.CopyComplete
+D:\Github Repos\Softuni_Web_Project\Svetlinable\Svetlinable.Web\obj\Debug\netcoreapp3.1\Svetlinable.Web.dll
+D:\Github Repos\Softuni_Web_Project\Svetlinable\Svetlinable.Web\obj\Debug\netcoreapp3.1\Svetlinable.Web.pdb
