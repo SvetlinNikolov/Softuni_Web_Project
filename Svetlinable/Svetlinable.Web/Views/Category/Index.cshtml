@@ -1,9 +1,6 @@
 ﻿@model Svetlinable.Web.ViewModels.CategoryViewModels.CategoryWrapperViewModel
 
 <h1>Index Page:</h1>
-@{ int a = 5;
-}
-<h2>@{a++;}</h2>
 
 <table class="table table-hover" id="categoryListingTable">
     <tbody>
@@ -11,7 +8,9 @@
         {
             <tr>
                 <td>
-                    @category.Title
+                    <a asp-controller="Category" asp-action="Info" asp-route-id="@category.Id">
+                        @category.Title
+                    </a>
                 </td>
                 <td>
                     @category.Description

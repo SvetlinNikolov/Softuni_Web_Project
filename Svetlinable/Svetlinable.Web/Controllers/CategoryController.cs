@@ -35,5 +35,13 @@ namespace Svetlinable.Web.Controllers
 
             return this.View(categoryListing);
         }
+
+        public IActionResult Info(int id)
+        {
+            var category = this.categoryService.GetCategoryById(id);
+
+        
+            return this.View();
+        }
     }
 }

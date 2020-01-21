@@ -12,10 +12,11 @@
         public int CategoryId { get; set; }
         public Category Category { get; set; }
         public string AuthorId { get; set; }
-        public User Author { get; set; }
+        public virtual User Author { get; set; }
         public DateTime CreatedOn { get; set; }
-        public ICollection<PostLike> PostLikes { get; set; } = new HashSet<PostLike>(); //TODO I left it not virtual
-        public ICollection<Reply> Replies { get; set; } = new HashSet<Reply>();
+        public string ImageUrl { get; set; }
+        public virtual ICollection<PostLike> PostLikes { get; set; } = new HashSet<PostLike>(); //TODO I left it virtual
+        public virtual ICollection<Reply> Replies { get; set; } = new HashSet<Reply>();
 
 
     }

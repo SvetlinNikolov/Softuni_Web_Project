@@ -2,6 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.Linq;
     using System.Threading.Tasks;
     using Microsoft.EntityFrameworkCore;
 
@@ -9,7 +10,7 @@
     using Svetlinable.Models.Forum;
     using Svetlinable.Models.Shared;
     using Svetlinable.Services.Contracts;
-  
+
 
     public class CategoryService : ICategoryService
     {
@@ -43,7 +44,14 @@
 
         public Category GetCategoryById(int id)
         {
-            throw new NotImplementedException();
+            var category = this
+                  .dbContext
+                  .Categories
+                  .Where(c => c.Id == id)
+                  .Include(c => c.Posts)
+                  .FirstOrDefault();
+
+            return category;
         }
 
         public Task UpdateCategoryDescription(int categoryId, string newDescription)
