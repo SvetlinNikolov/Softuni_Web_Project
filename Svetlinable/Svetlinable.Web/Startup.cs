@@ -9,6 +9,9 @@ namespace Svetlinable.Web
 
     using Svetlinable.Data;
     using Svetlinable.Models.Shared;
+    using Svetlinable.Services;
+    using Svetlinable.Services.Contracts;
+
     public class Startup
     {
         public Startup(IConfiguration configuration)
@@ -27,6 +30,9 @@ namespace Svetlinable.Web
 
             services.AddDefaultIdentity<User>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<SvetlinableDbContext>();
+
+            services.AddScoped<ICategoryService, CategoryService>();
+
             services.AddControllersWithViews();
             services.AddRazorPages();
         }

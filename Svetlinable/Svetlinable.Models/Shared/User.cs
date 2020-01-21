@@ -10,11 +10,11 @@
     public class User : IdentityUser
     {
         public Gender Gender { get; set; }
-        public string ProfileImage { get; set; }
+        public string ProfileImage { get; set; } 
         public DateTime RegisteredOn { get; set; }
-        public virtual ICollection<PostLike> PostLikes { get; set; } = new HashSet<PostLike>();        //NOT SURE WHERE TO PUT VIRTUAL
-        public virtual ICollection<ReplyLike> ReplyLikes { get; set; } = new HashSet<ReplyLike>();
-        public virtual ICollection<Reply> Replies { get; set; } = new HashSet<Reply>();
-        public virtual ICollection<Post> Posts { get; set; } = new HashSet<Post>();
+        public ICollection<PostLike> PostLikes { get; set; } = new HashSet<PostLike>();        //NOT SURE WHERE TO PUT VIRTUAL
+        public ICollection<ReplyLike> ReplyLikes { get; set; } = new HashSet<ReplyLike>();
+        public ICollection<Reply> Replies { get; set; } = new HashSet<Reply>();
+        public ICollection<Post> Posts { get; set; } = new HashSet<Post>();
     }
 }

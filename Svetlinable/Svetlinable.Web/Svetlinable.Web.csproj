@@ -16,6 +16,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Svetlinable.Data\Svetlinable.Data.csproj" />
+    <ProjectReference Include="..\Svetlinable.Services\Svetlinable.Services.csproj" />
   </ItemGroup>
 
 </Project>

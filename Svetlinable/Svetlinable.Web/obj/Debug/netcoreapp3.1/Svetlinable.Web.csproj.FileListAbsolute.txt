@@ -147,3 +147,6 @@ D:\Github Repos\Softuni_Web_Project\Svetlinable\Svetlinable.Web\bin\Debug\netcor
 D:\Github Repos\Softuni_Web_Project\Svetlinable\Svetlinable.Web\bin\Debug\netcoreapp3.1\Svetlinable.Models.pdb
 D:\Github Repos\Softuni_Web_Project\Svetlinable\Svetlinable.Web\obj\Debug\netcoreapp3.1\Svetlinable.Web.MvcApplicationPartsAssemblyInfo.cs
 D:\Github Repos\Softuni_Web_Project\Svetlinable\Svetlinable.Web\obj\Debug\netcoreapp3.1\Svetlinable.Web.MvcApplicationPartsAssemblyInfo.cache
+D:\Github Repos\Softuni_Web_Project\Svetlinable\Svetlinable.Web\bin\Debug\netcoreapp3.1\Svetlinable.Services.dll
+D:\Github Repos\Softuni_Web_Project\Svetlinable\Svetlinable.Web\bin\Debug\netcoreapp3.1\Svetlinable.Services.pdb
+D:\Github Repos\Softuni_Web_Project\Svetlinable\Svetlinable.Web\obj\Debug\netcoreapp3.1\Razor\Views\Category\Index.cshtml.g.cs

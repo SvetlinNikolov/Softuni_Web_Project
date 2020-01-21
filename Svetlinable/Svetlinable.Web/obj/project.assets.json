@@ -1453,6 +1453,20 @@
         "runtime": {
           "bin/placeholder/Svetlinable.Models.dll": {}
         }
+      },
+      "Svetlinable.Services/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "dependencies": {
+          "Svetlinable.Data": "1.0.0",
+          "Svetlinable.Models": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Svetlinable.Services.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Svetlinable.Services.dll": {}
+        }
       }
     }
   },
@@ -5418,6 +5432,11 @@
       "type": "project",
       "path": "../Svetlinable.Models/Svetlinable.Models.csproj",
       "msbuildProject": "../Svetlinable.Models/Svetlinable.Models.csproj"
+    },
+    "Svetlinable.Services/1.0.0": {
+      "type": "project",
+      "path": "../Svetlinable.Services/Svetlinable.Services.csproj",
+      "msbuildProject": "../Svetlinable.Services/Svetlinable.Services.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -5426,7 +5445,8 @@
       "Microsoft.AspNetCore.Identity.UI >= 3.1.0",
       "Microsoft.EntityFrameworkCore.SqlServer >= 3.1.0",
       "Microsoft.EntityFrameworkCore.Tools >= 3.1.0",
-      "Svetlinable.Data >= 1.0.0"
+      "Svetlinable.Data >= 1.0.0",
+      "Svetlinable.Services >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -5461,6 +5481,9 @@
           "projectReferences": {
             "D:\\Github Repos\\Softuni_Web_Project\\Svetlinable\\Svetlinable.Data\\Svetlinable.Data.csproj": {
               "projectPath": "D:\\Github Repos\\Softuni_Web_Project\\Svetlinable\\Svetlinable.Data\\Svetlinable.Data.csproj"
+            },
+            "D:\\Github Repos\\Softuni_Web_Project\\Svetlinable\\Svetlinable.Services\\Svetlinable.Services.csproj": {
+              "projectPath": "D:\\Github Repos\\Softuni_Web_Project\\Svetlinable\\Svetlinable.Services\\Svetlinable.Services.csproj"
             }
           }
         }

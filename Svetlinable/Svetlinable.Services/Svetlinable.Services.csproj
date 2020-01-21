@@ -5,7 +5,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Contracts\" />
+    <ProjectReference Include="..\Svetlinable.Data\Svetlinable.Data.csproj" />
+    <ProjectReference Include="..\Svetlinable.Models\Svetlinable.Models.csproj" />
   </ItemGroup>
 
 </Project>

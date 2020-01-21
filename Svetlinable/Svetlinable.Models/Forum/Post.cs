@@ -15,7 +15,7 @@
         public User Author { get; set; }
         public DateTime CreatedOn { get; set; }
         public ICollection<PostLike> PostLikes { get; set; } = new HashSet<PostLike>(); //TODO I left it not virtual
-        public virtual ICollection<Reply> Replies { get; set; } = new HashSet<Reply>();
+        public ICollection<Reply> Replies { get; set; } = new HashSet<Reply>();
 
 
     }
