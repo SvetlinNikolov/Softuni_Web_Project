@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Svetlinable.Data;
 
 namespace Svetlinable.Data.Migrations
 {
     [DbContext(typeof(SvetlinableDbContext))]
-    partial class SvetlinableDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200122101155_AddedLikeValueBool")]
+    partial class AddedLikeValueBool
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -228,6 +230,9 @@ namespace Svetlinable.Data.Migrations
                     b.Property<string>("UserId")
                         .HasColumnType("nvarchar(450)");
 
+                    b.Property<bool>("Value")
+                        .HasColumnType("bit");
+
                     b.HasKey("Id");
 
                     b.HasIndex("PostId");
@@ -277,6 +282,9 @@ namespace Svetlinable.Data.Migrations
 
                     b.Property<string>("UserId")
                         .HasColumnType("nvarchar(450)");
+
+                    b.Property<bool>("Value")
+                        .HasColumnType("bit");
 
                     b.HasKey("Id");
 

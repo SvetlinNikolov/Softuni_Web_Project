@@ -1,8 +1,7 @@
-﻿
-using Svetlinable.Web.ViewModels.CategoryViewModels;
-
-namespace Svetlinable.Web.ViewModels.PostViewModels
+﻿namespace Svetlinable.Web.ViewModels.PostViewModels
 {
+
+    using Svetlinable.Web.ViewModels.CategoryViewModels;
     public class PostListingViewModel
     {
         public int Id { get; set; }
