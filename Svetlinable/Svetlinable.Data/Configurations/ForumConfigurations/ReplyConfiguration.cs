@@ -1,21 +1,23 @@
-﻿namespace Svetlinable.Data.Configurations
+﻿namespace Svetlinable.Data.Configurations.ForumConfigurations
 {
-
     using Microsoft.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
     using Svetlinable.Models.Forum;
-    public class QuoteConfiguration : IEntityTypeConfiguration<Quote>
+    public class ReplyConfiguration : IEntityTypeConfiguration<Reply>
     {
-        public void Configure(EntityTypeBuilder<Quote> builder)
+        public void Configure(EntityTypeBuilder<Reply> builder)
         {
             builder
-             .HasKey(r => r.Id);
+                .HasKey(r => r.Id);
 
             builder
                 .HasOne(r => r.Author)
-                .WithMany(u => u.Quotes)
+                .WithMany(u => u.Replies)
                 .HasForeignKey(r => r.AuthorId);
+
+
+
         }
     }
 }

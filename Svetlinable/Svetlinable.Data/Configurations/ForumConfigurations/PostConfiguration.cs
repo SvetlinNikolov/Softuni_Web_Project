@@ -1,4 +1,4 @@
-﻿namespace Svetlinable.Data.Configurations
+﻿namespace Svetlinable.Data.Configurations.ForumConfigurations
 {
     using Microsoft.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore.Metadata.Builders;
@@ -29,12 +29,12 @@
             //    .WithOne(f => f.Post)
             //    .HasForeignKey(p => p.PostId)
             //    .OnDelete(DeleteBehavior.Cascade);
-               
+
 
             builder.HasMany(p => p.PostLikes)
                 .WithOne(ps => ps.Post)
                 .OnDelete(DeleteBehavior.Cascade);
-          
+
 
 
         }

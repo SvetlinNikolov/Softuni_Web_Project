@@ -1,4 +1,4 @@
-﻿namespace Svetlinable.Web.ViewModels.CategoryViewModels
+﻿namespace Svetlinable.Web.ViewModels.ForumViewModels.CategoryViewModels
 {
     public class CategoryListingViewModel
     {

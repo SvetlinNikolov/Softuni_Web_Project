@@ -1,7 +1,6 @@
-﻿using Svetlinable.Models.Shared;
-
-namespace Svetlinable.Models.Forum
+﻿namespace Svetlinable.Models.Forum
 {
+    using Svetlinable.Models.Shared;
     public class ReplyLike : BaseEntity<int>
     {
         public User User { get; set; }

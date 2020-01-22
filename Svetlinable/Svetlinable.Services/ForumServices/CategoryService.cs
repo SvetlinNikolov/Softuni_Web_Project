@@ -1,4 +1,4 @@
-﻿namespace Svetlinable.Services
+﻿namespace Svetlinable.Services.ForumServices
 {
     using System;
     using System.Collections.Generic;
@@ -9,8 +9,7 @@
     using Svetlinable.Data;
     using Svetlinable.Models.Forum;
     using Svetlinable.Models.Shared;
-    using Svetlinable.Services.Contracts;
-
+    using Svetlinable.Services.Contracts.Forum;
 
     public class CategoryService : ICategoryService
     {
@@ -32,7 +31,7 @@
 
         public IEnumerable<Category> GetAllCategories()
         {
-            return this.dbContext
+            return dbContext
                 .Categories
                 .Include(c => c.Posts); //TODO SEE IF WE NEED TO INCLUDE POSTS REPLIES
         }
@@ -44,8 +43,8 @@
 
         public Category GetCategoryById(int id)
         {
-            var category = this
-                  .dbContext
+            var category =
+                  dbContext
                   .Categories
                   .Where(c => c.Id == id)
                   .Include(c => c.Posts)

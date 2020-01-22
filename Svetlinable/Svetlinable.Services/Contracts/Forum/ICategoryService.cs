@@ -1,4 +1,4 @@
-﻿namespace Svetlinable.Services.Contracts
+﻿namespace Svetlinable.Services.Contracts.Forum
 {
     using Svetlinable.Models.Forum;
     using Svetlinable.Models.Shared;

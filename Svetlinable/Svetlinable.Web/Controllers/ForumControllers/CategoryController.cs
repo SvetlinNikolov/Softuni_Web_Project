@@ -1,25 +1,26 @@
-﻿
-namespace Svetlinable.Web.Controllers
+﻿namespace Svetlinable.Web.Controllers.ForumControllers
 {
     using Microsoft.AspNetCore.Mvc;
     using System.Threading.Tasks;
     using System.Linq;
-
-    using Svetlinable.Services.Contracts;
     using Svetlinable.Web.ViewModels.CategoryViewModels;
+    using Svetlinable.Services.Contracts.Forum;
+    using Svetlinable.Web.ViewModels.ForumViewModels.CategoryViewModels;
 
     public class CategoryController : Controller
     {
         private readonly ICategoryService categoryService;
-
-        public CategoryController(ICategoryService categoryService)
+        private readonly IPostService postService;
+        public CategoryController(ICategoryService categoryService, IPostService postService)
         {
             this.categoryService = categoryService;
+            this.postService = postService;
+
         }
 
         public IActionResult Index()
         {
-            var allCategories = this.categoryService
+            var allCategories = categoryService
                 .GetAllCategories()
                 .Select(c => new CategoryListingViewModel
                 {
@@ -33,15 +34,15 @@ namespace Svetlinable.Web.Controllers
                 CategoryListing = allCategories
             };
 
-            return this.View(categoryListing);
+            return View(categoryListing);
         }
 
         public IActionResult Info(int id)
         {
-            var category = this.categoryService.GetCategoryById(id);
+            var category = categoryService.GetCategoryById(id);
+            var posts = postService.GetFilteredPosts(id);
 
-        
-            return this.View();
+            return View();
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿namespace Svetlinable.Data.Configurations
+﻿namespace Svetlinable.Data.Configurations.ForumConfigurations
 {
     using Svetlinable.Models.Shared;
 

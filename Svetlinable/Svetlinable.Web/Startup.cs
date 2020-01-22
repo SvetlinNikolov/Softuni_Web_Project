@@ -9,8 +9,8 @@ namespace Svetlinable.Web
 
     using Svetlinable.Data;
     using Svetlinable.Models.Shared;
-    using Svetlinable.Services;
-    using Svetlinable.Services.Contracts;
+    using Svetlinable.Services.Contracts.Forum;
+    using Svetlinable.Services.ForumServices;
 
     public class Startup
     {

@@ -1,4 +1,4 @@
-﻿namespace Svetlinable.Data.Configurations
+﻿namespace Svetlinable.Data.Configurations.ForumConfigurations
 {
     using Microsoft.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore.Metadata.Builders;
