@@ -2,7 +2,7 @@
 {
     using Svetlinable.Models.Shared;
 
-    public class QuoteLike
+    public class QuoteLike:BaseEntity<int>
     {
         public User User { get; set; }
         public string UserId { get; set; }
