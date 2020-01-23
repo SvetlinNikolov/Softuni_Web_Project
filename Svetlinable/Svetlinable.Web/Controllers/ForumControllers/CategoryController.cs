@@ -3,7 +3,6 @@
     using Microsoft.AspNetCore.Mvc;
     using System.Threading.Tasks;
     using System.Linq;
-    using Svetlinable.Web.ViewModels.CategoryViewModels;
     using Svetlinable.Services.Contracts.Forum;
     using Svetlinable.Web.ViewModels.ForumViewModels.CategoryViewModels;
 
@@ -40,8 +39,15 @@
         public IActionResult Info(int id)
         {
             var category = categoryService.GetCategoryById(id);
-            var posts = postService.GetFilteredPosts(id);
+            var posts = postService.GetPostsByCategory(id);
 
+            var categoryListings = posts.Select(p => new CategoryListingViewModel
+            {
+                Id = p.Id,
+                Title = p.Title,
+                Description = p.Content,
+          
+            });
             return View();
         }
     }

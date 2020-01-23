@@ -9,12 +9,12 @@ namespace Svetlinable.Models.Forum
 
     public class Quote : BaseEntity<int>
     {
-        public string Description { get; set; }
+        public string Content { get; set; }
         public string AuthorId { get; set; }
         public virtual User Author { get; set; }
         public virtual Reply Reply { get; set; }
         public int ReplyId { get; set; }
         public DateTime CreatedOn { get; set; }
-        public ICollection<QuoteLike> ReplyLikes { get; set; } = new HashSet<QuoteLike>();
+        public ICollection<QuoteLike> QuoteLikes { get; set; } = new HashSet<QuoteLike>();
     }
 }

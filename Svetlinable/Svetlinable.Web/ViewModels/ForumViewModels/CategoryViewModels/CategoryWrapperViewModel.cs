@@ -1,6 +1,5 @@
-﻿namespace Svetlinable.Web.ViewModels.CategoryViewModels
+﻿namespace Svetlinable.Web.ViewModels.ForumViewModels.CategoryViewModels
 {
-    using Svetlinable.Web.ViewModels.ForumViewModels.CategoryViewModels;
     using System.Collections.Generic;
     public class CategoryWrapperViewModel
     {
