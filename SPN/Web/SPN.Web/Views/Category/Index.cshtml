@@ -1,0 +1,21 @@
+﻿@model SPN.Web.ViewModels.ForumViewModels.CategoryViewModels.CategoryWrapperViewModel
+
+<h1>Index Page:</h1>
+
+<table class="table table-hover" id="categoryListingTable">
+    <tbody>
+        @foreach (var category in Model.CategoryListing)
+        {
+            <tr>
+                <td>
+                    <a asp-controller="Category" asp-action="Info" asp-route-id="@category.Id">
+                        @category.Title
+                    </a>
+                </td>
+                <td>
+                    @category.Description
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
