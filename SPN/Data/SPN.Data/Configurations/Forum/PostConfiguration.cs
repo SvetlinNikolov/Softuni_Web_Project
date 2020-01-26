@@ -23,11 +23,11 @@
                 .HasForeignKey(p => p.CategoryId);
 
 
-            //builder
-            //    .HasMany(p => p.Replies)
-            //    .WithOne(f => f.Post)
-            //    .HasForeignKey(p => p.PostId)
-            //    .OnDelete(DeleteBehavior.Cascade);
+            builder
+                .HasMany(p => p.Replies)
+                .WithOne(f => f.Post)
+                .HasForeignKey(p => p.PostId)
+                .OnDelete(DeleteBehavior.Cascade);
 
 
             builder.HasMany(p => p.PostLikes)

@@ -1,5 +1,4 @@
-﻿
-namespace SPN.Data.Models.Forum
+﻿namespace SPN.Data.Models.Forum
 {
     using SPN.Data.Common.Contracts;
     using SPN.Data.Common.Models;

@@ -16,6 +16,12 @@
                 .HasOne(r => r.Author)
                 .WithMany(u => u.Quotes)
                 .HasForeignKey(r => r.AuthorId);
+
+            builder
+             .HasOne(q => q.Reply)
+             .WithMany(r => r.Quotes)
+             .HasForeignKey(q => q.ReplyId)
+             .OnDelete(DeleteBehavior.Cascade);
         }
     }
 }

@@ -3,6 +3,7 @@ namespace SPN.Web
 {
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
+    using Microsoft.AspNetCore.Identity;
     using Microsoft.EntityFrameworkCore;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
@@ -29,8 +30,22 @@ namespace SPN.Web
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
 
-            services.AddDefaultIdentity<User>(options => options.SignIn.RequireConfirmedAccount = true)
-                .AddEntityFrameworkStores<SPNDbContext>();
+            services.AddIdentity<User, IdentityRole>()
+                .AddEntityFrameworkStores<SPNDbContext>()
+                .AddDefaultTokenProviders();
+
+            //services.Configure<IdentityOptions>(options =>
+            //{
+            //    // Password settings.
+            //    options.Password.RequireDigit = false;
+            //    options.Password.RequireLowercase = false;
+            //    options.Password.RequireNonAlphanumeric = false;
+            //    options.Password.RequireUppercase = false;
+            //    options.Password.RequiredLength = 3;
+            //    options.Password.RequiredUniqueChars = 0;
+
+            //    options.User.RequireUniqueEmail = true;
+            //});
 
             services.AddScoped<ICategoryService, CategoryService>();
 

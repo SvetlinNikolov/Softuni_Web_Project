@@ -16,6 +16,7 @@
                 .WithMany(u => u.Replies)
                 .HasForeignKey(r => r.AuthorId);
 
+        
 
 
         }

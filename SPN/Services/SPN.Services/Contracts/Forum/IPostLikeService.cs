@@ -9,5 +9,7 @@ namespace SPN.Services.Contracts.Forum
         void DislikePost(string userId, int postId);
         void LikePost(PostLike like);
 
+        //TODO FIX THIS :(
+
     }
 }

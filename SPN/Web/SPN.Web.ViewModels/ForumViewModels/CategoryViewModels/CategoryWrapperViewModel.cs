@@ -3,6 +3,6 @@
     using System.Collections.Generic;
     public class CategoryWrapperViewModel
     {
-        public IEnumerable<CategoryListingViewModel> CategoryListing { get; set; }
+        public IEnumerable<CategoryConciseViewModel> CategoryListing { get; set; }
     }
 }

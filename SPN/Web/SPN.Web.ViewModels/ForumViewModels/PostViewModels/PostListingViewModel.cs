@@ -13,6 +13,6 @@
         public string CreatedOn { get; set; }
         public string PostImageUrl { get; set; }
         public string CategoryName { get; set; }
-        public CategoryListingViewModel Category { get; set; }
+        public CategoryConciseViewModel Category { get; set; }
     }
 }
