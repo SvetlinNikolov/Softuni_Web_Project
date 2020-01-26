@@ -30,7 +30,7 @@
                     Description = c.Description
                 });
 
-            var categoryListing = new CategoryWrapperViewModel
+            var categoryListing = new CategoryListingViewModel
             {
                 CategoryListing = allCategories
             };
@@ -38,38 +38,47 @@
             return View(categoryListing);
         }
 
-        public IActionResult Info(int id)
+        public IActionResult Subject(int id)
         {
             var category = categoryService.GetCategoryById(id);
             var posts = postService.GetPostsByCategory(id);
 
-            var categoryListings = posts.Select(p => new PostListingViewModel
+            var postListings = posts.Select(post => new PostListingViewModel
             {
 
-                Id = p.Id,
-                AuthorId = p.Author.Id,
-                Title = p.Title,
-                CreatedOn = p.CreatedOn.ToString(),
-                RepliesCount = p.Replies.Count,   //TODO Maybe implement service here
-                Category = BuildCategoryListing(p)
+                Id = post.Id,
+                AuthorId = post.AuthorId,
+                Title = post.Title,
+                CreatedOn = post.CreatedOn.ToString(),
+                RepliesCount = post.Replies.Count,   //TODO Maybe implement service here
+                Category = BuildCategoryListing(post)
             });
 
-            return View();
+            var model = new CategorySubjectModel
+            {
+                Posts = postListings,
+                Category = BuildCategoryListing(category)
+            };
+
+            return View(model);
         }
 
-        private CategoryConciseViewModel BuildCategoryListing(Post post)
+        private CategoryConciseViewModel BuildCategoryListing(Post post) //This shouldnt stay like this
         {
             var category = post.Category;
 
-            var model = new CategoryConciseViewModel
+            return BuildCategoryListing(category);
+        }
+
+        private CategoryConciseViewModel BuildCategoryListing(Category category)
+        {
+            return new CategoryConciseViewModel
             {
                 Id = category.Id,
                 Title = category.Title,
                 Description = category.Description,
                 ImageUrl = category.ImageUrl
             };
-
-            return model;
         }
 
     }

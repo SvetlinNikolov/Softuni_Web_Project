@@ -42,6 +42,7 @@
 
         public Category GetCategoryById(int id)
         {
+           
             var category =
                   dbContext
                   .Categories

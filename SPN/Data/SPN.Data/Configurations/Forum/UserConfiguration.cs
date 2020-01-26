@@ -17,6 +17,9 @@
             builder.HasMany(u => u.Replies)
                 .WithOne(r => r.Author);
 
+            builder.HasMany(u => u.Quotes)
+                .WithOne(r => r.Author);
+
 
             //TODO Check if this config is enough
 
