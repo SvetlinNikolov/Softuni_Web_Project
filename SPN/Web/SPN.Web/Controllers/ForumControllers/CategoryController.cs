@@ -48,7 +48,7 @@
 
                 Id = post.Id,
                 AuthorId = post.AuthorId,
-                Title = post.Title,
+                 Title = post.Title,
                 CreatedOn = post.CreatedOn.ToString(),
                 RepliesCount = post.Replies.Count,   //TODO Maybe implement service here
                 Category = BuildCategoryListing(post)

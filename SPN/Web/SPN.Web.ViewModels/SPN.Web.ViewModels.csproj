@@ -4,4 +4,8 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\Data\SPN.Data.Models\SPN.Data.Models.csproj" />
+  </ItemGroup>
+
 </Project>

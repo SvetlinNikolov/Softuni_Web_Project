@@ -58,11 +58,11 @@
 
         public IEnumerable<Post> GetPostsByCategory(int id)
         {
-            return dbContext
+            return this.dbContext
                 .Categories
                 .Where(f => f.Id == id)
-                .FirstOrDefault()
-                .Posts;
+                .Select(x => x.Posts)
+                .FirstOrDefault();
 
         }
     }
