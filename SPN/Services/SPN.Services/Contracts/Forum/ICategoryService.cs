@@ -10,7 +10,6 @@
     {
         Category GetCategoryById(int id);
         IEnumerable<Category> GetAllCategories();
-        IEnumerable<User> GetAllUsers();
         Task CreateCategory(Category category);
         Task DeleteCategory(int categoryId);
         Task UpdateCategoryTitle(int categoryId, string newTitle);

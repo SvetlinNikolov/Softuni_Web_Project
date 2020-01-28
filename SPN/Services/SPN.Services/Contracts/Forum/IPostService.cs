@@ -3,8 +3,6 @@
     using SPN.Data.Models.Forum;
     using System.Collections.Generic;
     using System.Threading.Tasks;
-
-
     public interface IPostService
     {
         Post GetPostById(int id);

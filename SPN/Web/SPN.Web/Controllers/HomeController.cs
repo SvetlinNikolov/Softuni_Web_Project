@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-using SPN.Web.Models;
-
-namespace SPN.Web.Controllers
+﻿namespace SPN.Web.Controllers
 {
+    using Microsoft.Extensions.Logging;
+    using System.Diagnostics;
+    using Microsoft.AspNetCore.Mvc;
+    
+    using SPN.Web.Models;
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;

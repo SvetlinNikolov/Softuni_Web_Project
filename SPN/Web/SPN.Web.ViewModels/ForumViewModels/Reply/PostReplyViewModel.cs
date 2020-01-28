@@ -9,23 +9,18 @@
     {
         public int Id { get; set; }
         public string Content { get; set; }
-        public string ImageUrl { get; set; }
 
         public string AuthorId { get; set; }
         public string AuthorName { get; set; }
         public string AuthorImageUrl { get; set; }
 
         public int PostId { get; set; }
-        public string PostTitle { get; set; }
-        public string PostContent { get; set; }
 
-        public string CategoryName { get; set; }
-        public string CategoryImageUrl { get; set; }
-        public int CategoryId { get; set; }
+        //public string CategoryName { get; set; }
+        //public string CategoryImageUrl { get; set; }
+        //public int CategoryId { get; set; }
 
         public int LikesCount { get; set; }
-        public int RepliesCount { get; set; }
-
         public bool IsDeleted { get; set; }
         public DateTime CreatedOn { get; set; }
         public DateTime? DeletedOn { get; set; }
