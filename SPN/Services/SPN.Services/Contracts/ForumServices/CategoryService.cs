@@ -10,22 +10,22 @@
     using SPN.Data.Models.Forum;
     using SPN.Data.Models.Identity;
     using SPN.Services.Contracts.Forum;
+    using SPN.Services.Shared;
+    using SPN.Web.ViewModels.ForumInputModels.CategoryInputModels;
 
-    public class CategoryService : ICategoryService
+    public class CategoryService : BaseService, ICategoryService
     {
-        private readonly SPNDbContext dbContext;
-        private readonly IMapper mapper;
 
         public CategoryService(SPNDbContext dbContext, IMapper mapper)
+            : base(mapper, dbContext)
         {
-            this.dbContext = dbContext;
-            this.mapper = mapper;
+
         }
-        public  Task CreateCategory(Category category/*,User user*/)
+        public Task CreateCategory(CategoryInputModel/*,User user*/)
         {
-            //var category =
-            //     this.mapper
-            //     .Map<CategoryInputModel, Models.Category>(model as CategoryInputModel);
+            var category =
+                 this.mapper
+                 .Map<CategoryInputModel, Models.Category>(model as CategoryInputModel);
 
             //category.CreatedOn = DateTime.UtcNow;
             //category.User = user;
@@ -56,19 +56,28 @@
                   .Categories
                   .Where(c => c.Id == id)
                   .Include(c => c.Posts)
+                  .ThenInclude(c => c.PostLikes) //TODO Maybe A lot more includes needed like quotes likes, etc
                   .FirstOrDefault();
 
             return category;
         }
 
-        public Task UpdateCategoryDescription(int categoryId, string newDescription)
+        public async Task UpdateCategoryDescription(int categoryId, string newDescription)
         {
-            throw new NotImplementedException();
+            var categoryToUpdate = this.GetCategoryById(categoryId);
+            categoryToUpdate.Description = newDescription;
+
+            this.dbContext.Update(categoryToUpdate);
+            await this.dbContext.SaveChangesAsync();
         }
 
-        public Task UpdateCategoryTitle(int categoryId, string newTitle)
+        public async Task UpdateCategoryTitle(int categoryId, string newTitle)
         {
-            throw new NotImplementedException();
+            var category = this.GetCategoryById(categoryId);
+            category.Title = newTitle;
+
+            this.dbContext.Update(category);
+            await this.dbContext.SaveChangesAsync();
         }
     }
 }
