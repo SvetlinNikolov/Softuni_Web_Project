@@ -1,7 +1,7 @@
 ﻿namespace SPN.Web.ViewModels.ForumViewModels.Reply
 {
     using SPN.Data.Models.Identity;
-    using SPN.Web.ViewModels.Quote;
+    using SPN.Web.ViewModels.ForumViewModels.Quote;
     using System;
     using System.Collections.Generic;
 

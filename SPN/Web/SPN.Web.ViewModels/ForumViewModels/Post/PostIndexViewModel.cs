@@ -1,4 +1,4 @@
-﻿namespace SPN.Web.ViewModels.ForumViewModels.PostViewModels
+﻿namespace SPN.Web.ViewModels.ForumViewModels.Post
 {
     using SPN.Data.Common.Contracts;
     using SPN.Data.Models.Identity;
@@ -6,7 +6,7 @@
     using System;
     using System.Collections.Generic;
 
-    public class PostIndexViewModel :  IAuditInfo
+    public class PostIndexViewModel : IAuditInfo
     {
         public int Id { get; set; }
         public string Title { get; set; }

@@ -11,7 +11,7 @@
     using SPN.Data.Models.Identity;
     using SPN.Services.Contracts.Forum;
     using SPN.Services.Shared;
-    using SPN.Web.ViewModels.ForumInputModels.CategoryInputModels;
+    using SPN.Web.ViewModels.ForumInputModels.Contracts;
 
     public class CategoryService : BaseService, ICategoryService
     {
@@ -21,18 +21,9 @@
         {
 
         }
-        public Task CreateCategory(CategoryInputModel/*,User user*/)
+        public Task CreateCategory(ICategoryInputModel inputModel, User user)
         {
-            var category =
-                 this.mapper
-                 .Map<CategoryInputModel, Models.Category>(model as CategoryInputModel);
-
-            //category.CreatedOn = DateTime.UtcNow;
-            //category.User = user;
-            //category.UserId = user.Id;
-
-            //await this.dbService.DbContext.Categories.AddAsync(category);
-            //return await this.dbService.DbContext.SaveChangesAsync();
+           
             throw new NotFiniteNumberException();
         }
 

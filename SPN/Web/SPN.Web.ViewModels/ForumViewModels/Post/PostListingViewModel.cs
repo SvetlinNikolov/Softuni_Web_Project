@@ -1,4 +1,4 @@
-﻿namespace SPN.Web.ViewModels.ForumViewModels.PostViewModels
+﻿namespace SPN.Web.ViewModels.ForumViewModels.Post
 {
     using SPN.Web.ViewModels.ForumViewModels.CategoryViewModels;
 

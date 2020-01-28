@@ -1,4 +1,4 @@
-﻿namespace SPN.Web.ViewModels.Quote
+﻿namespace SPN.Web.ViewModels.ForumViewModels.Quote
 {
     using SPN.Data.Common.Contracts;
     using System;

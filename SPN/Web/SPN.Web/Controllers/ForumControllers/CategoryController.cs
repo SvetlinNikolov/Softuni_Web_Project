@@ -2,6 +2,8 @@
 {
     using Microsoft.AspNetCore.Mvc;
     using SPN.Services.Contracts.Forum;
+    using SPN.Web.ViewModels.ForumViewModels.CategoryViewModels;
+    using System;
 
     public class CategoryController : Controller
     {
@@ -16,15 +18,7 @@
 
         public IActionResult Index()
         {
-            var allCategories = categoryService
-                .GetAllCategories();
-
-            //var categoryListing = new CategoryListingViewModel
-            //{
-            //    CategoryListing = allCategories
-            //};
-
-            //return View(categoryListing);
+            throw new NotImplementedException();
         }
 
         public IActionResult Subject(int id)

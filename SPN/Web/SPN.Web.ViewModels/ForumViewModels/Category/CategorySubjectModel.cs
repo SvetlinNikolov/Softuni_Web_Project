@@ -1,8 +1,7 @@
 ﻿namespace SPN.Web.ViewModels.ForumViewModels.CategoryViewModels
 {
     using System.Collections.Generic;
-
-    using SPN.Web.ViewModels.ForumViewModels.PostViewModels;
+    using SPN.Web.ViewModels.ForumViewModels.Post;
 
     public class CategorySubjectModel
     {
