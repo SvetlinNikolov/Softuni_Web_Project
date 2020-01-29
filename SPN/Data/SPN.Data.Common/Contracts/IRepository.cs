@@ -2,6 +2,7 @@
 {
     using System;
     using System.Linq;
+    using System.Threading;
     using System.Threading.Tasks;
 
     public interface IRepository<TEntity> : IDisposable
@@ -16,6 +17,8 @@
         void Update(TEntity entity);
 
         void Delete(TEntity entity);
+
+        void Detach(TEntity entity);
 
         Task<int> SaveChangesAsync();
     }

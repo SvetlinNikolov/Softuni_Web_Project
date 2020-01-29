@@ -15,25 +15,25 @@
     using SPN.Web.ViewModels.ForumInputModels.Category;
     using SPN.Web.ViewModels.ForumInputModels.Contracts;
 
-    public class CategoryService : BaseService, ICategoryService<int>
+    public class CategoryService : ICategoryService
     {
+        private readonly SPNDbContext dbContext;
 
-        public CategoryService(SPNDbContext dbContext, IMapper mapper)
-            : base(mapper, dbContext)
+        public CategoryService(SPNDbContext dbContext)
         {
-
+            this.dbContext = dbContext;
         }
         public async Task<int> CreateCategory(ICategoryInputModel inputModel, User user)
         {
-            var category =
-                  this.mapper
-                  .Map<CategoryInputModel, Category>(inputModel as CategoryInputModel);
+            //var category =
+            //      this.mapper
+            //      .Map<CategoryInputModel, Category>(inputModel as CategoryInputModel);
 
-            category.CreatedOn = DateTime.UtcNow;
+            //category.CreatedOn = DateTime.UtcNow;
 
-            await this.dbContext.Categories.AddAsync(category);
-            return await this.dbContext.SaveChangesAsync();
-            
+            //await this.dbContext.Categories.AddAsync(category);
+            //return await this.dbContext.SaveChangesAsync();
+            throw new NotImplementedException();
         }
 
         public Task DeleteCategory(int categoryId)
@@ -51,17 +51,19 @@
 
         public Category GetCategoryByIdWithPosts(int id)
         {
-            {
+            
                 var category =
                    dbContext
                    .Categories
                    .Where(c => c.Id == id)
                    .Include(c => c.Posts)
-                   .ThenInclude(c => c.PostLikes) //TODO Maybe A lot more includes needed like quotes likes, etc
+                   .ThenInclude(c => c.PostLikes)
+                   .Include(c => c.Posts)
+                   .ThenInclude(c => c.Author)
                    .FirstOrDefault();
 
                 return category;
-            }
+            
         }
 
         public Category GetCategoryById(int id)
@@ -71,6 +73,7 @@
                dbContext
                .Categories
                .Where(c => c.Id == id)
+               .Include(x => x.Posts)
                .FirstOrDefault();
 
             return category;

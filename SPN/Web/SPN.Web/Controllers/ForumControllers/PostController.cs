@@ -3,7 +3,6 @@
     using Microsoft.AspNetCore.Mvc;
     using SPN.Data.Models.Forum;
     using SPN.Services.Contracts.Forum;
-    using SPN.Web.ViewModels.ForumViewModels.PostViewModels;
     using SPN.Web.ViewModels.ForumViewModels.Reply;
     using System.Collections.Generic;
     using System.Linq;
@@ -47,10 +46,10 @@
                 AuthorName = reply.Author.UserName,
                 AuthorId = reply.Author.Id,
                 AuthorImageUrl = reply.Author.ProfileImage,
-              LikesCount = reply.ReplyLikes.Count,
+                LikesCount = reply.ReplyLikes.Count,
                 CreatedOn = reply.CreatedOn,
                 Content = reply.Content,
-           
+
             });
         }
     }

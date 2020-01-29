@@ -8,11 +8,11 @@
  
     using System.Threading.Tasks;
 
-    public interface ICategoryService<T>
+    public interface ICategoryService
     {
         Category GetCategoryByIdWithPosts(int id);
         IEnumerable<Category> GetAllCategories();
-        Task<T> CreateCategory(ICategoryInputModel categoryInputModel, User identityUser);
+        Task<int> CreateCategory(ICategoryInputModel categoryInputModel, User identityUser);
         Task DeleteCategory(int categoryId);
         Task UpdateCategoryTitle(int categoryId, string newTitle);
         Task UpdateCategoryDescription(int categoryId, string newDescription);

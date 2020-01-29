@@ -1,5 +1,6 @@
 ﻿namespace SPN.Services.ForumServices
 {
+    using Microsoft.EntityFrameworkCore;
     using SPN.Data;
     using SPN.Data.Models.Forum;
     using SPN.Services.Contracts.Forum;
@@ -39,11 +40,6 @@
             throw new NotImplementedException();
         }
 
-        public IEnumerable<Post> GetPostsByCategory(string searchQuery)
-        {
-            throw new NotImplementedException();
-        }
-
         public Post GetPostById(int id)
         {
             return dbContext
@@ -58,12 +54,15 @@
 
         public IEnumerable<Post> GetPostsByCategory(int id)
         {
-            return this.dbContext
-                .Categories
-                .Where(f => f.Id == id)
-                .Select(x => x.Posts)
-                .FirstOrDefault();
 
+            var posts =
+               dbContext
+               .Categories
+               .Where(c => c.Id == id)
+               .Select(p => p.Posts)
+               .FirstOrDefault();
+
+            return posts;
         }
     }
 }

@@ -3,9 +3,10 @@
     using System.Collections.Generic;
     using SPN.Web.ViewModels.ForumViewModels.Post;
 
-    public class CategorySubjectModel
+    public class CategoryTopicModel
     {
         public CategoryConciseViewModel Category { get; set; }
+
         public IEnumerable<PostListingViewModel> Posts { get; set; }
     }
 }

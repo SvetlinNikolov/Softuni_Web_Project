@@ -3,7 +3,9 @@
     using Microsoft.AspNetCore.Mvc;
     using SPN.Services.Contracts.Forum;
     using SPN.Web.ViewModels.ForumViewModels.CategoryViewModels;
+    using SPN.Web.ViewModels.ForumViewModels.Post;
     using System;
+    using System.Linq;
 
     public class CategoryController : Controller
     {
@@ -18,51 +20,57 @@
 
         public IActionResult Index()
         {
-            throw new NotImplementedException();
+            var categories = this.categoryService.
+                GetAllCategories()
+                 .Select(c => new CategoryConciseViewModel
+                 {
+                     Id = c.Id,
+                     Title = c.Title,
+                     Description = c.Description,
+                     ImageUrl = c.ImageUrl
+                 });
+
+            var model = new CategoryListingViewModel
+            {
+                CategoryListing = categories
+            };
+
+            return this.View(model);
         }
 
-        public IActionResult Subject(int id)
+        public IActionResult Topic(int id)
         {
-            var category = categoryService.GetCategoryById(id);
+            var category = categoryService.GetCategoryByIdWithPosts(id);
             var posts = postService.GetPostsByCategory(id);
-            return this.View();
-            //var postListings = posts.Select(post => new PostListingViewModel
-            //{
+            
 
-            //    Id = post.Id,
-            //    AuthorId = post.AuthorId,
-            //     Title = post.Title,
-            //    CreatedOn = post.CreatedOn.ToString(),
-            //    RepliesCount = post.Replies.Count,   //TODO Maybe implement service here
-            //    Category = BuildCategoryListing(post)
-            //});
+            var categoryConcise = new CategoryConciseViewModel
+            {
+                Id = category.Id,
+                Description = category.Description,
+                Title = category.Title,
+                ImageUrl = category.ImageUrl
+            };
+            var postListing = category.Posts.Select(p => new PostListingViewModel
+            {
+                Id = p.Id,
+                CategoryName = p.Category.Title,
+                AuthorId = p.Author.Id,
+                AuthorName = p.Author.UserName,
+                CreatedOn = p.CreatedOn.ToString(),
+                Title = p.Title
+            });
 
-            //var model = new CategorySubjectModel
-            //{
-            //    Posts = postListings,
-            //    Category = BuildCategoryListing(category)
-            //};
 
-            //return View(model);
+
+            var model = new CategoryTopicModel
+            {
+                Category = categoryConcise,
+                Posts = postListing
+            };
+
+            return this.View(model);
         }
-
-        //private CategoryConciseViewModel BuildCategoryListing(Post post) //This shouldnt stay like this
-        //{
-        //    var category = post.Category;
-
-        //    return BuildCategoryListing(category);
-        //}
-
-        //private CategoryConciseViewModel BuildCategoryListing(Category category)
-        //{
-        //    return new CategoryConciseViewModel
-        //    {
-        //        Id = category.Id,
-        //        Title = category.Title,
-        //        Description = category.Description,
-        //        ImageUrl = category.ImageUrl
-        //    };
-        //}
 
     }
 }
