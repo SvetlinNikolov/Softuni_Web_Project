@@ -6,14 +6,16 @@
     using System.Threading.Tasks;
     using AutoMapper;
     using Microsoft.EntityFrameworkCore;
+
     using SPN.Data;
     using SPN.Data.Models.Forum;
     using SPN.Data.Models.Identity;
     using SPN.Services.Contracts.Forum;
     using SPN.Services.Shared;
+    using SPN.Web.ViewModels.ForumInputModels.Category;
     using SPN.Web.ViewModels.ForumInputModels.Contracts;
 
-    public class CategoryService : BaseService, ICategoryService
+    public class CategoryService : BaseService, ICategoryService<int>
     {
 
         public CategoryService(SPNDbContext dbContext, IMapper mapper)
@@ -21,10 +23,17 @@
         {
 
         }
-        public Task CreateCategory(ICategoryInputModel inputModel, User user)
+        public async Task<int> CreateCategory(ICategoryInputModel inputModel, User user)
         {
-           
-            throw new NotFiniteNumberException();
+            var category =
+                  this.mapper
+                  .Map<CategoryInputModel, Category>(inputModel as CategoryInputModel);
+
+            category.CreatedOn = DateTime.UtcNow;
+
+            await this.dbContext.Categories.AddAsync(category);
+            return await this.dbContext.SaveChangesAsync();
+            
         }
 
         public Task DeleteCategory(int categoryId)
@@ -40,15 +49,29 @@
                 .ToList(); //TODO SEE IF WE NEED TO INCLUDE POSTS REPLIES
         }
 
+        public Category GetCategoryByIdWithPosts(int id)
+        {
+            {
+                var category =
+                   dbContext
+                   .Categories
+                   .Where(c => c.Id == id)
+                   .Include(c => c.Posts)
+                   .ThenInclude(c => c.PostLikes) //TODO Maybe A lot more includes needed like quotes likes, etc
+                   .FirstOrDefault();
+
+                return category;
+            }
+        }
+
         public Category GetCategoryById(int id)
         {
+
             var category =
-                  dbContext
-                  .Categories
-                  .Where(c => c.Id == id)
-                  .Include(c => c.Posts)
-                  .ThenInclude(c => c.PostLikes) //TODO Maybe A lot more includes needed like quotes likes, etc
-                  .FirstOrDefault();
+               dbContext
+               .Categories
+               .Where(c => c.Id == id)
+               .FirstOrDefault();
 
             return category;
         }
