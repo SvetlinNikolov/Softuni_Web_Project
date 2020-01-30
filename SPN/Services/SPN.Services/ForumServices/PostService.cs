@@ -64,15 +64,15 @@
             throw new NotImplementedException();
         }
 
-        public IEnumerable<Post> GetPostsByCategory(int id)
+        public async Task<IEnumerable<Post>> GetPostsByCategoryAsync(int id)
         {
 
-            var posts =
-               dbContext
+            IEnumerable<Post> posts =
+               await dbContext
                .Posts
                .Where(p => p.Id == id)
                .Include(p => p.Author)
-               .ToList();
+               .ToListAsync();
 
             return posts;
         }

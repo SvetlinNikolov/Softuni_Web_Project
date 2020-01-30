@@ -31,7 +31,8 @@
             var categories = await this.categoryService.
                 GetAllCategoriesAsync();
 
-           var categoryModel = this.mapper.Map<IEnumerable<CategoryConciseViewModel>>(categories); //Map
+           var categoryModel = this.mapper
+                .Map<IEnumerable<CategoryConciseViewModel>>(categories); //Map
 
             var model = new CategoryListingViewModel
             {
@@ -69,22 +70,13 @@
         public async Task<IActionResult> Topic(int id)
         {
             Category category = await categoryService.GetCategoryByIdAsync(id);
-            var posts = postService.GetPostsByCategory(id);
+            var posts = await postService.GetPostsByCategoryAsync(id);
 
-            var categoryConcise = this.mapper.Map<CategoryConciseViewModel>(category);
-            var postListing = this.mapper.Map<IEnumerable<PostListingViewModel>>(posts); 
+            var categoryConcise = this.mapper
+                .Map<CategoryConciseViewModel>(category);
 
-            //var postListing = category.Posts.Select(p => new PostListingViewModel
-            //{
-            //    Id = p.Id,
-            //    CategoryName = p.Category.Title,
-            //    AuthorId = p.Author.Id,
-            //    AuthorName = p.Author.UserName,
-            //    CreatedOn = p.CreatedOn.ToString(),
-            //    Title = p.Title
-            //});
-
-
+            var postListing = this.mapper
+                .Map<IEnumerable<PostListingViewModel>>(posts); 
 
             var model = new CategoryTopicModel
             {

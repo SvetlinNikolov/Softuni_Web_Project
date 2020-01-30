@@ -19,7 +19,10 @@
                 .ForMember(x => x.CategoryName, y => y.MapFrom(z => z.Category.Title))
                 .ForMember(x => x.AuthorId, y => y.MapFrom(z => z.Author.UserName))
                 .ForMember(x => x.CreatedOn, y => y.MapFrom(z => z.CreatedOn.ToString()))
-                .ForMember(x => x.Title, y => y.MapFrom(z => z.Title));
+                .ForMember(x => x.Title, y => y.MapFrom(z => z.Title))
+                 .ForMember(x => x.AuthorId, y => y.MapFrom(z => z.Author.Id))
+                .ForMember(x => x.AuthorName, y => y.MapFrom(z => z.Author.UserName));
+
         }
 
     }
