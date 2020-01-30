@@ -1,11 +1,14 @@
 ﻿namespace Svetlinable.Web.Controllers.ForumControllers
 {
+    using AutoMapper;
     using Microsoft.AspNetCore.Mvc;
+    using SPN.Data.Models.Forum;
     using SPN.Services.Contracts.Forum;
     using SPN.Web.ViewModels.ForumInputModels.Category;
     using SPN.Web.ViewModels.ForumViewModels.CategoryViewModels;
     using SPN.Web.ViewModels.ForumViewModels.Post;
     using System;
+    using System.Collections.Generic;
     using System.Linq;
     using System.Net;
     using System.Threading.Tasks;
@@ -14,28 +17,25 @@
     {
         private readonly ICategoryService categoryService;
         private readonly IPostService postService;
-        public CategoryController(ICategoryService categoryService, IPostService postService)
+        private readonly IMapper mapper;
+
+        public CategoryController(ICategoryService categoryService, IPostService postService, IMapper mapper)
         {
             this.categoryService = categoryService;
             this.postService = postService;
-
+            this.mapper = mapper;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            var categories = this.categoryService.
-                GetAllCategories()
-                 .Select(c => new CategoryConciseViewModel
-                 {
-                     Id = c.Id,
-                     Title = c.Title,
-                     Description = c.Description,
-                     ImageUrl = c.ImageUrl
-                 });
+            var categories = await this.categoryService.
+                GetAllCategoriesAsync();
+
+           var categoryModel = this.mapper.Map<IEnumerable<CategoryConciseViewModel>>(categories); //Map
 
             var model = new CategoryListingViewModel
             {
-                CategoryListing = categories
+                CategoryListing = categoryModel
             };
 
             return this.View(model);
@@ -66,28 +66,23 @@
             }
         }
 
-        public IActionResult Topic(int id)
+        public async Task<IActionResult> Topic(int id)
         {
-            var category = categoryService.GetCategoryById(id);
+            Category category = await categoryService.GetCategoryByIdAsync(id);
             var posts = postService.GetPostsByCategory(id);
-            
 
-            var categoryConcise = new CategoryConciseViewModel
-            {
-                Id = category.Id,
-                Description = category.Description,
-                Title = category.Title,
-                ImageUrl = category.ImageUrl
-            };
-            var postListing = category.Posts.Select(p => new PostListingViewModel
-            {
-                Id = p.Id,
-                CategoryName = p.Category.Title,
-                AuthorId = p.Author.Id,
-                AuthorName = p.Author.UserName,
-                CreatedOn = p.CreatedOn.ToString(),
-                Title = p.Title
-            });
+            var categoryConcise = this.mapper.Map<CategoryConciseViewModel>(category);
+            var postListing = this.mapper.Map<IEnumerable<PostListingViewModel>>(posts); 
+
+            //var postListing = category.Posts.Select(p => new PostListingViewModel
+            //{
+            //    Id = p.Id,
+            //    CategoryName = p.Category.Title,
+            //    AuthorId = p.Author.Id,
+            //    AuthorName = p.Author.UserName,
+            //    CreatedOn = p.CreatedOn.ToString(),
+            //    Title = p.Title
+            //});
 
 
 

@@ -3,7 +3,6 @@ namespace SPN.Web.ViewModels.ForumViewModels.CategoryViewModels
 {
     using AutoMapper;
     using SPN.Data.Models.Forum;
-    using SPN.Services.Mapping.Contracts;
 
     public class CategoryConciseViewModel
     {

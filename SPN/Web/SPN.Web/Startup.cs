@@ -1,6 +1,7 @@
 
 namespace SPN.Web
 {
+    using AutoMapper;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.AspNetCore.Identity;
@@ -14,6 +15,7 @@ namespace SPN.Web
     using SPN.Services.Contracts.Forum;
     using SPN.Services.ForumServices;
     using SPN.Services.Shared;
+    using SPN.Services.Utilities;
 
     public class Startup
     {
@@ -48,6 +50,7 @@ namespace SPN.Web
 
                 options.User.RequireUniqueEmail = false;
             });
+            services.AddAutoMapper(typeof(SPNProfile));
 
             services.AddScoped<ICategoryService, CategoryService>();
             services.AddScoped<IPostService, PostService>();

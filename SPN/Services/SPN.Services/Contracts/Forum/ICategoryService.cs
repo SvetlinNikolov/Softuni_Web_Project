@@ -2,18 +2,18 @@
 {
     using SPN.Data.Models.Forum;
     using SPN.Data.Models.Identity;
-    using SPN.Web.ViewModels.ForumInputModels.Contracts;
+    using SPN.Web.ViewModels.ForumInputModels.Category;
     using System.Collections.Generic;
  
     using System.Threading.Tasks;
 
     public interface ICategoryService
     {
-        IEnumerable<Category> GetAllCategories();
-        Task<int> CreateCategory(ICategoryInputModel categoryInputModel);
-        Task DeleteCategory(int categoryId);
-        Task UpdateCategoryTitle(int categoryId, string newTitle);
-        Task UpdateCategoryDescription(int categoryId, string newDescription);
-        Category GetCategoryById(int id);
+        Task<IEnumerable<Category>> GetAllCategoriesAsync();
+        Task<int> CreateCategory(CategoryInputModel categoryInputModel);
+        Task DeleteCategoryAsync(int categoryId);
+        Task UpdateCategoryTitleAsync(int categoryId, string newTitle);
+        Task UpdateCategoryDescriptionAsync(int categoryId, string newDescription);
+        Task<Category> GetCategoryByIdAsync(int id);
     }
 }

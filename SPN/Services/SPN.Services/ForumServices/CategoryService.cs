@@ -12,69 +12,63 @@
     using SPN.Data.Models.Identity;
     using SPN.Services.Contracts.Forum;
     using SPN.Services.Shared;
-    using SPN.Web.ViewModels.ForumInputModels.Contracts;
+    using SPN.Web.ViewModels.ForumInputModels.Category;
 
     public class CategoryService : ICategoryService
     {
         private readonly SPNDbContext dbContext;
-
-        public CategoryService(SPNDbContext dbContext)
+        private readonly IMapper mapper;
+        public CategoryService(SPNDbContext dbContext, IMapper mapper)
         {
             this.dbContext = dbContext;
+            this.mapper = mapper;
         }
-        public async Task<int> CreateCategory(ICategoryInputModel inputModel)
+        public async Task<int> CreateCategory(CategoryInputModel inputModel)
         {
-            var category = new Category
-            {
-                Description = inputModel.Description,
-                Title = inputModel.Title,
-                ImageUrl = inputModel.ImageUrl,
-
-            };
+            Category category = this.mapper.Map<Category>(inputModel); //Maping
 
             category.CreatedOn = DateTime.UtcNow;
             await this.dbContext.Categories.AddAsync(category);
             return await this.dbContext.SaveChangesAsync();
         }
 
-        public Task DeleteCategory(int categoryId)
+        public Task DeleteCategoryAsync(int categoryId)
         {
             throw new NotImplementedException();
         }
 
-        public IEnumerable<Category> GetAllCategories()
+        public async Task<IEnumerable<Category>> GetAllCategoriesAsync()
         {
-            return dbContext
+            return await dbContext
                 .Categories
                 .Include(c => c.Posts)
-                .ToList(); //TODO SEE IF WE NEED TO INCLUDE POSTS REPLIES
+                .ToListAsync(); //TODO SEE IF WE NEED TO INCLUDE POSTS REPLIES
         }
 
-        public Category GetCategoryById(int id)
+        public async Task<Category> GetCategoryByIdAsync(int id)
         {
 
-            var category =
-               dbContext
-               .Categories
-               .Where(c => c.Id == id)
-               .Include(x => x.Posts)
-               .FirstOrDefault();
+            Category category = await this.dbContext
+                    .Categories
+                    .Where(c => c.Id == id)
+                    .Include(x => x.Posts)
+                    .SingleOrDefaultAsync();
 
             return category;
         }
 
-        public async Task UpdateCategoryDescription(int categoryId, string newDescription)
+        public async Task UpdateCategoryDescriptionAsync(int categoryId, string newDescription)
         {
-            var categoryToUpdate = this.GetCategoryById(categoryId);
+            Category categoryToUpdate = await this.GetCategoryByIdAsync(categoryId);
             categoryToUpdate.Description = newDescription;
 
             this.dbContext.Update(categoryToUpdate);
             await this.dbContext.SaveChangesAsync();
         }
 
-        public async Task UpdateCategoryTitle(int categoryId, string newTitle)
+        public async Task UpdateCategoryTitleAsync(int categoryId, string newTitle)
         {
-            var category = this.GetCategoryById(categoryId);
+            Category category = await this.GetCategoryByIdAsync(categoryId);
             category.Title = newTitle;
 
             this.dbContext.Update(category);

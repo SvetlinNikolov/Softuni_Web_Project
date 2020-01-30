@@ -5,7 +5,6 @@
     using SPN.Data.Models.Forum;
     using SPN.Data.Models.Identity;
     using SPN.Services.Contracts.Forum;
-    using SPN.Web.ViewModels.ForumInputModels.Contracts;
     using SPN.Web.ViewModels.ForumInputModels.Post;
     using System;
     using System.Collections.Generic;
@@ -24,7 +23,7 @@
             this.dbContext = dbContext;
         }
 
-        public async Task<int> CreatePost(IPostInputModel model, User user, int categoryId)
+        public async Task<int> CreatePost(PostInputModel model, User user, int categoryId)
         {
             var postCategory = this.dbContext.Categories
                 .FirstOrDefault(c => c.Id == categoryId);

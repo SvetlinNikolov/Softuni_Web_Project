@@ -1,7 +1,6 @@
 ﻿namespace SPN.Web.ViewModels.ForumInputModels.Post
 {
-    using SPN.Web.ViewModels.ForumInputModels.Contracts;
-    public class PostInputModel: IPostInputModel
+    public class PostInputModel
     {
         public int Id { get; set; }
         public string Title { get; set; }
