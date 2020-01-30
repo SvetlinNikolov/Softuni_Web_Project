@@ -3,7 +3,10 @@
     using Microsoft.EntityFrameworkCore;
     using SPN.Data;
     using SPN.Data.Models.Forum;
+    using SPN.Data.Models.Identity;
     using SPN.Services.Contracts.Forum;
+    using SPN.Web.ViewModels.ForumInputModels.Contracts;
+    using SPN.Web.ViewModels.ForumInputModels.Post;
     using System;
     using System.Collections.Generic;
     using System.Linq;
@@ -20,22 +23,32 @@
         {
             this.dbContext = dbContext;
         }
-        public Task AddPost(Post post)
-        {
-            throw new NotImplementedException();
-        }
 
+        public async Task<int> CreatePost(IPostInputModel model, User user, int categoryId)
+        {
+            var postCategory = this.dbContext.Categories
+                .FirstOrDefault(c => c.Id == categoryId);
+
+            var post = new Post
+            {
+                Title = model.Title,
+                Content = model.Content,
+                Category = postCategory,
+                CategoryId = postCategory.Id,
+                Author = user,
+                AuthorId = user.Id
+
+            };
+
+            await this.dbContext.Posts.AddAsync(post);
+            return await this.dbContext.SaveChangesAsync();
+        }
         public Task DeletePost(int id)
         {
             throw new NotImplementedException();
         }
 
         public Task EditPost(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public IEnumerable<Post> GetAllPosts()
         {
             throw new NotImplementedException();
         }
@@ -57,17 +70,18 @@
 
             var posts =
                dbContext
-               .Categories
-               .Where(c => c.Id == id)
-               .Select(p => p.Posts)
-               .FirstOrDefault();
+               .Posts
+               .Where(p => p.Id == id)
+               .Include(p => p.Author)
+               .ToList();
 
             return posts;
         }
-
         public int GetTotalPostsCount()
         {
-            throw new NotImplementedException();
+            throw new NotFiniteNumberException();
         }
+
+
     }
 }

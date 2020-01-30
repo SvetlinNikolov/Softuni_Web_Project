@@ -50,8 +50,6 @@
                 .ToList(); //TODO SEE IF WE NEED TO INCLUDE POSTS REPLIES
         }
 
-      
-
         public Category GetCategoryById(int id)
         {
 

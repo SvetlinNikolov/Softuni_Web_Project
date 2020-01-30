@@ -3,17 +3,24 @@
     using Microsoft.AspNetCore.Mvc;
     using SPN.Data.Models.Forum;
     using SPN.Services.Contracts.Forum;
+    using SPN.Services.Shared;
+    using SPN.Web.ViewModels.ForumInputModels.Category;
+    using SPN.Web.ViewModels.ForumInputModels.Post;
     using SPN.Web.ViewModels.ForumViewModels.Reply;
     using System.Collections.Generic;
     using System.Linq;
+    using System.Net;
+    using System.Threading.Tasks;
 
     public class PostController : Controller
     {
         private readonly IPostService postService;
+        private readonly IUserService userService;
 
-        public PostController(IPostService postService)
+        public PostController(IPostService postService,IUserService userService)
         {
             this.postService = postService;
+            this.userService = userService;
         }
 
         public IActionResult Index(int id)
@@ -37,20 +44,33 @@
             return this.View();
         }
 
-
-        private IEnumerable<PostReplyViewModel> GetPostReplies(Post post)
+        public IActionResult Create()
         {
-            return post.Replies.Select(reply => new PostReplyViewModel
-            {
-                Id = reply.Id,
-                AuthorName = reply.Author.UserName,
-                AuthorId = reply.Author.Id,
-                AuthorImageUrl = reply.Author.ProfileImage,
-                LikesCount = reply.ReplyLikes.Count,
-                CreatedOn = reply.CreatedOn,
-                Content = reply.Content,
+            return this.View();
+        }
 
-            });
+
+        [HttpPost]
+        public async Task<IActionResult> Create(PostInputModel model)
+        {
+            if (this.ModelState.IsValid)
+            {
+                var user = this.userService.GetUser(this.User);
+               await this.postService.CreatePost(model, user, model.Id);
+
+                return this.Redirect($"/Forum/Posts?Id={model.Id}");
+            }
+            else
+            {
+                var result = this.View("Error", this.ModelState);
+                result.StatusCode = (int)HttpStatusCode.BadRequest;
+
+                return result;
+            }
         }
     }
-}
+
+
+
+    }
+

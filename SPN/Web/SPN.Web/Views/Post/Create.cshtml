@@ -1,0 +1,32 @@
+﻿@model PostInputModel
+
+<div>
+<h1><a id="main-heading-text" href="#">Create Post</a></h1>
+</div>
+
+
+<div class="row">
+    <div class="Create Category">
+        <form asp-action="Create" method="post" id="createForumForm" enctype="multipart/form-data">
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Title">Category Title</label>
+                <input asp-for="Title" class="form-control" placeholder="Choose a Category Title" />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Content"></label>
+                <input asp-for="Content" rows="1" class="form-control" placeholder="Write a brief description here.">
+                <span asp-validation-for="Content" class="text-danger"></span>
+            </div>
+
+            <button type="submit" id="registerBtn" class="btn btn-submitPost text-success">Create</button>
+            <input onclick="window.history.back()" class="mt-25 submit-button menu-bg-forum text-danger" type="button" value="Cancel">
+        </form>
+    </div>
+</div>
+
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

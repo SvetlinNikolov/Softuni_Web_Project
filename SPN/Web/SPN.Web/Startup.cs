@@ -13,6 +13,7 @@ namespace SPN.Web
     using SPN.Data.Models.Identity;
     using SPN.Services.Contracts.Forum;
     using SPN.Services.ForumServices;
+    using SPN.Services.Shared;
 
     public class Startup
     {
@@ -50,6 +51,7 @@ namespace SPN.Web
 
             services.AddScoped<ICategoryService, CategoryService>();
             services.AddScoped<IPostService, PostService>();
+            services.AddScoped<IUserService, UserService>();
 
             services.AddControllersWithViews();
             services.AddRazorPages();
