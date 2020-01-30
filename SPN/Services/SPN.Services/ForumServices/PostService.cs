@@ -64,5 +64,10 @@
 
             return posts;
         }
+
+        public int GetTotalPostsCount()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

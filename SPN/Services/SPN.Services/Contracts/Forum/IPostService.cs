@@ -12,6 +12,7 @@
         Task AddPost(Post post);
         Task DeletePost(int id);
         Task EditPost(int id);
+        int GetTotalPostsCount();
 
     }
 }

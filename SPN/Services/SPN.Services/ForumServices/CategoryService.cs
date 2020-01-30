@@ -12,7 +12,6 @@
     using SPN.Data.Models.Identity;
     using SPN.Services.Contracts.Forum;
     using SPN.Services.Shared;
-    using SPN.Web.ViewModels.ForumInputModels.Category;
     using SPN.Web.ViewModels.ForumInputModels.Contracts;
 
     public class CategoryService : ICategoryService
@@ -23,17 +22,19 @@
         {
             this.dbContext = dbContext;
         }
-        public async Task<int> CreateCategory(ICategoryInputModel inputModel, User user)
+        public async Task<int> CreateCategory(ICategoryInputModel inputModel)
         {
-            //var category =
-            //      this.mapper
-            //      .Map<CategoryInputModel, Category>(inputModel as CategoryInputModel);
+            var category = new Category
+            {
+                Description = inputModel.Description,
+                Title = inputModel.Title,
+                ImageUrl = inputModel.ImageUrl,
 
-            //category.CreatedOn = DateTime.UtcNow;
+            };
 
-            //await this.dbContext.Categories.AddAsync(category);
-            //return await this.dbContext.SaveChangesAsync();
-            throw new NotImplementedException();
+            category.CreatedOn = DateTime.UtcNow;
+            await this.dbContext.Categories.AddAsync(category);
+            return await this.dbContext.SaveChangesAsync();
         }
 
         public Task DeleteCategory(int categoryId)
@@ -49,22 +50,7 @@
                 .ToList(); //TODO SEE IF WE NEED TO INCLUDE POSTS REPLIES
         }
 
-        public Category GetCategoryByIdWithPosts(int id)
-        {
-            
-                var category =
-                   dbContext
-                   .Categories
-                   .Where(c => c.Id == id)
-                   .Include(c => c.Posts)
-                   .ThenInclude(c => c.PostLikes)
-                   .Include(c => c.Posts)
-                   .ThenInclude(c => c.Author)
-                   .FirstOrDefault();
-
-                return category;
-            
-        }
+      
 
         public Category GetCategoryById(int id)
         {

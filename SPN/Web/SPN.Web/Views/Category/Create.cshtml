@@ -1,0 +1,25 @@
+﻿@model CategoryInputModel
+
+  
+            <h1><a id="main-heading-text" href="#">Create Category</a></h1>
+
+        <form class="my-form" asp-controller="Category" asp-action="Create">
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <hr class="full-width">
+            <div class="block">
+                <label asp-for="Title" class="text-forum"></label>
+                <input asp-for="Title" class="half-width" placeholder="Enter category name...">
+                <div>
+                    <span class="text-danger" asp-validation-for="Title"></span>
+                </div>
+            </div> 
+            <div class="center-button">
+                <input onclick="window.history.back()" class="mt-25 submit-button menu-bg-forum text-black-50" type="button" value="Cancel">
+                <input class="mt-25 submit-button menu-bg-forum text-black-50" type="submit" value="Create">
+            </div>
+        </form>
+
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
