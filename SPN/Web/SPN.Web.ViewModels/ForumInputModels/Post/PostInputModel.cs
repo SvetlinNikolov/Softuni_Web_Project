@@ -7,7 +7,7 @@
         public string Content { get; set; }
 
         public int CategoryId { get; set; }
-        public string CategoryName { get; set; }
+        public string CategoryTitle { get; set; }
         public string CategoryImageUrl { get; set; }
 
         public string AuthorId { get; set; }

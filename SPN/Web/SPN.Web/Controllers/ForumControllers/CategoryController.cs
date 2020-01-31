@@ -69,7 +69,7 @@
 
         public async Task<IActionResult> Topic(int id)
         {
-            Category category = await categoryService.GetCategoryByIdAsync(id);
+            var category = await categoryService.GetCategoryByIdAsync(id);
             var posts = await postService.GetPostsByCategoryAsync(id);
 
             var categoryConcise = this.mapper

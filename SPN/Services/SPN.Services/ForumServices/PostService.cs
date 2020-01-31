@@ -1,5 +1,6 @@
 ﻿namespace SPN.Services.ForumServices
 {
+    using AutoMapper;
     using Microsoft.EntityFrameworkCore;
     using SPN.Data;
     using SPN.Data.Models.Forum;
@@ -17,16 +18,18 @@
     public class PostService : IPostService
     {
         private readonly SPNDbContext dbContext;
+        private readonly IMapper mapper;
 
-        public PostService(SPNDbContext dbContext)
+        public PostService(SPNDbContext dbContext, IMapper mapper)
         {
             this.dbContext = dbContext;
+            this.mapper = mapper;
         }
 
         public async Task<int> CreatePost(PostInputModel model, User user, int categoryId)
         {
             var postCategory = this.dbContext.Categories
-                .FirstOrDefault(c => c.Id == categoryId);
+                   .FirstOrDefault(c => c.Id == categoryId);
 
             var post = new Post
             {
@@ -35,8 +38,10 @@
                 Category = postCategory,
                 CategoryId = postCategory.Id,
                 Author = user,
-                AuthorId = user.Id
-
+                AuthorId = user.Id,
+                CreatedOn = DateTime.UtcNow,
+                
+                
             };
 
             await this.dbContext.Posts.AddAsync(post);
@@ -78,7 +83,7 @@
         }
         public int GetTotalPostsCount()
         {
-            throw new NotFiniteNumberException();
+            return 42069;
         }
 
 

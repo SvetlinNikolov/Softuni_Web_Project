@@ -1,14 +1,10 @@
 ﻿namespace SPN.Web.Controllers.ForumControllers
 {
     using Microsoft.AspNetCore.Mvc;
-    using SPN.Data.Models.Forum;
     using SPN.Services.Contracts.Forum;
     using SPN.Services.Shared;
-    using SPN.Web.ViewModels.ForumInputModels.Category;
     using SPN.Web.ViewModels.ForumInputModels.Post;
-    using SPN.Web.ViewModels.ForumViewModels.Reply;
-    using System.Collections.Generic;
-    using System.Linq;
+    using SPN.Web.ViewModels.ForumViewModels.Post;
     using System.Net;
     using System.Threading.Tasks;
 
@@ -28,18 +24,20 @@
             var post = this.postService.GetPostById(id);
 
 
-            //var model = new PostIndexViewModel
-            //{
-            //    Id = post.Id,
-            //    Title = post.Title,
-            //    AuthorId = post.Author.Id,
-            //    AuthorName = post.Author.UserName,
-            //    AuthorImageUrl = post.Author.ProfileImage,
-            //    CreatedOn = post.CreatedOn,
-            //    Content = post.Content,
-            //    LikesCount = post.PostLikes.Count,
+            var model = new PostIndexViewModel
+            {
+                Id = post.Id,
+                Title = post.Title,
+                AuthorId = post.Author.Id,
+                AuthorName = post.Author.UserName,
+                AuthorImageUrl = post.Author.ProfileImage,
+                CategoryId = post.CategoryId,
+                CategoryTitle = post.Category.Title,
+                CreatedOn = post.CreatedOn,
+                Content = post.Content,
+                LikesCount = post.PostLikes.Count,
 
-            //};
+            };
 
             return this.View();
         }
@@ -56,9 +54,9 @@
             if (this.ModelState.IsValid)
             {
                 var user = this.userService.GetUser(this.User);
-               await this.postService.CreatePost(model, user, model.Id);
+               await this.postService.CreatePost(model, user, model.Id); //This was model.Id
 
-                return this.Redirect($"/Forum/Posts?Id={model.Id}");
+                return this.Redirect($"/Post/Index?Id={model.Id}");
             }
             else
             {

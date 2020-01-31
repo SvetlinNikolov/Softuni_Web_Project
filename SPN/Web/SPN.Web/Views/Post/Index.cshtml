@@ -1,7 +1,13 @@
-﻿
-@{
-    ViewData["Title"] = "Index";
-}
+﻿@model PostIndexViewModel
 
-<h1>Post index here.</h1>
-
+<div class="container body-content">
+    <div class="row postHeader">
+        <div class="postHeading">
+            <span class="postIndexTitle">
+                @Model.Title
+            </span>
+            <span id="headingBtn"><a asp-controller="Post" asp-action="Index" class="btn btn-back">Index Index</a></span>
+        </div>
+    </div>
+    </div>
+    
