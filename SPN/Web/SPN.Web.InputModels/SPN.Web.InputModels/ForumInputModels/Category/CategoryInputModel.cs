@@ -1,8 +1,8 @@
-﻿namespace SPN.Web.ViewModels.ForumInputModels.Category
+﻿namespace SPN.Web.InputModels.ForumInputModels.Category
 {
     using Microsoft.AspNetCore.Http;
 
-    public class CategoryInputModel 
+    public class CategoryInputModel
     {
         public int Id { get; set; }
         public string Title { get; set; }

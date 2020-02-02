@@ -6,7 +6,8 @@
     using SPN.Data.Models.Forum;
     using SPN.Data.Models.Identity;
     using SPN.Services.Contracts.Forum;
-    using SPN.Web.ViewModels.ForumInputModels.Post;
+    using SPN.Services.Shared;
+    using SPN.Web.InputModels.ForumInputModels.Post;
     using System;
     using System.Collections.Generic;
     using System.Linq;
@@ -15,21 +16,17 @@
 
 
 
-    public class PostService : IPostService
+    public class PostService : BaseService,IPostService
     {
-        private readonly SPNDbContext dbContext;
-        private readonly IMapper mapper;
-
-        public PostService(SPNDbContext dbContext, IMapper mapper)
+        public PostService(IMapper mapper, SPNDbContext dbContext) 
+            : base(mapper, dbContext)
         {
-            this.dbContext = dbContext;
-            this.mapper = mapper;
         }
 
-        public async Task<int> CreatePostAsync(PostInputModel model, User user, int categoryId)
+        public async Task<int> CreatePostAsync(PostInputModel model, User user)
         {
             var postCategory = this.dbContext.Categories
-                   .FirstOrDefault(c => c.Id == categoryId);
+                   .FirstOrDefault(c => c.Id == model.Id);
 
             var post = new Post
             {
@@ -40,12 +37,11 @@
                 Author = user,
                 AuthorId = user.Id,
                 CreatedOn = DateTime.UtcNow,
-
-
             };
 
             await this.dbContext.Posts.AddAsync(post);
             return await this.dbContext.SaveChangesAsync();
+
         }
         public Task DeletePost(int id)
         {
@@ -57,9 +53,9 @@
             throw new NotImplementedException();
         }
 
-        public Post GetPostById(int id)
+        public async Task<Post> GetPostByIdAsync(int id)
         {
-            return dbContext
+            return await this.dbContext
                 .Posts
                 .Include(p => p.Category)
                 .Include(p => p.Author)
@@ -73,8 +69,8 @@
                 .ThenInclude(p => p.Quotes)
                 .ThenInclude(p => p.Author)
                 .ThenInclude(p => p.Posts)
-                .Include(p=> p.PostLikes)
-                .FirstOrDefault(p => p.Id == id);
+                .Include(p => p.PostLikes)
+                .FirstOrDefaultAsync(p => p.Id == id);
 
         }
 
@@ -86,12 +82,23 @@
         public async Task<IEnumerable<Post>> GetPostsByCategoryAsync(int id)
         {
 
-            IEnumerable<Post> posts =
-               await dbContext
-               .Posts
-               .Where(p => p.Id == id)
-               .Include(p => p.Author)
-               .ToListAsync();
+            var posts = await this.dbContext
+                .Posts
+                .Include(p => p.Category)
+                .Include(p => p.Author)
+                .ThenInclude(p => p.Posts)
+                .Include(p => p.Replies)
+                .ThenInclude(p => p.Author)
+                .ThenInclude(p => p.Posts)
+                .Include(p => p.Replies)
+                .ThenInclude(p => p.Quotes)
+                .Include(p => p.Replies)
+                .ThenInclude(p => p.Quotes)
+                .ThenInclude(p => p.Author)
+                .ThenInclude(p => p.Posts)
+                .Include(p => p.PostLikes)
+                .Where(p => p.CategoryId == id)
+                .ToListAsync();
 
             return posts;
         }

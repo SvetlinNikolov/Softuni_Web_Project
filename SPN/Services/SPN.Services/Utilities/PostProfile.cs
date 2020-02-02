@@ -3,11 +3,8 @@
     using AutoMapper;
     using SPN.Data.Models.Forum;
     using SPN.Data.Models.Identity;
-    using SPN.Web.ViewModels.ForumInputModels.Post;
+    using SPN.Web.InputModels.ForumInputModels.Post;
     using SPN.Web.ViewModels.ForumViewModels.Post;
-    using System;
-    using System.Collections.Generic;
-    using System.Text;
     public class PostProfile : Profile
     {
         public PostProfile()
@@ -23,24 +20,24 @@
             this.CreateMap<Post, PostInputModel>()
                 .ForMember(x => x.CategoryId, y => y.MapFrom(z => z.CategoryId))
                 .ForMember(x => x.CategoryTitle, y => y.MapFrom(z => z.Category.Title))
-                .ForMember(x => x.CategoryImageUrl, y => y.MapFrom(z => z.Category.ImageUrl))
-                .ForMember(x => x.AuthorId, y => y.MapFrom(z => z.AuthorId))
-                .ForMember(x => x.AuthorName, y => y.MapFrom(z => z.Author.UserName));
+                .ForMember(x => x.CategoryImageUrl, y => y.MapFrom(z => z.Category.ImageUrl));
+            //.ForMember(x => x.AuthorId, y => y.MapFrom(z => z.AuthorId))
+            //.ForMember(x => x.AuthorName, y => y.MapFrom(z => z.Author.UserName));
 
 
             this.CreateMap<PostInputModel, Post>()
                 .ForMember(x => x.CategoryId, y => y.MapFrom(z => z.CategoryId))
-                 .ForMember(x => x.Title, y => y.MapFrom(z => z.CategoryTitle))
-                  .ForMember(x => x.Id, y => y.MapFrom(z => z.AuthorId));
+                 .ForMember(x => x.Title, y => y.MapFrom(z => z.CategoryTitle));
+                  //.ForMember(x => x.Id, y => y.MapFrom(z => z.AuthorId));
 
             this.CreateMap<PostInputModel, Category>()
                   .ForMember(x => x.Id, y => y.MapFrom(z => z.CategoryId))
                 .ForMember(x => x.Title, y => y.MapFrom(z => z.CategoryTitle))
                   .ForMember(x => x.ImageUrl, y => y.MapFrom(z => z.CategoryImageUrl));
 
-            this.CreateMap<PostInputModel, User>()
-                  .ForMember(x => x.Id, y => y.MapFrom(z => z.AuthorId))
-                .ForMember(x => x.UserName, y => y.MapFrom(z => z.AuthorName));
+            this.CreateMap<PostInputModel, User>();
+                //  .ForMember(x => x.Id, y => y.MapFrom(z => z.AuthorId))
+                //.ForMember(x => x.UserName, y => y.MapFrom(z => z.AuthorName));
         }
 
 

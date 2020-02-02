@@ -21,6 +21,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{7E
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{465D557F-CAE3-47C1-AD2B-92BF87965123}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SPN.Web.InputModels", "Web\SPN.Web.InputModels\SPN.Web.InputModels\SPN.Web.InputModels.csproj", "{80436823-AD30-413E-9976-EFC08C57A5D8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{D3453C7F-CA04-449E-8EE6-B539E2A3927B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D3453C7F-CA04-449E-8EE6-B539E2A3927B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D3453C7F-CA04-449E-8EE6-B539E2A3927B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{80436823-AD30-413E-9976-EFC08C57A5D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{80436823-AD30-413E-9976-EFC08C57A5D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{80436823-AD30-413E-9976-EFC08C57A5D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{80436823-AD30-413E-9976-EFC08C57A5D8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -62,6 +68,7 @@ Global
 		{BA0C8CEE-BCFD-4D54-BF5A-A79092EB72B2} = {465D557F-CAE3-47C1-AD2B-92BF87965123}
 		{6C6B9847-F759-48A0-BE35-7C7DD5DCEB40} = {465D557F-CAE3-47C1-AD2B-92BF87965123}
 		{D3453C7F-CA04-449E-8EE6-B539E2A3927B} = {5F44D22B-9BC8-4285-A4CD-994C9B1122B9}
+		{80436823-AD30-413E-9976-EFC08C57A5D8} = {465D557F-CAE3-47C1-AD2B-92BF87965123}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {5D94260A-7A80-4EFB-810D-20F2C1CF7021}

@@ -21,6 +21,7 @@
     <ProjectReference Include="..\..\Data\SPN.Data.Models\SPN.Data.Models.csproj" />
     <ProjectReference Include="..\..\Data\SPN.Data\SPN.Data.csproj" />
     <ProjectReference Include="..\..\Services\SPN.Services\SPN.Services.csproj" />
+    <ProjectReference Include="..\SPN.Web.InputModels\SPN.Web.InputModels\SPN.Web.InputModels.csproj" />
     <ProjectReference Include="..\SPN.Web.ViewModels\SPN.Web.ViewModels.csproj" />
   </ItemGroup>
 

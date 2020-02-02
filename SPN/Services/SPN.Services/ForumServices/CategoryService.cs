@@ -12,17 +12,16 @@
     using SPN.Data.Models.Identity;
     using SPN.Services.Contracts.Forum;
     using SPN.Services.Shared;
-    using SPN.Web.ViewModels.ForumInputModels.Category;
+    using SPN.Web.InputModels.ForumInputModels.Category;
 
-    public class CategoryService : ICategoryService
+    public class CategoryService :BaseService, ICategoryService
     {
-        private readonly SPNDbContext dbContext;
-        private readonly IMapper mapper;
-        public CategoryService(SPNDbContext dbContext, IMapper mapper)
+        public CategoryService(IMapper mapper, SPNDbContext dbContext) 
+            : base(mapper, dbContext)
         {
-            this.dbContext = dbContext;
-            this.mapper = mapper;
+
         }
+
         public async Task<int> CreateCategory(CategoryInputModel inputModel)
         {
             Category category = this.mapper.Map<Category>(inputModel); //Maping

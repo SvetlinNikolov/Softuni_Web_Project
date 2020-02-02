@@ -1,17 +1,19 @@
 ﻿namespace SPN.Services.ForumServices
 {
     using System;
+    using AutoMapper;
     using SPN.Data;
     using SPN.Data.Models.Forum;
     using SPN.Services.Contracts.Forum;
-    public class PostLikeService : IPostLikeService
-    {
-        private readonly SPNDbContext dbContext;
+    using SPN.Services.Shared;
 
-        public PostLikeService(SPNDbContext dbContext)
+    public class PostLikeService : BaseService,IPostLikeService
+    {
+        public PostLikeService(IMapper mapper, SPNDbContext dbContext) 
+            : base(mapper, dbContext)
         {
-            this.dbContext = dbContext;
         }
+
         public void DislikePost(string userId, int postId)
         {
             throw new NotImplementedException();

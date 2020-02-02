@@ -1,13 +1,15 @@
-﻿using SPN.Data.Models.Forum;
-using System.Threading.Tasks;
-
-namespace SPN.Services.Contracts.Forum
+﻿namespace SPN.Services.Contracts.Forum
 {
-   public interface IReplyService
+    using SPN.Data.Models.Forum;
+    using SPN.Data.Models.Identity;
+    using SPN.Web.InputModels.ForumInputModels.Reply;
+    using System.Threading.Tasks;
+
+    public interface IReplyService
     {
-        Task AddReply(Reply reply);
-        Task DeleteReply(Reply reply);
-        Reply GetReplyById(int id);
-        Task EditReply(int replyId, string newMessage);
+        Task<Reply> AddReplyAsync(ReplyInputModel reply, User user);
+        Task<Reply> DeleteReplyAsync(Reply reply);
+        Task<Reply> GetReplyByIdAsync(int id);
+        Task<Reply> EditReplyAsync(int replyId, string newMessage);
     }
 }

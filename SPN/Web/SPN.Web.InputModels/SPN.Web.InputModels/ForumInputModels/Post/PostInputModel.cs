@@ -1,4 +1,4 @@
-﻿namespace SPN.Web.ViewModels.ForumInputModels.Post
+﻿namespace SPN.Web.InputModels.ForumInputModels.Post
 {
     public class PostInputModel
     {
@@ -9,9 +9,6 @@
         public int CategoryId { get; set; }
         public string CategoryTitle { get; set; }
         public string CategoryImageUrl { get; set; }
-
-        public string AuthorId { get; set; }
-        public string AuthorName { get; set; }
 
 
     }

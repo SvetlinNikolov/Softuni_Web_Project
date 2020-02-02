@@ -3,7 +3,7 @@
     using Microsoft.AspNetCore.Mvc;
     using SPN.Services.Contracts.Forum;
     using SPN.Services.Shared;
-    using SPN.Web.ViewModels.ForumInputModels.Post;
+    using SPN.Web.InputModels.ForumInputModels.Post;
     using SPN.Web.ViewModels.ForumViewModels.Post;
     using System.Net;
     using System.Threading.Tasks;
@@ -13,15 +13,15 @@
         private readonly IPostService postService;
         private readonly IUserService userService;
 
-        public PostController(IPostService postService,IUserService userService)
+        public PostController(IPostService postService, IUserService userService)
         {
             this.postService = postService;
             this.userService = userService;
         }
 
-        public IActionResult Index(int id)
+        public async Task<IActionResult> Index(int id)
         {
-            var post = this.postService.GetPostById(id);
+            var post = await this.postService.GetPostByIdAsync(id);
 
 
             var model = new PostIndexViewModel
@@ -54,9 +54,9 @@
             if (this.ModelState.IsValid)
             {
                 var user = await this.userService.GetUserAsync();
-               await this.postService.CreatePostAsync(model, user, model.Id); //This was model.Id
+                await this.postService.CreatePostAsync(model, user); //This was model.Id
 
-                return this.Redirect($"/Post/Index?Id={model.Id}");
+                return this.Redirect($"/Category/Topic?Id={model.Id}");
             }
             else
             {
@@ -70,5 +70,5 @@
 
 
 
-    }
+}
 
