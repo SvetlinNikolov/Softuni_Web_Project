@@ -9,6 +9,6 @@
 
     public interface IUserService
     {
-       User GetUser(ClaimsPrincipal principal);
+        Task<User> GetUserAsync();
     }
 }

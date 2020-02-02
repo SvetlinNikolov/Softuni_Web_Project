@@ -26,7 +26,7 @@
             this.mapper = mapper;
         }
 
-        public async Task<int> CreatePost(PostInputModel model, User user, int categoryId)
+        public async Task<int> CreatePostAsync(PostInputModel model, User user, int categoryId)
         {
             var postCategory = this.dbContext.Categories
                    .FirstOrDefault(c => c.Id == categoryId);
@@ -40,8 +40,8 @@
                 Author = user,
                 AuthorId = user.Id,
                 CreatedOn = DateTime.UtcNow,
-                
-                
+
+
             };
 
             await this.dbContext.Posts.AddAsync(post);
@@ -61,7 +61,21 @@
         {
             return dbContext
                 .Posts
-                .Find(id);
+                .Include(p => p.Category)
+                .Include(p => p.Author)
+                .ThenInclude(p => p.Posts)
+                .Include(p => p.Replies)
+                .ThenInclude(p => p.Author)
+                .ThenInclude(p => p.Posts)
+                .Include(p => p.Replies)
+                .ThenInclude(p => p.Quotes)
+                .Include(p => p.Replies)
+                .ThenInclude(p => p.Quotes)
+                .ThenInclude(p => p.Author)
+                .ThenInclude(p => p.Posts)
+                .Include(p=> p.PostLikes)
+                .FirstOrDefault(p => p.Id == id);
+
         }
 
         public IEnumerable<Post> GetFilteredPosts(string searchQuery)

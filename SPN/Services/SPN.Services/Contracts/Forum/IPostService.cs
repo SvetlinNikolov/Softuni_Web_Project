@@ -10,7 +10,7 @@
         Post GetPostById(int id);
         IEnumerable<Post> GetFilteredPosts(string searchQuery);
         Task<IEnumerable<Post>> GetPostsByCategoryAsync(int searchQuery);
-        Task<int> CreatePost(PostInputModel model, User user, int categoryId);
+        Task<int> CreatePostAsync(PostInputModel model, User user, int categoryId);
         Task DeletePost(int id);
         Task EditPost(int id);
         int GetTotalPostsCount();

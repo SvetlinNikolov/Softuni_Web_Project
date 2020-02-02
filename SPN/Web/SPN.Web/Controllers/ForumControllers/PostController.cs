@@ -39,7 +39,7 @@
 
             };
 
-            return this.View();
+            return this.View(model);
         }
 
         public IActionResult Create()
@@ -53,8 +53,8 @@
         {
             if (this.ModelState.IsValid)
             {
-                var user = this.userService.GetUser(this.User);
-               await this.postService.CreatePost(model, user, model.Id); //This was model.Id
+                var user = await this.userService.GetUserAsync();
+               await this.postService.CreatePostAsync(model, user, model.Id); //This was model.Id
 
                 return this.Redirect($"/Post/Index?Id={model.Id}");
             }

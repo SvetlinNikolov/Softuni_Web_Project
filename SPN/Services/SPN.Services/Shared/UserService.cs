@@ -1,26 +1,33 @@
-﻿
-using Microsoft.AspNetCore.Identity;
-using SPN.Data.Models.Identity;
-using System.Security.Claims;
-using System.Threading.Tasks;
-
-namespace SPN.Services.Shared
+﻿namespace SPN.Services.Shared
 {
+
+    using Microsoft.AspNetCore.Http;
+    using Microsoft.AspNetCore.Identity;
+    using Microsoft.EntityFrameworkCore;
+    using SPN.Data;
+    using SPN.Data.Models.Identity;
+    using System.Security.Claims;
+    using System.Threading.Tasks;
     public class UserService : IUserService
-    {
-        private readonly UserManager<User> userManager;
-        private readonly SignInManager<User> signInManager;
-
-        public UserService(UserManager<User> userManager, SignInManager<User> signInManager)
         {
-            this.userManager = userManager;
-            this.signInManager = signInManager;
-        }
-        public User GetUser(ClaimsPrincipal principal)
-        {
-            var user = this.userManager.GetUserAsync(principal).GetAwaiter().GetResult();
+            private readonly SPNDbContext context;
+            private readonly IHttpContextAccessor httpContextAccessor;
 
-            return user;
-        }
+            public UserService(SPNDbContext context, IHttpContextAccessor httpContextAccessor)
+            {
+                this.context = context;
+                this.httpContextAccessor = httpContextAccessor;
+            }
+            public async Task<User> GetUserAsync()
+            {
+                var userId = httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+
+                var user = await context.Users
+                    .SingleOrDefaultAsync(u => u.Id == userId);
+
+                return user;
+            }
+
+     
     }
 }
