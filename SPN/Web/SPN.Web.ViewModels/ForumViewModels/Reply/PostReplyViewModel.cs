@@ -16,10 +16,6 @@
 
         public int PostId { get; set; }
 
-        //public string CategoryName { get; set; }
-        //public string CategoryImageUrl { get; set; }
-        //public int CategoryId { get; set; }
-
         public int LikesCount { get; set; }
         public DateTime CreatedOn { get; set; }
         public DateTime? DeletedOn { get; set; }

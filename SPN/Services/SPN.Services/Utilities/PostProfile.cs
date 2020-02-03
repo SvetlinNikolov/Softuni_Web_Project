@@ -5,6 +5,8 @@
     using SPN.Data.Models.Identity;
     using SPN.Web.InputModels.ForumInputModels.Post;
     using SPN.Web.ViewModels.ForumViewModels.Post;
+    using SPN.Web.ViewModels.ForumViewModels.Reply;
+
     public class PostProfile : Profile
     {
         public PostProfile()
@@ -39,15 +41,25 @@
             //  .ForMember(x => x.Id, y => y.MapFrom(z => z.AuthorId))
             //.ForMember(x => x.UserName, y => y.MapFrom(z => z.AuthorName));
 
+            this.CreateMap<Reply, PostReplyViewModel>()
+               .ForMember(x => x.Id, y => y.MapFrom(z => z.Id))
+               .ForMember(x => x.AuthorId, y => y.MapFrom(z => z.AuthorId))
+            .ForMember(x => x.AuthorName, y => y.MapFrom(z => z.Author.UserName))
+            .ForMember(x => x.AuthorImageUrl, y => y.MapFrom(z => z.Author.ProfileImage))
+          .ForMember(x => x.PostId, y => y.MapFrom(z => z.PostId))
+       .ForMember(x => x.LikesCount, y => y.MapFrom(z => z.ReplyLikes.Count));//TODO Need to set up quotes for later
+
             this.CreateMap<Post, PostIndexViewModel>()
                   .ForMember(x => x.Id, y => y.MapFrom(z => z.Id))
                     .ForMember(x => x.Title, y => y.MapFrom(z => z.Title))
                       .ForMember(x => x.CategoryId, y => y.MapFrom(z => z.CategoryId))
                         .ForMember(x => x.AuthorId, y => y.MapFrom(z => z.AuthorId))
-                          .ForMember(x => x.AuthorName, y => y.MapFrom(z => z.Author.UserName))//Maybe map it to user otdelno
+                          .ForMember(x => x.AuthorName, y => y.MapFrom(z => z.Author.UserName))
                             .ForMember(x => x.AuthorImageUrl, y => y.MapFrom(z => z.Author.ProfileImage))
                             .ForMember(x => x.RepliesCount, y => y.MapFrom(z => z.Replies.Count))
                             .ForMember(x => x.Replies, y => y.MapFrom(z => z.Replies));
+
+
 
 
 

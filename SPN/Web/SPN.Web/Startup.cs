@@ -58,6 +58,7 @@ namespace SPN.Web
             services.AddScoped<ICategoryService, CategoryService>();
             services.AddScoped<IPostService, PostService>();
             services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IReplyService, ReplyService>();
 
             services.AddControllersWithViews();
             services.AddRazorPages();

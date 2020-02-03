@@ -22,7 +22,7 @@
 
         }
 
-        public async Task<int> CreateCategory(CategoryInputModel inputModel)
+        public async Task<int> CreateCategoryAsync(CategoryInputModel inputModel)
         {
             Category category = this.mapper.Map<Category>(inputModel); //Maping
 

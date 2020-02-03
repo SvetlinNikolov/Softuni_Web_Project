@@ -16,28 +16,30 @@
     public class ReplyService : BaseService, IReplyService
     {
         private readonly IPostService postService;
+        private readonly IUserService userService;
 
-        public ReplyService(IMapper mapper, SPNDbContext dbContext,IPostService postService)
+        public ReplyService(IMapper mapper, SPNDbContext dbContext, IPostService postService, IUserService userService)
             : base(mapper, dbContext)
         {
             this.postService = postService;
+            this.userService = userService;
         }
 
-        public async Task<int> AddReplyAsync(ReplyInputModel model, User user)
+        public async Task<int> CreateReplyAsync(ReplyInputModel model, User user)
         {
-            var post = await this.postService.GetPostByIdAsync(model.PostId);
+            var post = await this.postService.GetPostByIdAsync(model.Id);
 
             Reply reply = new Reply
             {
                 Author = user,
-                AuthorId =user.Id,
+                AuthorId = user.Id,
                 Content = model.Content,
                 CreatedOn = DateTime.UtcNow,
                 Post = post,
                 PostId = post.Id
             };
 
-            await this.dbContext.Posts.AddAsync(post);
+            await this.dbContext.Replies.AddAsync(reply);
             return await this.dbContext.SaveChangesAsync();
         }
 
@@ -61,5 +63,6 @@
                   .Include(r => r.Author)
                   .FirstOrDefaultAsync();
         }
+
     }
 }

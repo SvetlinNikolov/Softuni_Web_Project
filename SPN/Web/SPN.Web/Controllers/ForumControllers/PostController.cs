@@ -24,24 +24,7 @@
 
         public async Task<IActionResult> Index(int id)
         {
-            var post = await this.postService.GetPostByIdAsync(id);
-            var postAuthor = post.Author;
             var model = await this.postService.GetPostIndexViewModelAsync(id);
-
-            //var model = new PostIndexViewModel
-            //{
-            //    Id = post.Id,
-            //    Title = post.Title,
-            //    AuthorId = postAuthor.Id,
-            //    AuthorName = postAuthor.UserName,
-            //    AuthorImageUrl = postAuthor.ProfileImage,
-            //    CategoryId = post.CategoryId,
-            //    CategoryTitle = post.Category.Title,
-            //    CreatedOn = post.CreatedOn,
-            //    Content = post.Content,
-            //    LikesCount = post.PostLikes.Count,
-
-            //};
 
             return this.View(model);
         }

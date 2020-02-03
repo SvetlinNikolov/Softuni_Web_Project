@@ -17,9 +17,9 @@
 
 
 
-    public class PostService : BaseService,IPostService
+    public class PostService : BaseService, IPostService
     {
-        public PostService(IMapper mapper, SPNDbContext dbContext) 
+        public PostService(IMapper mapper, SPNDbContext dbContext)
             : base(mapper, dbContext)
         {
         }
@@ -102,10 +102,6 @@
                 .ToListAsync();
 
             return posts;
-        }
-        public int GetTotalPostsCount()
-        {
-            return 42069;
         }
 
         public async Task<PostIndexViewModel> GetPostIndexViewModelAsync(int postId)

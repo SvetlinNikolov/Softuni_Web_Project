@@ -3,12 +3,46 @@
 <div class="container body-content">
     <div class="row postHeader">
         <div class="postHeading">
-            <span class="postIndexTitle">
-                @Model.Title
-                <p>@Model.Content</p>
-            </span>
-            <span id="headingBtn"><a asp-controller="Post" asp-action="Index" class="btn btn-back">Index Index</a></span>
+            <h1>@Model.Title</h1> 
+            <span id="headingBtn"><a asp-controller="Category" asp-action="Topic" asp-route-id="@Model.CategoryId" class="btn btn-outline-info ">Back to @Model.CategoryTitle</a></span>
         </div>
     </div>
+
+    <div class="row" id="postIndexContent">
+        <div class="col-md-3 postAuthorContainer">
+            <div class="postAuthorImage" style="background-image: url(@Model.AuthorImageUrl); background-size: 100%;"></div>
+
+            <span class="postDate"><strong>Created On</strong> @Model.CreatedOn</span>
+        </div>
+        <div class="col-md-9 postContentContainer">
+                @Model.Content
+        </div>
     </div>
-    
+
+    <div class="row" id="replyDivider"></div>
+    @if (Context.User.Identity.IsAuthenticated)
+    {
+        <div class="row" id="replyRow">
+            <span><a asp-controller="Reply" asp-action="Create" asp-route-id="@Model.Id" class="btn btn-danger">Post Reply</a></span>
+        </div>
+    }
+    @if (Model.Replies.Any())
+    {
+        foreach (var reply in Model.Replies)
+        {
+            <div class="row replyContent">
+                <div class="col-md-3 replyAuthorContainer">
+                    <div class="postAuthorImage" style="background-image: url(@reply.AuthorImageUrl); background-size: 100%;"></div>
+
+                    <span class="postDate">@reply.CreatedOn.ToShortDateString()</span>
+                    <span class="replyAuthor">@reply.AuthorName</span>
+                </div>
+                <div class="col-md-9 replyContentContainer">
+                    <div class="postContent">
+                        @reply.Content
+                    </div>
+                </div>
+            </div>
+        }
+    }
+</div>

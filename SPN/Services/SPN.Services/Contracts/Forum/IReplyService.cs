@@ -7,7 +7,7 @@
 
     public interface IReplyService
     {
-        Task<int> AddReplyAsync(ReplyInputModel reply, User user);
+        Task<int> CreateReplyAsync(ReplyInputModel reply,User user);
         Task<Reply> DeleteReplyAsync(Reply reply);
         Task<Reply> GetReplyByIdAsync(int id);
         Task<Reply> EditReplyAsync(int replyId, string newMessage);

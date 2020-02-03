@@ -14,7 +14,6 @@
         Task<int> CreatePostAsync(PostInputModel model, User user);
         Task DeletePost(int id);
         Task EditPost(int id);
-        int GetTotalPostsCount();
         Task<PostIndexViewModel> GetPostIndexViewModelAsync(int postId);
 
     }

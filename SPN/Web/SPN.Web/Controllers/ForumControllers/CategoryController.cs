@@ -54,7 +54,7 @@
             if (ModelState.IsValid)
             {
 
-                var result = await this.categoryService.CreateCategory(model);
+                var result = await this.categoryService.CreateCategoryAsync(model);
 
                 return this.Redirect("/");
             }
