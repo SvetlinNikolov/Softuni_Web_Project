@@ -5,6 +5,7 @@
     using AutoMapper;
     using SPN.Data;
     using SPN.Data.Models.Forum;
+    using SPN.Data.Models.Identity;
     using SPN.Services.Contracts.Forum;
     using SPN.Services.Shared;
     using SPN.Web.InputModels.ForumInputModels.PostLike;
@@ -22,10 +23,11 @@
             throw new NotImplementedException();
         }
 
-        public Task LikePost(PostLikeInputModel model)
+        public Task LikePost(PostLikeInputModel model, User user)
         {
             var post = this.dbContext.Posts.Find(model.PostId);
-           
+
+            throw new NotFiniteNumberException();
         }
     }
 }

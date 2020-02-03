@@ -16,4 +16,8 @@
     <ProjectReference Include="..\..\Web\SPN.Web.ViewModels\SPN.Web.ViewModels.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Utilities\" />
+  </ItemGroup>
+
 </Project>

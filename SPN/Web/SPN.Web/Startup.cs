@@ -15,8 +15,9 @@ namespace SPN.Web
     using SPN.Services.Contracts.Forum;
     using SPN.Services.ForumServices;
     using SPN.Services.Shared;
-    using SPN.Services.Utilities;
+    using SPN.Services.Mapping;
     using System;
+    using System.Linq;
     using System.Reflection;
 
     public class Startup
@@ -52,8 +53,12 @@ namespace SPN.Web
 
                 options.User.RequireUniqueEmail = false;
             });
-            services.AddAutoMapper(typeof(CategoryProfile)); //TODO Get All Assemblies
-            services.AddAutoMapper(typeof(PostProfile));
+            //services.AddAutoMapper(typeof(CategoryProfile)); //TODO Get All Assemblies
+            //services.AddAutoMapper(typeof(PostProfile));
+
+
+            services.AddAutoMapper(AutoMapperConfig.GetAutoMapperProfilesFromAllAssemblies()
+             .ToArray());
 
             services.AddScoped<ICategoryService, CategoryService>();
             services.AddScoped<IPostService, PostService>();
