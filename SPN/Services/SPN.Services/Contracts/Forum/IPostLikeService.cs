@@ -1,15 +1,13 @@
-﻿using SPN.Data.Models.Forum;
-
-namespace SPN.Services.Contracts.Forum
+﻿namespace SPN.Services.Contracts.Forum
 {
+    using SPN.Data.Models.Forum;
+    using SPN.Web.InputModels.ForumInputModels.PostLike;
+    using System.Threading.Tasks;
 
     public interface IPostLikeService
-    {
-        PostLike GetLikeByAuthorIdAndPostId(string userId, int postId);
-        void DislikePost(string userId, int postId);
-        void LikePost(PostLike like);
-
-        //TODO FIX THIS :(
+    { 
+        Task DislikePost(int? postId);
+        Task LikePost(PostLikeInputModel model);
 
     }
 }

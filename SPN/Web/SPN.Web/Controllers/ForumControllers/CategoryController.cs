@@ -1,6 +1,7 @@
 ﻿namespace Svetlinable.Web.Controllers.ForumControllers
 {
     using AutoMapper;
+    using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
     using SPN.Data.Models.Forum;
     using SPN.Services.Contracts.Forum;
@@ -47,7 +48,7 @@
         {
             return this.View();
         }
-
+        [Authorize]
         [HttpPost]
         public async Task<IActionResult> Create(CategoryInputModel model)
         {

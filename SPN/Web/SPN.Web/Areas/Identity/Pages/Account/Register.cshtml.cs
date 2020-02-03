@@ -10,6 +10,8 @@ namespace SPN.Web.Areas.Identity.Pages.Account
     using Microsoft.AspNetCore.Mvc.RazorPages;
     using System.Linq;
     using SPN.Data.Models.Identity;
+    using SPN.Data.Models.Identity.Enums;
+    using System;
 
     [AllowAnonymous]
     public class RegisterModel : PageModel
@@ -49,6 +51,10 @@ namespace SPN.Web.Areas.Identity.Pages.Account
             [Display(Name = "Confirm password")]
             [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
             public string ConfirmPassword { get; set; }
+
+            [Required]
+            [Display(Name = "Gender")] //TODO Add Gender Validation
+            public Gender Gender { get; set; }
         }
 
         public void OnGet(string returnUrl = null)

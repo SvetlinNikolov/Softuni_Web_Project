@@ -20,6 +20,7 @@
         public DbSet<ReplyLike> ReplyLikes { get; set; }
         public DbSet<Quote> Quotes { get; set; }
         public DbSet<QuoteLike> QuoteLikes { get; set; }
+
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);

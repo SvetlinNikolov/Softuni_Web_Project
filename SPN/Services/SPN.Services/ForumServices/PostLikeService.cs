@@ -1,43 +1,31 @@
 ﻿namespace SPN.Services.ForumServices
 {
     using System;
+    using System.Threading.Tasks;
     using AutoMapper;
     using SPN.Data;
     using SPN.Data.Models.Forum;
     using SPN.Services.Contracts.Forum;
     using SPN.Services.Shared;
+    using SPN.Web.InputModels.ForumInputModels.PostLike;
 
-    public class PostLikeService : BaseService,IPostLikeService
+    public class PostLikeService : BaseService, IPostLikeService
     {
+    
         public PostLikeService(IMapper mapper, SPNDbContext dbContext) 
             : base(mapper, dbContext)
         {
         }
 
-        public void DislikePost(string userId, int postId)
+        public Task DislikePost(int? postId)
         {
             throw new NotImplementedException();
         }
 
-        public PostLike GetLikeByAuthorIdAndPostId(string userId, int postId)
+        public Task LikePost(PostLikeInputModel model)
         {
-            throw new NotImplementedException();
-        }
-
-        public void LikePost(PostLike like)
-        {
-            //var userId = this.User.Identity.GetUserId();
-            //var isLiked = this.Data.PostLikes.All().Any(l => l.PostId == id && l.UserId == userId && !l.IsDeleted);
-            //var likesCount = this.Data.PostLikes.All().Count(p => p.PostId == id);
-
-            //var model = new PostLikeInputModel
-            //{
-            //    PostId = post.Id,
-            //    IsLiked = isLiked,
-            //    LikesCount = likesCount,
-            //    PostAuthorId = post.AuthorId
-            //};
-
+            var post = this.dbContext.Posts.Find(model.PostId);
+           
         }
     }
 }

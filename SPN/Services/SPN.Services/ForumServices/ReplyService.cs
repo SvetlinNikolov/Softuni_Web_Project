@@ -9,8 +9,6 @@
     using SPN.Services.Shared;
     using SPN.Web.InputModels.ForumInputModels.Reply;
     using System;
-    using System.Collections.Generic;
-    using System.Text;
     using System.Threading.Tasks;
 
     public class ReplyService : BaseService, IReplyService
@@ -18,8 +16,12 @@
         private readonly IPostService postService;
         private readonly IUserService userService;
 
-        public ReplyService(IMapper mapper, SPNDbContext dbContext, IPostService postService, IUserService userService)
-            : base(mapper, dbContext)
+        public ReplyService(
+            IMapper mapper,
+            SPNDbContext dbContext,
+            IPostService postService,
+            IUserService userService
+            ) : base(mapper, dbContext)
         {
             this.postService = postService;
             this.userService = userService;
@@ -43,9 +45,13 @@
             return await this.dbContext.SaveChangesAsync();
         }
 
-        public Task<Reply> DeleteReplyAsync(Reply reply)
+        public async Task<int> DeleteReplyAsync(int id)
         {
-            throw new NotImplementedException();
+            var replyToDelete = await this.dbContext.Replies.FindAsync(id);
+
+            this.dbContext.Replies.Remove(replyToDelete);
+
+            return await this.dbContext.SaveChangesAsync();
         }
 
         public Task<Reply> EditReplyAsync(int replyId, string newMessage)
