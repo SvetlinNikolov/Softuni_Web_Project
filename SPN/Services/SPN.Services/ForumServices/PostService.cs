@@ -8,6 +8,7 @@
     using SPN.Services.Contracts.Forum;
     using SPN.Services.Shared;
     using SPN.Web.InputModels.ForumInputModels.Post;
+    using SPN.Web.ViewModels.ForumViewModels.Post;
     using System;
     using System.Collections.Generic;
     using System.Linq;
@@ -107,6 +108,13 @@
             return 42069;
         }
 
+        public async Task<PostIndexViewModel> GetPostIndexViewModelAsync(int postId)
+        {
+            var post = await this.GetPostByIdAsync(postId);
 
+            var model = this.mapper.Map<Post, PostIndexViewModel>(post);
+
+            return model;
+        }
     }
 }
