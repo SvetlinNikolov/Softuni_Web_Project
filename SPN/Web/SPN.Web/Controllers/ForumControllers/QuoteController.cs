@@ -33,12 +33,7 @@ namespace SPN.Web.Controllers.ForumControllers
         [HttpPost]
         public async Task<IActionResult> Create(QuoteInputModel model)
         {
-            var reply = await this.replyService.GetReplyByIdAsync(model.ReplyId); //TODO Implement how the quotes would work
             var user = await this.userService.GetLoggedInUserAsync();
-
-            model.ReplyContent = reply.Content;
-            model.AuthorName = user.UserName;
-            model.ReplyAuthorName = reply.Author.UserName;
 
             await this.quoteService.CreateQuoteAsync(model, user);
 

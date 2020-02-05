@@ -4,10 +4,8 @@
     {
         public int PostId { get; set; }
 
-        public string PostAuthorId { get; set; }
+        public string LikeAuthor { get; set; }
 
-        public int LikesCount { get; set; }
 
-        public bool IsLiked { get; set; }
     }
 }
