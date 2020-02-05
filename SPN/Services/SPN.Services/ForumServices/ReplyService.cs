@@ -33,11 +33,9 @@
 
             Reply reply = new Reply
             {
-                Author = user,
                 AuthorId = user.Id,
                 Content = model.Content,
                 CreatedOn = DateTime.UtcNow,
-                Post = post,
                 PostId = post.Id
             };
 

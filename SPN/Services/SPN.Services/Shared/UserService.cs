@@ -18,7 +18,7 @@
                 this.context = context;
                 this.httpContextAccessor = httpContextAccessor;
             }
-            public async Task<User> GetUserAsync()
+            public async Task<User> GetLoggedInUserAsync()
             {
                 var userId = httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
 

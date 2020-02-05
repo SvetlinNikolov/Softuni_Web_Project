@@ -9,17 +9,17 @@
     using System.Net;
     using System.Threading.Tasks;
 
-    public class PostController : Controller
+    public class PostController : BaseController
     {
         private readonly IPostService postService;
-        private readonly IUserService userService;
-        private readonly IMapper mapper;
 
-        public PostController(IPostService postService, IUserService userService, IMapper mapper)
+        public PostController(
+            IUserService userService,
+            IMapper mapper,
+            IPostService postService)
+            : base(userService, mapper)
         {
             this.postService = postService;
-            this.userService = userService;
-            this.mapper = mapper;
         }
 
         public async Task<IActionResult> Index(int id)
@@ -40,10 +40,10 @@
         {
             if (this.ModelState.IsValid)
             {
-                var user = await this.userService.GetUserAsync();
-                await this.postService.CreatePostAsync(model, user); //This was model.Id
+                var user = await this.userService.GetLoggedInUserAsync();
+                await this.postService.CreatePostAsync(model, user); 
 
-                return this.Redirect($"/Category/Topic?Id={model.Id}");
+                return this.Redirect($"/Category/Topic?Id={model.CategoryId}");
             }
             else
             {

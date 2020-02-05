@@ -8,25 +8,22 @@
     using System.Net;
     using System.Threading.Tasks;
 
-    public class ReplyController : Controller
+    public class ReplyController : BaseController
     {
         private readonly IPostService postService;
-        private readonly IUserService userService;
-        private readonly IMapper mapper;
         private readonly IReplyService replyService;
 
         public ReplyController(
-            IPostService postService,
             IUserService userService,
             IMapper mapper,
-            IReplyService replyService
-            )
+            IPostService postService,
+            IReplyService replyService)
+            : base(userService, mapper)
         {
-            this.userService = userService;
-            this.mapper = mapper;
-            this.replyService = replyService;
             this.postService = postService;
+            this.replyService = replyService;
         }
+
         public IActionResult Create()
         {
             return this.View();
@@ -38,8 +35,8 @@
         {
             if (this.ModelState.IsValid)
             {
-                var user = await this.userService.GetUserAsync();
-                await this.replyService.CreateReplyAsync(model, user); 
+                var user = await this.userService.GetLoggedInUserAsync();
+                await this.replyService.CreateReplyAsync(model, user);
 
                 return this.Redirect($"/Post/Index?Id={model.Id}");
             }

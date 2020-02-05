@@ -23,9 +23,9 @@
             throw new NotImplementedException();
         }
 
-        public Task LikePost(PostLikeInputModel model, User user)
+        public async Task LikePost(PostLikeInputModel model, User user)
         {
-            var post = this.dbContext.Posts.Find(model.PostId);
+            var post = await this.dbContext.Posts.FindAsync(model.PostId);
 
             throw new NotFiniteNumberException();
         }

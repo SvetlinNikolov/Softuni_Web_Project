@@ -1,0 +1,26 @@
+﻿@model QuoteInputModel
+
+<div class="post-form mt-5">
+    <div class="text-white menu-bg-forum border-5 p-10 text-start two-thirds-width mx-auto">
+        <h4 class="m-0">@Model.AuthorName said:</h4>
+        <blockquote>
+            @Model.ReplyContent
+        </blockquote>
+    </div>
+    <div class="row">
+        <div class="Create Quote">
+            <form asp-action="Create" method="post" id="createQuote" enctype="multipart/form-data">
+                <div asp-validation-summary="All" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="Content"></label>
+                    <input asp-for="Content" rows="1" class="form-control" placeholder="Write Your Quote">
+                    <span asp-validation-for="Content" class="text-danger"></span>
+                </div>
+
+                <button type="submit" id="registerBtn" class="btn btn-submitPost text-success">Create</button>
+                <input onclick="window.history.back()" class="mt-25 submit-button menu-bg-forum text-danger" type="button" value="Cancel">
+            </form>
+        </div>
+    </div>
+
+    </div>

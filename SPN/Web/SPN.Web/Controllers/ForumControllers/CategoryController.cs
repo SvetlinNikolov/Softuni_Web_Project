@@ -5,6 +5,8 @@
     using Microsoft.AspNetCore.Mvc;
     using SPN.Data.Models.Forum;
     using SPN.Services.Contracts.Forum;
+    using SPN.Services.Shared;
+    using SPN.Web.Controllers;
     using SPN.Web.InputModels.ForumInputModels.Category;
     using SPN.Web.ViewModels.ForumViewModels.CategoryViewModels;
     using SPN.Web.ViewModels.ForumViewModels.Post;
@@ -14,17 +16,21 @@
     using System.Net;
     using System.Threading.Tasks;
 
-    public class CategoryController : Controller
+    public class CategoryController : BaseController
     {
-        private readonly ICategoryService categoryService;
         private readonly IPostService postService;
-        private readonly IMapper mapper;
+        private readonly ICategoryService categoryService;
 
-        public CategoryController(ICategoryService categoryService, IPostService postService, IMapper mapper)
+        public CategoryController(
+            IUserService userService,
+            IMapper mapper,
+            IPostService postService,
+            ICategoryService categoryService
+            )
+            : base(userService, mapper)
         {
-            this.categoryService = categoryService;
             this.postService = postService;
-            this.mapper = mapper;
+            this.categoryService = categoryService;
         }
 
         public async Task<IActionResult> Index()
@@ -32,8 +38,9 @@
             var categories = await this.categoryService.
                 GetAllCategoriesAsync();
 
-           var categoryModel = this.mapper
-                .Map<IEnumerable<CategoryConciseViewModel>>(categories); //Map
+
+            var categoryModel = this.mapper
+                 .Map<IEnumerable<CategoryConciseViewModel>>(categories); //Map
 
             var model = new CategoryListingViewModel
             {
@@ -77,7 +84,7 @@
                 .Map<CategoryConciseViewModel>(category);
 
             var postListing = this.mapper
-                .Map<IEnumerable<PostListingViewModel>>(posts); 
+                .Map<IEnumerable<PostListingViewModel>>(posts);
 
             var model = new CategoryTopicModel
             {

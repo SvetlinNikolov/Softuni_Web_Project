@@ -53,9 +53,6 @@ namespace SPN.Web
 
                 options.User.RequireUniqueEmail = false;
             });
-            //services.AddAutoMapper(typeof(CategoryProfile)); //TODO Get All Assemblies
-            //services.AddAutoMapper(typeof(PostProfile));
-
 
             services.AddAutoMapper(AutoMapperConfig.GetAutoMapperProfilesFromAllAssemblies()
              .ToArray());

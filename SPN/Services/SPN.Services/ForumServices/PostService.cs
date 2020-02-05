@@ -26,16 +26,14 @@
 
         public async Task<int> CreatePostAsync(PostInputModel model, User user)
         {
-            var postCategory = this.dbContext.Categories
-                   .FirstOrDefault(c => c.Id == model.Id);
+            var postCategory = await this.dbContext.Categories
+                   .FirstOrDefaultAsync(c => c.Id == model.CategoryId);
 
             var post = new Post
             {
                 Title = model.Title,
                 Content = model.Content,
-                Category = postCategory,
                 CategoryId = postCategory.Id,
-                Author = user,
                 AuthorId = user.Id,
                 CreatedOn = DateTime.UtcNow,
             };
