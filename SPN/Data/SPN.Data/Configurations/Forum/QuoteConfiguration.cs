@@ -3,6 +3,7 @@
 
     using Microsoft.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore.Metadata.Builders;
+
     using SPN.Data.Models.Forum;
 
     public class QuoteConfiguration : IEntityTypeConfiguration<Quote>

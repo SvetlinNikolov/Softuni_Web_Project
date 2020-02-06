@@ -1,11 +1,13 @@
 ﻿namespace SPN.Data
 {
+    using System.Reflection;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore;
+
     using SPN.Data.Models.Forum;
     using SPN.Data.Models.Identity;
-    using System.Reflection;
+
     public class SPNDbContext : IdentityDbContext<User, IdentityRole, string>
     {
         public SPNDbContext(DbContextOptions<SPNDbContext> options)

@@ -1,10 +1,9 @@
 ﻿namespace SPN.Web.ViewModels.ForumViewModels.Reply
 {
-    using SPN.Data.Models.Identity;
-    using SPN.Web.ViewModels.ForumViewModels.Quote;
     using System;
     using System.Collections.Generic;
 
+    using SPN.Web.ViewModels.ForumViewModels.Quote;
     public class PostReplyViewModel
     {
         public int Id { get; set; }

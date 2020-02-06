@@ -3,6 +3,7 @@
 
     using Microsoft.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore.Metadata.Builders;
+
     using SPN.Data.Models.Identity;
 
     public class UserConfiguration : IEntityTypeConfiguration<User>

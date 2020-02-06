@@ -1,11 +1,13 @@
 ﻿namespace SPN.Services.Contracts.Forum
 {
+    using System.Collections.Generic;
+    using System.Threading.Tasks;
+
     using SPN.Data.Models.Forum;
     using SPN.Data.Models.Identity;
     using SPN.Web.InputModels.ForumInputModels.Post;
     using SPN.Web.ViewModels.ForumViewModels.Post;
-    using System.Collections.Generic;
-    using System.Threading.Tasks;
+ 
     public interface IPostService
     {
         Task<Post> GetPostByIdAsync(int postId);

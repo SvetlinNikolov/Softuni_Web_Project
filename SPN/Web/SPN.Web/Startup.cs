@@ -9,6 +9,7 @@ namespace SPN.Web
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Hosting;
+    using System.Linq;
 
     using SPN.Data;
     using SPN.Data.Models.Identity;
@@ -16,9 +17,7 @@ namespace SPN.Web
     using SPN.Services.ForumServices;
     using SPN.Services.Shared;
     using SPN.Services.Mapping;
-    using System;
-    using System.Linq;
-    using System.Reflection;
+
 
     public class Startup
     {

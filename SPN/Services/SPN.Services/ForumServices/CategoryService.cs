@@ -9,7 +9,6 @@
 
     using SPN.Data;
     using SPN.Data.Models.Forum;
-    using SPN.Data.Models.Identity;
     using SPN.Services.Contracts.Forum;
     using SPN.Services.Shared;
     using SPN.Web.InputModels.ForumInputModels.Category;

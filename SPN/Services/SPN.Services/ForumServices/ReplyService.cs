@@ -2,15 +2,15 @@
 {
     using AutoMapper;
     using Microsoft.EntityFrameworkCore;
+    using System;
+    using System.Threading.Tasks;
+
     using SPN.Data;
     using SPN.Data.Models.Forum;
     using SPN.Data.Models.Identity;
     using SPN.Services.Contracts.Forum;
     using SPN.Services.Shared;
     using SPN.Web.InputModels.ForumInputModels.Reply;
-    using System;
-    using System.Threading.Tasks;
-
     public class ReplyService : BaseService, IReplyService
     {
         private readonly IPostService postService;

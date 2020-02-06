@@ -1,13 +1,11 @@
 ﻿namespace SPN.Services.Contracts.Forum
 {
+    using System.Threading.Tasks;
+
     using SPN.Data.Models.Forum;
     using SPN.Data.Models.Identity;
     using SPN.Web.InputModels.ForumInputModels.Quote;
-    using System;
-    using System.Collections.Generic;
-    using System.Text;
-    using System.Threading.Tasks;
-
+ 
     public interface IQuoteService
     {
         Task<int> CreateQuoteAsync(QuoteInputModel model, User user);

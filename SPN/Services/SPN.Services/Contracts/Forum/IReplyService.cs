@@ -1,10 +1,11 @@
 ﻿namespace SPN.Services.Contracts.Forum
 {
+    using System.Threading.Tasks;
+
     using SPN.Data.Models.Forum;
     using SPN.Data.Models.Identity;
     using SPN.Web.InputModels.ForumInputModels.Reply;
-    using System.Threading.Tasks;
-
+ 
     public interface IReplyService
     {
         Task<int> CreateReplyAsync(ReplyInputModel reply,User user);

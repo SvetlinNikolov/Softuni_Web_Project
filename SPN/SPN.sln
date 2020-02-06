@@ -23,7 +23,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{465D557F-CAE
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SPN.Web.InputModels", "Web\SPN.Web.InputModels\SPN.Web.InputModels\SPN.Web.InputModels.csproj", "{80436823-AD30-413E-9976-EFC08C57A5D8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SPN.Services.Mapping", "Services\SPN.Services.Mapping\SPN.Services.Mapping\SPN.Services.Mapping\SPN.Services.Mapping.csproj", "{8D84474A-7FA2-4097-A197-E5147EAE9BFC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SPN.Services.Mapping", "Services\SPN.Services.Mapping\SPN.Services.Mapping\SPN.Services.Mapping\SPN.Services.Mapping.csproj", "{8D84474A-7FA2-4097-A197-E5147EAE9BFC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -75,6 +75,7 @@ Global
 		{6C6B9847-F759-48A0-BE35-7C7DD5DCEB40} = {465D557F-CAE3-47C1-AD2B-92BF87965123}
 		{D3453C7F-CA04-449E-8EE6-B539E2A3927B} = {5F44D22B-9BC8-4285-A4CD-994C9B1122B9}
 		{80436823-AD30-413E-9976-EFC08C57A5D8} = {465D557F-CAE3-47C1-AD2B-92BF87965123}
+		{8D84474A-7FA2-4097-A197-E5147EAE9BFC} = {7EE47EEE-15F5-46A6-9E17-CB341A4805D9}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {5D94260A-7A80-4EFB-810D-20F2C1CF7021}

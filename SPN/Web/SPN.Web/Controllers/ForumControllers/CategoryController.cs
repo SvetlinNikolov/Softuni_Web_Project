@@ -3,19 +3,16 @@
     using AutoMapper;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
-    using SPN.Data.Models.Forum;
+    using System.Collections.Generic;
+    using System.Net;
+    using System.Threading.Tasks;
+    
     using SPN.Services.Contracts.Forum;
     using SPN.Services.Shared;
     using SPN.Web.Controllers;
     using SPN.Web.InputModels.ForumInputModels.Category;
     using SPN.Web.ViewModels.ForumViewModels.CategoryViewModels;
     using SPN.Web.ViewModels.ForumViewModels.Post;
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Net;
-    using System.Threading.Tasks;
-
     public class CategoryController : BaseController
     {
         private readonly IPostService postService;
@@ -62,7 +59,7 @@
             if (ModelState.IsValid)
             {
 
-                var result = await this.categoryService.CreateCategoryAsync(model);
+                await this.categoryService.CreateCategoryAsync(model);
 
                 return this.Redirect("/");
             }

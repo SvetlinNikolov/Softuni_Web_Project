@@ -1,8 +1,5 @@
-﻿
-namespace SPN.Web.ViewModels.ForumViewModels.CategoryViewModels
+﻿namespace SPN.Web.ViewModels.ForumViewModels.CategoryViewModels
 {
-    using AutoMapper;
-    using SPN.Data.Models.Forum;
 
     public class CategoryConciseViewModel
     {

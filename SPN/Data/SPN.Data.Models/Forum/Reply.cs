@@ -1,10 +1,11 @@
 ﻿namespace SPN.Data.Models.Forum
 {
+    using System;
+    using System.Collections.Generic;
+
     using SPN.Data.Common.Contracts;
     using SPN.Data.Common.Models;
     using SPN.Data.Models.Identity;
-    using System;
-    using System.Collections.Generic;
 
     public class Reply : BaseEntity<int>, IAuditInfo, IDeletableEntity
     {

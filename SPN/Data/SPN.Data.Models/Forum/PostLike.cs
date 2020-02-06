@@ -1,9 +1,9 @@
-﻿using SPN.Data.Common.Contracts;
-using SPN.Data.Common.Models;
-using SPN.Data.Models.Identity;
-
+﻿
 namespace SPN.Data.Models.Forum
 {
+    using SPN.Data.Common.Contracts;
+    using SPN.Data.Common.Models;
+    using SPN.Data.Models.Identity;
 
 
     public class PostLike : BaseEntity<int>

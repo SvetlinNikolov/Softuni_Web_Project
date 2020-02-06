@@ -2,21 +2,21 @@
 {
     using AutoMapper;
     using Microsoft.EntityFrameworkCore;
+    using System;
+    using System.Threading.Tasks;
+
     using SPN.Data;
     using SPN.Data.Models.Forum;
     using SPN.Data.Models.Identity;
     using SPN.Services.Contracts.Forum;
     using SPN.Services.Shared;
     using SPN.Web.InputModels.ForumInputModels.Quote;
-    using System;
-    using System.Linq;
-    using System.Threading.Tasks;
-
     public class QuoteService : BaseService, IQuoteService
     {
         public QuoteService(IMapper mapper, SPNDbContext dbContext)
             : base(mapper, dbContext)
         {
+
         }
 
         public async Task<int> CreateQuoteAsync(QuoteInputModel model, User user)
@@ -31,6 +31,10 @@
                 AuthorId = user.Id,
                 CreatedOn = DateTime.UtcNow,
             };
+
+            model.ReplyContent = reply.Content;
+            model.AuthorName = user.UserName;
+            model.ReplyAuthorName = reply.Author.UserName;
 
             await this.dbContext.Quotes.AddAsync(quote);
             return await this.dbContext.SaveChangesAsync();

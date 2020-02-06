@@ -2,12 +2,12 @@
 {
     using AutoMapper;
     using Microsoft.AspNetCore.Mvc;
-    using SPN.Services.Contracts.Forum;
-    using SPN.Services.Shared;
-    using SPN.Web.InputModels.ForumInputModels.Reply;
     using System.Net;
     using System.Threading.Tasks;
 
+    using SPN.Services.Contracts.Forum;
+    using SPN.Services.Shared;
+    using SPN.Web.InputModels.ForumInputModels.Reply;
     public class ReplyController : BaseController
     {
         private readonly IPostService postService;

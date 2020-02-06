@@ -1,7 +1,5 @@
-﻿
-namespace SPN.Data.Common.Contracts
+﻿namespace SPN.Data.Common.Contracts
 {
-
     using System;
 
     public interface IAuditInfo

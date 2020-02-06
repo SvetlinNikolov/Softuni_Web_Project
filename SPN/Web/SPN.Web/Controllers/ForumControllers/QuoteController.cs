@@ -1,13 +1,12 @@
-﻿using AutoMapper;
-using Microsoft.AspNetCore.Mvc;
-using SPN.Services.Contracts.Forum;
-using SPN.Services.Shared;
-using SPN.Web.InputModels.ForumInputModels.Quote;
-using System.Net;
-using System.Threading.Tasks;
-
-namespace SPN.Web.Controllers.ForumControllers
+﻿namespace SPN.Web.Controllers.ForumControllers
 {
+    using AutoMapper;
+    using Microsoft.AspNetCore.Mvc;
+    using System.Threading.Tasks;
+
+    using SPN.Services.Contracts.Forum;
+    using SPN.Services.Shared;
+    using SPN.Web.InputModels.ForumInputModels.Quote;
     public class QuoteController : BaseController
     {
         private readonly IQuoteService quoteService;

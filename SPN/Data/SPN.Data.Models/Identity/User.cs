@@ -1,13 +1,14 @@
 ﻿
 namespace SPN.Data.Models.Identity
 {
-
+    using System;
+    using System.Collections.Generic;
     using Microsoft.AspNetCore.Identity;
+
     using SPN.Data.Common.Contracts;
     using SPN.Data.Models.Forum;
     using SPN.Data.Models.Identity.Enums;
-    using System;
-    using System.Collections.Generic;
+
 
     public class User : IdentityUser, IAuditInfo, IDeletableEntity
     {

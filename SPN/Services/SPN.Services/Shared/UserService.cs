@@ -1,33 +1,90 @@
 ﻿namespace SPN.Services.Shared
 {
-
     using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.EntityFrameworkCore;
-    using SPN.Data;
-    using SPN.Data.Models.Identity;
+    using System.Collections.Generic;
+    using System.Linq;
     using System.Security.Claims;
     using System.Threading.Tasks;
+
+    using SPN.Data.Models.Identity;
+    using SPN.Data;
     public class UserService : IUserService
+    {
+        private readonly SPNDbContext context;
+        private readonly IHttpContextAccessor httpContextAccessor;
+        private readonly UserManager<User> userManager;
+        private readonly SPNDbContext dbContext;
+
+        public UserService(SPNDbContext context,
+                IHttpContextAccessor httpContextAccessor,
+                UserManager<User> userManager,
+                SPNDbContext dbContext
+                )
         {
-            private readonly SPNDbContext context;
-            private readonly IHttpContextAccessor httpContextAccessor;
+            this.context = context;
+            this.httpContextAccessor = httpContextAccessor;
+            this.userManager = userManager;
+            this.dbContext = dbContext;
+         
+        }
 
-            public UserService(SPNDbContext context, IHttpContextAccessor httpContextAccessor)
+        public async Task<User> GetLoggedInUserAsync()
+        {
+            var userId = httpContextAccessor
+                .HttpContext
+                .User
+                .FindFirst(ClaimTypes.NameIdentifier)
+                .Value;
+
+            var user = await context.Users
+                .SingleOrDefaultAsync(u => u.Id == userId);
+
+            return user;
+        }
+
+        public async Task<User> GetUserByIdAsync(string id)
+        {
+            return await this.dbContext
+                .Users
+                .FirstOrDefaultAsync(x => x.Id == id);
+
+        }
+
+        public async Task<IEnumerable<User>> GetUsersByRoleAsync(string role)
+        {
+            var usersInRole = await this.userManager.GetUsersInRoleAsync(role);
+
+            return await this.dbContext
+                .Users
+                .Where(u => usersInRole.Any(x => x.Id == u.Id))
+                .ToListAsync();
+        }
+
+        public async Task<bool> RemoveUserFromToRoleAsync(string userId, string role)
+        {
+            var user = await GetUserByIdAsync(userId);
+            if (user == null)
             {
-                this.context = context;
-                this.httpContextAccessor = httpContextAccessor;
+                return false;
             }
-            public async Task<User> GetLoggedInUserAsync()
+
+            await this.userManager.RemoveFromRoleAsync(user, role);
+            return true;
+        }
+
+        public async Task<bool> AddUserToRoleAsync(string userId, string role)
+        {
+            var user = await this.GetUserByIdAsync(userId);
+
+            if (user == null)
             {
-                var userId = httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
-
-                var user = await context.Users
-                    .SingleOrDefaultAsync(u => u.Id == userId);
-
-                return user;
+                return false;
             }
 
-     
+            await this.userManager.AddToRoleAsync(user, role);
+            return true;
+        }
     }
 }

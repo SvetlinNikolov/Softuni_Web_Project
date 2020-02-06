@@ -1,7 +1,9 @@
 ﻿namespace SPN.Web.ViewModels.ForumViewModels.Quote
 {
-    using SPN.Data.Common.Contracts;
     using System;
+
+    using SPN.Data.Common.Contracts;
+
     public class ReplyQuoteViewModel : IAuditInfo
     {
         //TODO CREATE BASE CLASS WHICH ALL OTHER VIEWMODELS USE LIKE AUTHOR ID CONTENT AND SUCH.

@@ -2,6 +2,7 @@
 {
     using AutoMapper;
     using Microsoft.AspNetCore.Mvc;
+
     using SPN.Services.Shared;
     public abstract class BaseController : Controller
     {

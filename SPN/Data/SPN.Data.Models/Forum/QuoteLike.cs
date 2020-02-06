@@ -1,8 +1,8 @@
-﻿using SPN.Data.Common.Models;
-using SPN.Data.Models.Identity;
-
+﻿
 namespace SPN.Data.Models.Forum
 {
+    using SPN.Data.Common.Models;
+    using SPN.Data.Models.Identity;
 
     public class QuoteLike : BaseEntity<int>
     {

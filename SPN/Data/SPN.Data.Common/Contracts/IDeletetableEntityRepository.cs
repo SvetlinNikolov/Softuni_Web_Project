@@ -3,7 +3,6 @@
     using System.Linq;
     using System.Threading.Tasks;
 
-
     public interface IDeletableEntityRepository<TEntity> : IRepository<TEntity>
         where TEntity : class, IDeletableEntity
     {

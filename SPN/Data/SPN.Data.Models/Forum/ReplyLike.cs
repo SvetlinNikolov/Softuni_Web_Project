@@ -1,9 +1,10 @@
 ﻿namespace SPN.Data.Models.Forum
 {
+    using System;
+
     using SPN.Data.Common.Contracts;
     using SPN.Data.Common.Models;
     using SPN.Data.Models.Identity;
-    using System;
 
     public class ReplyLike :BaseEntity<int>
     {

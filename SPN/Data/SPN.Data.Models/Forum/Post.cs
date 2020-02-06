@@ -1,12 +1,11 @@
 ﻿namespace SPN.Data.Models.Forum
 {
-    using SPN.Data.Common.Contracts;
-    using SPN.Data.Common.Models;
-    using SPN.Data.Models.Identity;
     using System;
     using System.Collections.Generic;
 
-
+    using SPN.Data.Common.Contracts;
+    using SPN.Data.Common.Models;
+    using SPN.Data.Models.Identity;
     public class Post : BaseEntity<int>, IAuditInfo, IDeletableEntity
     {
         public string Title { get; set; }
