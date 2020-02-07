@@ -1,0 +1,20 @@
+﻿[
+  {
+    "CreatedOn": "01.01.2019",
+    "Title": "Programming",
+    "Description": "Everything about progrraming, IT and more in one place.",
+    "ImageUrl": "https://i.imgur.com/QWwbGsu.jpeg"
+  },
+  {
+    "CreatedOn": "05.09.2020",
+    "Title": "Gaming",
+    "Description": "All the newest games, news and much more.",
+    "ImageUrl": "https://i.imgur.com/aEi7xxi.jpg"
+  },
+  {
+    "CreatedOn": "02.02.2015",
+    "Title": "Hacking",
+    "Description": "Hacked by santaisreall",
+    "ImageUrl": "https://i.imgur.com/Udkl4QN.jpg"
+  }
+]

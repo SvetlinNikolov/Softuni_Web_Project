@@ -44,7 +44,7 @@
                 var user = await this.userService.GetLoggedInUserAsync();
                 await this.postService.CreatePostAsync(model, user); 
 
-                return this.Redirect($"/Category/Topic?Id={model.CategoryId}");
+                return this.Redirect($"/Category/Topic?Id={model.Id}");
             }
             else
             {

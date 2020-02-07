@@ -3,7 +3,7 @@
     using System;
     public class QuoteInputModel
     {
-        public int ReplyId { get; set; } 
+        public int Id { get; set; } 
 
         public string ReplyAuthorId { get; set; }
 

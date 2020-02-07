@@ -2,7 +2,7 @@
 {
     public class PostInputModel
     {
-        public int CategoryId { get; set; }
+        public int Id { get; set; } //was categoryId
 
         public string Title { get; set; }
 

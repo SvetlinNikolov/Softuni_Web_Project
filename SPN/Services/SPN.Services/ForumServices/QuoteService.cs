@@ -23,7 +23,7 @@
         {
             var quote = new Quote
             {
-                ReplyId = model.ReplyId,
+                ReplyId = model.Id,
                 Content = model.Content,
                 AuthorId = user.Id,
                 CreatedOn = DateTime.UtcNow,

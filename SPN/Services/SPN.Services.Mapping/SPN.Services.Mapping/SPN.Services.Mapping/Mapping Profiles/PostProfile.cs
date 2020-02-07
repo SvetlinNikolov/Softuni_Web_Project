@@ -20,19 +20,19 @@
           .ForMember(x => x.AuthorName, y => y.MapFrom(z => z.Author.UserName));
 
             this.CreateMap<Post, PostInputModel>()
-                .ForMember(x => x.CategoryId, y => y.MapFrom(z => z.CategoryId))
+                .ForMember(x => x.Id, y => y.MapFrom(z => z.CategoryId))
                 .ForMember(x => x.CategoryTitle, y => y.MapFrom(z => z.Category.Title))
                 .ForMember(x => x.CategoryImageUrl, y => y.MapFrom(z => z.Category.ImageUrl));
 
 
             this.CreateMap<PostInputModel, Post>()
-                .ForMember(x => x.CategoryId, y => y.MapFrom(z => z.CategoryId))
+                .ForMember(x => x.CategoryId, y => y.MapFrom(z => z.Id))
                 .ForMember(x => x.Title, y => y.MapFrom(z => z.CategoryTitle))
                 .ForMember(x => x.Content, y => y.MapFrom(z => z.Content));
 
 
             this.CreateMap<PostInputModel, Category>()
-                  .ForMember(x => x.Id, y => y.MapFrom(z => z.CategoryId));
+                  .ForMember(x => x.Id, y => y.MapFrom(z => z.Id));
 
             this.CreateMap<Reply, PostReplyViewModel>()
                .ForMember(x => x.Id, y => y.MapFrom(z => z.Id))

@@ -17,7 +17,8 @@ namespace SPN.Web
     using SPN.Services.ForumServices;
     using SPN.Services.Shared;
     using SPN.Services.Mapping;
-
+    using SPN.Data.Seeding;
+    using SPN.Web.Extensions;
 
     public class Startup
     {
@@ -55,6 +56,8 @@ namespace SPN.Web
 
             services.AddAutoMapper(AutoMapperConfig.GetAutoMapperProfilesFromAllAssemblies()
              .ToArray());
+            services.AddScoped<SPNUserRoleSeeder>();
+            services.AddScoped<SPNCategorySeeder>();
 
             services.AddScoped<ICategoryService, CategoryService>();
             services.AddScoped<IPostService, PostService>();
@@ -69,6 +72,14 @@ namespace SPN.Web
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            app.UseDatabaseSeeding();
+
+            using (var scope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>().CreateScope())
+            using (var dbContext = scope.ServiceProvider.GetService<SPNDbContext>())
+
+                dbContext.Database.EnsureCreated();
+             
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
