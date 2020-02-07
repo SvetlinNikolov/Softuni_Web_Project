@@ -23,9 +23,18 @@
             this.replyService = replyService;
         }
 
-        public IActionResult Create()
+        public async Task<IActionResult> Create(int replyId)
         {
-            return this.View();
+            var reply = await this.replyService.GetReplyByIdAsync(replyId);
+            var user = await this.userService.GetLoggedInUserAsync();
+
+            var model = new QuoteInputModel
+            {
+                ReplyContent = reply.Content,
+                AuthorName = user.UserName,
+                ReplyAuthorName = reply.Author.UserName
+            };
+            return this.View(model);
         }
 
 
@@ -33,12 +42,18 @@
         public async Task<IActionResult> Create(QuoteInputModel model)
         {
             var user = await this.userService.GetLoggedInUserAsync();
+            var reply = await this.replyService.GetReplyByIdAsync(model.ReplyId);
+
+            //model.ReplyContent = reply.Content;
+            //model.AuthorName = user.UserName;
+            //model.ReplyAuthorName = reply.Author.UserName;
 
             await this.quoteService.CreateQuoteAsync(model, user);
 
-            return this.Redirect($"/Post/Index?Id={model.ReplyId}");
+            return this.Redirect($"/Post/Index?Id={reply.PostId}");
 
-
+          
         }
+
     }
 }

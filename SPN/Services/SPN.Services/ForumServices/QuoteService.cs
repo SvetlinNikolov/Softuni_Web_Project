@@ -21,9 +21,6 @@
 
         public async Task<int> CreateQuoteAsync(QuoteInputModel model, User user)
         {
-            var reply = await this.dbContext.Replies
-                  .FirstOrDefaultAsync(r => r.Id == model.ReplyId);
-
             var quote = new Quote
             {
                 ReplyId = model.ReplyId,
@@ -31,10 +28,6 @@
                 AuthorId = user.Id,
                 CreatedOn = DateTime.UtcNow,
             };
-
-            model.ReplyContent = reply.Content;
-            model.AuthorName = user.UserName;
-            model.ReplyAuthorName = reply.Author.UserName;
 
             await this.dbContext.Quotes.AddAsync(quote);
             return await this.dbContext.SaveChangesAsync();
@@ -58,6 +51,8 @@
                 .Include(q => q.Author)
                 .Include(q => q.QuoteLikes)
                 .FirstOrDefaultAsync(q => q.Id == id);
+
+       
                 
         }
     }

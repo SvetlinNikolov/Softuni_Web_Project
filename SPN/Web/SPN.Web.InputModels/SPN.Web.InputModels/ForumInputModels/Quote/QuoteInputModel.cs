@@ -1,5 +1,6 @@
 ﻿namespace SPN.Web.InputModels.ForumInputModels.Quote
 {
+    using System;
     public class QuoteInputModel
     {
         public int ReplyId { get; set; } 
@@ -15,6 +16,8 @@
         public string AuthorName { get; set; }
 
         public string Content { get; set; }
-      
+
+        public DateTime CreatedOn { get; set; }
+
     }
 }

@@ -1,0 +1,29 @@
+﻿@model QuoteInputModel;
+
+<div class="post-wrapper bg-burly mt-25">
+    <div class="container-half text-forum bold">
+        <div>
+            <h3 class="m-0 float-left">Quote</h3>
+        </div>
+        <div>
+            <h3 class="m-0 float-right">@Model.CreatedOn.ToString("dd-MM-yyyy")</h3>
+        </div>
+    </div>
+        <div class="bg-white text-start p-10">
+            <blockquote class="bg-light border-5 p-10">
+                <div>
+                    <b>@Model.ReplyAuthorName</b> said:
+                </div>
+                <hr />
+                <div class="text-center">
+                    @Html.Raw(Model.ReplyContent)
+                </div>
+                <hr />
+            </blockquote>
+            <blockquote class="m-0 font-14">
+                @Html.Raw(Model.Content)
+            </blockquote>
+        </div>
+    </div>
+    <a asp-controller="Quote" asp-action="Quote" asp-route-id="@Model.ReplyId" class="text-forum m-10px quoteBtn"><i class="fab fa-replyd"></i> Quote</a>
+}
