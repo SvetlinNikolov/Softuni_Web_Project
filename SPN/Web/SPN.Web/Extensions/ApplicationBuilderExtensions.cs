@@ -1,11 +1,13 @@
 ﻿namespace SPN.Web.Extensions
 {
-    using Microsoft.AspNetCore.Builder;
-    using Microsoft.Extensions.DependencyInjection;
-    using SPN.Data;
-    using SPN.Data.Seeding;
     using System.Linq;
     using System.Reflection;
+    using Microsoft.AspNetCore.Builder;
+    using Microsoft.Extensions.DependencyInjection;
+
+    using SPN.Data;
+    using SPN.Data.Seeding;
+
     public static class ApplicationBuilderExtensions
     {
         public static void UseDatabaseSeeding(this IApplicationBuilder app)

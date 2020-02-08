@@ -27,7 +27,7 @@
             this.userService = userService;
         }
 
-        public async Task<int> CreateReplyAsync(ReplyInputModel model, User user)
+        public async Task CreateReplyAsync(ReplyInputModel model, User user)
         {
             var post = await this.postService.GetPostByIdAsync(model.Id);
 
@@ -40,16 +40,16 @@
             };
 
             await this.dbContext.Replies.AddAsync(reply);
-            return await this.dbContext.SaveChangesAsync();
+             await this.dbContext.SaveChangesAsync();
         }
 
-        public async Task<int> DeleteReplyAsync(int id)
+        public async Task DeleteReplyAsync(int id)
         {
             var replyToDelete = await this.dbContext.Replies.FindAsync(id);
 
             this.dbContext.Replies.Remove(replyToDelete);
 
-            return await this.dbContext.SaveChangesAsync();
+             await this.dbContext.SaveChangesAsync();
         }
 
         public Task<Reply> EditReplyAsync(int replyId, string newMessage)
