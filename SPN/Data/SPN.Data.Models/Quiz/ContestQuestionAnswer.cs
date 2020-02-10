@@ -1,4 +1,4 @@
-﻿namespace SPN.Data.Models.Contest
+﻿namespace SPN.Data.Models.Quiz
 {
     using System;
 
@@ -10,7 +10,7 @@
 
         public int ContestQuestionId { get; set; }
 
-        public ContestQuestion ContestQuestion { get; set; }
+        public virtual ContestQuestion ContestQuestion { get; set; }
 
         public bool IsCorrect { get; set; }
 

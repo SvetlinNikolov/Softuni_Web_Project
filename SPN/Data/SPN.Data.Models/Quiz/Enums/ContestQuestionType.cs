@@ -1,4 +1,4 @@
-﻿namespace SPN.Data.Models.Contest.Enums
+﻿namespace SPN.Data.Models.Quiz.Enums
 {
     public enum ContestQuestionType
     {

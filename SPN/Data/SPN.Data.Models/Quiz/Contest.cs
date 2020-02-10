@@ -1,4 +1,4 @@
-﻿namespace SPN.Data.Models.Contest
+﻿namespace SPN.Data.Models.Quiz
 {
     using System;
     using System.Collections.Generic;
@@ -12,8 +12,8 @@
     {
         public Contest()
         {
-            this.ContestQuestions = new HashSet<ContestQuestion>();
-            this.Participants = new HashSet<User>();
+            ContestQuestions = new HashSet<ContestQuestion>();
+            Participants = new HashSet<User>();
         }
         public string Title { get; set; }
 
@@ -48,29 +48,29 @@
         {
             get
             {
-                if (this.IsPrivate)
+                if (IsPrivate)
                 {
                     return false;
                 }
 
-                if (this.IsDeleted)
+                if (IsDeleted)
                 {
                     return false;
                 }
 
-                if (!this.StartTime.HasValue)
+                if (!StartTime.HasValue)
                 {
                     // Cannot be competed
                     return false;
                 }
 
-                if (!this.EndTime.HasValue)
+                if (!EndTime.HasValue)
                 {
                     // Compete forever
-                    return this.StartTime <= DateTime.UtcNow;
+                    return StartTime <= DateTime.UtcNow;
                 }
 
-                return this.StartTime <= DateTime.UtcNow && DateTime.UtcNow <= this.EndTime;
+                return StartTime <= DateTime.UtcNow && DateTime.UtcNow <= EndTime;
             }
         }
     }
