@@ -8,8 +8,8 @@
  
     public interface IReplyService
     {
-        Task<int> CreateReplyAsync(ReplyInputModel reply,User user);
-        Task<int> DeleteReplyAsync(int id);
+        Task CreateReplyAsync(ReplyInputModel reply,User user);
+        Task DeleteReplyAsync(int id);
         Task<Reply> GetReplyByIdAsync(int id);
         Task<Reply> EditReplyAsync(int replyId, string newMessage);
     }

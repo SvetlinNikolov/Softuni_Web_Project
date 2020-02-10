@@ -8,8 +8,8 @@
  
     public interface IQuoteService
     {
-        Task<int> CreateQuoteAsync(QuoteInputModel model, User user);
-        Task<int> DeleteQuoteAsync(int id);
+        Task CreateQuoteAsync(QuoteInputModel model, User user);
+        Task DeleteQuoteAsync(int id);
         Task<Quote> GetQuoteByIdAsync(int id);
         Task<Quote> EditQuoteAsync(int quoteId, string newMessage);
     }

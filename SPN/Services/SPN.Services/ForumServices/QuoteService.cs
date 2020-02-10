@@ -13,28 +13,30 @@
     using SPN.Web.InputModels.ForumInputModels.Quote;
     public class QuoteService : BaseService, IQuoteService
     {
-        public QuoteService(IMapper mapper, SPNDbContext dbContext)
+        private readonly IReplyService replyService;
+
+        public QuoteService(IMapper mapper, SPNDbContext dbContext, IReplyService replyService)
             : base(mapper, dbContext)
         {
-
+            this.replyService = replyService;
         }
 
-        public async Task<int> CreateQuoteAsync(QuoteInputModel model, User user)
+        public async Task CreateQuoteAsync(QuoteInputModel model, User user)
         {
-            var quote = new Quote
-            {
-                ReplyId = model.Id,
-                Content = model.Content,
-                AuthorId = user.Id,
-                CreatedOn = DateTime.UtcNow,
-            };
+            var reply = await this.replyService.GetReplyByIdAsync(model.Id);
+
+            model.AuthorId = user.Id;
+            model.ReplyAuthorId = reply.AuthorId;
+            model.ReplyContent = reply.Content;
+
+            var quote = this.mapper.Map<QuoteInputModel, Quote>(model);
 
             await this.dbContext.Quotes.AddAsync(quote);
-            return await this.dbContext.SaveChangesAsync();
+             await this.dbContext.SaveChangesAsync();
 
         }
 
-        public Task<int> DeleteQuoteAsync(int id)
+        public Task DeleteQuoteAsync(int id)
         {
             throw new NotImplementedException();
         }

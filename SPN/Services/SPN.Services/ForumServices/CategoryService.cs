@@ -21,13 +21,13 @@
 
         }
 
-        public async Task<int> CreateCategoryAsync(CategoryInputModel inputModel)
+        public async Task CreateCategoryAsync(CategoryInputModel inputModel)
         {
             Category category = this.mapper.Map<Category>(inputModel); //Maping
 
             category.CreatedOn = DateTime.UtcNow;
             await this.dbContext.Categories.AddAsync(category);
-            return await this.dbContext.SaveChangesAsync();
+             await this.dbContext.SaveChangesAsync();
         }
 
         public Task DeleteCategoryAsync(int categoryId)

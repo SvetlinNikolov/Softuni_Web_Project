@@ -22,7 +22,7 @@
         {
         }
 
-        public async Task<int> CreatePostAsync(PostInputModel model, User user)
+        public async Task CreatePostAsync(PostInputModel model, User user)
         {
             var postCategory = await this.dbContext.Categories
                    .FirstOrDefaultAsync(c => c.Id == model.Id);
@@ -37,7 +37,7 @@
             };
 
             await this.dbContext.Posts.AddAsync(post);
-            return await this.dbContext.SaveChangesAsync();
+             await this.dbContext.SaveChangesAsync();
 
         }
         public Task DeletePost(int id)
