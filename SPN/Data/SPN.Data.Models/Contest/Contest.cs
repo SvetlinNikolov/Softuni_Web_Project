@@ -15,17 +15,17 @@
             this.ContestQuestions = new HashSet<ContestQuestion>();
             this.Participants = new HashSet<User>();
         }
-        public int CategoryId { get; set; }
+        public string Title { get; set; }
+
+        public int ContestCategoryId { get; set; }
+
+        public virtual ContestCategory ContestCategory { get; set; }
 
         public string AuthorId { get; set; }
 
-        public User Author { get; set; }
-
-        public string Title { get; set; }
+        public virtual User Author { get; set; }
 
         public string Description { get; set; }
-
-        public string ContestPassword { get; set; }
 
         public bool IsDeleted { get; set; }
 
@@ -37,9 +37,11 @@
 
         public DateTime? EndTime { get; set; }
 
-        public ICollection<ContestQuestion> ContestQuestions { get; set; }
+        public virtual ICollection<ContestQuestion> ContestQuestions { get; set; }
 
-        public ICollection<User> Participants { get; set; }
+        public int QuestionsCount { get; set; }
+
+        public virtual ICollection<User> Participants { get; set; }
 
         [NotMapped]
         public bool CanBeCompeted
