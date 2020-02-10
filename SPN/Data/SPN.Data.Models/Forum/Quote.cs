@@ -7,7 +7,7 @@
     using SPN.Data.Common.Models;
     using SPN.Data.Models.Identity;
  
-    public class Quote : BaseEntity<int>, IAuditInfo, IDeletableEntity
+    public class Quote : BaseEntity<int>, IDeletableEntity
     {
         public string Content { get; set; }
         public string AuthorId { get; set; }

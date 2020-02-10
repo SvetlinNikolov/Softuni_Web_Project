@@ -6,7 +6,7 @@
     using SPN.Data.Common.Contracts;
     using SPN.Data.Common.Models;
     using SPN.Data.Models.Identity;
-    public class Post : BaseEntity<int>, IAuditInfo, IDeletableEntity
+    public class Post : BaseEntity<int>, IDeletableEntity
     {
         public string Title { get; set; }
         public string Content { get; set; }

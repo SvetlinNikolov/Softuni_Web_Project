@@ -6,7 +6,7 @@
     using SPN.Data.Common.Models;
     using SPN.Data.Models.Identity;
 
-    public class ReplyLike :BaseEntity<int>
+    public class ReplyLike :BaseEntity<int>, IDeletableEntity
     {
         public User User { get; set; }
         public string UserId { get; set; }
