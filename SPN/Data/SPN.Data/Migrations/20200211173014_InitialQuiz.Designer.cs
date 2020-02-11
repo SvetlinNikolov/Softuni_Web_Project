@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SPN.Data;
 
 namespace SPN.Data.Migrations
 {
     [DbContext(typeof(SPNDbContext))]
-    partial class SPNDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200211173014_InitialQuiz")]
+    partial class InitialQuiz
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -632,7 +634,10 @@ namespace SPN.Data.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("AuthorId")
+                    b.Property<int>("AuthorId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("AuthorId1")
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<int>("ContestId")
@@ -640,7 +645,7 @@ namespace SPN.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("AuthorId");
+                    b.HasIndex("AuthorId1");
 
                     b.HasIndex("ContestId");
 
@@ -824,7 +829,7 @@ namespace SPN.Data.Migrations
                 {
                     b.HasOne("SPN.Data.Models.Identity.User", "Author")
                         .WithMany("ContestsSolutions")
-                        .HasForeignKey("AuthorId");
+                        .HasForeignKey("AuthorId1");
 
                     b.HasOne("SPN.Data.Models.Quiz.Contest", "Contest")
                         .WithMany()

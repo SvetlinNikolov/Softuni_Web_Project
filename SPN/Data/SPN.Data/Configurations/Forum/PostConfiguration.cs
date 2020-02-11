@@ -26,7 +26,7 @@
 
             builder
                 .HasMany(p => p.Replies)
-                .WithOne(f => f.Post)
+                .WithOne(r => r.Post)
                 .HasForeignKey(p => p.PostId)
                 .OnDelete(DeleteBehavior.Cascade);
 

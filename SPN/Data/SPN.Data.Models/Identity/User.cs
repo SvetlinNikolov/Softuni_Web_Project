@@ -20,8 +20,13 @@ namespace SPN.Data.Models.Identity
             this.Replies = new HashSet<Reply>();
             this.Posts = new HashSet<Post>();
             this.Quotes = new HashSet<Quote>();
+
+            this.Contests = new HashSet<Contest>();
+            this.ContestsSolutions = new HashSet<ContestSolution>();
         }
         public Gender Gender { get; set; }
+
+        public string Description { get; set; }
 
         public string ProfileImage { get; set; }
 
@@ -45,7 +50,11 @@ namespace SPN.Data.Models.Identity
 
         public virtual ICollection<Quote> Quotes { get; set; }
 
-        public virtual ICollection<Contest> ContestsCreated { get; set; }
+        public virtual ICollection<Contest> Contests { get; set; } //Contests Created
+
+        public virtual ICollection<ContestSolution> ContestsSolutions { get; set; } //Solutions submited
+
+
 
     }
 }

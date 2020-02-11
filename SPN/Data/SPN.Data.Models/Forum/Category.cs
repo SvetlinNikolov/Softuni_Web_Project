@@ -8,11 +8,20 @@
 
     public class Category : BaseEntity<int>, IDeletableEntity
     {
+        public Category()
+        {
+            this.Posts = new HashSet<Post>();
+        }
         public string Title { get; set; }
+
         public string Description { get; set; }
+
         public string ImageUrl { get; set; }
-        public virtual ICollection<Post> Posts { get; set; } = new HashSet<Post>();
+
+        public virtual ICollection<Post> Posts { get; set; }    
+
         public bool IsDeleted { get; set; }
+
         public DateTime? DeletedOn { get; set; }
     }
 }
