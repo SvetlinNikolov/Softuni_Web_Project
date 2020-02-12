@@ -13,9 +13,9 @@
     using SPN.Services.Shared;
     using SPN.Web.InputModels.ForumInputModels.Category;
 
-    public class CategoryService :BaseService, ICategoryService
+    public class CategoryService : BaseService, ICategoryService
     {
-        public CategoryService(IMapper mapper, SPNDbContext dbContext) 
+        public CategoryService(IMapper mapper, SPNDbContext dbContext)
             : base(mapper, dbContext)
         {
 
@@ -26,8 +26,9 @@
             Category category = this.mapper.Map<Category>(inputModel); //Maping
 
             category.CreatedOn = DateTime.UtcNow;
+
             await this.dbContext.Categories.AddAsync(category);
-             await this.dbContext.SaveChangesAsync();
+            await this.dbContext.SaveChangesAsync();
         }
 
         public Task DeleteCategoryAsync(int categoryId)

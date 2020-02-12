@@ -25,7 +25,7 @@
         public virtual Category Category { get; set; }
 
         public string AuthorId { get; set; }
-
+        
         public virtual User Author { get; set; }
 
         public virtual ICollection<PostLike> PostLikes { get; set; } 
