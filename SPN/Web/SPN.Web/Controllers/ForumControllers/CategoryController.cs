@@ -35,7 +35,6 @@
             var categories = await this.categoryService.
                 GetAllCategoriesAsync();
 
-
             var categoryModel = this.mapper
                  .Map<IEnumerable<CategoryConciseViewModel>>(categories); //Map
 

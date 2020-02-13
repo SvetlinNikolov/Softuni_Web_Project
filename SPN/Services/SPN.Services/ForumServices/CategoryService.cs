@@ -47,7 +47,7 @@
         public async Task<Category> GetCategoryByIdAsync(int id)
         {
 
-            Category category = await this.dbContext
+            var category = await this.dbContext
                     .Categories
                     .Where(c => c.Id == id)
                     .Include(x => x.Posts)

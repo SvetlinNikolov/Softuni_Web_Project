@@ -17,6 +17,8 @@
         }
         public string Title { get; set; }
 
+        public string Password { get; set; }
+
         public int ContestCategoryId { get; set; }
 
         public virtual ContestCategory ContestCategory { get; set; }
@@ -37,9 +39,9 @@
 
         public DateTime? EndTime { get; set; }
 
-        public virtual ICollection<ContestQuestion> ContestQuestions { get; set; }
-
         public int QuestionsCount { get; set; }
+
+        public virtual ICollection<ContestQuestion> ContestQuestions { get; set; }
 
         public virtual ICollection<User> Participants { get; set; }
 

@@ -1,13 +1,16 @@
 ﻿namespace SPN.Services.QuizServices
 {
     using AutoMapper;
+    using Microsoft.EntityFrameworkCore;
     using SPN.Data;
     using SPN.Data.Models.Quiz;
     using SPN.Services.Contracts.Quiz;
     using SPN.Services.Shared;
     using SPN.Web.InputModels.QuizInputModels;
+    using SPN.Web.ViewModels.QuizViewModels.ContestCategory;
     using System;
     using System.Collections.Generic;
+    using System.Linq;
     using System.Threading.Tasks;
     public class ContestCategoryService : BaseService, IContestCategoryService
     {
@@ -16,13 +19,12 @@
         {
         }
 
-        public Task CreateCategoryAsync(ContestCategoryInputModel contestCategoryInputModel)
+        public async Task CreateCategoryAsync(ContestCategoryInputModel contestCategoryInputModel)
         {
-            ContestCategory contestCategory = new ContestCategory
-            {
+            var category = this.mapper.Map<ContestCategoryInputModel, ContestCategory>(contestCategoryInputModel);
 
-            };
-           return null;
+            await this.dbContext.ContestCategories.AddAsync(category);
+            await this.dbContext.SaveChangesAsync();
         }
 
         public Task DeleteCategoryAsync(int categoryId)
@@ -30,14 +32,34 @@
             throw new NotImplementedException();
         }
 
-        public Task<IEnumerable<ContestCategory>> GetAllCategoriesAsync()
+        public async Task<ContestCategoryListingViewModel> GetAllCategoriesAsync()
         {
-            throw new NotImplementedException();
+          var categories = await this.dbContext
+                 .ContestCategories
+                 .Include(cc => cc.Contests)
+                 .ToListAsync();
+
+            var categoriesConcise = this.mapper.Map<IEnumerable<ContestCategoryConciseViewModel>>(categories);
+
+            var model = new ContestCategoryListingViewModel
+            {
+                CategoryListing = categoriesConcise
+            };
+
+            return model;
         }
 
-        public Task<ContestCategory> GetCategoryByIdAsync(int id)
+    
+
+        public async Task<ContestCategory> GetCategoryByIdAsync(int id)
         {
-            throw new NotImplementedException();
+            var category = await this.dbContext
+                .ContestCategories
+                .Where(cc => cc.Id == id)
+                .Include(cc => cc.Contests)
+                .SingleOrDefaultAsync();
+
+            return category;
         }
 
         public Task UpdateCategoryDescriptionAsync(int categoryId, string newDescription)
@@ -49,5 +71,7 @@
         {
             throw new NotImplementedException();
         }
+
+
     }
 }

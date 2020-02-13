@@ -19,7 +19,6 @@ namespace SPN.Data.Configurations.Quiz
              .HasForeignKey(contest => contest.AuthorId)
              .OnDelete(DeleteBehavior.Cascade);
 
-
             builder
                 .HasOne(contest => contest.ContestCategory)
                 .WithMany(contestCategory => contestCategory.Contests)
@@ -30,7 +29,7 @@ namespace SPN.Data.Configurations.Quiz
                  .HasForeignKey(contestQuestion => contestQuestion.ContestId)
                 .OnDelete(DeleteBehavior.Cascade);
 
-
+        
 
         }
     }

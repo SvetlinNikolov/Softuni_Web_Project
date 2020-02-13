@@ -1,0 +1,21 @@
+﻿@model ContestCategoryListingViewModel
+
+<h1>All Contest Categories:</h1>
+
+<table class="table table-hover" id="categoryListingTable">
+    <tbody>
+        @foreach (var contestCategory in Model.CategoryListing)
+        {
+            <tr>
+                <td>
+                    <a asp-controller="ContestCategory" asp-action="Topic" asp-route-id="@contestCategory.Id">
+                        @contestCategory.Title
+                    </a>
+                </td>
+                <td>
+                    @contestCategory.Description
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

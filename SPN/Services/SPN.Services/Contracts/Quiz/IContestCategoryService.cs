@@ -5,10 +5,11 @@
 
     using SPN.Data.Models.Quiz;
     using SPN.Web.InputModels.QuizInputModels;
+    using SPN.Web.ViewModels.QuizViewModels.ContestCategory;
 
     public interface IContestCategoryService
     {
-        Task<IEnumerable<ContestCategory>> GetAllCategoriesAsync();
+        Task<ContestCategoryListingViewModel> GetAllCategoriesAsync();
 
         Task CreateCategoryAsync(ContestCategoryInputModel contestCategoryInputModel);
 

@@ -19,6 +19,8 @@ namespace SPN.Web
     using SPN.Services.Mapping;
     using SPN.Data.Seeding;
     using SPN.Web.Extensions;
+    using SPN.Services.Contracts.Quiz;
+    using SPN.Services.QuizServices;
 
     public class Startup
     {
@@ -58,12 +60,15 @@ namespace SPN.Web
              .ToArray());
             services.AddScoped<SPNUserRoleSeeder>();
             services.AddScoped<SPNCategorySeeder>();
+            services.AddScoped<SPNContestCategorySeeder>();
 
             services.AddScoped<ICategoryService, CategoryService>();
             services.AddScoped<IPostService, PostService>();
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IReplyService, ReplyService>();
             services.AddScoped<IQuoteService, QuoteService>();
+
+            services.AddScoped<IContestCategoryService, ContestCategoryService>();
 
             services.AddControllersWithViews();
             services.AddRazorPages();

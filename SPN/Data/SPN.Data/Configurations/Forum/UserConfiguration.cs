@@ -28,7 +28,7 @@
             builder.HasMany(u => u.ContestsSolutions)
                 .WithOne(css => css.Author);
 
-
+            
             //TODO Check if this config is enough
 
         }
