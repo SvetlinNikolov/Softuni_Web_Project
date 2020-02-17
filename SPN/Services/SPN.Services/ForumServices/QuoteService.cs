@@ -28,11 +28,12 @@
             model.AuthorId = user.Id;
             model.ReplyAuthorId = reply.AuthorId;
             model.ReplyContent = reply.Content;
+            model.ReplyAuthorName = reply.Author.UserName;
 
             var quote = this.mapper.Map<QuoteInputModel, Quote>(model);
 
             await this.dbContext.Quotes.AddAsync(quote);
-             await this.dbContext.SaveChangesAsync();
+            await this.dbContext.SaveChangesAsync();
 
         }
 
@@ -53,9 +54,6 @@
                 .Include(q => q.Author)
                 .Include(q => q.QuoteLikes)
                 .FirstOrDefaultAsync(q => q.Id == id);
-
-       
-                
         }
     }
 }

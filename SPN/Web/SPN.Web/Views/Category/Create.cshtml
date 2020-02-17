@@ -1,38 +1,53 @@
 ﻿@model CategoryInputModel
 
-<div>
-    <h1><a id="main-heading-text" href="#">Create Category</a></h1>
-</div>
+<html>
+<body>
+    <div class="container">
+        <div class="row">
 
+            <div class="col-md-8 col-md-offset-2">
 
-<div class="row">
-    <div class="Create Category">
-        <form asp-action="Create" method="post" id="createForumForm" enctype="multipart/form-data">
-            <div asp-validation-summary="All" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Title">Category Title</label>
-                <input asp-for="Title" class="form-control" placeholder="Choose a Category Title" />
-                <span asp-validation-for="Title" class="text-danger"></span>
+                <h1>Create category</h1>
+
+                <form action="" method="POST">
+                    <div class="form-group">
+                        <label for="title">Title <span class="require">*</span></label>
+                        <input asp-for="Title" type="text" class="form-control" placeholder="Chose a title" />
+                        <span asp-validation-for="Title" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="description">Description<span class="require">*</span></label>
+                        <textarea asp-for="Description" rows="5" class="form-control" placeholder="Chose a description"></textarea>
+                        <span asp-validation-for="Description" class="text-danger"></span>
+                    </div>
+
+                    <div id="upload">
+                        <label>Upload Category Image</label>
+                        <br />
+                        <label class="btn btn-default btn-file">
+                        <input asp-for="ImageUpload" type="file" style="display: block">
+                        </label>
+                    </div>
+
+                    <div class="form-group">
+                        <p><span class="require">*</span> - required fields</p>
+                    </div>
+
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary">
+                            Create
+                        </button>
+
+                        <button class="btn btn-danger">
+                            Cancel
+                        </button>
+                    </div>
+
+                </form>
             </div>
-            <div class="form-group">
-                <label asp-for="Description"></label>
-                <input asp-for="Description" rows="1" class="form-control" placeholder="Write a brief description here.">
-                <span asp-validation-for="Description" class="text-danger"></span>
-            </div>
-            <div id="upload">
-                <label>Upload Category Image</label>
-                <br />
-                <label class="btn btn-default btn-file">
-                    Browse <input asp-for="ImageUpload" type="file" style="display: none;">
-                </label>
-            </div>
-            <button type="submit" id="registerBtn" class="btn btn-submitPost text-success">Create</button>
-            <input onclick="window.history.back()" class="mt-25 submit-button menu-bg-forum text-danger" type="button" value="Cancel">
-        </form>
+
+        </div>
     </div>
-</div>
-
-
-@section Scripts {
-    <partial name="_ValidationScriptsPartial" />
-}
+</body>
+</html>

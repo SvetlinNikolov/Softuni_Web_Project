@@ -45,7 +45,6 @@
 
             return this.Redirect($"/Post/Index?Id={model}");
 
-
         }
 
     }

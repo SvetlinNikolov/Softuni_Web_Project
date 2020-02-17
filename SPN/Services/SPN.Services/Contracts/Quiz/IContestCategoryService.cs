@@ -1,8 +1,9 @@
 ﻿namespace SPN.Services.Contracts.Quiz
 {
+    using System;
     using System.Collections.Generic;
     using System.Threading.Tasks;
-
+    using SPN.Data.Models.Forum;
     using SPN.Data.Models.Quiz;
     using SPN.Web.InputModels.QuizInputModels;
     using SPN.Web.ViewModels.QuizViewModels.ContestCategory;
@@ -20,5 +21,6 @@
         Task UpdateCategoryDescriptionAsync(int categoryId, string newDescription);
 
         Task<ContestCategory> GetCategoryByIdAsync(int id);
+
     }
 }

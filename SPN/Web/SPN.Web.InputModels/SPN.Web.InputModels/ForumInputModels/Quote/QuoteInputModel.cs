@@ -8,6 +8,8 @@
 
         public string ReplyAuthorId { get; set; }
 
+        public string ReplyAuthorName { get; set; }
+
         public string ReplyContent { get; set; }         //The reply we are quoting (the actual text)
 
         public string AuthorId { get; set; }

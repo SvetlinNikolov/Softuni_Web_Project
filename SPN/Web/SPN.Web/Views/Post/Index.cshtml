@@ -1,64 +1,100 @@
 ﻿@model PostIndexViewModel
 
-<div class="container body-content">
-    <div class="row postHeader">
-        <div class="postHeading">
-            <h1>@Model.Title</h1>
-            <span id="headingBtn"><a asp-controller="Category" asp-action="Topic" asp-route-id="@Model.CategoryId" class="btn btn-outline-info ">Back to @Model.CategoryTitle</a></span>
-        </div>
-    </div>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Untitled</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/css/post.css">
+</head>
 
-    <div class="row" id="postIndexContent">
-        <div class="col-md-3 postAuthorContainer">
-            <div class="postAuthorImage" style="background-image: url(@Model.AuthorImageUrl); background-size: 100%;"></div>
+<body>
+    <div class="article-clean">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 col-xl-8 offset-lg-1 offset-xl-2">
+                    <div class="intro">
+                        <h1 class="text-center">@Model.Title</h1>
+                        <p class="text-center"><span>by</span> <a href="@Model.AuthorId">@Model.AuthorName</a><span class="date">Created on: @Model.CreatedOn</span></p>
+                    </div>
 
-            <span class="postDate"><strong>Created On</strong> @Model.CreatedOn</span>
-        </div>
-        <div class="col-md-9 postContentContainer">
-            @Model.Content
-        </div>
-    </div>
-
-    <div class="row" id="replyDivider"></div>
-    @if (Context.User.Identity.IsAuthenticated)
-    {
-        <div class="row" id="replyRow">
-            <span><a asp-controller="Reply" asp-action="Create" asp-route-id="@Model.Id" class="btn btn-danger">Post Reply</a></span>
-        </div>
-    }
-    @if (Model.Replies.Any())
-    {
-        foreach (var reply in Model.Replies)
-        {
-            <div class="row replyContent">
-                <div class="col-md-3 replyAuthorContainer">
-                    <div class="postAuthorImage" style="background-image: url(@reply.AuthorImageUrl); background-size: 100%;"></div>
-
-                    <span class="postDate">@reply.CreatedOn.ToShortDateString()</span>
-                    <span class="replyAuthor">@reply.AuthorName</span>
-                </div>
-                <div class="col-md-9 replyContentContainer">
-                    <div class="postContent">
-                        @reply.Content
+                    <div class="col-lg-10 col-xl-8 offset-lg-1 offset-xl-2">
+                        <div class="text">
+                            <p>@Model.Content</p>
+                            <div class="stats">
+                                <a href="#" class="btn btn-default stat-item">
+                                    <i class="fa fa-thumbs-up icon"></i>
+                                </a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="m-10px quotes-div display-none">
-                <a asp-controller="Quote" asp-action="Create" asp-route-id="@reply.Id" class="text-forum m-10px quoteBtn"><i class="fab fa-replyd"></i> Quote</a>
-                @foreach (var quote in reply.Quotes.OrderBy(q => q.CreatedOn))
-                {
-                    <partial name="../Quote/_QuoteViewPartial" model="quote" />
-                }
-            </div>
-            <div class="text-white menu-bg-forum p-10 mx-10px">
-                <a class="text-white show-quotes">Show Quotes </a><i class="fas fa-arrow-down fa-lg icon-arrow"></i>
-            </div>
+        </div>
+    </div>
 
-        }
-    }
-    else
-    {
-        <p>There are no replies yet.</p>
-    }
+    <div class="row bootstrap snippets">
+        <div class="col-md-6 col-md-offset-2 col-sm-12">
+            <div class="comment-wrapper">
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        Replies
+                    </div>
+                    <div class="panel-body">
+                        @if (Context.User.Identity.IsAuthenticated)
+                        {
+                            <textarea class="form-control" placeholder="Reply..." rows="3"></textarea>
+                            <br>
 
-</div>
+                            <span><a asp-controller="Reply" asp-action="Create" asp-route-id="@Model.Id" class="btn btn-info pull-right">Submit</a></span>
+                            <div class="clearfix"></div>
+                            <hr>
+
+                        }
+                        <ul class="media-list">
+                            @if (Model.Replies.Any())
+                            {
+                                foreach (var reply in Model.Replies)
+                                {
+                                    <li class="media">
+                                        <a href="#" class="pull-left">
+                                            
+                                            @if (Model.AuthorImageUrl == null)
+                                            {
+                                                <img src="~/user.png" alt="userIcon" class="img-circle">
+                                            }
+                                            else
+                                            {
+                                                <img src="@Model.AuthorImageUrl" alt="userIcon" class="img-circle">
+                                            }
+
+                                        </a>
+                                        <div class="media-body">
+                                            <span class="text-muted pull-right">
+                                                <small class="text-muted">Replied on: @reply.CreatedOn  </small>
+                                            </span>
+                                            <strong class="text-success">@reply.AuthorName </strong>
+                                            <p>
+                                                @reply.Content
+                                            </p>
+                                        </div>
+                                    </li>
+                                }
+                            }
+                            else
+                            {
+                                <partial>There are no replies yet.</partial>
+                            }
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

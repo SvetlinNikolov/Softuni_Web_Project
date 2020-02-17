@@ -3,6 +3,7 @@
     using AutoMapper;
     using Microsoft.EntityFrameworkCore;
     using SPN.Data;
+    using SPN.Data.Models.Forum;
     using SPN.Data.Models.Quiz;
     using SPN.Services.Contracts.Quiz;
     using SPN.Services.Shared;
@@ -32,6 +33,8 @@
             throw new NotImplementedException();
         }
 
+
+
         public async Task<ContestCategoryListingViewModel> GetAllCategoriesAsync()
         {
           var categories = await this.dbContext
@@ -48,8 +51,6 @@
 
             return model;
         }
-
-    
 
         public async Task<ContestCategory> GetCategoryByIdAsync(int id)
         {

@@ -9,8 +9,11 @@
     public interface IReplyService
     {
         Task CreateReplyAsync(ReplyInputModel reply,User user);
+
         Task DeleteReplyAsync(int id);
+
         Task<Reply> GetReplyByIdAsync(int id);
+
         Task<Reply> EditReplyAsync(int replyId, string newMessage);
     }
 }
