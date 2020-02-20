@@ -9,7 +9,6 @@
 
     using SPN.Data;
     using SPN.Data.Models.Forum;
-    using SPN.Data.Models.Identity;
     using SPN.Services.Contracts.Forum;
     using SPN.Services.Shared;
     using SPN.Web.InputModels.ForumInputModels.Post;
@@ -17,13 +16,18 @@
 
     public class PostService : BaseService, IPostService
     {
-        public PostService(IMapper mapper, SPNDbContext dbContext)
+        private readonly IUserService userService;
+
+        public PostService(IMapper mapper, SPNDbContext dbContext,IUserService userService)
             : base(mapper, dbContext)
         {
+            this.userService = userService;
         }
 
-        public async Task CreatePostAsync(PostInputModel model, User user)
+        public async Task CreatePostAsync(PostInputModel model)
         {
+            var user = await this.userService.GetLoggedInUserAsync();
+
             var postCategory = await this.dbContext.Categories
                    .FirstOrDefaultAsync(c => c.Id == model.Id);
 

@@ -5,10 +5,11 @@
 
     using SPN.Data.Models.Forum;
     using SPN.Web.InputModels.ForumInputModels.Category;
- 
+    using SPN.Web.ViewModels.ForumViewModels.CategoryViewModels;
+
     public interface ICategoryService
     {
-        Task<IEnumerable<Category>> GetAllCategoriesAsync();
+        Task<CategoryListingViewModel> GetAllCategoriesAsync();
 
         Task CreateCategoryAsync(CategoryInputModel categoryInputModel);
 
@@ -18,6 +19,8 @@
 
         Task UpdateCategoryDescriptionAsync(int categoryId, string newDescription);
 
-        Task<Category> GetCategoryByIdAsync(int id);
+        Task<Category> GetCategoryByIdAsync(int categoryId);
+
+        Task<CategoryTopicModel> GetCategoryTopic(int categoryId);
     }
 }

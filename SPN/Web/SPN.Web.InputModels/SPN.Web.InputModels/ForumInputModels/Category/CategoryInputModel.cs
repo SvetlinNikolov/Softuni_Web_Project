@@ -6,6 +6,7 @@
 
     public class CategoryInputModel
     {
+        public int Id { get; set; }
         [Required]
         [StringLength(ModelConstants.CategoryTitleMaxLength,
             MinimumLength = ModelConstants.CategoryTitleMinLength, ErrorMessage = ModelConstants.CategoryTitleLengthError)]
@@ -16,8 +17,10 @@
          MinimumLength = ModelConstants.CategoryDescriptionMinLength, ErrorMessage = ModelConstants.CategoryDescriptionLengthError)]
         public string Description { get; set; }
 
+        [Display(Name ="Image URL")]
         public string ImageUrl { get; set; }
 
+        [Display(Name = "Upload Image")]
         public IFormFile ImageUpload { get; set; }
     }
 }

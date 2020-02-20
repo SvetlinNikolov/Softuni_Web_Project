@@ -13,7 +13,7 @@
         Task<Post> GetPostByIdAsync(int postId);
         IEnumerable<Post> GetFilteredPosts(string searchQuery);
         Task<IEnumerable<Post>> GetPostsByCategoryAsync(int searchQuery);
-        Task CreatePostAsync(PostInputModel model, User user);
+        Task CreatePostAsync(PostInputModel model);
         Task DeletePost(int id);
         Task EditPost(int id);
         Task<PostIndexViewModel> GetPostIndexViewModelAsync(int postId);

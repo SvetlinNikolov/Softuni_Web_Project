@@ -14,16 +14,19 @@
     public class QuoteService : BaseService, IQuoteService
     {
         private readonly IReplyService replyService;
+        private readonly IUserService userService;
 
-        public QuoteService(IMapper mapper, SPNDbContext dbContext, IReplyService replyService)
+        public QuoteService(IMapper mapper, SPNDbContext dbContext, IReplyService replyService,IUserService userService)
             : base(mapper, dbContext)
         {
             this.replyService = replyService;
+            this.userService = userService;
         }
 
-        public async Task CreateQuoteAsync(QuoteInputModel model, User user)
+        public async Task CreateQuoteAsync(QuoteInputModel model)
         {
             var reply = await this.replyService.GetReplyByIdAsync(model.Id);
+            var user = await this.userService.GetLoggedInUserAsync();
 
             model.AuthorId = user.Id;
             model.ReplyAuthorId = reply.AuthorId;

@@ -25,26 +25,30 @@
 
         public async Task<IActionResult> Create(int replyId)
         {
-            var reply = await this.replyService.GetReplyByIdAsync(replyId);
+            var replyContent = await this.replyService.GetReplyContent(replyId);
 
             var model = new QuoteInputModel
             {
-                ReplyContent = reply.Content,
+                ReplyContent = replyContent
 
             };
             return this.View(model);
         }
 
-
         [HttpPost]
         public async Task<IActionResult> Create(QuoteInputModel model)
         {
-            var user = await this.userService.GetLoggedInUserAsync();
-            
-            await this.quoteService.CreateQuoteAsync(model, user);
+            if (this.ModelState.IsValid)
+            {
+                await this.quoteService.CreateQuoteAsync(model);
+                return this.Redirect($"/Post/Index?Id={model}");
 
-            return this.Redirect($"/Post/Index?Id={model}");
-
+            }
+            else
+            {
+                return this.View(model);
+            }
+           
         }
 
     }

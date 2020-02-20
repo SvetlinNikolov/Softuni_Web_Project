@@ -8,7 +8,7 @@
     using SPN.Services.Contracts.Forum;
     using SPN.Services.Shared;
     using SPN.Web.InputModels.ForumInputModels.Post;
-  
+
     public class PostController : BaseController
     {
         private readonly IPostService postService;
@@ -31,7 +31,7 @@
 
         public IActionResult Create()
         {
-            
+
             return this.View();
         }
 
@@ -41,22 +41,15 @@
         {
             if (this.ModelState.IsValid)
             {
-                var user = await this.userService.GetLoggedInUserAsync();
-                await this.postService.CreatePostAsync(model, user); 
+                await this.postService.CreatePostAsync(model);
 
-                return this.Redirect($"/Post/Index?Id={model.Id}");
+                return this.Redirect($"/Post/Index/{model.Id}");
             }
             else
             {
-                var result = this.View("Error", this.ModelState);
-                result.StatusCode = (int)HttpStatusCode.BadRequest;
-
-                return result;
+                return this.View();
             }
         }
     }
-
-
-
 }
 

@@ -1,4 +1,6 @@
-﻿namespace SPN.Web.ViewModels.ForumViewModels.CategoryViewModels
+﻿using System;
+
+namespace SPN.Web.ViewModels.ForumViewModels.CategoryViewModels
 {
 
     public class CategoryConciseViewModel
@@ -12,6 +14,7 @@
         public string ImageUrl { get; set; }
 
         public int PostsCount { get; set; }
+
 
         //public int LikesCount { get; set; }         //TODO IMPLEMENT HOW THE LIKES SHOULD WORK
 

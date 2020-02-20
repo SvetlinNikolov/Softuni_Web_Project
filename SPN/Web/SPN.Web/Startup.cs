@@ -51,11 +51,10 @@ namespace SPN.Web
                 options.Password.RequireLowercase = false;
                 options.Password.RequireNonAlphanumeric = false;
                 options.Password.RequireUppercase = false;
-                options.Password.RequiredLength = 1;
+                options.Password.RequiredLength = 3;
                 options.Password.RequiredUniqueChars = 0;
 
                 options.User.RequireUniqueEmail = false;
-
 
             });
 
@@ -73,14 +72,17 @@ namespace SPN.Web
             services.AddScoped<SPNCategorySeeder>();
             services.AddScoped<SPNContestCategorySeeder>();
 
+            //Forum Services
             services.AddScoped<ICategoryService, CategoryService>();
             services.AddScoped<IPostService, PostService>();
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IReplyService, ReplyService>();
             services.AddScoped<IQuoteService, QuoteService>();
 
+            //Quiz Services
             services.AddScoped<IContestCategoryService, ContestCategoryService>();
 
+            //Shared Services
             services.AddScoped<IUserProfileService, UserProfileService>();
 
             services.AddControllersWithViews();

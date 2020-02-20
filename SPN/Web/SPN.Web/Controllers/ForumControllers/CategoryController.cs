@@ -33,16 +33,8 @@
         [AllowAnonymous]
         public async Task<IActionResult> Index()
         {
-            var categories = await this.categoryService.
+            var model = await this.categoryService.
                 GetAllCategoriesAsync();
-
-            var categoryModel = this.mapper
-                 .Map<IEnumerable<CategoryConciseViewModel>>(categories); //Map
-           
-            var model = new CategoryListingViewModel
-            {
-                CategoryListing = categoryModel
-            };
 
             return this.View(model);
         }
@@ -57,43 +49,22 @@
         [HttpPost]
         public async Task<IActionResult> Create(CategoryInputModel model)
         {
-            if (!this.User.Identity.IsAuthenticated)
-            {
-                return this.Redirect("/Identity/Account/Login");
-            }
-
             if (ModelState.IsValid)
             {
                 await this.categoryService.CreateCategoryAsync(model);
 
-                return this.Redirect("/");
+                return this.Redirect($"/Category/Topic/{model.Id}");
             }
             else
             {
-                var result = this.View("Error", this.ModelState);
-                result.StatusCode = (int)HttpStatusCode.BadRequest;
-
-                return result;
+                return this.View(model);
             }
         }
 
         [AllowAnonymous]
         public async Task<IActionResult> Topic(int id)
         {
-            var category = await categoryService.GetCategoryByIdAsync(id);
-            var posts = await postService.GetPostsByCategoryAsync(id);
-
-            var categoryConcise = this.mapper
-                .Map<CategoryConciseViewModel>(category);
-
-            var postListing = this.mapper
-                .Map<IEnumerable<PostListingViewModel>>(posts);
-
-            var model = new CategoryTopicModel
-            {
-                Category = categoryConcise,
-                Posts = postListing
-            };
+            var model = await this.categoryService.GetCategoryTopic(id);
 
             return this.View(model);
         }

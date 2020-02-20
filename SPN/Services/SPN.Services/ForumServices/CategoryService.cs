@@ -12,23 +12,27 @@
     using SPN.Services.Contracts.Forum;
     using SPN.Services.Shared;
     using SPN.Web.InputModels.ForumInputModels.Category;
+    using SPN.Web.ViewModels.ForumViewModels.CategoryViewModels;
+    using SPN.Web.ViewModels.ForumViewModels.Post;
 
     public class CategoryService : BaseService, ICategoryService
     {
-        public CategoryService(IMapper mapper, SPNDbContext dbContext)
+        private readonly IPostService postService;
+
+        public CategoryService(IMapper mapper, SPNDbContext dbContext,IPostService postService)
             : base(mapper, dbContext)
         {
-
+            this.postService = postService;
         }
 
         public async Task CreateCategoryAsync(CategoryInputModel inputModel)
         {
             Category category = this.mapper.Map<Category>(inputModel); //Maping
-
-            category.CreatedOn = DateTime.UtcNow;
-
+            
             await this.dbContext.Categories.AddAsync(category);
             await this.dbContext.SaveChangesAsync();
+
+            inputModel.Id = category.Id;
         }
 
         public Task DeleteCategoryAsync(int categoryId)
@@ -36,17 +40,8 @@
             throw new NotImplementedException();
         }
 
-        public async Task<IEnumerable<Category>> GetAllCategoriesAsync()
-        {
-            return await dbContext
-                .Categories
-                .Include(c => c.Posts)
-                .ToListAsync(); 
-        }
-
         public async Task<Category> GetCategoryByIdAsync(int id)
         {
-
             var category = await this.dbContext
                     .Categories
                     .Where(c => c.Id == id)
@@ -72,6 +67,44 @@
 
             this.dbContext.Update(category);
             await this.dbContext.SaveChangesAsync();
+        }
+
+       public async Task<CategoryListingViewModel> GetAllCategoriesAsync()
+        {
+            var categories = await this.dbContext
+                    .Categories
+                    .Include(x => x.Posts)
+                    .ToListAsync();
+
+            var categoryModel = this.mapper
+                 .Map<IEnumerable<CategoryConciseViewModel>>(categories); //Map
+
+            var model = new CategoryListingViewModel
+            {
+                CategoryListing = categoryModel
+            };
+
+            return model;
+        }
+
+        public async Task<CategoryTopicModel> GetCategoryTopic(int categoryId)
+        {
+            var category = await this.GetCategoryByIdAsync(categoryId);
+            var posts = await postService.GetPostsByCategoryAsync(categoryId);
+
+            var categoryConcise = this.mapper
+                .Map<CategoryConciseViewModel>(category);
+
+            var postListing = this.mapper
+                .Map<IEnumerable<PostListingViewModel>>(posts);
+
+            var model = new CategoryTopicModel
+            {
+                Category = categoryConcise,
+                Posts = postListing
+            };
+
+            return model;
         }
     }
 }

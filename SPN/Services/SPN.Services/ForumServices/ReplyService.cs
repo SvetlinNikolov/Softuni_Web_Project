@@ -11,6 +11,8 @@
     using SPN.Services.Contracts.Forum;
     using SPN.Services.Shared;
     using SPN.Web.InputModels.ForumInputModels.Reply;
+    using System.Linq;
+
     public class ReplyService : BaseService, IReplyService
     {
         private readonly IPostService postService;
@@ -40,7 +42,7 @@
             };
 
             await this.dbContext.Replies.AddAsync(reply);
-             await this.dbContext.SaveChangesAsync();
+            await this.dbContext.SaveChangesAsync();
         }
 
         public async Task DeleteReplyAsync(int id)
@@ -49,7 +51,7 @@
 
             this.dbContext.Replies.Remove(replyToDelete);
 
-             await this.dbContext.SaveChangesAsync();
+            await this.dbContext.SaveChangesAsync();
         }
 
         public Task<Reply> EditReplyAsync(int replyId, string newMessage)
@@ -68,5 +70,16 @@
                   .FirstOrDefaultAsync();
         }
 
+        public async Task<string> GetReplyContent(int replyId)
+        {
+            var reply = await this.dbContext
+                .Replies
+                .Where(x => x.Id == replyId)
+                .Select(x => x.Content)
+                .FirstOrDefaultAsync();
+
+            return reply;
+                
+        }
     }
 }

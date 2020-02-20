@@ -15,5 +15,7 @@
         Task<Reply> GetReplyByIdAsync(int id);
 
         Task<Reply> EditReplyAsync(int replyId, string newMessage);
+
+        Task <string>GetReplyContent(int replyId);
     }
 }
