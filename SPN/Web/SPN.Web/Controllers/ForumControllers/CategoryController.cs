@@ -13,6 +13,7 @@
     using SPN.Web.InputModels.ForumInputModels.Category;
     using SPN.Web.ViewModels.ForumViewModels.CategoryViewModels;
     using SPN.Web.ViewModels.ForumViewModels.Post;
+    [Authorize(Roles ="Admin")]
     public class CategoryController : BaseController
     {
         private readonly IPostService postService;
@@ -29,7 +30,7 @@
             this.postService = postService;
             this.categoryService = categoryService;
         }
-
+        [AllowAnonymous]
         public async Task<IActionResult> Index()
         {
             var categories = await this.categoryService.
@@ -37,7 +38,7 @@
 
             var categoryModel = this.mapper
                  .Map<IEnumerable<CategoryConciseViewModel>>(categories); //Map
-
+           
             var model = new CategoryListingViewModel
             {
                 CategoryListing = categoryModel
@@ -46,18 +47,23 @@
             return this.View(model);
         }
 
-
+    
         public IActionResult Create()
         {
             return this.View();
         }
-        [Authorize]
+
+      
         [HttpPost]
         public async Task<IActionResult> Create(CategoryInputModel model)
         {
+            if (!this.User.Identity.IsAuthenticated)
+            {
+                return this.Redirect("/Identity/Account/Login");
+            }
+
             if (ModelState.IsValid)
             {
-
                 await this.categoryService.CreateCategoryAsync(model);
 
                 return this.Redirect("/");
@@ -71,6 +77,7 @@
             }
         }
 
+        [AllowAnonymous]
         public async Task<IActionResult> Topic(int id)
         {
             var category = await categoryService.GetCategoryByIdAsync(id);

@@ -11,7 +11,8 @@
         {
             this.CreateMap<CategoryInputModel, Category>();
 
-            this.CreateMap<Category, CategoryConciseViewModel>();
+            this.CreateMap<Category, CategoryConciseViewModel>()
+                .ForMember(x => x.PostsCount, y => y.MapFrom(z => z.Posts.Count));
         }
 
     }

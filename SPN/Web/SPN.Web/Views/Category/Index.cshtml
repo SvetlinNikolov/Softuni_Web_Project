@@ -1,21 +1,54 @@
 ﻿@model CategoryListingViewModel
-
-<h1>Index Page: </h1>
-
-<table class="table table-hover" id="categoryListingTable">
-    <tbody>
-        @foreach (var category in Model.CategoryListing)
-        {
-            <tr>
-                <td>
-                    <a asp-controller="Category" asp-action="Topic" asp-route-id="@category.Id">
-                        @category.Title
-                    </a>
-                </td>
-                <td>
-                    @category.Description
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>
+<html>
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+    <link rel="stylesheet" href="~/css/category.css">
+</head>
+<body>
+    <div class="container-fluid mt-100">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card mb-3">
+                    <div class="card-header pr-0 pl-0">
+                        <div class="row no-gutters align-items-center w-100">
+                            <div class="col font-weight-bold pl-3">General</div>
+                            <div class="d-none d-md-block col-6 text-muted">
+                                <div class="row no-gutters align-items-center">
+                                    <div class="col-3">Posts</div>
+                                    <div class="col-6">Last update</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    @foreach (var category in Model.CategoryListing)
+                    {
+                        <div class="card-body py-3">
+                            <div class="row no-gutters align-items-center">
+                                <div class="col">
+                                    <a asp-controller="Category" asp-action="Topic" asp-route-id="@category.Id" class="text-big" font-weight-semibold data-abc="true">
+                                        @category.Title
+                                    </a>
+                                </div>
+                                <div class="d-none d-md-block col-6">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col-3">@category.PostsCount</div>
+                                        <div class="media col-6 align-items-center">
+                                            <img src="https://res.cloudinary.com/dxfq3iotg/image/upload/v1574583246/AAA/2.jpg" alt="" class="d-block ui-w-30 rounded-circle">
+                                            <div class="media-body flex-truncate ml-2">
+                                                <a href="javascript:void(0)" class="d-block text-truncate" data-abc="true">Thankyou for your help. appreciate your solution</a>
+                                                <div class="text-muted small text-truncate">2d ago &nbsp;·&nbsp; <a href="javascript:void(0)" class="text-muted" data-abc="true">William Smith</a></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -37,7 +37,9 @@
             };
 
             await this.dbContext.Posts.AddAsync(post);
-             await this.dbContext.SaveChangesAsync();
+            await this.dbContext.SaveChangesAsync();
+
+            model.Id = post.Id;
 
         }
         public Task DeletePost(int id)

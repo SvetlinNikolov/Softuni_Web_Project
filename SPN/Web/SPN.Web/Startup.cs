@@ -46,6 +46,7 @@ namespace SPN.Web
             services.Configure<IdentityOptions>(options =>
             {
                 // Password settings.
+                
                 options.Password.RequireDigit = false;
                 options.Password.RequireLowercase = false;
                 options.Password.RequireNonAlphanumeric = false;
@@ -54,7 +55,17 @@ namespace SPN.Web
                 options.Password.RequiredUniqueChars = 0;
 
                 options.User.RequireUniqueEmail = false;
+
+
             });
+
+            services
+                 .ConfigureApplicationCookie(options =>
+                 {
+                     options.LoginPath = "/Identity/Account/Login";
+                     options.LogoutPath = "/Identity/Account/Logout";
+                    
+                 });
 
             services.AddAutoMapper(AutoMapperConfig.GetAutoMapperProfilesFromAllAssemblies()
              .ToArray());
@@ -69,6 +80,8 @@ namespace SPN.Web
             services.AddScoped<IQuoteService, QuoteService>();
 
             services.AddScoped<IContestCategoryService, ContestCategoryService>();
+
+            services.AddScoped<IUserProfileService, UserProfileService>();
 
             services.AddControllersWithViews();
             services.AddRazorPages();

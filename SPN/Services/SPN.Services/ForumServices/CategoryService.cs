@@ -41,7 +41,7 @@
             return await dbContext
                 .Categories
                 .Include(c => c.Posts)
-                .ToListAsync(); //TODO SEE IF WE NEED TO INCLUDE POSTS REPLIES
+                .ToListAsync(); 
         }
 
         public async Task<Category> GetCategoryByIdAsync(int id)
