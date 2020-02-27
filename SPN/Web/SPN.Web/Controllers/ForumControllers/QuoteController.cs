@@ -38,6 +38,7 @@
         [HttpPost]
         public async Task<IActionResult> Create(QuoteInputModel model)
         {
+
             if (this.ModelState.IsValid)
             {
                 await this.quoteService.CreateQuoteAsync(model);

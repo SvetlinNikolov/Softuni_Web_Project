@@ -42,10 +42,7 @@
             }
             else
             {
-                var result = this.View("Error", this.ModelState);
-                result.StatusCode = (int)HttpStatusCode.BadRequest;
-
-                return result;
+                return this.View(model);
             }
 
         }
