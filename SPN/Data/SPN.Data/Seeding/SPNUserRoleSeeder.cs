@@ -25,8 +25,6 @@
                 await dbContext.Roles.AddRangeAsync(userRoles);
                 await dbContext.SaveChangesAsync();
             }
-
-
         }
     }
 }

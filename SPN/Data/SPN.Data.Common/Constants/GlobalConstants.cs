@@ -3,7 +3,7 @@
 namespace SPN.Data.Common.Constants
 {
 
-    public class GlobalConstants
+    public static class GlobalConstants
     {
         public static string CurrentDirectory = Assembly.GetExecutingAssembly().Location;
         public static string CategoriesJsonLocation = CurrentDirectory + @"../../../../../../../Data/SPN.Data/Seeding/Datasets/Categories.json";
