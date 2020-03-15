@@ -5,7 +5,7 @@
     using System.Threading.Tasks;
     using SPN.Data.Models.Forum;
     using SPN.Data.Models.Quiz;
-    using SPN.Web.InputModels.QuizInputModels;
+    using SPN.Web.InputModels.QuizInputModels.ContestCategory;
     using SPN.Web.ViewModels.QuizViewModels.ContestCategory;
 
     public interface IContestCategoryService

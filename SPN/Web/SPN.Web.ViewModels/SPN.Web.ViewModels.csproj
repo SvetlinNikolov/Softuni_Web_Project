@@ -13,4 +13,8 @@
     <ProjectReference Include="..\..\Data\SPN.Data.Models\SPN.Data.Models.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="QuizViewModels\Contest\" />
+  </ItemGroup>
+
 </Project>

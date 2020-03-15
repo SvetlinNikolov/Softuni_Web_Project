@@ -3,7 +3,7 @@
     using AutoMapper;
 
     using SPN.Data.Models.Quiz;
-    using SPN.Web.InputModels.QuizInputModels;
+    using SPN.Web.InputModels.QuizInputModels.ContestCategory;
     using SPN.Web.ViewModels.QuizViewModels.ContestCategory;
     using System;
 

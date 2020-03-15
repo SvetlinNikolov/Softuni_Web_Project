@@ -1,4 +1,4 @@
-﻿namespace SPN.Web.InputModels.QuizInputModels
+﻿namespace SPN.Web.InputModels.QuizInputModels.ContestCategory
 {
     public class ContestCategoryInputModel
     {

@@ -81,6 +81,7 @@ namespace SPN.Web
 
             //Quiz Services
             services.AddScoped<IContestCategoryService, ContestCategoryService>();
+            services.AddScoped<IContestService, ContestService>();
 
             //Shared Services
             services.AddScoped<IUserProfileService, UserProfileService>();

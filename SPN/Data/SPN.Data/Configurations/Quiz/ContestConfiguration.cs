@@ -24,10 +24,10 @@ namespace SPN.Data.Configurations.Quiz
                 .WithMany(contestCategory => contestCategory.Contests)
                 .HasForeignKey(contest => contest.ContestCategoryId);
 
-            builder.HasMany(contest => contest.ContestQuestions)
-                .WithOne(contestQuestions => contestQuestions.Contest)
-                 .HasForeignKey(contestQuestion => contestQuestion.ContestId)
-                .OnDelete(DeleteBehavior.Cascade);
+            //builder.HasMany(contest => contest.ContestQuestions)
+            //    .WithOne(contestQuestions => contestQuestions.Contest)
+            //     .HasForeignKey(contestQuestion => contestQuestion.ContestId)
+            //    .OnDelete(DeleteBehavior.Cascade);
 
         
 

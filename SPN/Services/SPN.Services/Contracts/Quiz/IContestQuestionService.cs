@@ -8,6 +8,6 @@ namespace SPN.Services.Contracts.Quiz
 {
     public interface IContestQuestionService
     {
-        public Task CreateContestQuestion(IFormCollection formCollection);
+        public Task CreateContestQuestionAsync(IFormCollection formCollection);
     }
 }

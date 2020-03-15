@@ -10,11 +10,11 @@
     {
         public void Configure(EntityTypeBuilder<ContestQuestion> builder)
         {
-            builder.HasKey(cq => cq.Id);
+            builder.HasKey(c => new { c.Id, c.ContestId });
 
-            builder.HasOne(cq => cq.Contest)
-                .WithMany(q => q.ContestQuestions)
-                .HasForeignKey(cq => cq.Id); //TODO dont know about this one rick
+            //builder.HasOne(cq => cq.Contest)
+            //    .WithMany(q => q.ContestQuestions)
+            //    .HasForeignKey(cq => cq.Id); //TODO dont know about this one rick
 
          
         }

@@ -17,7 +17,7 @@ namespace SPN.Services.QuizServices
         {
         }
 
-        public Task CreateContestQuestion(IFormCollection formCollection)
+        public Task CreateContestQuestionAsync(IFormCollection formCollection)
         {
             var keys = formCollection.Keys;
 
