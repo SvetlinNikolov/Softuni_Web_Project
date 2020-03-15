@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace SPN.Data.Migrations
+namespace SPN.Forum.Data.Migrations
 {
     public partial class Quote : Migration
     {

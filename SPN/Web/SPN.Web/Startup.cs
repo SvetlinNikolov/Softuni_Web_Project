@@ -10,17 +10,15 @@ namespace SPN.Web
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Hosting;
     using System.Linq;
-
-    using SPN.Data;
-    using SPN.Data.Models.Identity;
-    using SPN.Services.Contracts.Forum;
+    using SPN.Forum.Data;
+    using SPN.Forum.Services.Contracts;
     using SPN.Services.ForumServices;
     using SPN.Services.Shared;
-    using SPN.Services.Mapping;
-    using SPN.Data.Seeding;
     using SPN.Web.Extensions;
     using SPN.Services.Contracts.Quiz;
     using SPN.Services.QuizServices;
+    using SPN.Forum.Services.Contracts.Forum;
+    using SPN.Forum.Services.Mapping;
 
     public class Startup
     {

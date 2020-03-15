@@ -1,4 +1,4 @@
-﻿using SPN.Data.Common.Constants;
+﻿using SPN.Forum.Data.Common.Constants;
 using System.ComponentModel.DataAnnotations;
 
 namespace SPN.Web.InputModels.ForumInputModels.Post

@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace SPN.Data.Migrations
+namespace SPN.Forum.Data.Migrations
 {
     public partial class Removed_Foreign_Key_In_Contest_Question : Migration
     {

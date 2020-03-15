@@ -2,8 +2,8 @@
 {
     using System;
     using System.ComponentModel.DataAnnotations;
-
     using SPN.Data.Common.Contracts;
+
     public class BaseEntity<TKey> : IAuditInfo
     {
         [Key]

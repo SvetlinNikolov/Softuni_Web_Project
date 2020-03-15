@@ -2,7 +2,7 @@
 {
     using System;
 
-    using SPN.Data.Common.Contracts;
+    using SPN.Forum.Data.Common.Contracts;
 
     public class ReplyQuoteViewModel : IAuditInfo
     {

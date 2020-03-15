@@ -1,4 +1,4 @@
-﻿namespace SPN.Services.Mapping
+﻿namespace SPN.Forum.Services.Mapping
 {
     using AutoMapper;
     using System;

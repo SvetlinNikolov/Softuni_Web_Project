@@ -1,7 +1,7 @@
 ﻿namespace SPN.Web.InputModels.ForumInputModels.Category
 {
     using Microsoft.AspNetCore.Http;
-    using SPN.Data.Common.Constants;
+    using SPN.Forum.Data.Common.Constants;
     using System.ComponentModel.DataAnnotations;
 
     public class CategoryInputModel

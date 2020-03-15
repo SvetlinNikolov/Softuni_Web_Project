@@ -10,11 +10,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Data\SPN.Data.Models\SPN.Data.Models.csproj" />
+    <Folder Include="QuizViewModels\Contest\" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="QuizViewModels\Contest\" />
+    <ProjectReference Include="..\..\Data\SPN.Forum.Data.Models\SPN.Forum.Data.Models.csproj" />
   </ItemGroup>
 
 </Project>

@@ -9,7 +9,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Data\SPN.Data.Common\SPN.Data.Common.csproj" />
+    <ProjectReference Include="..\..\..\Data\SPN.Forum.Data.Common\SPN.Forum.Data.Common.csproj" />
   </ItemGroup>
 
 </Project>

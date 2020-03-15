@@ -3,7 +3,7 @@
     using System;
     using System.Collections.Generic;
 
-    using SPN.Data.Common.Contracts;
+    using SPN.Forum.Data.Common.Contracts;
     using SPN.Web.ViewModels.ForumViewModels.Reply;
     public class PostIndexViewModel : IAuditInfo
     {

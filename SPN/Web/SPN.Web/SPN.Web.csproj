@@ -18,10 +18,10 @@
 
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Data\SPN.Data.Models\SPN.Data.Models.csproj" />
-    <ProjectReference Include="..\..\Data\SPN.Data\SPN.Data.csproj" />
-    <ProjectReference Include="..\..\Services\SPN.Services.Mapping\SPN.Services.Mapping\SPN.Services.Mapping\SPN.Services.Mapping.csproj" />
-    <ProjectReference Include="..\..\Services\SPN.Services\SPN.Services.csproj" />
+    <ProjectReference Include="..\..\Data\SPN.Forum.Data.Models\SPN.Forum.Data.Models.csproj" />
+    <ProjectReference Include="..\..\Data\SPN.Forum.Data\SPN.Forum.Data.csproj" />
+    <ProjectReference Include="..\..\Services\SPN.Forum.Services.Mapping.MappingProfiles\SPN.Forum.Services.Mapping.MappingProfiles\SPN.Forum.Services.Mapping.MappingProfiles\SPN.Forum.Services.Mapping.csproj" />
+    <ProjectReference Include="..\..\Services\SPN.Services\SPN.Forum.Services.csproj" />
     <ProjectReference Include="..\SPN.Web.InputModels\SPN.Web.InputModels\SPN.Web.InputModels.csproj" />
     <ProjectReference Include="..\SPN.Web.ViewModels\SPN.Web.ViewModels.csproj" />
   </ItemGroup>

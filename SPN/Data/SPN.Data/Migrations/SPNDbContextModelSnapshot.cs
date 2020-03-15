@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SPN.Data;
 
-namespace SPN.Data.Migrations
+namespace SPN.Forum.Data.Migrations
 {
     [DbContext(typeof(SPNDbContext))]
     partial class SPNDbContextModelSnapshot : ModelSnapshot
@@ -150,7 +150,7 @@ namespace SPN.Data.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("SPN.Data.Models.Forum.Category", b =>
+            modelBuilder.Entity("SPN.Forum.Data.Models.Forum.Category", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -183,7 +183,7 @@ namespace SPN.Data.Migrations
                     b.ToTable("Categories");
                 });
 
-            modelBuilder.Entity("SPN.Data.Models.Forum.Post", b =>
+            modelBuilder.Entity("SPN.Forum.Data.Models.Forum.Post", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -226,7 +226,7 @@ namespace SPN.Data.Migrations
                     b.ToTable("Posts");
                 });
 
-            modelBuilder.Entity("SPN.Data.Models.Forum.PostLike", b =>
+            modelBuilder.Entity("SPN.Forum.Data.Models.Forum.PostLike", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -254,7 +254,7 @@ namespace SPN.Data.Migrations
                     b.ToTable("PostLikes");
                 });
 
-            modelBuilder.Entity("SPN.Data.Models.Forum.Quote", b =>
+            modelBuilder.Entity("SPN.Forum.Data.Models.Forum.Quote", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -291,7 +291,7 @@ namespace SPN.Data.Migrations
                     b.ToTable("Quotes");
                 });
 
-            modelBuilder.Entity("SPN.Data.Models.Forum.QuoteLike", b =>
+            modelBuilder.Entity("SPN.Forum.Data.Models.Forum.QuoteLike", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -319,7 +319,7 @@ namespace SPN.Data.Migrations
                     b.ToTable("QuoteLikes");
                 });
 
-            modelBuilder.Entity("SPN.Data.Models.Forum.Reply", b =>
+            modelBuilder.Entity("SPN.Forum.Data.Models.Forum.Reply", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -356,7 +356,7 @@ namespace SPN.Data.Migrations
                     b.ToTable("Replies");
                 });
 
-            modelBuilder.Entity("SPN.Data.Models.Forum.ReplyLike", b =>
+            modelBuilder.Entity("SPN.Forum.Data.Models.Forum.ReplyLike", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -390,7 +390,7 @@ namespace SPN.Data.Migrations
                     b.ToTable("ReplyLikes");
                 });
 
-            modelBuilder.Entity("SPN.Data.Models.Identity.User", b =>
+            modelBuilder.Entity("SPN.Forum.Data.Models.Identity.User", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
@@ -481,7 +481,7 @@ namespace SPN.Data.Migrations
                     b.ToTable("AspNetUsers");
                 });
 
-            modelBuilder.Entity("SPN.Data.Models.Quiz.Contest", b =>
+            modelBuilder.Entity("SPN.Quiz.Data.Models.Contest", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -536,7 +536,7 @@ namespace SPN.Data.Migrations
                     b.ToTable("Contests");
                 });
 
-            modelBuilder.Entity("SPN.Data.Models.Quiz.ContestCategory", b =>
+            modelBuilder.Entity("SPN.Quiz.Data.Models.ContestCategory", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -569,7 +569,7 @@ namespace SPN.Data.Migrations
                     b.ToTable("ContestCategories");
                 });
 
-            modelBuilder.Entity("SPN.Data.Models.Quiz.ContestQuestion", b =>
+            modelBuilder.Entity("SPN.Quiz.Data.Models.ContestQuestion", b =>
                 {
                     b.Property<int>("Id")
                         .HasColumnType("int");
@@ -596,7 +596,7 @@ namespace SPN.Data.Migrations
                     b.ToTable("ContestQuestions");
                 });
 
-            modelBuilder.Entity("SPN.Data.Models.Quiz.ContestQuestionAnswer", b =>
+            modelBuilder.Entity("SPN.Quiz.Data.Models.ContestQuestionAnswer", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -636,7 +636,7 @@ namespace SPN.Data.Migrations
                     b.ToTable("ContestQuestionAnswers");
                 });
 
-            modelBuilder.Entity("SPN.Data.Models.Quiz.ContestSolution", b =>
+            modelBuilder.Entity("SPN.Quiz.Data.Models.ContestSolution", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -669,7 +669,7 @@ namespace SPN.Data.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
                 {
-                    b.HasOne("SPN.Data.Models.Identity.User", null)
+                    b.HasOne("SPN.Forum.Data.Models.Identity.User", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -678,7 +678,7 @@ namespace SPN.Data.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
-                    b.HasOne("SPN.Data.Models.Identity.User", null)
+                    b.HasOne("SPN.Forum.Data.Models.Identity.User", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -693,7 +693,7 @@ namespace SPN.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("SPN.Data.Models.Identity.User", null)
+                    b.HasOne("SPN.Forum.Data.Models.Identity.User", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -702,142 +702,142 @@ namespace SPN.Data.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
                 {
-                    b.HasOne("SPN.Data.Models.Identity.User", null)
+                    b.HasOne("SPN.Forum.Data.Models.Identity.User", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("SPN.Data.Models.Forum.Post", b =>
+            modelBuilder.Entity("SPN.Forum.Data.Models.Forum.Post", b =>
                 {
-                    b.HasOne("SPN.Data.Models.Identity.User", "Author")
+                    b.HasOne("SPN.Forum.Data.Models.Identity.User", "Author")
                         .WithMany("Posts")
                         .HasForeignKey("AuthorId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("SPN.Data.Models.Forum.Category", "Category")
+                    b.HasOne("SPN.Forum.Data.Models.Forum.Category", "Category")
                         .WithMany("Posts")
                         .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("SPN.Data.Models.Forum.PostLike", b =>
+            modelBuilder.Entity("SPN.Forum.Data.Models.Forum.PostLike", b =>
                 {
-                    b.HasOne("SPN.Data.Models.Forum.Post", "Post")
+                    b.HasOne("SPN.Forum.Data.Models.Forum.Post", "Post")
                         .WithMany("PostLikes")
                         .HasForeignKey("PostId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("SPN.Data.Models.Identity.User", "User")
+                    b.HasOne("SPN.Forum.Data.Models.Identity.User", "User")
                         .WithMany("PostLikes")
                         .HasForeignKey("UserId");
                 });
 
-            modelBuilder.Entity("SPN.Data.Models.Forum.Quote", b =>
+            modelBuilder.Entity("SPN.Forum.Data.Models.Forum.Quote", b =>
                 {
-                    b.HasOne("SPN.Data.Models.Identity.User", "Author")
+                    b.HasOne("SPN.Forum.Data.Models.Identity.User", "Author")
                         .WithMany("Quotes")
                         .HasForeignKey("AuthorId");
 
-                    b.HasOne("SPN.Data.Models.Forum.Reply", "Reply")
+                    b.HasOne("SPN.Forum.Data.Models.Forum.Reply", "Reply")
                         .WithMany("Quotes")
                         .HasForeignKey("ReplyId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("SPN.Data.Models.Forum.QuoteLike", b =>
+            modelBuilder.Entity("SPN.Forum.Data.Models.Forum.QuoteLike", b =>
                 {
-                    b.HasOne("SPN.Data.Models.Forum.Quote", "Quote")
+                    b.HasOne("SPN.Forum.Data.Models.Forum.Quote", "Quote")
                         .WithMany("QuoteLikes")
                         .HasForeignKey("QuoteId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("SPN.Data.Models.Identity.User", "User")
+                    b.HasOne("SPN.Forum.Data.Models.Identity.User", "User")
                         .WithMany("QuoteLikes")
                         .HasForeignKey("UserId");
                 });
 
-            modelBuilder.Entity("SPN.Data.Models.Forum.Reply", b =>
+            modelBuilder.Entity("SPN.Forum.Data.Models.Forum.Reply", b =>
                 {
-                    b.HasOne("SPN.Data.Models.Identity.User", "Author")
+                    b.HasOne("SPN.Forum.Data.Models.Identity.User", "Author")
                         .WithMany("Replies")
                         .HasForeignKey("AuthorId");
 
-                    b.HasOne("SPN.Data.Models.Forum.Post", "Post")
+                    b.HasOne("SPN.Forum.Data.Models.Forum.Post", "Post")
                         .WithMany("Replies")
                         .HasForeignKey("PostId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("SPN.Data.Models.Forum.ReplyLike", b =>
+            modelBuilder.Entity("SPN.Forum.Data.Models.Forum.ReplyLike", b =>
                 {
-                    b.HasOne("SPN.Data.Models.Forum.Reply", "Reply")
+                    b.HasOne("SPN.Forum.Data.Models.Forum.Reply", "Reply")
                         .WithMany("ReplyLikes")
                         .HasForeignKey("ReplyId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("SPN.Data.Models.Identity.User", "User")
+                    b.HasOne("SPN.Forum.Data.Models.Identity.User", "User")
                         .WithMany("ReplyLikes")
                         .HasForeignKey("UserId");
                 });
 
-            modelBuilder.Entity("SPN.Data.Models.Identity.User", b =>
+            modelBuilder.Entity("SPN.Forum.Data.Models.Identity.User", b =>
                 {
-                    b.HasOne("SPN.Data.Models.Quiz.Contest", null)
+                    b.HasOne("SPN.Quiz.Data.Models.Contest", null)
                         .WithMany("Participants")
                         .HasForeignKey("ContestId");
                 });
 
-            modelBuilder.Entity("SPN.Data.Models.Quiz.Contest", b =>
+            modelBuilder.Entity("SPN.Quiz.Data.Models.Contest", b =>
                 {
-                    b.HasOne("SPN.Data.Models.Identity.User", "Author")
+                    b.HasOne("SPN.Forum.Data.Models.Identity.User", "Author")
                         .WithMany("Contests")
                         .HasForeignKey("AuthorId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("SPN.Data.Models.Quiz.ContestCategory", "ContestCategory")
+                    b.HasOne("SPN.Quiz.Data.Models.ContestCategory", "ContestCategory")
                         .WithMany("Contests")
                         .HasForeignKey("ContestCategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("SPN.Data.Models.Quiz.ContestQuestion", b =>
+            modelBuilder.Entity("SPN.Quiz.Data.Models.ContestQuestion", b =>
                 {
-                    b.HasOne("SPN.Data.Models.Quiz.Contest", "Contest")
+                    b.HasOne("SPN.Quiz.Data.Models.Contest", "Contest")
                         .WithMany("ContestQuestions")
                         .HasForeignKey("ContestId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("SPN.Data.Models.Quiz.ContestQuestionAnswer", b =>
+            modelBuilder.Entity("SPN.Quiz.Data.Models.ContestQuestionAnswer", b =>
                 {
-                    b.HasOne("SPN.Data.Models.Quiz.ContestSolution", null)
+                    b.HasOne("SPN.Quiz.Data.Models.ContestSolution", null)
                         .WithMany("ContestQuestionAnswers")
                         .HasForeignKey("ContestSolutionId");
 
-                    b.HasOne("SPN.Data.Models.Quiz.ContestQuestion", "ContestQuestion")
+                    b.HasOne("SPN.Quiz.Data.Models.ContestQuestion", "ContestQuestion")
                         .WithMany("ContestQuestionAnswers")
                         .HasForeignKey("ContestQuestionId1", "ContestQuestionContestId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("SPN.Data.Models.Quiz.ContestSolution", b =>
+            modelBuilder.Entity("SPN.Quiz.Data.Models.ContestSolution", b =>
                 {
-                    b.HasOne("SPN.Data.Models.Identity.User", "Author")
+                    b.HasOne("SPN.Forum.Data.Models.Identity.User", "Author")
                         .WithMany("ContestsSolutions")
                         .HasForeignKey("AuthorId");
 
-                    b.HasOne("SPN.Data.Models.Quiz.Contest", "Contest")
+                    b.HasOne("SPN.Quiz.Data.Models.Contest", "Contest")
                         .WithMany()
                         .HasForeignKey("ContestId")
                         .OnDelete(DeleteBehavior.Cascade)

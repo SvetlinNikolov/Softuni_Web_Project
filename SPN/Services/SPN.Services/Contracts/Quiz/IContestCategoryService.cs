@@ -3,8 +3,7 @@
     using System;
     using System.Collections.Generic;
     using System.Threading.Tasks;
-    using SPN.Data.Models.Forum;
-    using SPN.Data.Models.Quiz;
+    using SPN.Quiz.Data.Models;
     using SPN.Web.InputModels.QuizInputModels.ContestCategory;
     using SPN.Web.ViewModels.QuizViewModels.ContestCategory;
 

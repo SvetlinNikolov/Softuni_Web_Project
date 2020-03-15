@@ -2,7 +2,7 @@
 {
     using System.ComponentModel.DataAnnotations;
 
-    using SPN.Data.Common.Constants;
+    using SPN.Forum.Data.Common.Constants;
    
 
     public class ReplyInputModel

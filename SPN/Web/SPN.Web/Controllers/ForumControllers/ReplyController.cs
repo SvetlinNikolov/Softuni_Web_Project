@@ -5,9 +5,11 @@
     using System.Net;
     using System.Threading.Tasks;
 
-    using SPN.Services.Contracts.Forum;
+    using SPN.Forum.Services.Contracts;
     using SPN.Services.Shared;
     using SPN.Web.InputModels.ForumInputModels.Reply;
+    using SPN.Forum.Services.Contracts.Forum;
+
     public class ReplyController : BaseController
     {
         private readonly IPostService postService;
