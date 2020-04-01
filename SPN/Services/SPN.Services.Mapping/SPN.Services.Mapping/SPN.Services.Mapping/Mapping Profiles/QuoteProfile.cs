@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
-using SPN.Data.Models.Forum;
-using SPN.Web.InputModels.ForumInputModels.Quote;
+using SPN.Forum.Data.Models;
+using SPN.Forum.Web.InputModels.Quote;
 
 namespace SPN.Services.Mapping.Mapping_Profiles
 {

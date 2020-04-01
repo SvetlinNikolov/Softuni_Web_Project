@@ -10,17 +10,14 @@ namespace SPN.Web
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Hosting;
     using System.Linq;
-
-    using SPN.Data;
-    using SPN.Data.Models.Identity;
-    using SPN.Services.Contracts.Forum;
-    using SPN.Services.ForumServices;
-    using SPN.Services.Shared;
     using SPN.Services.Mapping;
-    using SPN.Data.Seeding;
     using SPN.Web.Extensions;
-    using SPN.Services.Contracts.Quiz;
-    using SPN.Services.QuizServices;
+    using SPN.Forum.Data.Seeding;
+    using SPN.Forum.Data;
+    using SPN.Forum.Data.Models.Identity;
+    using SPN.Forum.Services.Contracts;
+    using SPN.Forum.Services.Services;
+    using SPN.Forum.Services.Shared;
 
     public class Startup
     {
@@ -70,7 +67,7 @@ namespace SPN.Web
              .ToArray());
             services.AddScoped<SPNUserRoleSeeder>();
             services.AddScoped<SPNCategorySeeder>();
-            services.AddScoped<SPNContestCategorySeeder>();
+         
 
             //Forum Services
             services.AddScoped<ICategoryService, CategoryService>();
@@ -78,10 +75,6 @@ namespace SPN.Web
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IReplyService, ReplyService>();
             services.AddScoped<IQuoteService, QuoteService>();
-
-            //Quiz Services
-            services.AddScoped<IContestCategoryService, ContestCategoryService>();
-            services.AddScoped<IContestService, ContestService>();
 
             //Shared Services
             services.AddScoped<IUserProfileService, UserProfileService>();

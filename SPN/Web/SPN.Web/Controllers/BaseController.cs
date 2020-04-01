@@ -2,8 +2,8 @@
 {
     using AutoMapper;
     using Microsoft.AspNetCore.Mvc;
+    using SPN.Forum.Services.Shared;
 
-    using SPN.Services.Shared;
     public abstract class BaseController : Controller
     {
 

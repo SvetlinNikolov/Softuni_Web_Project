@@ -1,10 +1,9 @@
-﻿namespace SPN.Data.Configurations.Forum
+﻿namespace SPN.Forum.Data.Configurations.Forum
 {
 
     using Microsoft.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore.Metadata.Builders;
-
-    using SPN.Data.Models.Identity;
+    using SPN.Forum.Data.Models.Identity;
 
     public class UserConfiguration : IEntityTypeConfiguration<User>
     {
@@ -20,15 +19,11 @@
 
             builder.HasMany(u => u.Quotes)
                 .WithOne(r => r.Author);
-           
 
-            builder.HasMany(u => u.Contests)
-                .WithOne(cc => cc.Author);
 
-            builder.HasMany(u => u.ContestsSolutions)
-                .WithOne(css => css.Author);
 
-            
+
+
             //TODO Check if this config is enough
 
         }

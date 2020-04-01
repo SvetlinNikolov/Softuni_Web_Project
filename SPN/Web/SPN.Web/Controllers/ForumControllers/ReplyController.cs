@@ -4,10 +4,10 @@
     using Microsoft.AspNetCore.Mvc;
     using System.Net;
     using System.Threading.Tasks;
+    using SPN.Forum.Services.Contracts;
+    using SPN.Forum.Services.Shared;
+    using SPN.Forum.Web.InputModels.Reply;
 
-    using SPN.Services.Contracts.Forum;
-    using SPN.Services.Shared;
-    using SPN.Web.InputModels.ForumInputModels.Reply;
     public class ReplyController : BaseController
     {
         private readonly IPostService postService;

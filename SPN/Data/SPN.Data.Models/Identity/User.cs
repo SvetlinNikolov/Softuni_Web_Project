@@ -1,28 +1,23 @@
-﻿
-namespace SPN.Data.Models.Identity
+﻿namespace SPN.Forum.Data.Models.Identity
 {
     using System;
     using System.Collections.Generic;
     using Microsoft.AspNetCore.Identity;
-
     using SPN.Data.Common.Contracts;
-    using SPN.Data.Models.Forum;
-    using SPN.Data.Models.Identity.Enums;
-    using SPN.Data.Models.Quiz;
+    using SPN.Forum.Data.Models;
+    using SPN.Forum.Data.Models.Identity.Enums;
 
     public class User : IdentityUser, IAuditInfo, IDeletableEntity
+
     {
         public User()
         {
-            this.PostLikes = new HashSet<PostLike>();
-            this.ReplyLikes = new HashSet<ReplyLike>();
-            this.QuoteLikes = new HashSet<QuoteLike>();
-            this.Replies = new HashSet<Reply>();
-            this.Posts = new HashSet<Post>();
-            this.Quotes = new HashSet<Quote>();
-
-            this.Contests = new HashSet<Contest>();
-            this.ContestsSolutions = new HashSet<ContestSolution>();
+            PostLikes = new HashSet<PostLike>();
+            ReplyLikes = new HashSet<ReplyLike>();
+            QuoteLikes = new HashSet<QuoteLike>();
+            Replies = new HashSet<Reply>();
+            Posts = new HashSet<Post>();
+            Quotes = new HashSet<Quote>();
         }
         public Gender Gender { get; set; }
 
@@ -38,21 +33,19 @@ namespace SPN.Data.Models.Identity
 
         public DateTime? DeletedOn { get; set; }
 
-        public virtual ICollection<PostLike> PostLikes { get; set; }      
+        public virtual ICollection<PostLike> PostLikes { get; set; }
 
         public virtual ICollection<ReplyLike> ReplyLikes { get; set; }
 
-        public virtual ICollection<QuoteLike> QuoteLikes { get; set; } 
+        public virtual ICollection<QuoteLike> QuoteLikes { get; set; }
 
-        public virtual ICollection<Reply> Replies { get; set; } 
+        public virtual ICollection<Reply> Replies { get; set; }
 
-        public virtual ICollection<Post> Posts { get; set; } 
+        public virtual ICollection<Post> Posts { get; set; }
 
         public virtual ICollection<Quote> Quotes { get; set; }
 
-        public virtual ICollection<Contest> Contests { get; set; } //Contests Created
 
-        public virtual ICollection<ContestSolution> ContestsSolutions { get; set; } //Solutions submited
 
 
 

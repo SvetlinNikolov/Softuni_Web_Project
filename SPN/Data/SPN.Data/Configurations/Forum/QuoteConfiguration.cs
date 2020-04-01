@@ -1,10 +1,9 @@
-﻿namespace SPN.Data.Configurations.Forum
+﻿namespace SPN.Forum.Data.Configurations.Forum
 {
 
     using Microsoft.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore.Metadata.Builders;
-
-    using SPN.Data.Models.Forum;
+    using SPN.Forum.Data.Models;
 
     public class QuoteConfiguration : IEntityTypeConfiguration<Quote>
     {

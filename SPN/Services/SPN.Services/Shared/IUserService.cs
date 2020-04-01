@@ -1,10 +1,9 @@
-﻿namespace SPN.Services.Shared
+﻿namespace SPN.Forum.Services.Shared
 {
     using System.Collections.Generic;
     using System.Threading.Tasks;
+    using SPN.Forum.Data.Models.Identity;
 
-    using SPN.Data.Models.Identity;
-  
     public interface IUserService
     {
         Task<User> GetLoggedInUserAsync();

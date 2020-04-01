@@ -1,12 +1,12 @@
 ﻿using AutoMapper;
-using SPN.Data;
-using SPN.Web.ViewModels.Shared;
+using SPN.Forum.Data;
+using SPN.Forum.Web.ViewModels.Shared;
 using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SPN.Services.Shared
+namespace SPN.Forum.Services.Shared
 {
     public class UserProfileService : BaseService, IUserProfileService
     {
@@ -20,7 +20,7 @@ namespace SPN.Services.Shared
 
         public async Task<UserProfileViewModel> UserProfileDetails()
         {
-            var user = await this.userService.GetLoggedInUserAsync();
+            var user = await userService.GetLoggedInUserAsync();
 
             var profile = new UserProfileViewModel  //TODO MAP THIS
             {

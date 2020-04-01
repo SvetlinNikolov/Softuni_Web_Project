@@ -6,13 +6,13 @@
     using System.Collections.Generic;
     using System.Net;
     using System.Threading.Tasks;
-    
-    using SPN.Services.Contracts.Forum;
-    using SPN.Services.Shared;
     using SPN.Web.Controllers;
-    using SPN.Web.InputModels.ForumInputModels.Category;
     using SPN.Web.ViewModels.ForumViewModels.CategoryViewModels;
     using SPN.Web.ViewModels.ForumViewModels.Post;
+    using SPN.Forum.Services.Contracts;
+    using SPN.Forum.Services.Shared;
+    using SPN.Forum.Web.InputModels.Category;
+
     [Authorize(Roles ="Admin")]
     public class CategoryController : BaseController
     {

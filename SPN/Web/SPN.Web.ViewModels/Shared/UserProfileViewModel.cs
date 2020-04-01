@@ -1,10 +1,10 @@
 ﻿using System;
 
-namespace SPN.Web.ViewModels.Shared
+namespace SPN.Forum.Web.ViewModels.Shared
 {
     public class UserProfileViewModel
     {
-        public string  Id { get; set; } //User Id
+        public string Id { get; set; } //User Id
 
         public string Username { get; set; }
 
@@ -14,6 +14,6 @@ namespace SPN.Web.ViewModels.Shared
 
         public string ProfileImage { get; set; }
 
-       
+
     }
 }

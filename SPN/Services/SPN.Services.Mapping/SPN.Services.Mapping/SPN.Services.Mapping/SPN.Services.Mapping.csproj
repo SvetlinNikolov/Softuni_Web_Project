@@ -10,10 +10,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\Data\SPN.Data.Models\SPN.Data.Models.csproj" />
-    <ProjectReference Include="..\..\..\..\Data\SPN.Data\SPN.Data.csproj" />
-    <ProjectReference Include="..\..\..\..\Web\SPN.Web.InputModels\SPN.Web.InputModels\SPN.Web.InputModels.csproj" />
-    <ProjectReference Include="..\..\..\..\Web\SPN.Web.ViewModels\SPN.Web.ViewModels.csproj" />
+    <ProjectReference Include="..\..\..\..\Data\SPN.Data.Models\SPN.Forum.Data.Models.csproj" />
+    <ProjectReference Include="..\..\..\..\Data\SPN.Data\SPN.Forum.Data.csproj" />
+    <ProjectReference Include="..\..\..\..\Web\SPN.Web.InputModels\SPN.Web.InputModels\SPN.Forum.Web.InputModels.csproj" />
+    <ProjectReference Include="..\..\..\..\Web\SPN.Web.ViewModels\SPN.Forum.Web.ViewModels.csproj" />
   </ItemGroup>
 
 </Project>

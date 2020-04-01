@@ -9,9 +9,9 @@ namespace SPN.Web.Areas.Identity.Pages.Account
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.AspNetCore.Mvc.RazorPages;
     using System.Linq;
-    using SPN.Data.Models.Identity;
-    using SPN.Data.Models.Identity.Enums;
     using System;
+    using SPN.Forum.Data.Models.Identity.Enums;
+    using SPN.Forum.Data.Models.Identity;
 
     [AllowAnonymous]
     public class RegisterModel : PageModel

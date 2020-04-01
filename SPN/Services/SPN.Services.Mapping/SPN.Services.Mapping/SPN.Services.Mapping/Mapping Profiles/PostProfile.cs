@@ -1,9 +1,8 @@
 ﻿namespace SPN.Services.Mapping
 {
     using AutoMapper;
-
-    using SPN.Data.Models.Forum;
-    using SPN.Web.InputModels.ForumInputModels.Post;
+    using SPN.Forum.Data.Models;
+    using SPN.Forum.Web.InputModels.Post;
     using SPN.Web.ViewModels.ForumViewModels.Post;
     using SPN.Web.ViewModels.ForumViewModels.Reply;
 

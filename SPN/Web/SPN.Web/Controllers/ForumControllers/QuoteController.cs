@@ -3,10 +3,10 @@
     using AutoMapper;
     using Microsoft.AspNetCore.Mvc;
     using System.Threading.Tasks;
+    using SPN.Forum.Services.Contracts;
+    using SPN.Forum.Services.Shared;
+    using SPN.Forum.Web.InputModels.Quote;
 
-    using SPN.Services.Contracts.Forum;
-    using SPN.Services.Shared;
-    using SPN.Web.InputModels.ForumInputModels.Quote;
     public class QuoteController : BaseController
     {
         private readonly IQuoteService quoteService;

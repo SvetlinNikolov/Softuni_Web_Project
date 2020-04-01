@@ -1,4 +1,4 @@
-﻿namespace SPN.Services.Shared
+﻿namespace SPN.Forum.Services.Shared
 {
     using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Identity;
@@ -7,9 +7,9 @@
     using System.Linq;
     using System.Security.Claims;
     using System.Threading.Tasks;
+    using SPN.Forum.Data;
+    using SPN.Forum.Data.Models.Identity;
 
-    using SPN.Data.Models.Identity;
-    using SPN.Data;
     public class UserService : IUserService
     {
         private readonly SPNDbContext context;
@@ -27,7 +27,7 @@
             this.httpContextAccessor = httpContextAccessor;
             this.userManager = userManager;
             this.dbContext = dbContext;
-         
+
         }
 
         public async Task<User> GetLoggedInUserAsync()
@@ -46,7 +46,7 @@
 
         public async Task<User> GetUserByIdAsync(string id)
         {
-            return await this.dbContext
+            return await dbContext
                 .Users
                 .FirstOrDefaultAsync(x => x.Id == id);
 
@@ -54,9 +54,9 @@
 
         public async Task<IEnumerable<User>> GetUsersByRoleAsync(string role)
         {
-            var usersInRole = await this.userManager.GetUsersInRoleAsync(role);
+            var usersInRole = await userManager.GetUsersInRoleAsync(role);
 
-            return await this.dbContext
+            return await dbContext
                 .Users
                 .Where(u => usersInRole.Any(x => x.Id == u.Id))
                 .ToListAsync();
@@ -70,20 +70,20 @@
                 return false;
             }
 
-            await this.userManager.RemoveFromRoleAsync(user, role);
+            await userManager.RemoveFromRoleAsync(user, role);
             return true;
         }
 
         public async Task<bool> AddUserToRoleAsync(string userId, string role)
         {
-            var user = await this.GetUserByIdAsync(userId);
+            var user = await GetUserByIdAsync(userId);
 
             if (user == null)
             {
                 return false;
             }
 
-            await this.userManager.AddToRoleAsync(user, role);
+            await userManager.AddToRoleAsync(user, role);
             return true;
         }
     }

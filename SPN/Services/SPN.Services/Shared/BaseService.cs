@@ -1,7 +1,7 @@
-﻿namespace SPN.Services.Shared
+﻿namespace SPN.Forum.Services.Shared
 {
     using AutoMapper;
-    using SPN.Data;
+    using SPN.Forum.Data;
 
     public abstract class BaseService
     {
@@ -15,6 +15,6 @@
             this.dbContext = dbContext;
         }
 
-      
+
     }
 }

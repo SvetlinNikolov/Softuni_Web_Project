@@ -4,9 +4,8 @@
     using System.Reflection;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.Extensions.DependencyInjection;
-
-    using SPN.Data;
-    using SPN.Data.Seeding;
+    using SPN.Forum.Data;
+    using SPN.Forum.Data.Seeding;
 
     public static class ApplicationBuilderExtensions
     {
