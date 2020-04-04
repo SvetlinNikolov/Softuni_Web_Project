@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SPN.Forum.Services.Shared
+namespace SPN.Services.Shared
 {
     public class UserProfileService : BaseService, IUserProfileService
     {
@@ -33,6 +33,11 @@ namespace SPN.Forum.Services.Shared
             };
 
             return profile;
+        }
+
+        Task<UserProfileViewModel> IUserProfileService.UserProfileDetails()
+        {
+            throw new NotImplementedException();
         }
     }
 }

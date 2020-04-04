@@ -15,6 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\SPN.Auto.Data.Models\SPN.Auto.Data.Models.csproj" />
     <ProjectReference Include="..\SPN.Data.Models\SPN.Forum.Data.Models.csproj" />
   </ItemGroup>
 

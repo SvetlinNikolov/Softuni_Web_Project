@@ -21,6 +21,7 @@
     <ProjectReference Include="..\..\Data\SPN.Data.Models\SPN.Forum.Data.Models.csproj" />
     <ProjectReference Include="..\..\Data\SPN.Data\SPN.Forum.Data.csproj" />
     <ProjectReference Include="..\..\Services\SPN.Services.Mapping\SPN.Services.Mapping\SPN.Services.Mapping\SPN.Services.Mapping.csproj" />
+    <ProjectReference Include="..\..\Services\SPN.Services.Shared\SPN.Services.Shared.csproj" />
     <ProjectReference Include="..\..\Services\SPN.Services\SPN.Forum.Services.csproj" />
     <ProjectReference Include="..\SPN.Web.InputModels\SPN.Web.InputModels\SPN.Forum.Web.InputModels.csproj" />
     <ProjectReference Include="..\SPN.Web.ViewModels\SPN.Forum.Web.ViewModels.csproj" />

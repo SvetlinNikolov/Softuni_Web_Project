@@ -1,14 +1,15 @@
-﻿namespace SPN.Forum.Services.Shared
+﻿namespace SPN.Services.Shared
 {
     using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.EntityFrameworkCore;
+    using SPN.Forum.Data;
+    using SPN.Forum.Data.Models.Identity;
     using System.Collections.Generic;
     using System.Linq;
     using System.Security.Claims;
     using System.Threading.Tasks;
-    using SPN.Forum.Data;
-    using SPN.Forum.Data.Models.Identity;
+
 
     public class UserService : IUserService
     {

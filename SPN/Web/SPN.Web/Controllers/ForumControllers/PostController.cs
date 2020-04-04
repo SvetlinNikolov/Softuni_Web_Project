@@ -5,8 +5,9 @@
     using System.Threading.Tasks;
     using Microsoft.AspNetCore.Mvc;
     using SPN.Forum.Services.Contracts;
-    using SPN.Forum.Services.Shared;
+
     using SPN.Forum.Web.InputModels.Post;
+    using SPN.Services.Shared;
 
     public class PostController : BaseController
     {

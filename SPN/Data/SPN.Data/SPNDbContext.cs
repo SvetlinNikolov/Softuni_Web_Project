@@ -4,6 +4,7 @@
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore;
+    using SPN.Auto.Data.Models;
     using SPN.Forum.Data.Models;
     using SPN.Forum.Data.Models.Identity;
 
@@ -28,6 +29,11 @@
 
         public DbSet<QuoteLike> QuoteLikes { get; set; }
 
+        public DbSet<Make> Makes { get; set; }
+
+        public DbSet<Model> Models { get; set; }
+
+        public DbSet<MakeModel> MakesModels { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder builder)

@@ -6,9 +6,9 @@
     using System.Threading.Tasks;
     using SPN.Forum.Data;
     using SPN.Forum.Services.Contracts;
-    using SPN.Forum.Services.Shared;
     using SPN.Forum.Web.InputModels.Quote;
     using SPN.Forum.Data.Models;
+    using SPN.Services.Shared;
 
     public class QuoteService : BaseService, IQuoteService
     {

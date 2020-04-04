@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
@@ -10,11 +10,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Data\SPN.Data.Models\SPN.Forum.Data.Models.csproj" />
     <ProjectReference Include="..\..\Data\SPN.Data\SPN.Forum.Data.csproj" />
-    <ProjectReference Include="..\..\Web\SPN.Web.InputModels\SPN.Web.InputModels\SPN.Forum.Web.InputModels.csproj" />
     <ProjectReference Include="..\..\Web\SPN.Web.ViewModels\SPN.Forum.Web.ViewModels.csproj" />
-    <ProjectReference Include="..\SPN.Services.Shared\SPN.Services.Shared.csproj" />
   </ItemGroup>
 
 </Project>

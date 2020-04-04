@@ -10,8 +10,8 @@
     using SPN.Web.ViewModels.ForumViewModels.CategoryViewModels;
     using SPN.Web.ViewModels.ForumViewModels.Post;
     using SPN.Forum.Services.Contracts;
-    using SPN.Forum.Services.Shared;
     using SPN.Forum.Web.InputModels.Category;
+    using SPN.Services.Shared;
 
     [Authorize(Roles ="Admin")]
     public class CategoryController : BaseController

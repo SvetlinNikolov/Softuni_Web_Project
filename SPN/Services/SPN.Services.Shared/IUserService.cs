@@ -1,4 +1,4 @@
-﻿namespace SPN.Forum.Services.Shared
+﻿namespace SPN.Services.Shared
 {
     using System.Collections.Generic;
     using System.Threading.Tasks;

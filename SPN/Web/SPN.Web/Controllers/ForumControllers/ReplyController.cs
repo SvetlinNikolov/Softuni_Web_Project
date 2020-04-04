@@ -5,8 +5,8 @@
     using System.Net;
     using System.Threading.Tasks;
     using SPN.Forum.Services.Contracts;
-    using SPN.Forum.Services.Shared;
     using SPN.Forum.Web.InputModels.Reply;
+    using SPN.Services.Shared;
 
     public class ReplyController : BaseController
     {

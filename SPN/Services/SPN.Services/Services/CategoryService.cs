@@ -9,8 +9,9 @@
     using SPN.Forum.Data;
     using SPN.Forum.Data.Models;
     using SPN.Forum.Services.Contracts;
-    using SPN.Forum.Services.Shared;
+
     using SPN.Forum.Web.InputModels.Category;
+    using SPN.Services.Shared;
     using SPN.Web.ViewModels.ForumViewModels.CategoryViewModels;
     using SPN.Web.ViewModels.ForumViewModels.Post;
 

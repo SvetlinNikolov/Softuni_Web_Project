@@ -7,8 +7,9 @@
     using SPN.Forum.Data.Models;
     using SPN.Forum.Data.Models.Identity;
     using SPN.Forum.Services.Contracts;
-    using SPN.Forum.Services.Shared;
+
     using SPN.Forum.Web.InputModels.PostLike;
+    using SPN.Services.Shared;
 
     public class PostLikeService : BaseService, IPostLikeService
     {

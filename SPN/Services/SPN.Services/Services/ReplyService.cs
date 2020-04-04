@@ -8,9 +8,9 @@
     using SPN.Forum.Data;
     using SPN.Forum.Data.Models.Identity;
     using SPN.Forum.Services.Contracts;
-    using SPN.Forum.Services.Shared;
     using SPN.Forum.Web.InputModels.Reply;
     using SPN.Forum.Data.Models;
+    using SPN.Services.Shared;
 
     public class ReplyService : BaseService, IReplyService
     {

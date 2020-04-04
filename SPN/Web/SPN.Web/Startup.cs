@@ -17,7 +17,7 @@ namespace SPN.Web
     using SPN.Forum.Data.Models.Identity;
     using SPN.Forum.Services.Contracts;
     using SPN.Forum.Services.Services;
-    using SPN.Forum.Services.Shared;
+    using SPN.Services.Shared;
 
     public class Startup
     {
@@ -67,7 +67,7 @@ namespace SPN.Web
              .ToArray());
             services.AddScoped<SPNUserRoleSeeder>();
             services.AddScoped<SPNCategorySeeder>();
-         
+            //services.AddScoped<SPNCarMakeModelSeeder>();
 
             //Forum Services
             services.AddScoped<ICategoryService, CategoryService>();

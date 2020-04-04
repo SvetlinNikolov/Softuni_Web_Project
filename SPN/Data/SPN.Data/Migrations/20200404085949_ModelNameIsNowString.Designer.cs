@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SPN.Forum.Data;
 
 namespace SPN.Data.Migrations
 {
     [DbContext(typeof(SPNDbContext))]
-    partial class SPNDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200404085949_ModelNameIsNowString")]
+    partial class ModelNameIsNowString
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
