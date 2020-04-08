@@ -1,4 +1,4 @@
-﻿namespace SPN.Forum.Data.Configurations.Forum
+﻿namespace SPN.Forum.Data.Configurations
 {
 
     using Microsoft.EntityFrameworkCore;

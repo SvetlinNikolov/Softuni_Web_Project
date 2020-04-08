@@ -1,11 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using SPN.Auto.Data.Models;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace SPN.Forum.Data.Configurations.Auto
+namespace SPN.Auto.Data.Configurations
 {
     public class MakeModelEntityConfiguration : IEntityTypeConfiguration<MakeModel>
     {

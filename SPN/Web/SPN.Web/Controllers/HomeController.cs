@@ -1,33 +1,43 @@
-﻿namespace SPN.Web.Controllers
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using SPN.Auto.Services.Contracts;
+using SPN.Auto.Web.ViewModels.Home;
+using SPN.Auto.Web.ViewModels.Index;
+using SPN.Services.Shared;
+using SPN.Web.Controllers;
+using System.Threading.Tasks;
+
+public class HomeController : BaseController
 {
-    using Microsoft.Extensions.Logging;
-    using System.Diagnostics;
-    using Microsoft.AspNetCore.Mvc;
-    
-    using SPN.Web.Models;
-    public class HomeController : Controller
+    private readonly IMakeService makeService;
+    private readonly IModelService modelService;
+
+    public HomeController(IUserService userService,
+        IMapper mapper,
+        IMakeService makeService,
+        IModelService modelService)
+        : base(userService, mapper)
     {
-        private readonly ILogger<HomeController> _logger;
+        this.makeService = makeService;
+        this.modelService = modelService;
+    }
 
-        public HomeController(ILogger<HomeController> logger)
-        {
-            _logger = logger;
-        }
+    public async Task<IActionResult> Index()
+    {
+        var makes = await this.makeService.GetAllMakes();
+        var models = this.modelService.GetAllModels();
 
-        public IActionResult Index()
+        IndexPageViewModel viewModel = new IndexPageViewModel
         {
-            return View();
-        }
+          
+        };
 
-        public IActionResult Privacy()
-        {
-            return View();
-        }
+        return this.ValidationProblem();
+    }
+    public IActionResult Api()
+    {
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        }
+        return this.View();
     }
 }

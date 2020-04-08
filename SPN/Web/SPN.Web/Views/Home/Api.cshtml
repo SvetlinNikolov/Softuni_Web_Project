@@ -1,0 +1,26 @@
+﻿@model SPN.Forum.Web.InputModels.Home.MakesListingViewModel
+<form>
+    <input type="text" class="testClass" value="All" />
+
+</form>
+
+
+
+<script type="text/javascript">
+  (function () {
+   const model = document.querySelector('.testClass')
+
+        console.log(model.textContent)
+
+        if (model.textContent !== 'All') {
+            fetch('api/ApiController/Index').then((response) => responce.json()).then((data) => {
+
+                for (const make of data.Collection) {
+                    console.log(make);
+                }
+
+            })
+})();
+
+</script>
+

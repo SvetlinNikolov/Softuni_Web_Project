@@ -10,6 +10,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\Data\SPN.Data.Common\SPN.Data.Common.csproj" />
+    <ProjectReference Include="..\..\SPN.Auto.Web.ViewModels\SPN.Auto.Web.ViewModels.csproj" />
   </ItemGroup>
 
 </Project>

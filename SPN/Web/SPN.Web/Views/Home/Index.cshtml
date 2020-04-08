@@ -1,31 +1,17 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-}
+﻿@model IndexPageViewModel
 
-<div class="text-center">
-    @if (this.User.Identity.IsAuthenticated)
-    {
-        @if (this.User.IsInRole("Admin"))
-        {
-
-            <h1 class="display-4">Welcome, Admin @this.User.Identity.Name</h1>
-            <h1>Have fun moderating</h1>
-        }
-        else
-        {
-            <h1 class="display-4">Welcome @this.User.Identity.Name</h1>
-
-        }
-    }
-    else
-    {
-        <h1 class="display-4">Welcome</h1>
-        <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-    }
-</div>
-<a href="https://localhost:44383/" class="btn btn-info" role="button">Categories</a>
-<a href="https://localhost:44383/Category/Create" class="btn btn-info" role="button">Create category</a>
-<a href="https://localhost:44383/ContestCategory/Index" class="btn btn-info" role="button">Contest Categories</a>
-<a asp-controller="ContestCategory" asp-action="Index">
-    Contest categories
-</a>
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Makes</th>
+            </tr>
+            <tr>
+                <th scope="row">1</th>
+              @foreach (var make in Model.MakesListing)
+              {
+                  <td>@make</td>
+              }
+            </tr>
+        </thead>
+        </table>
