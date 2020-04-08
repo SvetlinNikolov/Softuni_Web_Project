@@ -18,6 +18,8 @@ namespace SPN.Web
     using SPN.Forum.Services.Contracts;
     using SPN.Forum.Services.Services;
     using SPN.Services.Shared;
+    using SPN.Auto.Services.Contracts;
+    using SPN.Auto.Services.Services;
 
     public class Startup
     {
@@ -75,6 +77,11 @@ namespace SPN.Web
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IReplyService, ReplyService>();
             services.AddScoped<IQuoteService, QuoteService>();
+
+
+            //Auto Services
+            services.AddScoped<IMakeService, MakeService>();
+            services.AddScoped<IModelService, ModelService>();
 
             //Shared Services
             services.AddScoped<IUserProfileService, UserProfileService>();

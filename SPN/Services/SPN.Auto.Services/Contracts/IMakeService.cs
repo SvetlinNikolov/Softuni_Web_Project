@@ -1,4 +1,5 @@
-﻿using SPN.Forum.Web.InputModels.Home;
+﻿
+using SPN.Auto.Web.ViewModels.Make;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -8,7 +9,7 @@ namespace SPN.Auto.Services.Contracts
 {
     public interface IMakeService
     {
-        Task<MakesListingViewModel> GetAllMakes();
+        Task<IEnumerable<MakeConciseViewModel>> GetAllMakes();
 
 
     }

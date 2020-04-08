@@ -4,6 +4,7 @@
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore;
+    using SPN.Auto.Data.Configurations;
     using SPN.Auto.Data.Models;
     using SPN.Forum.Data.Models;
     using SPN.Forum.Data.Models.Identity;
@@ -38,7 +39,9 @@
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
+
             base.OnModelCreating(builder);
+            builder.ApplyConfigurationsFromAssembly(Assembly.GetAssembly(typeof(MakeModelEntityConfiguration)));
             builder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
 
         }

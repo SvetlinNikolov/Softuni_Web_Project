@@ -13,4 +13,8 @@
     <ProjectReference Include="..\..\SPN.Auto.Web.ViewModels\SPN.Auto.Web.ViewModels.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Home\" />
+  </ItemGroup>
+
 </Project>

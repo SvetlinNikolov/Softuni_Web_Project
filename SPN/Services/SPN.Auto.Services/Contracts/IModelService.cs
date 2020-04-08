@@ -8,6 +8,6 @@ namespace SPN.Auto.Services.Contracts
 {
     public interface IModelService
     {
-        Task<ModelsListingViewModel> GetAllModels();
+        Task<IEnumerable<ModelConciseViewModel>> GetAllModels();
     }
 }

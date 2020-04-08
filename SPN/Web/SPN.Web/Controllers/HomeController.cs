@@ -2,7 +2,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using SPN.Auto.Services.Contracts;
-using SPN.Auto.Web.ViewModels.Home;
 using SPN.Auto.Web.ViewModels.Index;
 using SPN.Services.Shared;
 using SPN.Web.Controllers;
@@ -26,14 +25,15 @@ public class HomeController : BaseController
     public async Task<IActionResult> Index()
     {
         var makes = await this.makeService.GetAllMakes();
-        var models = this.modelService.GetAllModels();
+        var models = await this.modelService.GetAllModels();
 
         IndexPageViewModel viewModel = new IndexPageViewModel
         {
-          
+          MakesListing = makes,
+          ModelsListing = models
         };
 
-        return this.ValidationProblem();
+        return this.View(viewModel);
     }
     public IActionResult Api()
     {

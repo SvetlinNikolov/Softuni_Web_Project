@@ -19,19 +19,18 @@ namespace SPN.Auto.Services.Services
         {
         }
 
-        public async Task<ModelsListingViewModel> GetAllModels()
+        public async Task<IEnumerable<ModelConciseViewModel>> GetAllModels()
         {
-            var models = await this.dbContext.Models.Select(m => m.Name).ToListAsync();
 
-            var carModels = mapper
-                  .Map<IEnumerable<ModelConciseViewModel>>(models); //Map
+            //var carModels = mapper
+            //      .Map<IEnumerable<ModelConciseViewModel>>(models); //Map
 
-            var viewModel = new ModelsListingViewModel
-            {
-                Models = carModels
-            };
+            var models = await this.dbContext
+                   .Models
+                   .Select(m => new ModelConciseViewModel { Name = m.Name })
+                   .ToListAsync();
 
-            return viewModel;
+            return models;
         }
     }
 }

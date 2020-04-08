@@ -1,17 +1,6 @@
 ﻿@model IndexPageViewModel
 
-    <table class="table">
-        <thead class="thead-dark">
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">Makes</th>
-            </tr>
-            <tr>
-                <th scope="row">1</th>
-              @foreach (var make in Model.MakesListing)
-              {
-                  <td>@make</td>
-              }
-            </tr>
-        </thead>
-        </table>
+@foreach (var make in Model.MakesListing)
+{
+    <p>@make.Name</p>
+}
