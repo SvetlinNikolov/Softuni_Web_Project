@@ -25,7 +25,7 @@ namespace SPN.Auto.Services.Services
                 .Makes
                 .Select(m => new MakeConciseViewModel { Name = m.Name })
                 .ToListAsync();
-
+           
             //var carMakes = mapper
             //      .Map<IEnumerable<MakeConciseViewModel>>(makes); //Map
 

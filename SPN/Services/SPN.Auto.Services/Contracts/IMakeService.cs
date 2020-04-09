@@ -10,7 +10,5 @@ namespace SPN.Auto.Services.Contracts
     public interface IMakeService
     {
         Task<IEnumerable<MakeConciseViewModel>> GetAllMakes();
-
-
     }
 }
