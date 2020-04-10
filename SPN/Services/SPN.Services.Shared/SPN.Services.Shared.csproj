@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
@@ -10,7 +10,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Data\SPN.Data\SPN.Forum.Data.csproj" />
+    <ProjectReference Include="..\..\Data\SPN.Data\SPN.Data.csproj" />
     <ProjectReference Include="..\..\Web\SPN.Web.ViewModels\SPN.Forum.Web.ViewModels.csproj" />
   </ItemGroup>
 

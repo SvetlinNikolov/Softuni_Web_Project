@@ -36,12 +36,13 @@
 
         public DbSet<MakeModel> MakesModels { get; set; }
 
+        public DbSet<Automobile> Automobiles { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
 
             base.OnModelCreating(builder);
-            builder.ApplyConfigurationsFromAssembly(Assembly.GetAssembly(typeof(MakeModelEntityConfiguration)));
+  
             builder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
 
         }

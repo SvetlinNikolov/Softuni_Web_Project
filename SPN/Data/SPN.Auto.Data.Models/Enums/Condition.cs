@@ -5,11 +5,11 @@ using System.Text;
 
 namespace SPN.Auto.Data.Models.Enums
 {
-    public enum GearBox
+    public enum Condition
     {
-        Manual = 1,
-        Automatic = 2,
-        [Display(Name = "Semi Automatic")]
-        SemiAutomatic = 3
+        New = 1,
+        Used = 2,
+        [Display(Name = "For parts")]
+        ForParts = 3,
     }
 }

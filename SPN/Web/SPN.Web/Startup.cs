@@ -69,7 +69,7 @@ namespace SPN.Web
              .ToArray());
             services.AddScoped<SPNUserRoleSeeder>();
             services.AddScoped<SPNCategorySeeder>();
-            //services.AddScoped<SPNCarMakeModelSeeder>();
+            services.AddScoped<SPNCarMakeModelSeeder>();
 
             //Forum Services
             services.AddScoped<ICategoryService, CategoryService>();

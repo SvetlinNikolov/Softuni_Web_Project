@@ -32,6 +32,9 @@ namespace SPN.Auto.Services.Services
             return makes;
         }
 
-
+        public Task<MakeConciseViewModel> GetMakeById()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
