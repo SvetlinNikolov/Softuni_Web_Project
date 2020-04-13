@@ -22,18 +22,19 @@ public class HomeController : BaseController
         this.modelService = modelService;
     }
 
-    public async Task<IActionResult> Index()
+    public IActionResult Index()
     {
-        var makes = await this.makeService.GetAllMakes();
-        var models = await this.modelService.GetAllModels();
+        return this.View();
+        //var makes = await this.makeService.GetAllMakes();
+        //var models = await this.modelService.GetAllModels();
 
-        IndexPageViewModel viewModel = new IndexPageViewModel
-        {
-          MakesListing = makes,
-          ModelsListing = models
-        };
+        //IndexPageViewModel viewModel = new IndexPageViewModel
+        //{
+        //  MakesListing = makes,
+        //  ModelsListing = models
+        //};
 
-        return this.View(viewModel);
+        //return this.View(viewModel);
     }
     public IActionResult Api()
     {

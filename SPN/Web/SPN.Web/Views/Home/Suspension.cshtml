@@ -1,0 +1,48 @@
+﻿@model SPN.Auto.Web.InputModels.Automobile.SuspensionInputModel
+
+@{
+    ViewData["Title"] = "Suspension";
+}
+
+<h1>Suspension</h1>
+
+<h4>SuspensionInputModel</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Suspension">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="ElectronicSuspensionControl" class="control-label"></label>
+                <input asp-for="ElectronicSuspensionControl" class="form-control" />
+                <span asp-validation-for="ElectronicSuspensionControl" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AdaptiveAirSuspension" class="control-label"></label>
+                <input asp-for="AdaptiveAirSuspension" class="form-control" />
+                <span asp-validation-for="AdaptiveAirSuspension" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LockingDifferential" class="control-label"></label>
+                <input asp-for="LockingDifferential" class="form-control" />
+                <span asp-validation-for="LockingDifferential" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ActiveSuspension" class="control-label"></label>
+                <input asp-for="ActiveSuspension" class="form-control" />
+                <span asp-validation-for="ActiveSuspension" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

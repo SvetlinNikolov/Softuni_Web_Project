@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using SPN.Auto.Web.InputModels.Automobile;
 using System.Threading.Tasks;
 
 namespace SPN.Auto.Services.Contracts
 {
     public interface IAutoService
     {
-        public Task<> CreateAutomobileAsync { get; set; }
-
+        public Task CreateAutomobileAsync(MainCreateInputModel model);
     }
 }

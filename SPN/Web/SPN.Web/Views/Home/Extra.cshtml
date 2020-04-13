@@ -1,0 +1,78 @@
+﻿@model SPN.Auto.Web.InputModels.Automobile.ExtraFeaturesInputModel
+
+@{
+    ViewData["Title"] = "Extra";
+}
+
+<h1>Extra</h1>
+
+<h4>ExtraFeaturesInputModel</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Extra">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="KeylessEntry" class="control-label"></label>
+                <input asp-for="KeylessEntry" class="form-control" />
+                <span asp-validation-for="KeylessEntry" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="KeylessIgnition" class="control-label"></label>
+                <input asp-for="KeylessIgnition" class="form-control" />
+                <span asp-validation-for="KeylessIgnition" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LowGear" class="control-label"></label>
+                <input asp-for="LowGear" class="form-control" />
+                <span asp-validation-for="LowGear" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PanoramicRoof" class="control-label"></label>
+                <input asp-for="PanoramicRoof" class="form-control" />
+                <span asp-validation-for="PanoramicRoof" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="RoofRack" class="control-label"></label>
+                <input asp-for="RoofRack" class="form-control" />
+                <span asp-validation-for="RoofRack" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ElectricTailgate" class="control-label"></label>
+                <input asp-for="ElectricTailgate" class="form-control" />
+                <span asp-validation-for="ElectricTailgate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LongBase" class="control-label"></label>
+                <input asp-for="LongBase" class="form-control" />
+                <span asp-validation-for="LongBase" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ShortBase" class="control-label"></label>
+                <input asp-for="ShortBase" class="form-control" />
+                <span asp-validation-for="ShortBase" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Registered" class="control-label"></label>
+                <input asp-for="Registered" class="form-control" />
+                <span asp-validation-for="Registered" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MOT" class="control-label"></label>
+                <input asp-for="MOT" class="form-control" />
+                <span asp-validation-for="MOT" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

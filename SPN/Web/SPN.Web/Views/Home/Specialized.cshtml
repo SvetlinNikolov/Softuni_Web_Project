@@ -1,0 +1,53 @@
+﻿@model SPN.Auto.Web.InputModels.Automobile.SpecializedInputModel
+
+@{
+    ViewData["Title"] = "Extra";
+}
+
+<h1>Extra</h1>
+
+<h4>SpecializedInputModel</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Extra">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="DisabledAccessible" class="control-label"></label>
+                <input asp-for="DisabledAccessible" class="form-control" />
+                <span asp-validation-for="DisabledAccessible" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Taxi" class="control-label"></label>
+                <input asp-for="Taxi" class="form-control" />
+                <span asp-validation-for="Taxi" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Ambulance" class="control-label"></label>
+                <input asp-for="Ambulance" class="form-control" />
+                <span asp-validation-for="Ambulance" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Hearse" class="control-label"></label>
+                <input asp-for="Hearse" class="form-control" />
+                <span asp-validation-for="Hearse" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Learner" class="control-label"></label>
+                <input asp-for="Learner" class="form-control" />
+                <span asp-validation-for="Learner" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

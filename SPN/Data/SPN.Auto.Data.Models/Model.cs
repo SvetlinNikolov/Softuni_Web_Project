@@ -7,17 +7,11 @@ namespace SPN.Auto.Data.Models
 {
     public class Model : BaseEntity<int>, IDeletableEntity
     {
+        public Make Make { get; set; }
+
+        public int MakeId { get; set; }
+
         public string Name { get; set; }
-
-        //public DateTime Year { get; set; }
-
-        //public int Horsepower { get; set; }
-
-        //public Color Color { get; set; }
-
-        //public Engine Engine { get; set; }
-
-        //public GearBox GearBox { get; set; }
 
         public bool IsDeleted { get; set; }
 

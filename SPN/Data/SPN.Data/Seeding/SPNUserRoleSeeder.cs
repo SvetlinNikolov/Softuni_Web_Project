@@ -12,13 +12,14 @@
     {
         private readonly SPNDbContext dbContext;
         private string jsonData = File.ReadAllText(GlobalConstants.UsersJsonLocation);
+
+
         public SPNUserRoleSeeder(SPNDbContext dbContext)
         {
             this.dbContext = dbContext;
         }
         public async Task Seed()
         {
-
             if (!dbContext.Roles.Any())
             {
                 var userRoles = JsonConvert.DeserializeObject<IdentityRole[]>(jsonData);

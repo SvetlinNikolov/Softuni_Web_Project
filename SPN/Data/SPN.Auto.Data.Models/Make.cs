@@ -8,11 +8,18 @@ namespace SPN.Auto.Data.Models
 {
     public class Make : BaseEntity<int>, IDeletableEntity
     {
+        public Make()
+        {
+            this.Models = new HashSet<Model>();
+        }
+
         public string Name { get; set; }
 
         public bool IsDeleted { get; set; }
 
         public DateTime? DeletedOn { get; set; }
+
+        public ICollection<Model> Models { get; set; }
     }
 }
 

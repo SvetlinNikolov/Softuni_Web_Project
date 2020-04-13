@@ -4,7 +4,6 @@
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore;
-    using SPN.Auto.Data.Configurations;
     using SPN.Auto.Data.Models;
     using SPN.Forum.Data.Models;
     using SPN.Forum.Data.Models.Identity;
@@ -16,6 +15,8 @@
         {
 
         }
+
+        //Forum
         public DbSet<Category> Categories { get; set; }
 
         public DbSet<Post> Posts { get; set; }
@@ -30,19 +31,31 @@
 
         public DbSet<QuoteLike> QuoteLikes { get; set; }
 
+        //Auto
+
         public DbSet<Make> Makes { get; set; }
 
         public DbSet<Model> Models { get; set; }
 
-        public DbSet<MakeModel> MakesModels { get; set; }
-
         public DbSet<Automobile> Automobiles { get; set; }
+
+        public DbSet<PrimaryProperties> PrimaryProperties { get; set; }
+     
+        public DbSet<Safety> SafetyFeatures { get; set; }
+
+        public DbSet<Interiors> Interiors { get; set; }
+
+        public DbSet<InteriorMaterials> InteriorMaterials { get; set; }
+
+        public DbSet<Suspensions> Suspensions { get; set; }
+
+        public DbSet<SpecializedFeatures> SpecializedFeatures { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
 
             base.OnModelCreating(builder);
-  
+
             builder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
 
         }

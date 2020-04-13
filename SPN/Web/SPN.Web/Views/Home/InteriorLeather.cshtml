@@ -1,0 +1,53 @@
+﻿@model SPN.Auto.Web.InputModels.Automobile.InteriorMaterialInputModel
+
+@{
+    ViewData["Title"] = "InteriorLeather";
+}
+
+<h1>InteriorLeather</h1>
+
+<h4>InteriorMaterialInputModel</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="InteriorLeather">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="LeatherSteeringWheel" class="control-label"></label>
+                <input asp-for="LeatherSteeringWheel" class="form-control" />
+                <span asp-validation-for="LeatherSteeringWheel" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LeatherSeats" class="control-label"></label>
+                <input asp-for="LeatherSeats" class="form-control" />
+                <span asp-validation-for="LeatherSeats" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ClothSeats" class="control-label"></label>
+                <input asp-for="ClothSeats" class="form-control" />
+                <span asp-validation-for="ClothSeats" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Alcantara" class="control-label"></label>
+                <input asp-for="Alcantara" class="form-control" />
+                <span asp-validation-for="Alcantara" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Velour" class="control-label"></label>
+                <input asp-for="Velour" class="form-control" />
+                <span asp-validation-for="Velour" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

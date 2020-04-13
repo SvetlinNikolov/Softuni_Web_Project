@@ -1,0 +1,158 @@
+﻿@model SPN.Auto.Web.InputModels.Automobile.SafetyInputModel
+
+@{
+    ViewData["Title"] = "Safety";
+}
+
+<h1>Safety</h1>
+
+<h4>SafetyInputModel</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Safety">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="GPS" class="control-label"></label>
+                <input asp-for="GPS" class="form-control" />
+                <span asp-validation-for="GPS" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="StabilityControl" class="control-label"></label>
+                <input asp-for="StabilityControl" class="form-control" />
+                <span asp-validation-for="StabilityControl" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TractionControl" class="control-label"></label>
+                <input asp-for="TractionControl" class="form-control" />
+                <span asp-validation-for="TractionControl" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AdaptiveHeadlights" class="control-label"></label>
+                <input asp-for="AdaptiveHeadlights" class="form-control" />
+                <span asp-validation-for="AdaptiveHeadlights" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AutomaticBrakeSystem" class="control-label"></label>
+                <input asp-for="AutomaticBrakeSystem" class="form-control" />
+                <span asp-validation-for="AutomaticBrakeSystem" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FrontAirbags" class="control-label"></label>
+                <input asp-for="FrontAirbags" class="form-control" />
+                <span asp-validation-for="FrontAirbags" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="RearAirbags" class="control-label"></label>
+                <input asp-for="RearAirbags" class="form-control" />
+                <span asp-validation-for="RearAirbags" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SideAirbags" class="control-label"></label>
+                <input asp-for="SideAirbags" class="form-control" />
+                <span asp-validation-for="SideAirbags" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FourWheelSteering" class="control-label"></label>
+                <input asp-for="FourWheelSteering" class="form-control" />
+                <span asp-validation-for="FourWheelSteering" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ElectronicStabilityProgram" class="control-label"></label>
+                <input asp-for="ElectronicStabilityProgram" class="form-control" />
+                <span asp-validation-for="ElectronicStabilityProgram" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TirePressureMonitoringSystem" class="control-label"></label>
+                <input asp-for="TirePressureMonitoringSystem" class="form-control" />
+                <span asp-validation-for="TirePressureMonitoringSystem" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="RearParkingSensor" class="control-label"></label>
+                <input asp-for="RearParkingSensor" class="form-control" />
+                <span asp-validation-for="RearParkingSensor" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FrontParkingSensor" class="control-label"></label>
+                <input asp-for="FrontParkingSensor" class="form-control" />
+                <span asp-validation-for="FrontParkingSensor" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ISOFIX" class="control-label"></label>
+                <input asp-for="ISOFIX" class="form-control" />
+                <span asp-validation-for="ISOFIX" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ForwardCollisionWarning" class="control-label"></label>
+                <input asp-for="ForwardCollisionWarning" class="form-control" />
+                <span asp-validation-for="ForwardCollisionWarning" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AutomaticEmergencyBraking" class="control-label"></label>
+                <input asp-for="AutomaticEmergencyBraking" class="form-control" />
+                <span asp-validation-for="AutomaticEmergencyBraking" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PedestrianDetection" class="control-label"></label>
+                <input asp-for="PedestrianDetection" class="form-control" />
+                <span asp-validation-for="PedestrianDetection" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BlindSpotMonitoring" class="control-label"></label>
+                <input asp-for="BlindSpotMonitoring" class="form-control" />
+                <span asp-validation-for="BlindSpotMonitoring" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LaneKeepingAssistance" class="control-label"></label>
+                <input asp-for="LaneKeepingAssistance" class="form-control" />
+                <span asp-validation-for="LaneKeepingAssistance" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AdaptiveCruiseControl" class="control-label"></label>
+                <input asp-for="AdaptiveCruiseControl" class="form-control" />
+                <span asp-validation-for="AdaptiveCruiseControl" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LaneCenteringAssist" class="control-label"></label>
+                <input asp-for="LaneCenteringAssist" class="form-control" />
+                <span asp-validation-for="LaneCenteringAssist" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="HillDescendAssist" class="control-label"></label>
+                <input asp-for="HillDescendAssist" class="form-control" />
+                <span asp-validation-for="HillDescendAssist" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DistTronic" class="control-label"></label>
+                <input asp-for="DistTronic" class="form-control" />
+                <span asp-validation-for="DistTronic" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FourWheelDrive" class="control-label"></label>
+                <input asp-for="FourWheelDrive" class="form-control" />
+                <span asp-validation-for="FourWheelDrive" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AlarmSystem" class="control-label"></label>
+                <input asp-for="AlarmSystem" class="form-control" />
+                <span asp-validation-for="AlarmSystem" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EmergencyCallSystem" class="control-label"></label>
+                <input asp-for="EmergencyCallSystem" class="form-control" />
+                <span asp-validation-for="EmergencyCallSystem" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

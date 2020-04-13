@@ -20,6 +20,7 @@ namespace SPN.Web
     using SPN.Services.Shared;
     using SPN.Auto.Services.Contracts;
     using SPN.Auto.Services.Services;
+    using SPN.Data.Seeding;
 
     public class Startup
     {
@@ -69,7 +70,7 @@ namespace SPN.Web
              .ToArray());
             services.AddScoped<SPNUserRoleSeeder>();
             services.AddScoped<SPNCategorySeeder>();
-            services.AddScoped<SPNCarMakeModelSeeder>();
+            services.AddScoped<SPNConciseAutoSeed>();
 
             //Forum Services
             services.AddScoped<ICategoryService, CategoryService>();

@@ -1,92 +1,74 @@
-﻿using Newtonsoft.Json;
-using SPN.Auto.Data.Models;
-using SPN.Data.Common.Constants;
-using SPN.Forum.Data.Models;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿//namespace SPN.Forum.Data.Seeding
+//{
+//    using Microsoft.EntityFrameworkCore;
+//    using SPN.Auto.Data.Models;
+//    using SPN.Data.Common.Constants;
+//    using System;
+//    using System.IO;
+//    using System.Linq;
+//    using System.Threading.Tasks;
+//    public class SPNCarMakeModelSeeder : ISeeder
+//    {
+//        private readonly SPNDbContext dbContext;
+//        private string carData = File.ReadAllText(GlobalConstants.CarDbLocation);
+//        public SPNCarMakeModelSeeder(SPNDbContext dbContext)
 
-namespace SPN.Forum.Data.Seeding
-{
-    public class SPNCarMakeModelSeeder : ISeeder
-    {
-        private readonly SPNDbContext dbContext;
-        private string carData = File.ReadAllText(GlobalConstants.CarDbLocation);
-        public SPNCarMakeModelSeeder(SPNDbContext dbContext)
+//        {
+//            this.dbContext = dbContext;
+//        }
 
-        {
-            this.dbContext = dbContext;
-        }
+//        public async Task Seed()
+//        {
+//            if (this.dbContext.Makes.Any()) return;
 
-        public async Task Seed()
-        {
-            var cars = carData.Split(",");
+//            var cars = carData.Split(",");
 
-            //List<Make> makes = new List<Make>();
-            //List<Model> models = new List<Model>();
-            //List<MakeModel> makesModels = new List<MakeModel>();
+//            var makes = this.dbContext.Makes;
+//            var models = this.dbContext.Models;
 
-            for (int i = 0; i < cars.Length - 1; i += 2)
-            {
-                var carMake = cars[i];
-                var carModel = cars[i + 1];
+//            for (int i = 0; i < cars.Length - 1; i += 2)
+//            {
+//                string carMake = cars[i];
+//                string carModel = cars[i + 1];
 
-                var modeleeee = this.dbContext.Models.Where(x => x.Name == carModel).FirstOrDefault();
+//                Make makeExists = await makes.Where(x => x.Name == carMake).FirstOrDefaultAsync();
+//                Model modelExists = await models.Where(x => x.Name == carModel).FirstOrDefaultAsync();
 
-                var makeee = this.dbContext.Makes.Where(x => x.Name == carMake).FirstOrDefault();
+//                var makeToAdd = new Make();
+//                var modelToAdd = new Model();
 
-                if (makeee == null)
-                {
-                    Make make = new Make
-                    {
-                        Name = carMake,
-                        CreatedOn = DateTime.UtcNow
-                    };
-                    this.dbContext.Makes.Add(make);
-                    this.dbContext.SaveChanges();
+//                if (makeExists == null)
+//                {
+//                    makeToAdd.Name = carMake;
+//                    makeToAdd.CreatedOn = DateTime.UtcNow;
+
+//                    await this.dbContext.Makes.AddAsync(makeToAdd);
+//                    await this.dbContext.SaveChangesAsync();
+
+//                    modelToAdd.Name = carModel;
+//                    modelToAdd.CreatedOn = DateTime.UtcNow;
+//                    modelToAdd.MakeId = makeToAdd.Id;
+
+//                    await makes.AddAsync(makeToAdd);
+//                    await models.AddAsync(modelToAdd);
+//                }
+//                else
+//                {
+//                    if (modelExists == null)
+//                    {
+//                        modelToAdd.Name = carModel;
+//                        modelToAdd.CreatedOn = DateTime.UtcNow;
+
+//                        await models.AddAsync(modelToAdd);
+//                    }
+//                }
 
 
-                    if (modeleeee == null)
-                    {
-                        var model = new Model
-                        {
-                            Name = carModel,
-                            CreatedOn = DateTime.UtcNow
-                        };
+//            }
+//            await this.dbContext.Makes.AddRangeAsync(makes);
+//            await this.dbContext.SaveChangesAsync();
 
-                        this.dbContext.Models.Add(model);
-                        this.dbContext.SaveChanges();
+//        }
 
-                        this.dbContext.MakesModels.Add(new MakeModel { MakeId = make.Id, ModelId = model.Id });
-                        this.dbContext.SaveChanges();
-
-                    }
-
-                }
-                else
-                {
-                    if (modeleeee == null)
-                    {
-                        var model = new Model
-                        {
-                            Name = carModel,
-                            CreatedOn = DateTime.UtcNow
-                        };
-
-                        this.dbContext.Models.Add(model);
-                        this.dbContext.SaveChanges();
-
-                        this.dbContext.MakesModels.Add(new MakeModel { MakeId = makeee.Id, ModelId = model.Id });
-                        this.dbContext.SaveChanges();
-
-                    }
-                }
-            }
-
-          ;
-        }
-    }
-}
+//    }
+//}
