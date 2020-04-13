@@ -32,6 +32,9 @@ namespace SPN.Auto.Data.Models
         public SpecializedFeatures SpecializedFeatures { get; set; }
         public int SpecializedFeaturesId { get; set; }
 
+        public ExtraFeatures ExtraFeatures { get; set; }
+        public int ExtraFeaturesId { get; set; }
+
         public bool IsDeleted { get; set; }
 
         public DateTime? DeletedOn { get; set; }

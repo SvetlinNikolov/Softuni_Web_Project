@@ -15,6 +15,8 @@ namespace SPN.Auto.Data.Models
 
         public DateTime Year { get; set; }
 
+        public int? Mileage { get; set; }
+
         public int Horsepower { get; set; }
 
         public Engine Engine { get; set; }
@@ -26,6 +28,8 @@ namespace SPN.Auto.Data.Models
         public Body? Body { get; set; }
 
         public bool IsDeleted { get; set; }
+
+        public Region? Region { get; set; }
 
         public DateTime? DeletedOn { get; set; }
     }

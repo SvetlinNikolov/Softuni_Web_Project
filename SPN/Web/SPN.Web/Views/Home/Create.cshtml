@@ -1,83 +1,71 @@
-﻿@model SPN.Auto.Web.InputModels.Automobile.CreateConciseInputModel
+﻿@model SPN.Auto.Web.InputModels.Automobile.MainCreateInputModel
 
-@{
-    Layout = null;
-}
-
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>CreateConcise</title>
-</head>
-<body>
 
 <h4>CreateConciseInputModel</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="CreateConcise">
+        <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="Make" class="control-label"></label>
-                <input asp-for="Make" class="form-control" />
-                <span asp-validation-for="Make" class="text-danger"></span>
+                <label asp-for="@Model.Main.Make" class="control-label"></label>
+                <input asp-for="@Model.Main.Make" class="form-control" />
+                <span asp-validation-for="@Model.Main.Make" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Model" class="control-label"></label>
-                <input asp-for="Model" class="form-control" />
-                <span asp-validation-for="Model" class="text-danger"></span>
+                <label asp-for="@Model.Main.Model" class="control-label"></label>
+                <input asp-for="@Model.Main.Model" class="form-control" />
+                <span asp-validation-for="@Model.Main.Model" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Price" class="control-label"></label>
-                <input asp-for="Price" class="form-control" />
-                <span asp-validation-for="Price" class="text-danger"></span>
+                <label asp-for="@Model.Main.Price" class="control-label"></label>
+                <input asp-for="@Model.Main.Price" class="form-control" />
+                <span asp-validation-for="@Model.Main.Price" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Mileage" class="control-label"></label>
-                <input asp-for="Mileage" class="form-control" />
-                <span asp-validation-for="Mileage" class="text-danger"></span>
+                <label asp-for="@Model.Main.Mileage" class="control-label"></label>
+                <input asp-for="@Model.Main.Mileage" class="form-control" />
+                <span asp-validation-for="@Model.Main.Mileage" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Color" class="control-label"></label>
-                <input asp-for="Color" class="form-control" />
-                <span asp-validation-for="Color" class="text-danger"></span>
+                <label asp-for="@Model.Main.Color" class="control-label"></label>
+                <input asp-for="@Model.Main.Color" class="form-control" />
+                <span asp-validation-for="@Model.Main.Color" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Year" class="control-label"></label>
-                <input asp-for="Year" class="form-control" />
-                <span asp-validation-for="Year" class="text-danger"></span>
+                <label asp-for="@Model.Main.Year" class="control-label"></label>
+                <input asp-for="@Model.Main.Year" class="form-control" />
+                <span asp-validation-for="@Model.Main.Year" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Horsepower" class="control-label"></label>
-                <input asp-for="Horsepower" class="form-control" />
-                <span asp-validation-for="Horsepower" class="text-danger"></span>
+                <label asp-for="@Model.Main.Horsepower" class="control-label"></label>
+                <input asp-for="@Model.Main.Horsepower" class="form-control" />
+                <span asp-validation-for="@Model.Main.Horsepower" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Engine" class="control-label"></label>
-                <input asp-for="Engine" class="form-control" />
-                <span asp-validation-for="Engine" class="text-danger"></span>
+                <label asp-for="@Model.Main.Engine" class="control-label"></label>
+                <input asp-for="@Model.Main.Engine" class="form-control" />
+                <span asp-validation-for="@Model.Main.Engine" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="GearBox" class="control-label"></label>
-                <input asp-for="GearBox" class="form-control" />
-                <span asp-validation-for="GearBox" class="text-danger"></span>
+                <label asp-for="@Model.Main.GearBox" class="control-label"></label>
+                <input asp-for="@Model.Main.GearBox" class="form-control" />
+                <span asp-validation-for="@Model.Main.GearBox" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Condition" class="control-label"></label>
-                <input asp-for="Condition" class="form-control" />
-                <span asp-validation-for="Condition" class="text-danger"></span>
+                <label asp-for="@Model.Main.Condition" class="control-label"></label>
+                <input asp-for="@Model.Main.Condition" class="form-control" />
+                <span asp-validation-for="@Model.Main.Condition" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Body" class="control-label"></label>
-                <input asp-for="Body" class="form-control" />
-                <span asp-validation-for="Body" class="text-danger"></span>
+                <label asp-for="@Model.Main.Body" class="control-label"></label>
+                <input asp-for="@Model.Main.Body" class="form-control" />
+                <span asp-validation-for="@Model.Main.Body" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Region" class="control-label"></label>
-                <input asp-for="Region" class="form-control" />
-                <span asp-validation-for="Region" class="text-danger"></span>
+                <label asp-for="@Model.Main.Region" class="control-label"></label>
+                <input asp-for="@Model.Main.Region" class="form-control" />
+                <span asp-validation-for="@Model.Main.Region" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
@@ -90,8 +78,3 @@
     <a asp-action="Index">Back to List</a>
 </div>
 
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
-</body>
-</html>

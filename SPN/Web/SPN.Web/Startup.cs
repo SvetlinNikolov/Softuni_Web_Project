@@ -83,6 +83,7 @@ namespace SPN.Web
             //Auto Services
             services.AddScoped<IMakeService, MakeService>();
             services.AddScoped<IModelService, ModelService>();
+            services.AddScoped<IAutoService, AutoService>();
 
             //Shared Services
             services.AddScoped<IUserProfileService, UserProfileService>();

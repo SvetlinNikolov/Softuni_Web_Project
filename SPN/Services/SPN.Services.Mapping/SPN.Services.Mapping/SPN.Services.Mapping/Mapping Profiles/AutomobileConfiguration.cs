@@ -7,11 +7,11 @@ using System.Text;
 
 namespace SPN.Auto.Services.Mapping.MappingProfiles
 {
-    public class PrimaryPropertiesConfiguration : Profile
+    public class AutomobileConfiguration:Profile
     {
-        public PrimaryPropertiesConfiguration()
+        public AutomobileConfiguration()
         {
-            this.CreateMap<CreateConciseInputModel, PrimaryProperties>();
+            this.CreateMap<MainCreateInputModel, Automobile>();
         }
     }
 }

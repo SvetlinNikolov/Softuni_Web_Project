@@ -10,14 +10,14 @@ namespace SPN.Auto.Web.InputModels.Automobile
 
         public SafetyInputModel Safety { get; set; }
 
-        public InteriorInputModel Interior { get; set; }
+        public InteriorInputModel Interiors { get; set; }
 
-        public InteriorMaterialInputModel InteriorMaterial { get; set; }
+        public InteriorMaterialInputModel InteriorMaterials { get; set; }
 
-        public SuspensionInputModel Suspension { get; set; }
+        public SuspensionInputModel Suspensions { get; set; }
 
-        public ExtraFeaturesInputModel Extra { get; set; }
+        public ExtraFeaturesInputModel ExtraFeatures { get; set; }
 
-        public SpecializedInputModel Specialized { get; set; }
+        public SpecializedInputModel SpecializedFeatures { get; set; }
     }
 }
