@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
-using SPN.Auto.Data.Models;
 using SPN.Data.Common.Constants;
+using SPN.Data.Models.Auto;
 using SPN.Data.Seeding.DTO;
 using SPN.Forum.Data;
 using SPN.Forum.Data.Seeding;

@@ -1,7 +1,7 @@
 ﻿namespace SPN.Forum.Services.Contracts
 {
     using System.Threading.Tasks;
-    using SPN.Forum.Data.Models;
+    using SPN.Data.Models.Forum;
     using SPN.Forum.Web.InputModels.Quote;
 
     public interface IQuoteService

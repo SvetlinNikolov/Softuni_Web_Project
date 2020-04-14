@@ -7,8 +7,8 @@
     using SPN.Forum.Data;
     using SPN.Forum.Services.Contracts;
     using SPN.Forum.Web.InputModels.Quote;
-    using SPN.Forum.Data.Models;
     using SPN.Services.Shared;
+    using SPN.Data.Models.Forum;
 
     public class QuoteService : BaseService, IQuoteService
     {

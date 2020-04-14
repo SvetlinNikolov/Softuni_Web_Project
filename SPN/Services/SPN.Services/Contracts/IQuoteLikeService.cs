@@ -1,6 +1,6 @@
 ﻿namespace SPN.Forum.Services.Contracts
 {
-    using SPN.Forum.Data.Models;
+    using SPN.Data.Models.Forum;
 
     public interface IQuoteLikeService
     {

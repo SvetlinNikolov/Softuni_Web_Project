@@ -150,12 +150,15 @@ namespace SPN.Data.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("SPN.Auto.Data.Models.Automobile", b =>
+            modelBuilder.Entity("SPN.Data.Models.Auto.Automobile", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Comment")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("CreatedOn")
                         .HasColumnType("datetime2");
@@ -164,6 +167,9 @@ namespace SPN.Data.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<int?>("ExtraFeaturesId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ImagesId")
                         .HasColumnType("int");
 
                     b.Property<int?>("InteriorMaterialsId")
@@ -196,9 +202,17 @@ namespace SPN.Data.Migrations
                     b.Property<int?>("SuspensionsId")
                         .HasColumnType("int");
 
+                    b.Property<string>("Title")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
                     b.HasKey("Id");
 
                     b.HasIndex("ExtraFeaturesId");
+
+                    b.HasIndex("ImagesId");
 
                     b.HasIndex("InteriorMaterialsId");
 
@@ -216,10 +230,12 @@ namespace SPN.Data.Migrations
 
                     b.HasIndex("SuspensionsId");
 
+                    b.HasIndex("UserId");
+
                     b.ToTable("Automobiles");
                 });
 
-            modelBuilder.Entity("SPN.Auto.Data.Models.ExtraFeatures", b =>
+            modelBuilder.Entity("SPN.Data.Models.Auto.ExtraFeatures", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -273,7 +289,61 @@ namespace SPN.Data.Migrations
                     b.ToTable("ExtraFeatures");
                 });
 
-            modelBuilder.Entity("SPN.Auto.Data.Models.InteriorMaterials", b =>
+            modelBuilder.Entity("SPN.Data.Models.Auto.Images", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DeletedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("ImageUrl1")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ImageUrl10")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ImageUrl2")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ImageUrl3")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ImageUrl4")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ImageUrl5")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ImageUrl6")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ImageUrl7")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ImageUrl8")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ImageUrl9")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("ModifiedOn")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Images");
+                });
+
+            modelBuilder.Entity("SPN.Data.Models.Auto.InteriorMaterials", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -312,7 +382,7 @@ namespace SPN.Data.Migrations
                     b.ToTable("InteriorMaterials");
                 });
 
-            modelBuilder.Entity("SPN.Auto.Data.Models.Interiors", b =>
+            modelBuilder.Entity("SPN.Data.Models.Auto.Interiors", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -420,7 +490,7 @@ namespace SPN.Data.Migrations
                     b.ToTable("Interiors");
                 });
 
-            modelBuilder.Entity("SPN.Auto.Data.Models.Make", b =>
+            modelBuilder.Entity("SPN.Data.Models.Auto.Make", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -447,7 +517,7 @@ namespace SPN.Data.Migrations
                     b.ToTable("Makes");
                 });
 
-            modelBuilder.Entity("SPN.Auto.Data.Models.Model", b =>
+            modelBuilder.Entity("SPN.Data.Models.Auto.Model", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -479,7 +549,7 @@ namespace SPN.Data.Migrations
                     b.ToTable("Models");
                 });
 
-            modelBuilder.Entity("SPN.Auto.Data.Models.PrimaryProperties", b =>
+            modelBuilder.Entity("SPN.Data.Models.Auto.PrimaryProperties", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -510,8 +580,8 @@ namespace SPN.Data.Migrations
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
-                    b.Property<int?>("Mileage")
-                        .HasColumnType("int");
+                    b.Property<string>("Mileage")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("ModifiedOn")
                         .HasColumnType("datetime2");
@@ -530,7 +600,7 @@ namespace SPN.Data.Migrations
                     b.ToTable("PrimaryProperties");
                 });
 
-            modelBuilder.Entity("SPN.Auto.Data.Models.Safety", b =>
+            modelBuilder.Entity("SPN.Data.Models.Auto.Safety", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -632,7 +702,7 @@ namespace SPN.Data.Migrations
                     b.ToTable("SafetyFeatures");
                 });
 
-            modelBuilder.Entity("SPN.Auto.Data.Models.SpecializedFeatures", b =>
+            modelBuilder.Entity("SPN.Data.Models.Auto.SpecializedFeatures", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -671,7 +741,7 @@ namespace SPN.Data.Migrations
                     b.ToTable("SpecializedFeatures");
                 });
 
-            modelBuilder.Entity("SPN.Auto.Data.Models.Suspensions", b =>
+            modelBuilder.Entity("SPN.Data.Models.Auto.Suspensions", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -707,7 +777,7 @@ namespace SPN.Data.Migrations
                     b.ToTable("Suspensions");
                 });
 
-            modelBuilder.Entity("SPN.Forum.Data.Models.Category", b =>
+            modelBuilder.Entity("SPN.Data.Models.Forum.Category", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -740,7 +810,214 @@ namespace SPN.Data.Migrations
                     b.ToTable("Categories");
                 });
 
-            modelBuilder.Entity("SPN.Forum.Data.Models.Identity.User", b =>
+            modelBuilder.Entity("SPN.Data.Models.Forum.Post", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("AuthorId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("CategoryId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Content")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DeletedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("ModifiedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Title")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Views")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AuthorId");
+
+                    b.HasIndex("CategoryId");
+
+                    b.ToTable("Posts");
+                });
+
+            modelBuilder.Entity("SPN.Data.Models.Forum.PostLike", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("ModifiedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("PostId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("PostId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("PostLikes");
+                });
+
+            modelBuilder.Entity("SPN.Data.Models.Forum.Quote", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("AuthorId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Content")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DeletedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("ModifiedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("ReplyId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AuthorId");
+
+                    b.HasIndex("ReplyId");
+
+                    b.ToTable("Quotes");
+                });
+
+            modelBuilder.Entity("SPN.Data.Models.Forum.QuoteLike", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("ModifiedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("QuoteId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("QuoteId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("QuoteLikes");
+                });
+
+            modelBuilder.Entity("SPN.Data.Models.Forum.Reply", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("AuthorId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Content")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DeletedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("ModifiedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("PostId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AuthorId");
+
+                    b.HasIndex("PostId");
+
+                    b.ToTable("Replies");
+                });
+
+            modelBuilder.Entity("SPN.Data.Models.Forum.ReplyLike", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DeletedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("ModifiedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("ReplyId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ReplyId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("ReplyLikes");
+                });
+
+            modelBuilder.Entity("SPN.Data.Models.Shared.Identity.User", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
@@ -826,213 +1103,6 @@ namespace SPN.Data.Migrations
                     b.ToTable("AspNetUsers");
                 });
 
-            modelBuilder.Entity("SPN.Forum.Data.Models.Post", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("AuthorId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<int>("CategoryId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Content")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime?>("DeletedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
-
-                    b.Property<DateTime?>("ModifiedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Title")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("Views")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("AuthorId");
-
-                    b.HasIndex("CategoryId");
-
-                    b.ToTable("Posts");
-                });
-
-            modelBuilder.Entity("SPN.Forum.Data.Models.PostLike", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime?>("ModifiedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("PostId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("PostId");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("PostLikes");
-                });
-
-            modelBuilder.Entity("SPN.Forum.Data.Models.Quote", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("AuthorId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("Content")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime?>("DeletedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
-
-                    b.Property<DateTime?>("ModifiedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("ReplyId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("AuthorId");
-
-                    b.HasIndex("ReplyId");
-
-                    b.ToTable("Quotes");
-                });
-
-            modelBuilder.Entity("SPN.Forum.Data.Models.QuoteLike", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime?>("ModifiedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("QuoteId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("QuoteId");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("QuoteLikes");
-                });
-
-            modelBuilder.Entity("SPN.Forum.Data.Models.Reply", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("AuthorId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("Content")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime?>("DeletedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
-
-                    b.Property<DateTime?>("ModifiedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("PostId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("AuthorId");
-
-                    b.HasIndex("PostId");
-
-                    b.ToTable("Replies");
-                });
-
-            modelBuilder.Entity("SPN.Forum.Data.Models.ReplyLike", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime?>("DeletedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
-
-                    b.Property<DateTime?>("ModifiedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("ReplyId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ReplyId");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("ReplyLikes");
-                });
-
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -1044,7 +1114,7 @@ namespace SPN.Data.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
                 {
-                    b.HasOne("SPN.Forum.Data.Models.Identity.User", null)
+                    b.HasOne("SPN.Data.Models.Shared.Identity.User", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -1053,7 +1123,7 @@ namespace SPN.Data.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
-                    b.HasOne("SPN.Forum.Data.Models.Identity.User", null)
+                    b.HasOne("SPN.Data.Models.Shared.Identity.User", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -1068,7 +1138,7 @@ namespace SPN.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("SPN.Forum.Data.Models.Identity.User", null)
+                    b.HasOne("SPN.Data.Models.Shared.Identity.User", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -1077,136 +1147,147 @@ namespace SPN.Data.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
                 {
-                    b.HasOne("SPN.Forum.Data.Models.Identity.User", null)
+                    b.HasOne("SPN.Data.Models.Shared.Identity.User", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("SPN.Auto.Data.Models.Automobile", b =>
+            modelBuilder.Entity("SPN.Data.Models.Auto.Automobile", b =>
                 {
-                    b.HasOne("SPN.Auto.Data.Models.ExtraFeatures", "ExtraFeatures")
+                    b.HasOne("SPN.Data.Models.Auto.ExtraFeatures", "ExtraFeatures")
                         .WithMany()
                         .HasForeignKey("ExtraFeaturesId");
 
-                    b.HasOne("SPN.Auto.Data.Models.InteriorMaterials", "InteriorMaterials")
+                    b.HasOne("SPN.Data.Models.Auto.Images", "Images")
+                        .WithMany()
+                        .HasForeignKey("ImagesId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("SPN.Data.Models.Auto.InteriorMaterials", "InteriorMaterials")
                         .WithMany()
                         .HasForeignKey("InteriorMaterialsId");
 
-                    b.HasOne("SPN.Auto.Data.Models.Interiors", "Interiors")
+                    b.HasOne("SPN.Data.Models.Auto.Interiors", "Interiors")
                         .WithMany()
                         .HasForeignKey("InteriorsId");
 
-                    b.HasOne("SPN.Auto.Data.Models.Make", "Make")
+                    b.HasOne("SPN.Data.Models.Auto.Make", "Make")
                         .WithMany()
                         .HasForeignKey("MakeId");
 
-                    b.HasOne("SPN.Auto.Data.Models.Model", "Model")
+                    b.HasOne("SPN.Data.Models.Auto.Model", "Model")
                         .WithMany()
                         .HasForeignKey("ModelId");
 
-                    b.HasOne("SPN.Auto.Data.Models.PrimaryProperties", "PrimaryProperties")
+                    b.HasOne("SPN.Data.Models.Auto.PrimaryProperties", "PrimaryProperties")
                         .WithMany()
                         .HasForeignKey("PrimaryPropertiesId");
 
-                    b.HasOne("SPN.Auto.Data.Models.Safety", "Safety")
+                    b.HasOne("SPN.Data.Models.Auto.Safety", "Safety")
                         .WithMany()
                         .HasForeignKey("SafetyId");
 
-                    b.HasOne("SPN.Auto.Data.Models.SpecializedFeatures", "SpecializedFeatures")
+                    b.HasOne("SPN.Data.Models.Auto.SpecializedFeatures", "SpecializedFeatures")
                         .WithMany()
                         .HasForeignKey("SpecializedFeaturesId");
 
-                    b.HasOne("SPN.Auto.Data.Models.Suspensions", "Suspensions")
+                    b.HasOne("SPN.Data.Models.Auto.Suspensions", "Suspensions")
                         .WithMany()
                         .HasForeignKey("SuspensionsId");
+
+                    b.HasOne("SPN.Data.Models.Shared.Identity.User", "User")
+                        .WithMany("Automobiles")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Restrict);
                 });
 
-            modelBuilder.Entity("SPN.Auto.Data.Models.Model", b =>
+            modelBuilder.Entity("SPN.Data.Models.Auto.Model", b =>
                 {
-                    b.HasOne("SPN.Auto.Data.Models.Make", "Make")
+                    b.HasOne("SPN.Data.Models.Auto.Make", "Make")
                         .WithMany("Models")
                         .HasForeignKey("MakeId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("SPN.Forum.Data.Models.Post", b =>
+            modelBuilder.Entity("SPN.Data.Models.Forum.Post", b =>
                 {
-                    b.HasOne("SPN.Forum.Data.Models.Identity.User", "Author")
+                    b.HasOne("SPN.Data.Models.Shared.Identity.User", "Author")
                         .WithMany("Posts")
                         .HasForeignKey("AuthorId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("SPN.Forum.Data.Models.Category", "Category")
+                    b.HasOne("SPN.Data.Models.Forum.Category", "Category")
                         .WithMany("Posts")
                         .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("SPN.Forum.Data.Models.PostLike", b =>
+            modelBuilder.Entity("SPN.Data.Models.Forum.PostLike", b =>
                 {
-                    b.HasOne("SPN.Forum.Data.Models.Post", "Post")
+                    b.HasOne("SPN.Data.Models.Forum.Post", "Post")
                         .WithMany("PostLikes")
                         .HasForeignKey("PostId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("SPN.Forum.Data.Models.Identity.User", "User")
+                    b.HasOne("SPN.Data.Models.Shared.Identity.User", "User")
                         .WithMany("PostLikes")
                         .HasForeignKey("UserId");
                 });
 
-            modelBuilder.Entity("SPN.Forum.Data.Models.Quote", b =>
+            modelBuilder.Entity("SPN.Data.Models.Forum.Quote", b =>
                 {
-                    b.HasOne("SPN.Forum.Data.Models.Identity.User", "Author")
+                    b.HasOne("SPN.Data.Models.Shared.Identity.User", "Author")
                         .WithMany("Quotes")
                         .HasForeignKey("AuthorId");
 
-                    b.HasOne("SPN.Forum.Data.Models.Reply", "Reply")
+                    b.HasOne("SPN.Data.Models.Forum.Reply", "Reply")
                         .WithMany("Quotes")
                         .HasForeignKey("ReplyId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("SPN.Forum.Data.Models.QuoteLike", b =>
+            modelBuilder.Entity("SPN.Data.Models.Forum.QuoteLike", b =>
                 {
-                    b.HasOne("SPN.Forum.Data.Models.Quote", "Quote")
+                    b.HasOne("SPN.Data.Models.Forum.Quote", "Quote")
                         .WithMany("QuoteLikes")
                         .HasForeignKey("QuoteId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("SPN.Forum.Data.Models.Identity.User", "User")
+                    b.HasOne("SPN.Data.Models.Shared.Identity.User", "User")
                         .WithMany("QuoteLikes")
                         .HasForeignKey("UserId");
                 });
 
-            modelBuilder.Entity("SPN.Forum.Data.Models.Reply", b =>
+            modelBuilder.Entity("SPN.Data.Models.Forum.Reply", b =>
                 {
-                    b.HasOne("SPN.Forum.Data.Models.Identity.User", "Author")
+                    b.HasOne("SPN.Data.Models.Shared.Identity.User", "Author")
                         .WithMany("Replies")
                         .HasForeignKey("AuthorId");
 
-                    b.HasOne("SPN.Forum.Data.Models.Post", "Post")
+                    b.HasOne("SPN.Data.Models.Forum.Post", "Post")
                         .WithMany("Replies")
                         .HasForeignKey("PostId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("SPN.Forum.Data.Models.ReplyLike", b =>
+            modelBuilder.Entity("SPN.Data.Models.Forum.ReplyLike", b =>
                 {
-                    b.HasOne("SPN.Forum.Data.Models.Reply", "Reply")
+                    b.HasOne("SPN.Data.Models.Forum.Reply", "Reply")
                         .WithMany("ReplyLikes")
                         .HasForeignKey("ReplyId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("SPN.Forum.Data.Models.Identity.User", "User")
+                    b.HasOne("SPN.Data.Models.Shared.Identity.User", "User")
                         .WithMany("ReplyLikes")
                         .HasForeignKey("UserId");
                 });

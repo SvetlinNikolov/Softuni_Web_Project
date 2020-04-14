@@ -18,7 +18,7 @@
 
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Data\SPN.Data.Models\SPN.Forum.Data.Models.csproj" />
+    <ProjectReference Include="..\..\Data\SPN.Data.Models\SPN.Data.Models.csproj" />
     <ProjectReference Include="..\..\Data\SPN.Data\SPN.Data.csproj" />
     <ProjectReference Include="..\..\Services\SPN.Auto.Services\SPN.Auto.Services.csproj" />
     <ProjectReference Include="..\..\Services\SPN.Services.Mapping\SPN.Services.Mapping\SPN.Services.Mapping\SPN.Services.Mapping.csproj" />

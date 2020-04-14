@@ -1,10 +1,13 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Text;
 
 namespace SPN.Auto.Web.InputModels.Automobile
 {
     public class MainCreateInputModel
+
     {
         public CreateConciseInputModel PrimaryProperties { get; set; }
 
@@ -19,5 +22,7 @@ namespace SPN.Auto.Web.InputModels.Automobile
         public ExtraFeaturesInputModel ExtraFeatures { get; set; }
 
         public SpecializedInputModel SpecializedFeatures { get; set; }
+
+        public ImagesInputModel Images { get; set; }
     }
 }

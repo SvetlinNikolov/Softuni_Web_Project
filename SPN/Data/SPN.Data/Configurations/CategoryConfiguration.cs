@@ -2,7 +2,7 @@
 {
     using Microsoft.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore.Metadata.Builders;
-    using SPN.Forum.Data.Models;
+    using SPN.Data.Models.Forum;
 
     public class CategoryConfiguration : IEntityTypeConfiguration<Category>
     {

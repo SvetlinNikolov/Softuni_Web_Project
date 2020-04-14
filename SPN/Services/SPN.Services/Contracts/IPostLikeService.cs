@@ -1,8 +1,8 @@
 ﻿namespace SPN.Forum.Services.Contracts
 {
     using System.Threading.Tasks;
-    using SPN.Forum.Data.Models;
-    using SPN.Forum.Data.Models.Identity;
+    using SPN.Data.Models.Forum;
+    using SPN.Data.Models.Shared.Identity;
     using SPN.Forum.Web.InputModels.PostLike;
 
     public interface IPostLikeService

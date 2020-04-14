@@ -4,9 +4,10 @@
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore;
-    using SPN.Auto.Data.Models;
-    using SPN.Forum.Data.Models;
-    using SPN.Forum.Data.Models.Identity;
+ 
+    using SPN.Data.Models.Auto;
+    using SPN.Data.Models.Forum;
+    using SPN.Data.Models.Shared.Identity;
 
     public class SPNDbContext : IdentityDbContext<User, IdentityRole, string>
     {

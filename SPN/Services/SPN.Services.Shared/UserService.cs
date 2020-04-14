@@ -3,8 +3,9 @@
     using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.EntityFrameworkCore;
+    using SPN.Data.Models.Shared.Identity;
     using SPN.Forum.Data;
-    using SPN.Forum.Data.Models.Identity;
+
     using System.Collections.Generic;
     using System.Linq;
     using System.Security.Claims;

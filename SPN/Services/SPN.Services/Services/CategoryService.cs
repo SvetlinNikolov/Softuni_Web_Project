@@ -6,10 +6,9 @@
     using System.Threading.Tasks;
     using AutoMapper;
     using Microsoft.EntityFrameworkCore;
+    using SPN.Data.Models.Forum;
     using SPN.Forum.Data;
-    using SPN.Forum.Data.Models;
     using SPN.Forum.Services.Contracts;
-
     using SPN.Forum.Web.InputModels.Category;
     using SPN.Services.Shared;
     using SPN.Web.ViewModels.ForumViewModels.CategoryViewModels;
@@ -28,6 +27,7 @@
         public async Task CreateCategoryAsync(CategoryInputModel inputModel)
         {
             Category category = mapper.Map<Category>(inputModel); //Maping
+            category.CreatedOn = DateTime.UtcNow;
 
             await dbContext.Categories.AddAsync(category);
             await dbContext.SaveChangesAsync();

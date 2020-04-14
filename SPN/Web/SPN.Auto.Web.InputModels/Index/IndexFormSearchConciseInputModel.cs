@@ -1,4 +1,5 @@
-﻿using SPN.Auto.Data.Models.Enums;
+﻿
+using SPN.Data.Models.Auto.Enums;
 using System;
 using System.Collections.Generic;
 using System.Text;

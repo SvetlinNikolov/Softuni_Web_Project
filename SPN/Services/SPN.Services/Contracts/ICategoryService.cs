@@ -2,7 +2,7 @@
 {
     using System.Collections.Generic;
     using System.Threading.Tasks;
-    using SPN.Forum.Data.Models;
+    using SPN.Data.Models.Forum;
     using SPN.Forum.Web.InputModels.Category;
     using SPN.Web.ViewModels.ForumViewModels.CategoryViewModels;
 

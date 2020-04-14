@@ -10,8 +10,8 @@ namespace SPN.Auto.Services.Contracts
     {
         Task<IEnumerable<ModelConciseViewModel>> GetAllModels();
 
-        public Task<ModelConciseViewModel> GetModelById();
+        public Task<ModelConciseViewModel> GetModelById(int Id);
 
-        public Task<ModelConciseViewModel> GetModelByName();
+        public Task<ModelConciseViewModel> GetModelByName(string name);
     }
 }

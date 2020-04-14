@@ -8,7 +8,6 @@ namespace SPN.Auto.Data.Models
 {
     public class Automobile : BaseEntity<int>, IDeletableEntity
     {
-
         public Make Make { get; set; }
         public int? MakeId { get; set; }
 

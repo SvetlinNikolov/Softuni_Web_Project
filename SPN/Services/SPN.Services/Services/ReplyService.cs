@@ -6,11 +6,11 @@
     using System.Threading.Tasks;
     using System.Linq;
     using SPN.Forum.Data;
-    using SPN.Forum.Data.Models.Identity;
     using SPN.Forum.Services.Contracts;
     using SPN.Forum.Web.InputModels.Reply;
-    using SPN.Forum.Data.Models;
     using SPN.Services.Shared;
+    using SPN.Data.Models.Forum;
+    using SPN.Data.Models.Shared.Identity;
 
     public class ReplyService : BaseService, IReplyService
     {

@@ -11,8 +11,8 @@
     using SPN.Forum.Services.Contracts;
 
     using SPN.Forum.Web.InputModels.Post;
-    using SPN.Forum.Data.Models;
     using SPN.Services.Shared;
+    using SPN.Data.Models.Forum;
 
     public class PostService : BaseService, IPostService
     {

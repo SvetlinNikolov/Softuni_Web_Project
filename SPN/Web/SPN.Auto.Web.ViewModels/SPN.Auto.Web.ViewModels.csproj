@@ -8,4 +8,8 @@
     <PackageReference Include="Microsoft.AspNetCore.Mvc.ViewFeatures" Version="2.2.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\SPN.Auto.Web.InputModels\SPN.Auto.Web.InputModels.csproj" />
+  </ItemGroup>
+
 </Project>

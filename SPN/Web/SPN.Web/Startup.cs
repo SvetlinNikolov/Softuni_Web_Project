@@ -14,13 +14,16 @@ namespace SPN.Web
     using SPN.Web.Extensions;
     using SPN.Forum.Data.Seeding;
     using SPN.Forum.Data;
-    using SPN.Forum.Data.Models.Identity;
+
     using SPN.Forum.Services.Contracts;
     using SPN.Forum.Services.Services;
     using SPN.Services.Shared;
     using SPN.Auto.Services.Contracts;
     using SPN.Auto.Services.Services;
     using SPN.Data.Seeding;
+    using SPN.Data.Models.Shared.Identity;
+    using SPN.Data.Common.Cloudinary;
+    using CloudinaryDotNet;
 
     public class Startup
     {
@@ -46,7 +49,7 @@ namespace SPN.Web
             services.Configure<IdentityOptions>(options =>
             {
                 // Password settings.
-                
+
                 options.Password.RequireDigit = false;
                 options.Password.RequireLowercase = false;
                 options.Password.RequireNonAlphanumeric = false;
@@ -63,7 +66,7 @@ namespace SPN.Web
                  {
                      options.LoginPath = "/Identity/Account/Login";
                      options.LogoutPath = "/Identity/Account/Logout";
-                    
+
                  });
 
             services.AddAutoMapper(AutoMapperConfig.GetAutoMapperProfilesFromAllAssemblies()
@@ -84,9 +87,15 @@ namespace SPN.Web
             services.AddScoped<IMakeService, MakeService>();
             services.AddScoped<IModelService, ModelService>();
             services.AddScoped<IAutoService, AutoService>();
+            services.AddScoped<ISearchService, SearchService>();
 
             //Shared Services
             services.AddScoped<IUserProfileService, UserProfileService>();
+
+            // Cloudinary Setup
+            var cloudinaryAccount = new CloudinaryDotNet.Account(CloudinaryConfig.CloudName, CloudinaryConfig.ApiKey, CloudinaryConfig.ApiSecret);
+            var cloudinary = new Cloudinary(cloudinaryAccount);
+            services.AddSingleton(cloudinary);
 
             services.AddControllersWithViews();
             services.AddRazorPages();
@@ -101,7 +110,7 @@ namespace SPN.Web
             using (var dbContext = scope.ServiceProvider.GetService<SPNDbContext>())
 
                 dbContext.Database.EnsureCreated();
-             
+
 
             if (env.IsDevelopment())
             {

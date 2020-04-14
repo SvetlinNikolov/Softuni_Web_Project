@@ -1,10 +1,7 @@
-﻿using SPN.Auto.Data.Models.Enums;
-using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace SPN.Auto.Web.InputModels.Automobile
+﻿namespace SPN.Auto.Web.InputModels.Automobile
 {
+    using SPN.Data.Models.Auto.Enums;
+
     public class SearchConciseInputModel
     {
         public string Make { get; set; }

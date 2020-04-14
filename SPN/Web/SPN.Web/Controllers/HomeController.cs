@@ -41,18 +41,7 @@ public class HomeController : BaseController
         //return this.View(viewModel);
     }
 
-    [HttpPost]
-    public async Task<IActionResult> Create(MainCreateInputModel model)
-    {
-        await this.autoService.CreateAutomobileAsync(model);
-
-        return this.View(model);
-    }
-
-    public IActionResult Create()
-    {
-        return this.View();
-    }
+ 
 
     public IActionResult Api()
     {
@@ -60,3 +49,4 @@ public class HomeController : BaseController
         return this.View();
     }
 }
+

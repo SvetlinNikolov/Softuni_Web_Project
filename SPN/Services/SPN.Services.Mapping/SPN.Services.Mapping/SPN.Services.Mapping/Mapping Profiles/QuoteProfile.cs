@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using SPN.Forum.Data.Models;
+using SPN.Data.Models.Forum;
 using SPN.Forum.Web.InputModels.Quote;
 
 namespace SPN.Services.Mapping.Mapping_Profiles

@@ -6,7 +6,7 @@
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.AspNetCore.Mvc.RazorPages;
     using Microsoft.Extensions.Logging;
-    using SPN.Forum.Data.Models.Identity;
+    using SPN.Data.Models.Shared.Identity;
 
     [AllowAnonymous]
     public class LogoutModel : PageModel

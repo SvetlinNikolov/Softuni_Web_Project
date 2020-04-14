@@ -3,9 +3,9 @@
     using System.Threading.Tasks;
     using AutoMapper;
     using Microsoft.EntityFrameworkCore;
+    using SPN.Data.Models.Forum;
+    using SPN.Data.Models.Shared.Identity;
     using SPN.Forum.Data;
-    using SPN.Forum.Data.Models;
-    using SPN.Forum.Data.Models.Identity;
     using SPN.Forum.Services.Contracts;
 
     using SPN.Forum.Web.InputModels.PostLike;

@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 using SPN.Data.Common.Constants;
-using SPN.Forum.Data.Models;
+using SPN.Data.Models.Forum;
 using System;
 using System.Collections.Generic;
 using System.IO;

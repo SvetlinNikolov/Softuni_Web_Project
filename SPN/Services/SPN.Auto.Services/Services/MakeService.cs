@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using SPN.Auto.Services.Contracts;
 using SPN.Auto.Web.ViewModels.Make;
+using SPN.Data.Models.Auto;
 using SPN.Forum.Data;
 using SPN.Services.Shared;
 using System;
@@ -19,22 +20,35 @@ namespace SPN.Auto.Services.Services
         {
         }
 
-        public async Task<IEnumerable<MakeConciseViewModel>> GetAllMakes()
+        public async Task<IEnumerable<MakeConciseViewModel>> GetAllMakesAsync()
         {
             var makes = await this.dbContext
                 .Makes
                 .Select(m => new MakeConciseViewModel { Name = m.Name })
                 .ToListAsync();
-           
+
             //var carMakes = mapper
             //      .Map<IEnumerable<MakeConciseViewModel>>(makes); //Map
 
             return makes;
         }
 
-        public Task<MakeConciseViewModel> GetMakeById()
+        public async Task<MakeConciseViewModel> GetMakeByIdAsync(int id)
         {
-            throw new NotImplementedException();
+            Make make = await this.dbContext.Makes.FirstOrDefaultAsync(x => x.Id == id);
+
+            MakeConciseViewModel model = this.mapper.Map<MakeConciseViewModel>(make);
+
+            return model;
+        }
+
+        public async Task<MakeConciseViewModel> GetMakeByNameAsync(string name)
+        {
+            Make make = await this.dbContext.Makes.FirstOrDefaultAsync(x => x.Name == name);
+
+            MakeConciseViewModel model = this.mapper.Map<MakeConciseViewModel>(make);
+
+            return model;
         }
     }
 }

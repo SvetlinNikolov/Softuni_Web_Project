@@ -1,9 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using SPN.Auto.Data.Models;
-using System;
-using System.Collections.Generic;
-using System.Text;
+using SPN.Data.Models.Auto;
+
 
 namespace SPN.Data.Configurations
 {

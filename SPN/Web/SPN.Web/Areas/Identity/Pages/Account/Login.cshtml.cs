@@ -8,7 +8,7 @@
 
     using System.Threading.Tasks;
     using System.ComponentModel.DataAnnotations;
-    using SPN.Forum.Data.Models.Identity;
+    using SPN.Data.Models.Shared.Identity;
 
     [AllowAnonymous]
     public class LoginModel : PageModel

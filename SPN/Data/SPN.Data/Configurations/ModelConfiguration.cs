@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using SPN.Auto.Data.Models;
+using SPN.Data.Models.Auto;
 using System;
 using System.Collections.Generic;
 using System.Text;

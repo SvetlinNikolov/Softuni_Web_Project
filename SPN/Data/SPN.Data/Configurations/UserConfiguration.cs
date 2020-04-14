@@ -3,7 +3,7 @@
 
     using Microsoft.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore.Metadata.Builders;
-    using SPN.Forum.Data.Models.Identity;
+    using SPN.Data.Models.Shared.Identity;
 
     public class UserConfiguration : IEntityTypeConfiguration<User>
     {
@@ -20,7 +20,10 @@
             builder.HasMany(u => u.Quotes)
                 .WithOne(r => r.Author);
 
-
+            builder.HasMany(a => a.Automobiles)
+                .WithOne(u => u.User)
+                .HasForeignKey(a => a.UserId)
+                .OnDelete(DeleteBehavior.Restrict);
 
 
 

@@ -1,8 +1,9 @@
 ﻿namespace SPN.Services.Shared
 {
+    using SPN.Data.Models.Shared.Identity;
     using System.Collections.Generic;
     using System.Threading.Tasks;
-    using SPN.Forum.Data.Models.Identity;
+    
 
     public interface IUserService
     {

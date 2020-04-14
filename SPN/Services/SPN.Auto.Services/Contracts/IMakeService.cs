@@ -9,10 +9,10 @@ namespace SPN.Auto.Services.Contracts
 {
     public interface IMakeService
     {
-        Task<IEnumerable<MakeConciseViewModel>> GetAllMakes();
+        Task<IEnumerable<MakeConciseViewModel>> GetAllMakesAsync();
 
-        public Task<MakeConciseViewModel> GetMakeById(int id);
+        public Task<MakeConciseViewModel> GetMakeByIdAsync(int id);
 
-        public Task<MakeConciseViewModel> GetMakeByName(string name);
+        public Task<MakeConciseViewModel> GetMakeByNameAsync(string name);
     }
 }
