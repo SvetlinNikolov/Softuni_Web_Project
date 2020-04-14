@@ -6,7 +6,7 @@ namespace SPN.Auto.Web.InputModels.Automobile
 {
     public class MainCreateInputModel
     {
-        public CreateConciseInputModel Main { get; set; }
+        public CreateConciseInputModel PrimaryProperties { get; set; }
 
         public SafetyInputModel Safety { get; set; }
 

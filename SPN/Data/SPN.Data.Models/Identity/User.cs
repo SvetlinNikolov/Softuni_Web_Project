@@ -8,7 +8,6 @@
     using SPN.Forum.Data.Models.Identity.Enums;
 
     public class User : IdentityUser, IAuditInfo, IDeletableEntity
-
     {
         public User()
         {
@@ -18,6 +17,7 @@
             Replies = new HashSet<Reply>();
             Posts = new HashSet<Post>();
             Quotes = new HashSet<Quote>();
+          
         }
         public Gender Gender { get; set; }
 
@@ -45,9 +45,6 @@
 
         public virtual ICollection<Quote> Quotes { get; set; }
 
-
-
-
-
+      
     }
 }

@@ -20,6 +20,6 @@
 
         Task<Category> GetCategoryByIdAsync(int categoryId);
 
-        Task<CategoryTopicModel> GetCategoryTopic(int categoryId);
+        Task<CategoryTopicModel> GetCategoryTopicAsync(int categoryId);
     }
 }

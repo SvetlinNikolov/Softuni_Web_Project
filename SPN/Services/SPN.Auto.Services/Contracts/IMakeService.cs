@@ -11,6 +11,8 @@ namespace SPN.Auto.Services.Contracts
     {
         Task<IEnumerable<MakeConciseViewModel>> GetAllMakes();
 
-        public Task<MakeConciseViewModel> GetMakeById();
+        public Task<MakeConciseViewModel> GetMakeById(int id);
+
+        public Task<MakeConciseViewModel> GetMakeByName(string name);
     }
 }

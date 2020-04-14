@@ -35,8 +35,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SPN.Auto.Web.ViewModels", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SPN.Auto.Web.InputModels", "Web\SPN.Auto.Web.InputModels\SPN.Auto.Web.InputModels.csproj", "{6816FD28-1323-4D15-86D6-21D9A67E5260}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SPN.Auto.Services.Mapping", "Services\SPN.Auto.Services.Mapping\SPN.Auto.Services.Mapping.csproj", "{FAC27ECB-4B59-48E9-8C14-FE34783FC1D6}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -95,10 +93,6 @@ Global
 		{6816FD28-1323-4D15-86D6-21D9A67E5260}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6816FD28-1323-4D15-86D6-21D9A67E5260}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6816FD28-1323-4D15-86D6-21D9A67E5260}.Release|Any CPU.Build.0 = Release|Any CPU
-		{FAC27ECB-4B59-48E9-8C14-FE34783FC1D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FAC27ECB-4B59-48E9-8C14-FE34783FC1D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FAC27ECB-4B59-48E9-8C14-FE34783FC1D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FAC27ECB-4B59-48E9-8C14-FE34783FC1D6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -117,7 +111,6 @@ Global
 		{3ABD0339-EC03-4804-B0AC-E2C041D43CBA} = {7EE47EEE-15F5-46A6-9E17-CB341A4805D9}
 		{BEAD04EE-24B3-4765-9984-5981A3D0B9C7} = {465D557F-CAE3-47C1-AD2B-92BF87965123}
 		{6816FD28-1323-4D15-86D6-21D9A67E5260} = {465D557F-CAE3-47C1-AD2B-92BF87965123}
-		{FAC27ECB-4B59-48E9-8C14-FE34783FC1D6} = {7EE47EEE-15F5-46A6-9E17-CB341A4805D9}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {5D94260A-7A80-4EFB-810D-20F2C1CF7021}

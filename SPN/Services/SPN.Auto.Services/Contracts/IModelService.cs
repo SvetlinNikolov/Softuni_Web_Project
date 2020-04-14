@@ -9,5 +9,9 @@ namespace SPN.Auto.Services.Contracts
     public interface IModelService
     {
         Task<IEnumerable<ModelConciseViewModel>> GetAllModels();
+
+        public Task<ModelConciseViewModel> GetModelById();
+
+        public Task<ModelConciseViewModel> GetModelByName();
     }
 }

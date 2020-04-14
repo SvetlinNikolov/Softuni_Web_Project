@@ -64,7 +64,7 @@
         [AllowAnonymous]
         public async Task<IActionResult> Topic(int id)
         {
-            var model = await this.categoryService.GetCategoryTopic(id);
+            var model = await this.categoryService.GetCategoryTopicAsync(id);
 
             return this.View(model);
         }

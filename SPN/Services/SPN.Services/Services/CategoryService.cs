@@ -64,6 +64,7 @@
         {
             Category category = await GetCategoryByIdAsync(categoryId);
             category.Title = newTitle;
+            category.ModifiedOn = DateTime.UtcNow;
 
             dbContext.Update(category);
             await dbContext.SaveChangesAsync();
@@ -87,7 +88,7 @@
             return model;
         }
 
-        public async Task<CategoryTopicModel> GetCategoryTopic(int categoryId)
+        public async Task<CategoryTopicModel> GetCategoryTopicAsync(int categoryId)
         {
             var category = await GetCategoryByIdAsync(categoryId);
             var posts = await postService.GetPostsByCategoryAsync(categoryId);

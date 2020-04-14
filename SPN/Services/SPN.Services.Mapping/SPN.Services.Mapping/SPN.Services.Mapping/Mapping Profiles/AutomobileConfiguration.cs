@@ -12,6 +12,13 @@ namespace SPN.Auto.Services.Mapping.MappingProfiles
         public AutomobileConfiguration()
         {
             this.CreateMap<MainCreateInputModel, Automobile>();
+            this.CreateMap<CreateConciseInputModel, PrimaryProperties>();
+            this.CreateMap<ExtraFeaturesInputModel, ExtraFeatures>();
+            this.CreateMap<InteriorInputModel, Interiors>();
+            this.CreateMap<InteriorMaterialInputModel, InteriorMaterials>();
+            this.CreateMap<SafetyInputModel, Safety>();
+            this.CreateMap<SpecializedInputModel, SpecializedFeatures>();
+            this.CreateMap<SuspensionInputModel, Suspensions>();
         }
     }
 }
