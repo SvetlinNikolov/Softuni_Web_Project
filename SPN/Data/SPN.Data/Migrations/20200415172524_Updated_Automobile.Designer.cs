@@ -10,8 +10,8 @@ using SPN.Forum.Data;
 namespace SPN.Data.Migrations
 {
     [DbContext(typeof(SPNDbContext))]
-    [Migration("20200414070536_Finally_Merged_Forum_And_Auto")]
-    partial class Finally_Merged_Forum_And_Auto
+    [Migration("20200415172524_Updated_Automobile")]
+    partial class Updated_Automobile
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -159,6 +159,9 @@ namespace SPN.Data.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<string>("Comment")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<DateTime>("CreatedOn")
                         .HasColumnType("datetime2");
 
@@ -166,6 +169,9 @@ namespace SPN.Data.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<int?>("ExtraFeaturesId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ImagesId")
                         .HasColumnType("int");
 
                     b.Property<int?>("InteriorMaterialsId")
@@ -198,15 +204,17 @@ namespace SPN.Data.Migrations
                     b.Property<int?>("SuspensionsId")
                         .HasColumnType("int");
 
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
+                    b.Property<string>("Title")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("UserId1")
+                    b.Property<string>("UserId")
                         .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
 
                     b.HasIndex("ExtraFeaturesId");
+
+                    b.HasIndex("ImagesId");
 
                     b.HasIndex("InteriorMaterialsId");
 
@@ -224,7 +232,7 @@ namespace SPN.Data.Migrations
 
                     b.HasIndex("SuspensionsId");
 
-                    b.HasIndex("UserId1");
+                    b.HasIndex("UserId");
 
                     b.ToTable("Automobiles");
                 });
@@ -281,6 +289,60 @@ namespace SPN.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("ExtraFeatures");
+                });
+
+            modelBuilder.Entity("SPN.Data.Models.Auto.Images", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DeletedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("ImageUrl1")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ImageUrl10")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ImageUrl2")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ImageUrl3")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ImageUrl4")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ImageUrl5")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ImageUrl6")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ImageUrl7")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ImageUrl8")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ImageUrl9")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("ModifiedOn")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Images");
                 });
 
             modelBuilder.Entity("SPN.Data.Models.Auto.InteriorMaterials", b =>
@@ -520,8 +582,8 @@ namespace SPN.Data.Migrations
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
-                    b.Property<int?>("Mileage")
-                        .HasColumnType("int");
+                    b.Property<string>("Mileage")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("ModifiedOn")
                         .HasColumnType("datetime2");
@@ -532,8 +594,8 @@ namespace SPN.Data.Migrations
                     b.Property<int?>("Region")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("Year")
-                        .HasColumnType("datetime2");
+                    b.Property<int>("Year")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -965,6 +1027,9 @@ namespace SPN.Data.Migrations
                     b.Property<int>("AccessFailedCount")
                         .HasColumnType("int");
 
+                    b.Property<int>("Address")
+                        .HasColumnType("int");
+
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
                         .HasColumnType("nvarchar(max)");
@@ -1100,6 +1165,12 @@ namespace SPN.Data.Migrations
                         .WithMany()
                         .HasForeignKey("ExtraFeaturesId");
 
+                    b.HasOne("SPN.Data.Models.Auto.Images", "Images")
+                        .WithMany()
+                        .HasForeignKey("ImagesId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("SPN.Data.Models.Auto.InteriorMaterials", "InteriorMaterials")
                         .WithMany()
                         .HasForeignKey("InteriorMaterialsId");
@@ -1134,7 +1205,8 @@ namespace SPN.Data.Migrations
 
                     b.HasOne("SPN.Data.Models.Shared.Identity.User", "User")
                         .WithMany("Automobiles")
-                        .HasForeignKey("UserId1");
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Restrict);
                 });
 
             modelBuilder.Entity("SPN.Data.Models.Auto.Model", b =>

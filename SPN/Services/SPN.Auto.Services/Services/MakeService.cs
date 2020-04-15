@@ -24,7 +24,7 @@ namespace SPN.Auto.Services.Services
         {
             var makes = await this.dbContext
                 .Makes
-                .Select(m => new MakeConciseViewModel { Name = m.Name })
+                .Select(m => new MakeConciseViewModel { Name = m.Name ,Id = m.Id})
                 .ToListAsync();
 
             //var carMakes = mapper

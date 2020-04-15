@@ -7,8 +7,16 @@ using System.Text;
 namespace SPN.Auto.Web.InputModels.Automobile
 {
     public class MainCreateInputModel
-
     {
+    
+        public string Title { get; set; }
+
+        public string Comment { get; set; }
+
+        public string Make { get; set; } //TODO MAke this int
+
+        public string Model { get; set; }
+
         public CreateConciseInputModel PrimaryProperties { get; set; }
 
         public SafetyInputModel Safety { get; set; }
@@ -24,5 +32,7 @@ namespace SPN.Auto.Web.InputModels.Automobile
         public SpecializedInputModel SpecializedFeatures { get; set; }
 
         public ImagesInputModel Images { get; set; }
+
+
     }
 }

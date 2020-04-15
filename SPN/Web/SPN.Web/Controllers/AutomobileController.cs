@@ -16,7 +16,7 @@ namespace SPN.Web.Controllers
         private readonly ISearchService searchService;
         private readonly IAutoService autoService;
 
-        public AutomobileController(IUserService userService, IMapper mapper, ISearchService searchService,IAutoService autoService)
+        public AutomobileController(IUserService userService, IMapper mapper, ISearchService searchService, IAutoService autoService)
             : base(userService, mapper)
         {
             this.searchService = searchService;
@@ -31,13 +31,11 @@ namespace SPN.Web.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create(MainCreateInputModel model)
+        public async Task<IActionResult> Create(MainCreateInputModel inputModel)
         {
-           
-                await this.autoService.CreateAutomobileAsync(model);
+            await this.autoService.CreateAutomobileAsync(inputModel);
 
-                return this.View(model);
-            
+            return this.View(inputModel);
         }
         public IActionResult Create()
         {

@@ -16,5 +16,7 @@
         Task<bool> RemoveUserFromToRoleAsync(string userId, string role);
 
         Task<IEnumerable<User>> GetUsersByRoleAsync(string role);
+
+        string GetLoggedInUserId();
     }
 }

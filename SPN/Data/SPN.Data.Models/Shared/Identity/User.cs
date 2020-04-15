@@ -5,6 +5,7 @@
     using Microsoft.AspNetCore.Identity;
     using SPN.Data.Common.Contracts;
     using SPN.Data.Models.Auto;
+    using SPN.Data.Models.Auto.Enums;
     using SPN.Data.Models.Forum;
     using SPN.Data.Models.Shared.Identity.Enums;
 
@@ -21,6 +22,8 @@
             Automobiles = new HashSet<Automobile>();
         }
         public Gender Gender { get; set; }
+
+        public Region Address { get; set; }
 
         public string Description { get; set; }
 

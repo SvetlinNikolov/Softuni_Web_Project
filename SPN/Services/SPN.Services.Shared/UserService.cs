@@ -32,6 +32,7 @@
 
         }
 
+
         public async Task<User> GetLoggedInUserAsync()
         {
             var userId = httpContextAccessor
@@ -87,6 +88,18 @@
 
             await userManager.AddToRoleAsync(user, role);
             return true;
+        }
+
+        public string GetLoggedInUserId()
+        {
+
+            var userId = httpContextAccessor
+                .HttpContext
+                .User
+                .FindFirst(ClaimTypes.NameIdentifier)
+                .Value;
+
+            return userId;
         }
     }
 }

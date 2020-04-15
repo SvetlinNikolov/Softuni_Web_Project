@@ -31,7 +31,6 @@
 
         public IActionResult Create()
         {
-
             return this.View();
         }
 

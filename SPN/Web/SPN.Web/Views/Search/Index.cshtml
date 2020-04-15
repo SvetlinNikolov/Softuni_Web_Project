@@ -1,0 +1,147 @@
+﻿@model MainSearchInputModel
+
+<div class="text-center">
+    <h1>Search</h1>
+</div>
+
+<form asp-controller="Search" asp-action="Results" method="post" enctype="multipart/form-data">
+    <div class="form-group">
+        <label asp-for="@Model.PrimaryProperties.Make" class="control-label"></label>
+        <input asp-for="@Model.PrimaryProperties.Make" class="form-control" />
+        <span asp-validation-for="@Model.PrimaryProperties.Make" class="text-danger"></span>
+    </div>
+
+
+    <label asp-for="@Model.PrimaryProperties.Make"></label>
+    <select class="custom-select" id="make" name="make">
+        <option selected value="@null"></option>
+        <option value="Mercedes">Mercedes</option>
+        <option value="BMW">BMW</option>
+        <option value="Audi">Audi</option>
+    </select>
+    <span asp-validation-for="@Model.PrimaryProperties.Make" class="text-danger"></span>
+
+    <label asp-for="@Model.PrimaryProperties.Model"></label>
+    <select class="custom-select" id="model" name="model">
+        <option selected value="@null"></option>
+        <option value="E200">E200</option>
+        <option value="320d">20d</option>
+        <option value="A7">A7</option>
+    </select>
+    <span asp-validation-for="@Model.PrimaryProperties.Model" class="text-danger"></span>
+
+    <div class="form-row">
+        <div class="form-group col-md-3">
+            <label asp-for="@Model.PrimaryProperties.YearFrom">From Year:</label>
+            <select class="custom-select" id="yearFrom" name="yearFrom">
+                <option selected value="@null"></option>
+                @for (int i = 1970; i <= DateTime.UtcNow.Year; i++)
+                {
+                    <option value="@i">
+                        From  @i
+                    </option>
+                }
+            </select>
+            <span asp-validation-for="@Model.PrimaryProperties.YearFrom" class="text-danger"></span>
+        </div>
+
+        <div class="form-group col-md-3">
+            <label asp-for="@Model.PrimaryProperties.YearTo">To Year:</label>
+            <select class="custom-select" id="yearTo" name="yearTo">
+                <option selected value="@null"></option>
+                @for (int i = DateTime.UtcNow.Year; i >= 1970; i--)
+                {
+                    <option value="@i">
+                        To  @i
+                    </option>
+                }
+            </select>
+            <span asp-validation-for="@Model.PrimaryProperties.YearTo" class="text-danger"></span>
+        </div>
+
+        <div class="form-group col-md-3">
+            <label asp-for="@Model.PrimaryProperties.MileageTo">Max Mileage</label>
+            <select class="custom-select" id="maxMileage" name="maxMileage">
+                <option selected value="@null"></option>
+                @for (int i = 0; i <= 1_000_000; i += 100_000)
+                {
+                    <option value="@i">
+                        @i
+                    </option>
+                }
+            </select>
+            <span asp-validation-for="@Model.PrimaryProperties.MileageTo" class="text-danger"></span>
+        </div>
+
+        <div class="form-group col-md-3">
+            <label asp-for="@Model.PrimaryProperties.HorsepowerFrom">Min Horsepower</label>
+            <input asp-for="@Model.PrimaryProperties.HorsepowerFrom" class="form-control" />
+            <span asp-validation-for="@Model.PrimaryProperties.HorsepowerFrom" class="text-danger"></span>
+        </div>
+    </div>
+
+    @*End of first row*@
+    <div class="form-row">
+        <div class="form-group col-md-3">
+            <label asp-for="@Model.PrimaryProperties.PriceFrom">Price From (GBP)</label>
+            <input asp-for="@Model.PrimaryProperties.PriceFrom" class="form-control" />
+            <span asp-validation-for="@Model.PrimaryProperties.PriceFrom" class="text-danger"></span>
+        </div>
+
+        <div class="form-group col-md-3">
+            <label asp-for="@Model.PrimaryProperties.PriceTo">Price To (GBP)</label>
+            <input asp-for="@Model.PrimaryProperties.PriceTo" class="form-control" />
+            <span asp-validation-for="@Model.PrimaryProperties.PriceTo" class="text-danger"></span>
+        </div>
+
+        <div class="form-group col-md-3">
+            <label asp-for="@Model.PrimaryProperties.Region"></label>
+            <select class="custom-select" asp-for="@Model.PrimaryProperties.Region" asp-items="Html.GetEnumSelectList<Region>()">
+                <option selected value="@null"></option>
+            </select>
+            <span asp-validation-for="@Model.PrimaryProperties.Region" class="text-danger"></span>
+        </div>
+
+        <div class="form-group col-md-3">
+            <label asp-for="@Model.PrimaryProperties.Engine"></label>
+            <select class="custom-select" asp-for="@Model.PrimaryProperties.Engine" asp-items="Html.GetEnumSelectList<Engine>()">
+                <option selected value="@null"></option>
+            </select>
+            <span asp-validation-for="@Model.PrimaryProperties.Engine" class="text-danger"></span>
+        </div>
+    </div>
+
+    @*End of second row*@
+
+    <div class="form-row">
+        <div class="form-group col-md-4">
+            <label asp-for="@Model.PrimaryProperties.Color">Color</label>
+            <select class="custom-select" asp-for="@Model.PrimaryProperties.Color" asp-items="Html.GetEnumSelectList<Color>()">
+                <option selected value="@null"></option>
+            </select>
+            <span asp-validation-for="@Model.PrimaryProperties.Color" class="text-danger"></span>
+        </div>
+
+        <div class="form-group col-md-4">
+            <label asp-for="@Model.PrimaryProperties.Condition">Condition</label>
+            <select class="custom-select" asp-for="@Model.PrimaryProperties.Condition" asp-items="Html.GetEnumSelectList<Condition>()">
+                <option selected value="@null"></option>
+            </select>
+            <span asp-validation-for="@Model.PrimaryProperties.Condition" class="text-danger"></span>
+        </div>
+
+        <div class="form-group col-md-4">
+            <label asp-for="@Model.PrimaryProperties.GearBox">Gearbox</label>
+            <select class="custom-select" asp-for="@Model.PrimaryProperties.GearBox" asp-items="Html.GetEnumSelectList<GearBox>()">
+                <option selected value="@null"></option>
+            </select>
+            <span asp-validation-for="@Model.PrimaryProperties.GearBox" class="text-danger"></span>
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <input type="submit" value="Search" class="btn btn-primary" />
+    </div>
+</form>
+

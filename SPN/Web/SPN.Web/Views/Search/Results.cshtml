@@ -1,0 +1,42 @@
+﻿@model SearchResultListingViewModel
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CurrentPage)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PagesCount)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.SearchResults)
+        {
+            <tr>
+                <td>
+                    <img src="@item.ImageUrl" alt="Smiley face" height="42" width="42">
+                </td>
+                <td>
+                    <a asp-controller="Automobile" asp-action="Index" asp-route-id="@item.Id">
+                     This is the car name
+                    </a>
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Make)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Model)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

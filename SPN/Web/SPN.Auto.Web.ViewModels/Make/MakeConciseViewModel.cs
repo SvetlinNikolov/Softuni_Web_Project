@@ -6,6 +6,8 @@ namespace SPN.Auto.Web.ViewModels.Make
 {
     public class MakeConciseViewModel
     {
+        public int Id { get; set; }
+
         public string Name { get; set; }
     }
 }

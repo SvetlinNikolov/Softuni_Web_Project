@@ -592,8 +592,8 @@ namespace SPN.Data.Migrations
                     b.Property<int?>("Region")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("Year")
-                        .HasColumnType("datetime2");
+                    b.Property<int>("Year")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -1023,6 +1023,9 @@ namespace SPN.Data.Migrations
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<int>("AccessFailedCount")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Address")
                         .HasColumnType("int");
 
                     b.Property<string>("ConcurrencyStamp")

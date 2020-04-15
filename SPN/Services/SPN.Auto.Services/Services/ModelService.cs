@@ -22,13 +22,9 @@ namespace SPN.Auto.Services.Services
 
         public async Task<IEnumerable<ModelConciseViewModel>> GetAllModels()
         {
-
-            //var carModels = mapper
-            //      .Map<IEnumerable<ModelConciseViewModel>>(models); //Map
-
             var models = await this.dbContext
                    .Models
-                   .Select(m => new ModelConciseViewModel { Name = m.Name })
+                   .Select(m => new ModelConciseViewModel { Name = m.Name ,Id = m.Id})
                    .ToListAsync();
 
             return models;

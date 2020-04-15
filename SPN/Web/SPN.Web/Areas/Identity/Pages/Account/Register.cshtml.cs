@@ -13,6 +13,7 @@ namespace SPN.Web.Areas.Identity.Pages.Account
 
     using SPN.Data.Models.Shared.Identity.Enums;
     using SPN.Data.Models.Shared.Identity;
+    using SPN.Data.Models.Auto.Enums;
 
     [AllowAnonymous]
     public class RegisterModel : PageModel
@@ -56,6 +57,16 @@ namespace SPN.Web.Areas.Identity.Pages.Account
             [Required]
             [Display(Name = "Gender")] //TODO Add Gender Validation
             public Gender Gender { get; set; }
+
+            [Required]
+            [Display(Name ="Address")]
+            public Region Region { get; set; }
+
+            [Required]
+            [Display(Name ="Phone number")]
+            [DataType(DataType.PhoneNumber)]
+            [StringLength(10, MinimumLength = 4, ErrorMessage = "Invalid phone number")]
+            public string PhoneNumber { get; set; }
         }
 
         public void OnGet(string returnUrl = null)

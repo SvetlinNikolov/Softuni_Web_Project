@@ -28,7 +28,7 @@ public class HomeController : BaseController
 
     public IActionResult Index()
     {
-        return this.View();
+        return this.View("Test");
         //var makes = await this.makeService.GetAllMakes();
         //var models = await this.modelService.GetAllModels();
 

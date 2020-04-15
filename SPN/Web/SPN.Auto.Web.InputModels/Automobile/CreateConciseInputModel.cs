@@ -9,7 +9,6 @@ namespace SPN.Auto.Web.InputModels.Automobile
     public class CreateConciseInputModel
     {
 
-
         //TODO add messages here
         [Required]
         public string Make { get; set; }
@@ -25,7 +24,8 @@ namespace SPN.Auto.Web.InputModels.Automobile
 
         public Color? Color { get; set; }
 
-        public DateTime Year { get; set; }
+     
+        public int Year { get; set; }
 
     
         public int? Horsepower { get; set; }

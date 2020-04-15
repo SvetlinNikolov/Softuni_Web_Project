@@ -14,11 +14,11 @@ namespace SPN.Auto.Web.ViewModels.Search
 
         public string Title { get; set; }
 
-        public string Year { get; set; }
+        public int Year { get; set; }
 
         public string SellerName { get; set; }
 
-        public int SellerId { get; set; }
+        public string SellerId { get; set; }
 
         public string Mileage { get; set; }
 

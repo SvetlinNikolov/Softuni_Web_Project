@@ -58,5 +58,7 @@
 
         public const string UsernameLenghtError = "Name must be between {2} and {1} symbols";
 
+        //SearchResultListingViewModel
+        public const string SearchTitle = "Showing results for : Make: {2}, Model: {1}";
     }
 }

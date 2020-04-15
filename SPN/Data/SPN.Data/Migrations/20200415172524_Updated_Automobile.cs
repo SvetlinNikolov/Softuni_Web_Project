@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace SPN.Data.Migrations
 {
-    public partial class Finally_Merged_Forum_And_Auto : Migration
+    public partial class Updated_Automobile : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -41,6 +41,7 @@ namespace SPN.Data.Migrations
                     LockoutEnabled = table.Column<bool>(nullable: false),
                     AccessFailedCount = table.Column<int>(nullable: false),
                     Gender = table.Column<int>(nullable: false),
+                    Address = table.Column<int>(nullable: false),
                     Description = table.Column<string>(nullable: true),
                     ProfileImage = table.Column<string>(nullable: true),
                     CreatedOn = table.Column<DateTime>(nullable: false),
@@ -96,6 +97,32 @@ namespace SPN.Data.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_ExtraFeatures", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Images",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    CreatedOn = table.Column<DateTime>(nullable: false),
+                    ModifiedOn = table.Column<DateTime>(nullable: true),
+                    ImageUrl1 = table.Column<string>(nullable: true),
+                    ImageUrl2 = table.Column<string>(nullable: true),
+                    ImageUrl3 = table.Column<string>(nullable: true),
+                    ImageUrl4 = table.Column<string>(nullable: true),
+                    ImageUrl5 = table.Column<string>(nullable: true),
+                    ImageUrl6 = table.Column<string>(nullable: true),
+                    ImageUrl7 = table.Column<string>(nullable: true),
+                    ImageUrl8 = table.Column<string>(nullable: true),
+                    ImageUrl9 = table.Column<string>(nullable: true),
+                    ImageUrl10 = table.Column<string>(nullable: true),
+                    IsDeleted = table.Column<bool>(nullable: false),
+                    DeletedOn = table.Column<DateTime>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Images", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -189,8 +216,8 @@ namespace SPN.Data.Migrations
                     CreatedOn = table.Column<DateTime>(nullable: false),
                     ModifiedOn = table.Column<DateTime>(nullable: true),
                     Price = table.Column<int>(nullable: false),
-                    Year = table.Column<DateTime>(nullable: false),
-                    Mileage = table.Column<int>(nullable: true),
+                    Year = table.Column<int>(nullable: false),
+                    Mileage = table.Column<string>(nullable: true),
                     Horsepower = table.Column<int>(nullable: false),
                     Engine = table.Column<int>(nullable: false),
                     GearBox = table.Column<int>(nullable: false),
@@ -518,8 +545,9 @@ namespace SPN.Data.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     CreatedOn = table.Column<DateTime>(nullable: false),
                     ModifiedOn = table.Column<DateTime>(nullable: true),
-                    UserId1 = table.Column<string>(nullable: true),
-                    UserId = table.Column<int>(nullable: false),
+                    Title = table.Column<string>(nullable: true),
+                    Comment = table.Column<string>(nullable: true),
+                    UserId = table.Column<string>(nullable: true),
                     MakeId = table.Column<int>(nullable: true),
                     ModelId = table.Column<int>(nullable: true),
                     PrimaryPropertiesId = table.Column<int>(nullable: true),
@@ -529,6 +557,7 @@ namespace SPN.Data.Migrations
                     SuspensionsId = table.Column<int>(nullable: true),
                     SpecializedFeaturesId = table.Column<int>(nullable: true),
                     ExtraFeaturesId = table.Column<int>(nullable: true),
+                    ImagesId = table.Column<int>(nullable: false),
                     IsDeleted = table.Column<bool>(nullable: false),
                     DeletedOn = table.Column<DateTime>(nullable: true)
                 },
@@ -541,6 +570,12 @@ namespace SPN.Data.Migrations
                         principalTable: "ExtraFeatures",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Automobiles_Images_ImagesId",
+                        column: x => x.ImagesId,
+                        principalTable: "Images",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Automobiles_InteriorMaterials_InteriorMaterialsId",
                         column: x => x.InteriorMaterialsId,
@@ -590,8 +625,8 @@ namespace SPN.Data.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Automobiles_AspNetUsers_UserId1",
-                        column: x => x.UserId1,
+                        name: "FK_Automobiles_AspNetUsers_UserId",
+                        column: x => x.UserId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
@@ -731,6 +766,11 @@ namespace SPN.Data.Migrations
                 column: "ExtraFeaturesId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Automobiles_ImagesId",
+                table: "Automobiles",
+                column: "ImagesId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Automobiles_InteriorMaterialsId",
                 table: "Automobiles",
                 column: "InteriorMaterialsId");
@@ -771,9 +811,9 @@ namespace SPN.Data.Migrations
                 column: "SuspensionsId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Automobiles_UserId1",
+                name: "IX_Automobiles_UserId",
                 table: "Automobiles",
-                column: "UserId1");
+                column: "UserId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Models_MakeId",
@@ -875,6 +915,9 @@ namespace SPN.Data.Migrations
 
             migrationBuilder.DropTable(
                 name: "ExtraFeatures");
+
+            migrationBuilder.DropTable(
+                name: "Images");
 
             migrationBuilder.DropTable(
                 name: "InteriorMaterials");

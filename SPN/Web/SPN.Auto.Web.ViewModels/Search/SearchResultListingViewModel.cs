@@ -8,7 +8,7 @@ namespace SPN.Auto.Web.ViewModels.Search
     {
         public string Title { get; set; } //Type here searching for : Audi/Year-From-To somethign like that
 
-        public IEnumerable<SearchResultListingViewModel> SearchResults { get; set; }
+        public IEnumerable<SearchResultConciseViewModel> SearchResults { get; set; }
 
         public int CurrentPage { get; set; }
 
