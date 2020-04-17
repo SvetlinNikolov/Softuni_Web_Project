@@ -10,8 +10,14 @@ namespace SPN.Auto.Services.Contracts
 {
     public interface ISearchService
     {
-        public Task<SearchResultListingViewModel> GetSearchResultsAsync(MainSearchInputModel inputModel, int? take = null, int skip = 0); 
+        public Task<SearchResultListingViewModel> GetSearchResultsAsync(MainSearchInputModel inputModel, int? take = null, int skip = 0);
+
+        public Task<SearchResultListingViewModel> GetNewestAdvertsAsync(int? take = null, int skip = 0);
 
         public Task<AutomobileViewModel> GetAutomobileViewModelByIdAsync(int id);
+
+        public bool SearchModelIsNotNull(object inputModel);
+
+        
     }
 }

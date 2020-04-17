@@ -9,21 +9,23 @@ using System.Text;
 namespace SPN.Data.Models.Auto
 {
 
-    public class PrimaryProperties : BaseEntity<int>, IDeletableEntity
+    public class PrimaryProperties :HasId<int>
     {
         public int Price { get; set; }
 
         public int Year { get; set; }
 
-        public string Mileage { get; set; }
+        public int? Mileage { get; set; }
 
         public int Horsepower { get; set; }
 
-        public Engine Engine { get; set; }
+        public Engine? Engine { get; set; }
 
         public GearBox GearBox { get; set; }
 
-        public Condition Condition { get; set; }
+        public Color? Color { get; set; }
+
+        public Condition? Condition { get; set; }
 
         public Body? Body { get; set; }
 

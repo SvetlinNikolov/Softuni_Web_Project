@@ -8,7 +8,7 @@ using System.Text;
 namespace SPN.Data.Models.Auto
 {
 
-    public class Interiors : BaseEntity<int>, IDeletableEntity
+    public class Interiors : HasId<int>
     {
         public bool? Bluetooth { get; set; }
 

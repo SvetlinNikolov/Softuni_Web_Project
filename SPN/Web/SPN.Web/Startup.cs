@@ -24,6 +24,7 @@ namespace SPN.Web
     using SPN.Data.Models.Shared.Identity;
     using SPN.Data.Common.Cloudinary;
     using CloudinaryDotNet;
+    using SPN.Auto.Services.Services.Helpers;
 
     public class Startup
     {
@@ -88,6 +89,7 @@ namespace SPN.Web
             services.AddScoped<IModelService, ModelService>();
             services.AddScoped<IAutoService, AutoService>();
             services.AddScoped<ISearchService, SearchService>();
+  
 
             //Shared Services
             services.AddScoped<IUserProfileService, UserProfileService>();

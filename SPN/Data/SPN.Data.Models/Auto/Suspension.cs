@@ -7,10 +7,8 @@ using System.Text;
 
 namespace SPN.Data.Models.Auto
 {
-    public class Suspensions : BaseEntity<int>, IDeletableEntity
+    public class Suspensions : HasId<int>
     {
-
-
         public bool? ElectronicSuspensionControl { get; set; }
 
         public bool? AdaptiveAirSuspension { get; set; }

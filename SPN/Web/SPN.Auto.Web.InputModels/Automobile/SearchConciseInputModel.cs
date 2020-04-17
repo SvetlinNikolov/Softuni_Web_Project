@@ -5,10 +5,9 @@
 
     public class SearchConciseInputModel
     {
-        [BindProperty(SupportsGet =true)]
+
         public string Make { get; set; }
 
-        [BindProperty(SupportsGet = true)]
         public string Model { get; set; }
 
         public int? PriceFrom { get; set; }
@@ -29,7 +28,7 @@
 
         public GearBox? GearBox { get; set; }
 
-        public Condition Condition { get; set; }
+        public Condition? Condition { get; set; }
 
         public Body? Body { get; set; }
 

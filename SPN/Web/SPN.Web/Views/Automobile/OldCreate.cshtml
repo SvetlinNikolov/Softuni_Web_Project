@@ -1,0 +1,161 @@
+﻿@model MainCreateInputModel
+
+
+<h4>CreateConciseInputModel</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create" enctype="multipart/form-data">
+            <div class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="@Model.PrimaryProperties.Make" class="control-label"></label>
+                <input asp-for="@Model.PrimaryProperties.Make" class="form-control" />
+                <span asp-validation-for="@Model.PrimaryProperties.Make" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.PrimaryProperties.Model" class="control-label"></label>
+                <input asp-for="@Model.PrimaryProperties.Model" class="form-control" />
+                <span asp-validation-for="@Model.PrimaryProperties.Model" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.PrimaryProperties.Price" class="control-label"></label>
+                <input asp-for="@Model.PrimaryProperties.Price" class="form-control" />
+                <span asp-validation-for="@Model.PrimaryProperties.Price" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.PrimaryProperties.Mileage" class="control-label"></label>
+                <input asp-for="@Model.PrimaryProperties.Mileage" class="form-control" />
+                <span asp-validation-for="@Model.PrimaryProperties.Mileage" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.PrimaryProperties.Color" class="control-label"></label>
+                <input asp-for="@Model.PrimaryProperties.Color" class="form-control" />
+                <span asp-validation-for="@Model.PrimaryProperties.Color" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.PrimaryProperties.Year" class="control-label"></label>
+                <input asp-for="@Model.PrimaryProperties.Year" class="form-control" />
+                <span asp-validation-for="@Model.PrimaryProperties.Year" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.PrimaryProperties.Horsepower" class="control-label"></label>
+                <input asp-for="@Model.PrimaryProperties.Horsepower" class="form-control" />
+                <span asp-validation-for="@Model.PrimaryProperties.Horsepower" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.PrimaryProperties.Engine" class="control-label"></label>
+                <input asp-for="@Model.PrimaryProperties.Engine" class="form-control" />
+                <span asp-validation-for="@Model.PrimaryProperties.Engine" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.PrimaryProperties.GearBox" class="control-label"></label>
+                <input asp-for="@Model.PrimaryProperties.GearBox" class="form-control" />
+                <span asp-validation-for="@Model.PrimaryProperties.GearBox" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.PrimaryProperties.Condition" class="control-label"></label>
+                <input asp-for="@Model.PrimaryProperties.Condition" class="form-control" />
+                <span asp-validation-for="@Model.PrimaryProperties.Condition" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.PrimaryProperties.Body" class="control-label"></label>
+                <input asp-for="@Model.PrimaryProperties.Body" class="form-control" />
+                <span asp-validation-for="@Model.PrimaryProperties.Body" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.PrimaryProperties.Region" class="control-label"></label>
+                <input asp-for="@Model.PrimaryProperties.Region" class="form-control" />
+                <span asp-validation-for="@Model.PrimaryProperties.Region" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.Safety.AdaptiveCruiseControl" class="control-label"></label>
+                <input asp-for="@Model.Safety.AdaptiveCruiseControl" class="form-control" />
+                <span asp-validation-for="@Model.Safety.AdaptiveCruiseControl" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.Interiors.AirConditioning" class="control-label"></label>
+                <input asp-for="@Model.Interiors.AirConditioning" class="form-control" />
+                <span asp-validation-for="@Model.Interiors.AirConditioning" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.InteriorMaterials.Alcantara" class="control-label"></label>
+                <input asp-for="@Model.InteriorMaterials.Alcantara" class="form-control" />
+                <span asp-validation-for="@Model.InteriorMaterials.Alcantara" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.Suspensions.ActiveSuspension" class="control-label"></label>
+                <input asp-for="@Model.Suspensions.ActiveSuspension" class="form-control" />
+                <span asp-validation-for="@Model.Suspensions.ActiveSuspension" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.ExtraFeatures.KeylessEntry" class="control-label"></label>
+                <input asp-for="@Model.ExtraFeatures.KeylessEntry" class="form-control" />
+                <span asp-validation-for="@Model.ExtraFeatures.KeylessEntry" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.SpecializedFeatures.Ambulance" class="control-label"></label>
+                <input asp-for="@Model.SpecializedFeatures.Ambulance" class="form-control" />
+                <span asp-validation-for="@Model.SpecializedFeatures.Ambulance" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <div class="col-md-10">
+                    <p>Upload one or more files using this form:</p>
+                    <input asp-for="@Model.Images.ImageUrl1" type="file" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <div class="col-md-10">
+                        <input asp-for="@Model.Images.ImageUrl2" type="file" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-10">
+                            <input asp-for="@Model.Images.ImageUrl3" type="file" class="form-control" />
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-10">
+                                <input asp-for="@Model.Images.ImageUrl4" type="file" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-10">
+                                <input asp-for="@Model.Images.ImageUrl5" type="file" class="form-control" />
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-10">
+                                    <input asp-for="@Model.Images.ImageUrl6" type="file" class="form-control" />
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-md-10">
+                                        <input asp-for="@Model.Images.ImageUrl7" type="file" class="form-control" />
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-md-10">
+                                            <input asp-for="@Model.Images.ImageUrl8" type="file" class="form-control" />
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="col-md-10">
+                                                <input asp-for="@Model.Images.ImageUrl9" type="file" class="form-control" />
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="col-md-10">
+                                                    <input asp-for="@Model.Images.ImageUrl10" type="file" class="form-control" />
+                                                </div>
+                                                <div class="form-group">
+                                                    <input type="submit" value="Create" class="btn btn-primary" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

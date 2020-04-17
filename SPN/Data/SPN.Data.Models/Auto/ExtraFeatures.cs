@@ -8,10 +8,8 @@ using System.Text;
 namespace SPN.Data.Models.Auto
 {
 
-    public class ExtraFeatures : BaseEntity<int>, IDeletableEntity
+    public class ExtraFeatures : HasId<int>
     {
-
-
         public bool? KeylessEntry { get; set; }
 
         public bool? KeylessIgnition { get; set; }
@@ -35,5 +33,6 @@ namespace SPN.Data.Models.Auto
         public bool IsDeleted { get; set; }
 
         public DateTime? DeletedOn { get; set; }
+      
     }
 }

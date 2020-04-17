@@ -14,7 +14,9 @@ namespace SPN.Auto.Services.Mapping.MappingProfiles
     {
         public AutomobileConfiguration()
         {
-            this.CreateMap<MainCreateInputModel, Automobile>();
+            this.CreateMap<MainCreateInputModel, Automobile>()
+                .ForMember(x => x.Make, y => y.MapFrom(z => z.Make));
+
             this.CreateMap<CreateConciseInputModel, PrimaryProperties>();
             this.CreateMap<ExtraFeaturesInputModel, ExtraFeatures>();
             this.CreateMap<InteriorInputModel, Interiors>();
@@ -32,8 +34,17 @@ namespace SPN.Auto.Services.Mapping.MappingProfiles
             this.CreateMap<Suspensions, SuspensionInputModel>();
             this.CreateMap<ExtraFeatures, ExtraFeaturesInputModel>();
             this.CreateMap<SpecializedFeatures, SpecializedInputModel>();
-       
-            //this.CreateMap<Images, ImagesInputModel>();
+
+            this.CreateMap<SearchConciseInputModel, PrimaryProperties>();
+            this.CreateMap<SafetyInputModel, Safety>();
+            this.CreateMap<InteriorInputModel, Interiors>();
+            this.CreateMap<InteriorMaterialInputModel, InteriorMaterials>();
+            this.CreateMap<SuspensionInputModel, Suspensions>();
+            this.CreateMap<ExtraFeaturesInputModel, ExtraFeatures>();
+            this.CreateMap<SpecializedInputModel, SpecializedFeatures>();
+
+
+            this.CreateMap<ImagesInputModel, Images>();
 
             this.CreateMap<Make, MakeConciseViewModel>();
             this.CreateMap<Model, ModelConciseViewModel>();

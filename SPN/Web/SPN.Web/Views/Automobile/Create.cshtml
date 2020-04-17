@@ -1,161 +1,436 @@
 ﻿@model MainCreateInputModel
 
+<div class="text-center">
+    <h1>Create</h1>
+</div>
 
-<h4>CreateConciseInputModel</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create" enctype="multipart/form-data">
-            <div class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="@Model.PrimaryProperties.Make" class="control-label"></label>
-                <input asp-for="@Model.PrimaryProperties.Make" class="form-control" />
-                <span asp-validation-for="@Model.PrimaryProperties.Make" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="@Model.PrimaryProperties.Model" class="control-label"></label>
-                <input asp-for="@Model.PrimaryProperties.Model" class="form-control" />
-                <span asp-validation-for="@Model.PrimaryProperties.Model" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="@Model.PrimaryProperties.Price" class="control-label"></label>
-                <input asp-for="@Model.PrimaryProperties.Price" class="form-control" />
-                <span asp-validation-for="@Model.PrimaryProperties.Price" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="@Model.PrimaryProperties.Mileage" class="control-label"></label>
-                <input asp-for="@Model.PrimaryProperties.Mileage" class="form-control" />
-                <span asp-validation-for="@Model.PrimaryProperties.Mileage" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="@Model.PrimaryProperties.Color" class="control-label"></label>
-                <input asp-for="@Model.PrimaryProperties.Color" class="form-control" />
-                <span asp-validation-for="@Model.PrimaryProperties.Color" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="@Model.PrimaryProperties.Year" class="control-label"></label>
-                <input asp-for="@Model.PrimaryProperties.Year" class="form-control" />
-                <span asp-validation-for="@Model.PrimaryProperties.Year" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="@Model.PrimaryProperties.Horsepower" class="control-label"></label>
-                <input asp-for="@Model.PrimaryProperties.Horsepower" class="form-control" />
-                <span asp-validation-for="@Model.PrimaryProperties.Horsepower" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="@Model.PrimaryProperties.Engine" class="control-label"></label>
-                <input asp-for="@Model.PrimaryProperties.Engine" class="form-control" />
-                <span asp-validation-for="@Model.PrimaryProperties.Engine" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="@Model.PrimaryProperties.GearBox" class="control-label"></label>
-                <input asp-for="@Model.PrimaryProperties.GearBox" class="form-control" />
-                <span asp-validation-for="@Model.PrimaryProperties.GearBox" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="@Model.PrimaryProperties.Condition" class="control-label"></label>
-                <input asp-for="@Model.PrimaryProperties.Condition" class="form-control" />
+<form asp-controller="Automobile" asp-action="Create" method="post" enctype="multipart/form-data">
+
+    <div class="form-group">
+        <label asp-for="@Model.PrimaryProperties.Make" class="control-label"></label>
+        <select class="custom-select" id="primaryProperties.Make" name="primaryProperties.Make">
+            <option selected value=""></option>
+            <option value="Mercedes">Mercedes</option>
+            <option value="BMW">BMW</option>
+            <option value="Audi">Audi</option>
+        </select>
+        <span asp-validation-for="@Model.PrimaryProperties.Make" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="@Model.PrimaryProperties.Model" class="control-label"></label>
+        <select class="custom-select" id="primaryProperties.Model" name="primaryProperties.Model">
+            <option selected value=""></option>
+            <option value="E200">E200</option>
+            <option value="320d">20d</option>
+            <option value="A7">A7</option>
+        </select>
+        <span asp-validation-for="@Model.PrimaryProperties.Model" class="text-danger"></span>
+    </div>
+
+    <div class="form-row">
+        <div class="form-group col-md-3">
+            <label asp-for="@Model.PrimaryProperties.Year">Year:</label>
+            <select class="custom-select" id="primaryProperties.Year" name="primaryProperties.Year">
+                <option selected value="@null"></option>
+                @for (int i = 1970; i <= DateTime.UtcNow.Year; i++)
+                {
+                    <option value="@i">
+                        From  @i
+                    </option>
+                }
+            </select>
+            <span asp-validation-for="@Model.PrimaryProperties.Year" class="text-danger"></span>
+        </div>
+
+        <div class="form-group col-md-3">
+            <label asp-for="@Model.PrimaryProperties.Mileage">Mileage</label>
+            <select class="custom-select" id="PrimaryProperties.Mileage" name="PrimaryProperties.Mileage">
+                <option selected value="@null"></option>
+                @for (int i = 0; i <= 1_000_000; i += 100_000)
+                {
+                    <option value="@i">
+                        @i
+                    </option>
+                }
+            </select>
+            <span asp-validation-for="@Model.PrimaryProperties.Mileage" class="text-danger"></span>
+        </div>
+
+        <div class="form-group col-md-3">
+            <label asp-for="@Model.PrimaryProperties.Horsepower">Horsepower</label>
+            <input asp-for="@Model.PrimaryProperties.Horsepower" class="form-control" />
+            <span asp-validation-for="@Model.PrimaryProperties.Horsepower" class="text-danger"></span>
+        </div>
+    </div>
+
+
+    <div class="form-row">
+        <div class="form-group col-md-3">
+            <label asp-for="@Model.PrimaryProperties.Price">Price (GBP)</label>
+            <input asp-for="@Model.PrimaryProperties.Price" class="form-control" />
+            <span asp-validation-for="@Model.PrimaryProperties.Price" class="text-danger"></span>
+        </div>
+
+        <div class="form-group col-md-3">
+            <label asp-for="@Model.PrimaryProperties.Region"></label>
+            <select class="custom-select" asp-for="@Model.PrimaryProperties.Region" asp-items="Html.GetEnumSelectList<Region>()">
+                <option selected value="@null"></option>
+            </select>
+            <span asp-validation-for="@Model.PrimaryProperties.Region" class="text-danger"></span>
+        </div>
+
+        <div class="form-group col-md-3">
+            <label asp-for="@Model.PrimaryProperties.Engine"></label>
+            <select class="custom-select" asp-for="@Model.PrimaryProperties.Engine" asp-items="Html.GetEnumSelectList<Engine>()">
+                <option selected value="@null"></option>
+            </select>
+            <span asp-validation-for="@Model.PrimaryProperties.Engine" class="text-danger"></span>
+        </div>
+    </div>
+
+
+    <div class="form-row">
+        <div class="form-group col-md-4">
+            <label asp-for="@Model.PrimaryProperties.Color">Color</label>
+            <select class="custom-select" asp-for="@Model.PrimaryProperties.Color" asp-items="Html.GetEnumSelectList<Color>()">
+                <option selected value="@null"></option>
+            </select>
+            <span asp-validation-for="@Model.PrimaryProperties.Color" class="text-danger"></span>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <label asp-for="@Model.PrimaryProperties.Condition">Condition</label>
+                <select class="custom-select" asp-for="@Model.PrimaryProperties.Condition" asp-items="Html.GetEnumSelectList<Condition>()">
+                    <option selected value="@null"></option>
+                </select>
                 <span asp-validation-for="@Model.PrimaryProperties.Condition" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="@Model.PrimaryProperties.Body" class="control-label"></label>
-                <input asp-for="@Model.PrimaryProperties.Body" class="form-control" />
-                <span asp-validation-for="@Model.PrimaryProperties.Body" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="@Model.PrimaryProperties.Region" class="control-label"></label>
-                <input asp-for="@Model.PrimaryProperties.Region" class="form-control" />
-                <span asp-validation-for="@Model.PrimaryProperties.Region" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="@Model.Safety.AdaptiveCruiseControl" class="control-label"></label>
-                <input asp-for="@Model.Safety.AdaptiveCruiseControl" class="form-control" />
-                <span asp-validation-for="@Model.Safety.AdaptiveCruiseControl" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="@Model.Interiors.AirConditioning" class="control-label"></label>
-                <input asp-for="@Model.Interiors.AirConditioning" class="form-control" />
-                <span asp-validation-for="@Model.Interiors.AirConditioning" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="@Model.InteriorMaterials.Alcantara" class="control-label"></label>
-                <input asp-for="@Model.InteriorMaterials.Alcantara" class="form-control" />
-                <span asp-validation-for="@Model.InteriorMaterials.Alcantara" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="@Model.Suspensions.ActiveSuspension" class="control-label"></label>
-                <input asp-for="@Model.Suspensions.ActiveSuspension" class="form-control" />
-                <span asp-validation-for="@Model.Suspensions.ActiveSuspension" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="@Model.ExtraFeatures.KeylessEntry" class="control-label"></label>
-                <input asp-for="@Model.ExtraFeatures.KeylessEntry" class="form-control" />
-                <span asp-validation-for="@Model.ExtraFeatures.KeylessEntry" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="@Model.SpecializedFeatures.Ambulance" class="control-label"></label>
-                <input asp-for="@Model.SpecializedFeatures.Ambulance" class="form-control" />
-                <span asp-validation-for="@Model.SpecializedFeatures.Ambulance" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <div class="col-md-10">
-                    <p>Upload one or more files using this form:</p>
-                    <input asp-for="@Model.Images.ImageUrl1" type="file" class="form-control" />
-                </div>
-                <div class="form-group">
-                    <div class="col-md-10">
-                        <input asp-for="@Model.Images.ImageUrl2" type="file" class="form-control" />
-                    </div>
-                    <div class="form-group">
-                        <div class="col-md-10">
-                            <input asp-for="@Model.Images.ImageUrl3" type="file" class="form-control" />
-                        </div>
-                        <div class="form-group">
-                            <div class="col-md-10">
-                                <input asp-for="@Model.Images.ImageUrl4" type="file" class="form-control" />
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-md-10">
-                                <input asp-for="@Model.Images.ImageUrl5" type="file" class="form-control" />
-                            </div>
-                            <div class="form-group">
-                                <div class="col-md-10">
-                                    <input asp-for="@Model.Images.ImageUrl6" type="file" class="form-control" />
-                                </div>
-                                <div class="form-group">
-                                    <div class="col-md-10">
-                                        <input asp-for="@Model.Images.ImageUrl7" type="file" class="form-control" />
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="col-md-10">
-                                            <input asp-for="@Model.Images.ImageUrl8" type="file" class="form-control" />
-                                        </div>
-                                        <div class="form-group">
-                                            <div class="col-md-10">
-                                                <input asp-for="@Model.Images.ImageUrl9" type="file" class="form-control" />
-                                            </div>
-                                            <div class="form-group">
-                                                <div class="col-md-10">
-                                                    <input asp-for="@Model.Images.ImageUrl10" type="file" class="form-control" />
-                                                </div>
-                                                <div class="form-group">
-                                                    <input type="submit" value="Create" class="btn btn-primary" />
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </form>
-    </div>
-</div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                    <label asp-for="@Model.PrimaryProperties.GearBox">Gearbox</label>
+                    <select class="custom-select" asp-for="@Model.PrimaryProperties.GearBox" asp-items="Html.GetEnumSelectList<GearBox>()">
+                        <option selected value="@null"></option>
+                    </select>
+                    <span asp-validation-for="@Model.PrimaryProperties.GearBox" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+    @*------------------*@
+
+
+
+    <div class="form-row">
+        <div class="form-group col-md-3">
+            <h3>Interiors</h3>
+
+            <div class="row">
+                <input type="checkbox" value="true" name="Interiors.Bluetooth" />Bluetooth
+            </div>
+
+            <div class="row">
+                <input type="checkbox" value="true" name="Interiors.DVDPlayer" />DVD
+            </div>
+
+            <div class="row">
+                <input type="checkbox" value="true" name="Interiors.PaddleShifters" />Paddle Shifters
+            </div>
+
+
+            <div class="row">
+                <input type="checkbox" value="true" name="Interiors.USBAux" />USB/Aux
+
+            </div>
+
+            <div class="row">
+                <input type="checkbox" value="true" name="Interiors.BoardComputer" />BoardComputer
+
+            </div>
+
+            <div class="row">
+                <input type="checkbox" value="true" name="Interiors.PowerMirrors" />PowerMirrors
+
+            </div>
+
+            <div class="row">
+                <input type="checkbox" value="true" name="Interiors.PowerWindows" />PowerWindows
+
+            </div>
+
+            <div class="row">
+                <input type="checkbox" value="true" name="Interiors.ElectronicSeatControl" />ElectronicSeatControl
+
+            </div>
+
+            <div class="row">
+                <input type="checkbox" value="true" name="Interiors.AmbientLighting" />AmbientLighting
+            </div>
+
+            <div class="row">
+                <input type="checkbox" value="true" name="Interiors.Navigation" />Navigation
+            </div>
+
+            <div class="row">
+                <input type="checkbox" value="true" name="Interiors.HeatedSteeringWheel" />Heated SteeringWheel
+            </div>
+
+            <div class="row">
+                <input type="checkbox" value="true" name="Interiors.Fridge" />Fridge
+            </div>
+
+            <div class="row">
+                <input type="checkbox" value="true" name="Interiors.HeatedSeats" />Heated Seats
+            </div>
+
+            <div class="row">
+                <input type="checkbox" value="true" name="Interiors.Stereo" />Stereo
+            </div>
+
+            <div class="row">
+                <input type="checkbox" value="true" name="Interiors.AutoPilot" />AutoPilot
+            </div>
+
+            <div class="row">
+                <input type="checkbox" value="true" name="Interiors.AndroidAuto" />Android Auto
+
+            </div>
+
+            <div class="row">
+                <input type="checkbox" value="true" name="Interiors.AppleCarPlay" />Apple CarPlay
+            </div>
+
+            <div class="row">
+                <input type="checkbox" value="true" name="Interiors.PowerSteering" />Power Steering
+            </div>
+
+            <div class="row">
+                <input type="checkbox" value="true" name="Interiors.AirConditioning" />AirConditioning
+            </div>
+
+            <div class="row">
+                <input type="checkbox" value="true" name="Interiors.MultiFunctionalSteeringWheel" />MultiFunctional SteeringWheel
+
+            </div>
+
+            <div class="row">
+                <input type="checkbox" value="true" name="Interiors.HeadUpDisplay" />HeadUp Display
+            </div>
+
+            <div class="row">
+                <input type="checkbox" value="true" name="Interiors.SmokerPackage" />Smoker Package
+
+            </div>
+
+            <div class="row">
+                <input type="checkbox" value="true" name="Interiors.ArmRest" />ArmRest
+            </div>
+
+            <div class="row">
+                <input type="checkbox" value="true" name="Interiors.HeatedWindshield" />Heated Windshield
+            </div>
+
+            <div class="row">
+                <input type="checkbox" value="true" name="Interiors.StartStopSystem" />Start Stop System
+            </div>
+
+            <div class="row">
+                <input type="checkbox" value="true" name="Interiors.RainSensor" />Rain Sensor
+            </div>
+
+            <div class="row">
+                <input type="checkbox" value="true" name="Interiors.CentralLocking" />Central Locking
+            </div>
+
+            <div class="row">
+                <input type="checkbox" value="true" name="Interiors.MassageSeats" />Massage Seats
+            </div>
+        </div>
+
+
+        <div class="form-group col-md-3">
+            <h3>Interior Materials</h3>
+
+            <div class="row">
+                <input type="checkbox" value="true" name="InteriorMaterials.LeatherSteeringWheel" />Leather SteeringWheel
+            </div>
+
+            <div class="row">
+                <input type="checkbox" value="true" name="InteriorMaterials.LeatherSeats" />LeatherSeats
+            </div>
+
+            <div class="row">
+                <input type="checkbox" value="true" name="InteriorMaterials.ClothSeats" />ClothSeats
+            </div>
+
+            <div class="row">
+                <input type="checkbox" value="true" name="InteriorMaterials.Alcantara" />Alcantara
+            </div>
+
+            <div class="row">
+                <input type="checkbox" value="true" name="InteriorMaterials.Velour" />Velour
+            </div>
+
+
+        </div>
+
+
+        <div class="form-group col-md-3">
+            <h3>Safety</h3>
+
+            <div class="row">
+                <input type="checkbox" value="true" name="Safety.GPS" />GPS
+            </div>
+
+            <div class="row">
+                <input type="checkbox" value="true" name="Safety.StabilityControl" />Stability Control
+            </div>
+
+            <div class="row">
+                <input type="checkbox" value="true" name="Safety.TractionControl" />Traction Control
+            </div>
+
+            <div class="row">
+                <input type="checkbox" value="true" name="Safety.AdaptiveHeadlights" />Adaptive Headlights
+            </div>
+
+            <div class="row">
+                <input type="checkbox" value="true" name="Safety.AutomaticBrakeSystem" />Automatic Brake System
+            </div>
+
+            <div class="row">
+                <input type="checkbox" value="true" name="Safety.FrontAirbags" />FrontA irbags
+            </div>
+
+            <div class="row">
+                <input type="checkbox" value="true" name="Safety.RearAirbags" />Rear Airbags
+            </div>
+
+            <div class="row">
+                <input type="checkbox" value="true" name="Safety.SideAirbags" />Side Airbags
+            </div>
+
+            <div class="row">
+                <input type="checkbox" value="true" name="Safety.FourWheelSteering" /> FourWheel Steering
+            </div>
+
+            <div class="row">
+                <input type="checkbox" value="true" name="Safety.ElectronicStabilityProgram" />ESP
+            </div>
+
+            <div class="row">
+                <input type="checkbox" value="true" name="Safety.TirePressureMonitoringSystem" />Tire Pressure Monitoring
+            </div>
+
+            <div class="row">
+                <input type="checkbox" value="true" name="Safety.RearParkingSensor" />RearParkingSensor
+            </div>
+
+            <div class="row">
+                <input type="checkbox" value="true" name="Safety.FrontParkingSensor" />FrontParkingSensor
+            </div>
+
+            <div class="row">
+                <input type="checkbox" value="true" name="Safety.ISOFIX" />ISOFIX
+            </div>
+
+            <div class="row">
+                <input type="checkbox" value="true" name="Safety.ForwardCollisionWarning" />Forward Collision Warning
+            </div>
+
+            <div class="row">
+                <input type="checkbox" value="true" name="Safety.AutomaticEmergencyBraking" />Automatic Emergency Braking
+            </div>
+
+            <div class="row">
+                <input type="checkbox" value="true" name="Safety.PedestrianDetection" />Pedestrian Detection
+            </div>
+
+            <div class="row">
+                <input type="checkbox" value="true" name="Safety.BlindSpotMonitoring" />Blindspot Monitoring
+            </div>
+
+            <div class="row">
+                <input type="checkbox" value="true" name="Safety.LaneKeepingAssistance" />Lane KeepingAssistance
+            </div>
+
+            <div class="row">
+                <input type="checkbox" value="true" name="Safety.AdaptiveCruiseControl" />Adaptive Cruise Control
+            </div>
+
+            <div class="row">
+                <input type="checkbox" value="true" name="Safety.LaneCenteringAssist" />Lane Centering Assist
+            </div>
+
+            <div class="row">
+                <input type="checkbox" value="true" name="Safety.HillDescendAssist" />Hill Descend Assist
+            </div>
+
+            <div class="row">
+                <input type="checkbox" value="true" name="Safety.DistTronic" />Dist Tronic
+            </div>
+
+            <div class="row">
+                <input type="checkbox" value="true" name="Safety.FourWheelDrive" />Four Wheel Drive
+            </div>
+
+
+            <div class="row">
+                <input type="checkbox" value="true" name="Safety.AlarmSystem" />Alarm System
+            </div>
+
+            <div class="row">
+                <input type="checkbox" value="true" name="Safety.EmergencyCallSystem" />Emergency Call System
+            </div>
+
+        </div>
+
+        <div class="form-group col-md-3">
+            <h3>Suspensions</h3>
+
+            <div class="row">
+                <input type="checkbox" value="true" name="Suspensions.ElectronicSuspensionControl" />Electronic Suspension Control
+            </div>
+
+
+            <div class="row">
+                <input type="checkbox" value="true" name="Suspensions.AdaptiveAirSuspension" />Adaptive Air Suspension
+            </div>
+
+
+            <div class="row">
+                <input type="checkbox" value="true" name="Suspensions.LockingDifferential" />Locking Differential
+            </div>
+
+
+            <div class="row">
+                <input type="checkbox" value="true" name="Suspensions.ActiveSuspension" />Active Suspension
+            </div>
+
+        </div>
+    </div>
+
+
+
+
+
+
+    <div class="form-group">
+        <label class="col-sm-3 control-label">
+            Attachment(s)
+            (Attach multiple files.)
+        </label>
+        <div class="col-sm-9">
+            <span class="btn btn-default btn-file">
+                <input id="input-2" name="input2[]" type="file" class="file" multiple data-show-upload="true" data-show-caption="true">
+            </span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <input type="submit" value="Search" class="btn btn-primary" />
+    </div>
+</form>
 

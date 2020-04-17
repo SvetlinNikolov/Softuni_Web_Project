@@ -8,7 +8,7 @@ using System.Text;
 namespace SPN.Data.Models.Auto
 {
 
-    public class InteriorMaterials : BaseEntity<int>, IDeletableEntity
+    public class InteriorMaterials : HasId<int>
     {
 
 

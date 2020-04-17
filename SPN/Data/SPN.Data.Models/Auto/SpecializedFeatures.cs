@@ -8,10 +8,8 @@ using System.Text;
 namespace SPN.Data.Models.Auto
 {
 
-    public class SpecializedFeatures : BaseEntity<int>, IDeletableEntity
+    public class SpecializedFeatures : HasId<int>
     {
-
-
         public bool? DisabledAccessible { get; set; }
 
         public bool? Taxi { get; set; }

@@ -21,21 +21,27 @@ namespace SPN.Web.Controllers
         [HttpGet]
         public async Task<IActionResult> Results(MainSearchInputModel model)
         {
-            SearchResultListingViewModel viewModel = await this.searchService.GetSearchResultsAsync(model);
+            SearchResultListingViewModel viewModel = new SearchResultListingViewModel(); 
 
-            return this.View(model);
-        }
+            viewModel = await this.searchService.GetSearchResultsAsync(model);
+
+          
+            return this.View(viewModel);
+         }
+
 
         [HttpGet]
         public IActionResult Index(MainSearchInputModel model)
+        
         {
-            if (model.PrimaryProperties != null || model.Safety != null || model.InteriorMaterials != null || model.Interiors != null || model.SpecializedFeatures != null || model.Suspensions != null)
+            if (this.searchService.SearchModelIsNotNull(model))
             {
                 return this.RedirectToAction("Results", model);
             }
 
-            //TODO Implement this.
             return this.View(model);
+
         }
     }
 }
+ 

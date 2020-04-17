@@ -6,7 +6,7 @@ using System.Text;
 
 namespace SPN.Data.Models.Auto
 {
-    public class Images : BaseEntity<int>, IDeletableEntity
+    public class Images : HasId<int>
     {
         public string ImageUrl1 { get; set; }
 

@@ -29,12 +29,12 @@ namespace SPN.Auto.Services.Services
         public async Task CreateAutomobileAsync(MainCreateInputModel model)
         {
             var makeId = await this.dbContext.Makes //TODO maybe add another method that uses select list item so you dont have to use string search
-                .Where(x => x.Name == model.Make)
+                .Where(x => x.Name == model.PrimaryProperties.Make)
                 .Select(x => x.Id)
                 .FirstOrDefaultAsync();
 
             var modelId = await this.dbContext.Models
-               .Where(x => x.Name == model.Model)
+               .Where(x => x.Name == model.PrimaryProperties.Model)
                .Select(x => x.Id)
                .FirstOrDefaultAsync();
 
@@ -45,10 +45,11 @@ namespace SPN.Auto.Services.Services
             automobile.CreatedOn = DateTime.UtcNow;
             automobile.UserId = this.userService.GetLoggedInUserId(); 
 
-            var ImgUrl1 = await ApplicationCloudinary.UploadImage(this.cloudinary, model.Images.ImageUrl1, Guid.NewGuid().ToString());
-            Images images = new Images { ImageUrl1 = ImgUrl1 };
+            //var ImgUrl1 = await ApplicationCloudinary.UploadImage(this.cloudinary, model.Images.ImageUrl1, Guid.NewGuid().ToString());
+            //Images images = new Images { ImageUrl1 = ImgUrl1 };
 
-            automobile.Images = images;
+            //automobile.Images = images;
+
             //TODO add images
             await dbContext.Automobiles.AddAsync(automobile);
             await dbContext.SaveChangesAsync();

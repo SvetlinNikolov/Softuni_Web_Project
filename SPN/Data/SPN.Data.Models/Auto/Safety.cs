@@ -8,7 +8,7 @@ using System.Text;
 namespace SPN.Data.Models.Auto
 {
 
-    public class Safety : BaseEntity<int>, IDeletableEntity
+    public class Safety : HasId<int>
     {
         public bool? GPS { get; set; }
 
