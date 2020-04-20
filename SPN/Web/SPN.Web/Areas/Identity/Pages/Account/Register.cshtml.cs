@@ -59,10 +59,6 @@ namespace SPN.Web.Areas.Identity.Pages.Account
             public Gender Gender { get; set; }
 
             [Required]
-            [Display(Name ="Address")]
-            public Region Region { get; set; }
-
-            [Required]
             [Display(Name ="Phone number")]
             [DataType(DataType.PhoneNumber)]
             [StringLength(10, MinimumLength = 4, ErrorMessage = "Invalid phone number")]

@@ -1,10 +1,35 @@
 ﻿@model MainCreateInputModel
 
+<head>
+    <link rel="stylesheet" href="~/lib/jquery-3.3.1.slim.min.js" />
+    <link rel="stylesheet" href="~/lib/bootstrap.bundle.min.js" />
+    <link rel="stylesheet" href="~/lib/font-awesome.min.css" />
+    <link href="~/js/site.js" />
+
+</head>
 <div class="text-center">
     <h1>Create</h1>
 </div>
 
 <form asp-controller="Automobile" asp-action="Create" method="post" enctype="multipart/form-data">
+
+
+    <div class="form-row">
+        <div class="form-group col-md-3">
+            <label asp-for="@Model.Title">The advert title</label>
+            <input asp-for="@Model.Title" class="form-control" />
+            <span asp-validation-for="@Model.Title" class="text-danger"></span>
+        </div>
+    </div>
+
+
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label asp-for="@Model.Comment">Add some info</label>
+            <textarea asp-for="@Model.Comment" rows="5" class="form-control" placeholder="Chose a description"></textarea>
+            <span asp-validation-for="@Model.Comment" class="text-danger"></span>
+        </div>
+    </div>
 
     <div class="form-group">
         <label asp-for="@Model.PrimaryProperties.Make" class="control-label"></label>
@@ -412,22 +437,70 @@
         </div>
     </div>
 
-
-
-
-
+    @*UPLOAD FORM ---------------*@
 
     <div class="form-group">
-        <label class="col-sm-3 control-label">
-            Attachment(s)
-            (Attach multiple files.)
-        </label>
-        <div class="col-sm-9">
-            <span class="btn btn-default btn-file">
-                <input id="input-2" name="input2[]" type="file" class="file" multiple data-show-upload="true" data-show-caption="true">
-            </span>
+        <input type="submit" value="Create" class="btn btn-primary" />
+        <div class="col-md-10">
+            <p>Upload one or more files using this form:</p>
+            <input asp-for="@Model.Images.ImageUrl1" type="file" class="form-control" />
+        </div>
+        <div class="form-group">
+            <div class="col-md-10">
+                <input asp-for="@Model.Images.ImageUrl2" type="file" class="form-control" />
+            </div>
+            <div class="form-group">
+                <div class="col-md-10">
+                    <input asp-for="@Model.Images.ImageUrl3" type="file" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <div class="col-md-10">
+                        <input asp-for="@Model.Images.ImageUrl4" type="file" class="form-control" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-10">
+                        <input asp-for="@Model.Images.ImageUrl5" type="file" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-10">
+                            <input asp-for="@Model.Images.ImageUrl6" type="file" class="form-control" />
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-10">
+                                <input asp-for="@Model.Images.ImageUrl7" type="file" class="form-control" />
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-10">
+                                    <input asp-for="@Model.Images.ImageUrl8" type="file" class="form-control" />
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-md-10">
+                                        <input asp-for="@Model.Images.ImageUrl9" type="file" class="form-control" />
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-md-10">
+                                            <input asp-for="@Model.Images.ImageUrl10" type="file" class="form-control" />
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="submit" value="Create" class="btn btn-primary" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
+
+
+
+
+
+
+
 
     <div class="form-group">
         <input type="submit" value="Search" class="btn btn-primary" />

@@ -57,7 +57,7 @@ namespace SPN.Web
                 options.Password.RequireUppercase = false;
                 options.Password.RequiredLength = 3;
                 options.Password.RequiredUniqueChars = 0;
-
+                
                 options.User.RequireUniqueEmail = false;
 
             });
@@ -88,11 +88,10 @@ namespace SPN.Web
             services.AddScoped<IMakeService, MakeService>();
             services.AddScoped<IModelService, ModelService>();
             services.AddScoped<IAutoService, AutoService>();
-            services.AddScoped<ISearchService, SearchService>();
+            services.AddScoped<ISearchService, SearchService>(); ////fix?
   
 
             //Shared Services
-            services.AddScoped<IUserProfileService, UserProfileService>();
 
             // Cloudinary Setup
             var cloudinaryAccount = new CloudinaryDotNet.Account(CloudinaryConfig.CloudName, CloudinaryConfig.ApiKey, CloudinaryConfig.ApiSecret);
@@ -137,7 +136,8 @@ namespace SPN.Web
             {
                 endpoints.MapControllerRoute(
                  name: "category",
-                 pattern: "{controller=Category}/{action=Index}/{id?}");
+                 pattern: "{controller=Search}/{action=Index}/{id?}");
+
                 endpoints.MapRazorPages();
 
             });

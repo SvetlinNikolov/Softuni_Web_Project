@@ -2,6 +2,7 @@
 using CloudinaryDotNet;
 using Microsoft.EntityFrameworkCore;
 using SPN.Auto.Services.Contracts;
+using SPN.Auto.Services.Services.Helpers;
 using SPN.Auto.Web.InputModels.Automobile;
 using SPN.Data.Common.Cloudinary;
 using SPN.Data.Models.Auto;
@@ -28,6 +29,8 @@ namespace SPN.Auto.Services.Services
 
         public async Task CreateAutomobileAsync(MainCreateInputModel model)
         {
+            var ImageHelper = new ImagesHelper();
+
             var makeId = await this.dbContext.Makes //TODO maybe add another method that uses select list item so you dont have to use string search
                 .Where(x => x.Name == model.PrimaryProperties.Make)
                 .Select(x => x.Id)
@@ -43,12 +46,8 @@ namespace SPN.Auto.Services.Services
             automobile.MakeId = makeId;
             automobile.ModelId = modelId;
             automobile.CreatedOn = DateTime.UtcNow;
-            automobile.UserId = this.userService.GetLoggedInUserId(); 
-
-            //var ImgUrl1 = await ApplicationCloudinary.UploadImage(this.cloudinary, model.Images.ImageUrl1, Guid.NewGuid().ToString());
-            //Images images = new Images { ImageUrl1 = ImgUrl1 };
-
-            //automobile.Images = images;
+            automobile.UserId = this.userService.GetLoggedInUserId();
+            automobile.Images = await ImageHelper.SetAutomobileImages(model, this.cloudinary);
 
             //TODO add images
             await dbContext.Automobiles.AddAsync(automobile);

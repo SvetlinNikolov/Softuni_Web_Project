@@ -3,9 +3,10 @@
     using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.EntityFrameworkCore;
+    using SPN.Auto.Web.ViewModels.Search;
     using SPN.Data.Models.Shared.Identity;
     using SPN.Forum.Data;
-
+    using SPN.Forum.Web.ViewModels.Shared;
     using System.Collections.Generic;
     using System.Linq;
     using System.Security.Claims;
@@ -42,17 +43,27 @@
                 .Value;
 
             var user = await context.Users
+                .Include(x => x.Automobiles)
                 .SingleOrDefaultAsync(u => u.Id == userId);
 
             return user;
         }
 
-        public async Task<User> GetUserByIdAsync(string id)
+        public async Task<User> GetUserById(string id)
         {
-            return await dbContext
-                .Users
-                .FirstOrDefaultAsync(x => x.Id == id);
+            var user = await dbContext.Users
+                 .Where(x => x.Id == id)
+                 .Include(x => x.Automobiles)
+                  .ThenInclude(x => x.Model)
+                 .ThenInclude(x => x.Make)
+               .Include(x => x.Automobiles)
+               .ThenInclude(x => x.PrimaryProperties)
+               .Include(x => x.Automobiles)
+               .ThenInclude(x => x.Images)
+                 .SingleOrDefaultAsync();
 
+
+            return user;
         }
 
         public async Task<IEnumerable<User>> GetUsersByRoleAsync(string role)
@@ -67,7 +78,7 @@
 
         public async Task<bool> RemoveUserFromToRoleAsync(string userId, string role)
         {
-            var user = await GetUserByIdAsync(userId);
+            var user = await GetUserById(userId);
             if (user == null)
             {
                 return false;
@@ -79,7 +90,7 @@
 
         public async Task<bool> AddUserToRoleAsync(string userId, string role)
         {
-            var user = await GetUserByIdAsync(userId);
+            var user = await GetUserById(userId);
 
             if (user == null)
             {
@@ -100,6 +111,42 @@
                 .Value;
 
             return userId;
+        }
+
+        public async Task<UserProfileViewModel> GetUserViewModelByUserIdAsync(string id)
+        {
+            var user = await this.GetUserById(id);
+
+            var searchResultsConcise = user.Automobiles
+                .Select(x => new SearchResultConciseViewModel
+                {
+                    Id = x.Id,
+                    Make = x.Make.Name,
+                    Model = x.Model.Name,
+                    SellerId = x.UserId,
+                    SellerName = x.User.UserName,
+                    Title = x.Title,
+                    Mileage = x.PrimaryProperties.Mileage,
+                    CreatedOn = x.CreatedOn,
+                    Year = x.PrimaryProperties.Year,
+                    Price = x.PrimaryProperties.Price,
+                    ImageUrl = x.Images.ImageUrl1 //TODO imageurl1 should exist
+                })
+                .ToList();
+
+            var searchResultsListing = new SearchResultListingViewModel { SearchResults = searchResultsConcise };
+
+            var viewModel = new UserProfileViewModel
+            {
+                Automobiles = searchResultsListing,
+                Username = user.UserName,
+                MemberSince = user.CreatedOn,
+                Email = user.Email,
+                Id = user.Id,
+                ProfileImage = user.ProfileImage
+            }; //TODO MAP
+
+            return viewModel;
         }
     }
 }

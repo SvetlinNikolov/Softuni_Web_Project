@@ -23,7 +23,7 @@
         }
         public Gender Gender { get; set; }
 
-        public Region Address { get; set; }
+       
 
         public string Description { get; set; }
 

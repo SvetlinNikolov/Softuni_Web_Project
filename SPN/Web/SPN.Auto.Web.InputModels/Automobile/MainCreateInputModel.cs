@@ -8,14 +8,10 @@ namespace SPN.Auto.Web.InputModels.Automobile
 {
     public class MainCreateInputModel
     {
-    
+        [Required]
         public string Title { get; set; }
 
         public string Comment { get; set; }
-
-        public string Make { get; set; } //TODO MAke this int
-
-        public string Model { get; set; }
 
         public CreateConciseInputModel PrimaryProperties { get; set; }
 

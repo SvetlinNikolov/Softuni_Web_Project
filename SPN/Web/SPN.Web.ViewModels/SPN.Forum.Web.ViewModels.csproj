@@ -11,6 +11,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Data\SPN.Data.Models\SPN.Data.Models.csproj" />
+    <ProjectReference Include="..\SPN.Auto.Web.ViewModels\SPN.Auto.Web.ViewModels.csproj" />
   </ItemGroup>
 
 </Project>

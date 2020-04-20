@@ -1,49 +1,71 @@
 ﻿@model SearchResultListingViewModel
 
-@if (this.Model!=null)
+<h1>Search results:</h1>
+
+@if (Model != null)
 {
-    <table class="table">
-        <thead>
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.Title)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.CurrentPage)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.PagesCount)
-                </th>
-                <th></th>
-            </tr>
-        </thead>
+
+    <table class="table table-hover">
         <tbody>
-            @foreach (var item in Model.SearchResults)
+
+            @foreach (var auto in Model.SearchResults)
             {
                 <tr>
-                    <td>
-                        <img src="@item.ImageUrl" alt="Smiley face" height="42" width="42">
-                    </td>
-                    <td>
-                        <a asp-controller="Automobile" asp-action="Index" asp-route-id="@item.Id">
-                            This is the car name
-                        </a>
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Title)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Make)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Model)
-                    </td>
+                    <td><img src="@auto.ImageUrl" height="150" width="210" alt="@auto.Title" /> </td>
+                    <td><a asp-controller="Automobile" asp-action="Index" asp-route-id="@auto.Id">@auto.Title</a></td>
+                    <td class="text-dark">@auto.Year</td>
+                    <td>@auto.Price GBP</td>
+
                 </tr>
             }
         </tbody>
+
     </table>
+
+    <nav>
+        @{ var queryString = this.ViewData["query"];}
+
+        <ul class="pagination justify-content-center">
+            @if (this.Model.CurrentPage == 1)
+            {
+                <li class="page-item disabled">
+                    <a class="page-link bg-light" href="#">Previous</a>
+                </li>
+            }
+            else
+            {
+                <li class="page-item">
+                    <a class="page-link bg-light"
+                       asp-route-page="@((Model.CurrentPage - 1).ToString()+queryString)">Previous</a>
+                </li>
+            }
+
+            @for (int i = 1; i <= this.Model.PagesCount; i++)
+            {
+                var active = i == this.Model.CurrentPage ? "active" : string.Empty;
+                <li class="page-item @active">
+                    <a class="page-link bg-info"
+                       asp-route-page="@((i).ToString()+queryString)">@i</a>
+                </li>
+            }
+
+            @if (this.Model.CurrentPage == this.Model.PagesCount)
+            {
+                <li class="page-item disabled">
+                    <a class="page-link bg-light" href="#">Next</a>
+                </li>
+            }
+            else
+            {
+                <li class="page-item">
+                    <a class="page-link bg-light"
+                       asp-route-page="@((Model.CurrentPage + 1).ToString()+queryString)">Next</a>
+                </li>
+            }
+        </ul>
+    </nav>
 }
 else
 {
-    <p>No search results found</p>
+    <h2>No search results on given criteria</h2>
 }

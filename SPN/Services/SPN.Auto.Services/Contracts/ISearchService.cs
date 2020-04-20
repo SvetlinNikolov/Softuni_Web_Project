@@ -16,8 +16,11 @@ namespace SPN.Auto.Services.Contracts
 
         public Task<AutomobileViewModel> GetAutomobileViewModelByIdAsync(int id);
 
-        public bool SearchModelIsNotNull(object inputModel);
+        public bool SearchModelIsNull(object inputModel);
 
-        
+        public int GetAutomobilesCount();
+
+        public Task<IEnumerable<SearchResultConciseViewModel>> GetNewestAdvertsConciseAsync(int? take =null);
+
     }
 }

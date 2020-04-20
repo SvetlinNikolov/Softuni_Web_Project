@@ -1,0 +1,38 @@
+﻿@model UserProfileViewModel
+
+
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th scope="col"></th>
+            <th scope="col">Username</th>
+            <th scope="col">Member Since</th>
+            <th scope="col">Email</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><img src="@Model.ProfileImage" alt="@Model.Username" /> </td>
+            <td>@Model.Username</td>
+            <td class="text-dark">@Model.MemberSince.Year</td>
+            <td>@Model.Email</td>
+    </tbody>
+</table>
+
+<table class="table table-hover">
+    <tbody>
+
+        @foreach (var auto in Model.Automobiles.SearchResults)
+        {
+      
+                     <tr>
+                <td><img src="@(auto.ImageUrl)" height="150" width="210" alt="@auto.Title" /> </td>
+                <td><a class="text-info" asp-controller="Automobile" asp-action="Index" asp-route-id="@auto.Id">@auto.Title</a></td>
+                <td class="text-info">@auto.Year</td>
+                <td class="text-info">@auto.Price GBP</td>
+
+            </tr>
+        }
+    </tbody>
+
+</table>

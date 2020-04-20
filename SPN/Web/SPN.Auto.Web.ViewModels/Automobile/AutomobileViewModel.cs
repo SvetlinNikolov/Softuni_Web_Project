@@ -17,6 +17,10 @@ namespace SPN.Auto.Web.ViewModels.Automobile
 
         public string Comment { get; set; }
 
+        public string AutomobileSellerId { get; set; }
+
+        public string AutomobileSellerName { get; set; }
+
         public CreateConciseInputModel PrimaryProperties { get; set; }
 
         public SafetyInputModel Safety { get; set; }

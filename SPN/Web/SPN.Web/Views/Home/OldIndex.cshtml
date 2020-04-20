@@ -1,0 +1,78 @@
+﻿@model MainCreateInputModel
+
+<h4>Create car</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="CreateConcise">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="@Model.PrimaryProperties.Make" class="control-label"></label>
+                <input asp-for="@Model.PrimaryProperties.Make" class="form-control" />
+                <span asp-validation-for="@Model.PrimaryProperties.Make" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.PrimaryProperties.Model" class="control-label"></label>
+                <input asp-for="@Model.PrimaryProperties.Model" class="form-control" />
+                <span asp-validation-for="@Model.PrimaryProperties.Model" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.PrimaryProperties.Price" class="control-label"></label>
+                <input asp-for="@Model.PrimaryProperties.Price" class="form-control" />
+                <span asp-validation-for="@Model.PrimaryProperties.Price" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.PrimaryProperties.Mileage" class="control-label"></label>
+                <input asp-for="@Model.PrimaryProperties.Mileage" class="form-control" />
+                <span asp-validation-for="@Model.PrimaryProperties.Mileage" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.PrimaryProperties.Color" class="control-label"></label>
+                <input asp-for="@Model.PrimaryProperties.Color" class="form-control" />
+                <span asp-validation-for="@Model.PrimaryProperties.Color" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.PrimaryProperties.Year" class="control-label"></label>
+                <input asp-for="@Model.PrimaryProperties.Year" class="form-control" />
+                <span asp-validation-for="@Model.PrimaryProperties.Year" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.PrimaryProperties.Horsepower" class="control-label"></label>
+                <input asp-for="@Model.PrimaryProperties.Horsepower" class="form-control" />
+                <span asp-validation-for="@Model.PrimaryProperties.Horsepower" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.PrimaryProperties.Engine" class="control-label"></label>
+                <input asp-for="@Model.PrimaryProperties.Engine" class="form-control" />
+                <span asp-validation-for="@Model.PrimaryProperties.Engine" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.PrimaryProperties.GearBox" class="control-label"></label>
+                <input asp-for="@Model.PrimaryProperties.GearBox" class="form-control" />
+                <span asp-validation-for="@Model.PrimaryProperties.GearBox" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.PrimaryProperties.Condition" class="control-label"></label>
+                <input asp-for="@Model.PrimaryProperties.Condition" class="form-control" />
+                <span asp-validation-for="@Model.PrimaryProperties.Condition" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.PrimaryProperties.Body" class="control-label"></label>
+                <input asp-for="@Model.PrimaryProperties.Body" class="form-control" />
+                <span asp-validation-for="@Model.PrimaryProperties.Body" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.PrimaryProperties.Region" class="control-label"></label>
+                <input asp-for="@Model.PrimaryProperties.Region" class="form-control" />
+                <span asp-validation-for="@Model.PrimaryProperties.Region" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>

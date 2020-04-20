@@ -1,4 +1,6 @@
-﻿using System;
+﻿using SPN.Auto.Web.ViewModels.Search;
+using System;
+using System.Collections.Generic;
 
 namespace SPN.Forum.Web.ViewModels.Shared
 {
@@ -14,6 +16,7 @@ namespace SPN.Forum.Web.ViewModels.Shared
 
         public string ProfileImage { get; set; }
 
+        public SearchResultListingViewModel Automobiles { get; set; }
 
     }
 }

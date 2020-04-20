@@ -13,35 +13,32 @@ public class HomeController : BaseController
     private readonly IMakeService makeService;
     private readonly IModelService modelService;
     private readonly IAutoService autoService;
+    private readonly ISearchService searchService;
 
     public HomeController(IUserService userService,
         IMapper mapper,
         IMakeService makeService,
         IModelService modelService,
-        IAutoService autoService)
+        IAutoService autoService,
+        ISearchService searchService)
         : base(userService, mapper)
     {
         this.makeService = makeService;
         this.modelService = modelService;
         this.autoService = autoService;
+        this.searchService = searchService;
     }
 
-    public IActionResult Index()
+    public async Task<IActionResult> Index(IndexViewModel model)
     {
-        return this.View("Test");
-        //var makes = await this.makeService.GetAllMakes();
-        //var models = await this.modelService.GetAllModels();
-
-        //IndexPageViewModel viewModel = new IndexPageViewModel
-        //{
-        //  MakesListing = makes,
-        //  ModelsListing = models
-        //};
-
-        //return this.View(viewModel);
+        if (!this.searchService.SearchModelIsNull(model))
+        {
+            this.RedirectToAction("Results", "Search", model.SearchConcise);
+        }
+        model.NewestAdverts = await this.searchService.GetNewestAdvertsConciseAsync();
+        return this.View(model);
     }
 
- 
 
     public IActionResult Api()
     {
