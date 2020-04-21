@@ -24,14 +24,19 @@
 
         @foreach (var auto in Model.Automobiles.SearchResults)
         {
-      
-                     <tr>
-                <td><img src="@(auto.ImageUrl)" height="150" width="210" alt="@auto.Title" /> </td>
-                <td><a class="text-info" asp-controller="Automobile" asp-action="Index" asp-route-id="@auto.Id">@auto.Title</a></td>
-                <td class="text-info">@auto.Year</td>
-                <td class="text-info">@auto.Price GBP</td>
 
-            </tr>
+        <tr>
+            <td><img src="@(auto.ImageUrl)" height="150" width="210" alt="@auto.Title" /> </td>
+            <td><a class="text-info" asp-controller="Automobile" asp-action="Index" asp-route-id="@auto.Id">@auto.Title</a></td>
+            <td class="text-info">@auto.Year</td>
+            <td class="text-info">@auto.Price GBP</td>
+
+            @if (Context.User.Identity.Name == Model.Username)
+            {
+                <td><a class="text-danger" asp-controller="Automobile" asp-action="Edit" asp-route-id="@auto.Id">Edit</a></td>
+            }
+
+        </tr>
         }
     </tbody>
 

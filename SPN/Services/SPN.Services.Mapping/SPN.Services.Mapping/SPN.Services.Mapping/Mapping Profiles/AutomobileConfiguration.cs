@@ -25,8 +25,14 @@ namespace SPN.Auto.Services.Mapping.MappingProfiles
             this.CreateMap<SuspensionInputModel, Suspensions>();
 
             this.CreateMap<Automobile, AutomobileViewModel>()
-                .ForMember(x=> x.AutomobileSellerId, y => y.MapFrom(z => z.UserId))
-                .ForMember(x => x.AutomobileSellerName,y => y.MapFrom(z => z.User.UserName));
+                .ForMember(x => x.AutomobileSellerId, y => y.MapFrom(z => z.UserId))
+                .ForMember(x => x.AutomobileSellerName, y => y.MapFrom(z => z.User.UserName))
+                .ForMember(x => x.Images, y => y.Ignore());
+
+            this.CreateMap<Automobile, EditAutomobileInputModel>()
+                 .ForMember(x => x.Images, y => y.Ignore());
+
+            this.CreateMap<EditAutomobileInputModel, Automobile>();
 
             this.CreateMap<PrimaryProperties, CreateConciseInputModel>();
             this.CreateMap<Safety, SafetyInputModel>();

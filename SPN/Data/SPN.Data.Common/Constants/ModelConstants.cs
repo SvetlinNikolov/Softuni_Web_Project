@@ -52,6 +52,7 @@
 
         //----------------------------------------------------
         // User
+
         public const int UsernameMinLength = 3;
 
         public const int UsernameMaxLength = 20;
@@ -60,5 +61,7 @@
 
         //SearchResultListingViewModel
         public const string SearchTitle = "Showing results for : Make: {2}, Model: {1}";
+
+        public const string Unauthorized = "You are not authorized for this action!";
     }
 }

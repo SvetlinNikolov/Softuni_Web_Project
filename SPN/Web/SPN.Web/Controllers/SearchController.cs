@@ -13,7 +13,7 @@ namespace SPN.Web.Controllers
     public class SearchController : BaseController
     {
         private readonly ISearchService searchService;
-        private const int ItemsPerPage = 1;
+        private const int ItemsPerPage = 10;
 
         public SearchController(IUserService userService, IMapper mapper, ISearchService searchService)
             : base(userService, mapper)

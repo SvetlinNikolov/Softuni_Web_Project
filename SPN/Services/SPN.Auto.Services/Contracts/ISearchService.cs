@@ -14,7 +14,6 @@ namespace SPN.Auto.Services.Contracts
 
         public Task<SearchResultListingViewModel> GetNewestAdvertsAsync(int? take = null, int skip = 0);
 
-        public Task<AutomobileViewModel> GetAutomobileViewModelByIdAsync(int id);
 
         public bool SearchModelIsNull(object inputModel);
 

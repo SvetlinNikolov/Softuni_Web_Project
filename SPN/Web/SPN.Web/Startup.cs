@@ -88,15 +88,37 @@ namespace SPN.Web
             services.AddScoped<IMakeService, MakeService>();
             services.AddScoped<IModelService, ModelService>();
             services.AddScoped<IAutoService, AutoService>();
-            services.AddScoped<ISearchService, SearchService>(); ////fix?
-  
+            services.AddScoped<ISearchService, SearchService>(); 
 
-            //Shared Services
+           
 
             // Cloudinary Setup
             var cloudinaryAccount = new CloudinaryDotNet.Account(CloudinaryConfig.CloudName, CloudinaryConfig.ApiKey, CloudinaryConfig.ApiSecret);
             var cloudinary = new Cloudinary(cloudinaryAccount);
             services.AddSingleton(cloudinary);
+
+            //Helpers Setup
+            var imagesHelper = new ImagesHelper();
+
+            var primaryPropertiesValidator = new ValidatePrimaryPropertiesSearch();
+            var interiorsValidator = new ValidateInteriorSearch();
+            var interiorMaterialsvalidator = new ValidateInteriorMaterialsSearch();
+            var safetyValidator = new ValidateSafetySearch();
+            var specializedFeaturesValidator = new ValidateSpecializedFeaturesSearch();
+            var suspensionsValidator = new ValidateSuspensionsSearch();
+            var extraFeaturesValidator = new ValidateExtraFeaturesSearch();
+
+            services.AddSingleton(imagesHelper);
+
+            services.AddSingleton(imagesHelper);
+            services.AddSingleton(primaryPropertiesValidator);
+            services.AddSingleton(interiorsValidator);
+            services.AddSingleton(interiorMaterialsvalidator);
+            services.AddSingleton(safetyValidator);
+            services.AddSingleton(specializedFeaturesValidator);
+            services.AddSingleton(suspensionsValidator);
+            services.AddSingleton(extraFeaturesValidator);
+
 
             services.AddControllersWithViews();
             services.AddRazorPages();
@@ -136,7 +158,7 @@ namespace SPN.Web
             {
                 endpoints.MapControllerRoute(
                  name: "category",
-                 pattern: "{controller=Search}/{action=Index}/{id?}");
+                 pattern: "{controller=Home}/{action=Index}/{id?}");
 
                 endpoints.MapRazorPages();
 

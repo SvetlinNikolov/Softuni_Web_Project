@@ -1,21 +1,13 @@
 ﻿using AutoMapper;
-using FluentAssertions;
 using Microsoft.EntityFrameworkCore;
 using SPN.Auto.Services.Contracts;
 using SPN.Auto.Services.Services.Helpers;
 using SPN.Auto.Web.InputModels.Automobile;
-using SPN.Auto.Web.ViewModels.Automobile;
 using SPN.Auto.Web.ViewModels.Search;
-using SPN.Data.Common.Constants;
-using SPN.Data.Models.Auto;
 using SPN.Forum.Data;
 using SPN.Services.Shared;
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace SPN.Auto.Services.Services
@@ -23,14 +15,36 @@ namespace SPN.Auto.Services.Services
     public class SearchService : BaseService, ISearchService
     {
         private const int ItemsPerPage = 10;
-        private readonly IMakeService makeService;
 
-        public SearchService(IMapper mapper, SPNDbContext dbContext, IMakeService makeService)
+        private readonly IMakeService makeService;
+        private readonly ValidatePrimaryPropertiesSearch primaryPropertiesValidator;
+        private readonly ValidateInteriorSearch interiorsValidator;
+        private readonly ValidateInteriorMaterialsSearch interiorMaterialsvalidator;
+        private readonly ValidateSafetySearch safetyValidator;
+        private readonly ValidateSpecializedFeaturesSearch specializedFeaturesValidator;
+        private readonly ValidateSuspensionsSearch suspensionsValidator;
+        private readonly ValidateExtraFeaturesSearch extraFeaturesValidator;
+
+        public SearchService(IMapper mapper,
+            SPNDbContext dbContext,
+            IMakeService makeService,
+            ValidatePrimaryPropertiesSearch primaryPropertiesValidator,
+            ValidateInteriorSearch interiorsValidator,
+            ValidateInteriorMaterialsSearch interiorMaterialsvalidator,
+            ValidateSafetySearch safetyValidator,
+            ValidateSpecializedFeaturesSearch specializedFeaturesValidator,
+            ValidateSuspensionsSearch suspensionsValidator,
+            ValidateExtraFeaturesSearch extraFeaturesValidator)
             : base(mapper, dbContext)
         {
             this.makeService = makeService;
-
-
+            this.primaryPropertiesValidator = primaryPropertiesValidator;
+            this.interiorsValidator = interiorsValidator;
+            this.interiorMaterialsvalidator = interiorMaterialsvalidator;
+            this.safetyValidator = safetyValidator;
+            this.specializedFeaturesValidator = specializedFeaturesValidator;
+            this.suspensionsValidator = suspensionsValidator;
+            this.extraFeaturesValidator = extraFeaturesValidator;
         }
 
         public int GetAutomobilesCount()
@@ -38,28 +52,6 @@ namespace SPN.Auto.Services.Services
             return this.dbContext.Automobiles.Count();
         }
 
-        public async Task<AutomobileViewModel> GetAutomobileViewModelByIdAsync(int id)
-        {
-
-            Automobile automobile = await this.dbContext
-                .Automobiles
-                .Where(x => x.Id == id)
-                .Include(x => x.User)
-                .Include(x => x.Make)
-                .Include(x => x.Model)
-                .Include(x => x.PrimaryProperties)
-                .Include(x => x.Safety)
-                .Include(x => x.Interiors)
-                .Include(x => x.InteriorMaterials)
-                .Include(x => x.Suspensions)
-                .Include(x => x.SpecializedFeatures)
-                .Include(x => x.ExtraFeatures)
-               .FirstOrDefaultAsync();
-
-            AutomobileViewModel viewModel = this.mapper.Map<AutomobileViewModel>(automobile);
-
-            return viewModel;
-        }
 
         public async Task<SearchResultListingViewModel> GetNewestAdvertsAsync(int? take = null, int skip = 0)
         {
@@ -139,22 +131,13 @@ namespace SPN.Auto.Services.Services
             .Include(x => x.User)
             .AsNoTracking();
 
-            var PrimaryPropertiesValidator = new ValidatePrimaryPropertiesSearch();
-            var InteriorsValidator = new ValidateInteriorSearch();
-            var InteriorMaterialsvalidator = new ValidateInteriorMaterialsSearch();
-            var SafetyValidator = new ValidateSafetySearch();
-            var SpecializedFeaturesValidator = new ValidateSpecializedFeaturesSearch();
-            var SuspensionsValidator = new ValidateSuspensionsSearch();
-            var ExtraFeaturesValidator = new ValidateExtraFeaturesSearch();
-
-
-            automobiles = PrimaryPropertiesValidator.ValidateSearchProperties(inputModel, automobiles);
-            automobiles = InteriorsValidator.ValidateSearchProperties(inputModel, automobiles);
-            automobiles = InteriorMaterialsvalidator.ValidateSearchProperties(inputModel, automobiles);
-            automobiles = SafetyValidator.ValidateSearchProperties(inputModel, automobiles);
-            automobiles = SpecializedFeaturesValidator.ValidateSearchProperties(inputModel, automobiles);
-            automobiles = SuspensionsValidator.ValidateSearchProperties(inputModel, automobiles);
-            automobiles = ExtraFeaturesValidator.ValidateSearchProperties(inputModel, automobiles);
+            automobiles = primaryPropertiesValidator.ValidateSearchProperties(inputModel, automobiles);
+            automobiles = interiorsValidator.ValidateSearchProperties(inputModel, automobiles);
+            automobiles = interiorMaterialsvalidator.ValidateSearchProperties(inputModel, automobiles);
+            automobiles = safetyValidator.ValidateSearchProperties(inputModel, automobiles);
+            automobiles = specializedFeaturesValidator.ValidateSearchProperties(inputModel, automobiles);
+            automobiles = suspensionsValidator.ValidateSearchProperties(inputModel, automobiles);
+            automobiles = extraFeaturesValidator.ValidateSearchProperties(inputModel, automobiles);
 
             if (take.HasValue)
             {

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SPN.Auto.Services.Contracts;
 using SPN.Auto.Web.InputModels.Automobile;
@@ -25,7 +26,7 @@ namespace SPN.Web.Controllers
 
         public async Task<IActionResult> Index(int id)
         {
-            AutomobileViewModel model = await this.searchService.GetAutomobileViewModelByIdAsync(id);
+            AutomobileViewModel model = await this.autoService.GetAutomobileViewModelByIdAsync(id);
 
             return this.View(model);
         }
@@ -37,9 +38,27 @@ namespace SPN.Web.Controllers
 
             return this.View(inputModel);
         }
+
+        [Authorize]
         public IActionResult Create()
         {
             return this.View();
+        }
+
+        [Authorize]
+        public async Task<IActionResult> Edit(int id)
+        {
+            var viewModel = await this.autoService.GetAutomobileEditInputModelAsync(id);
+            return this.View(viewModel);
+        }
+
+        [Authorize]
+        [HttpPost]
+        public async Task<IActionResult> Edit(int id, EditAutomobileInputModel inputModel)
+        {
+            await this.autoService.EditAutomobileAsync(id, inputModel);
+
+            return this.Redirect($"/Automobile/Index/{id}");
         }
     }
 }

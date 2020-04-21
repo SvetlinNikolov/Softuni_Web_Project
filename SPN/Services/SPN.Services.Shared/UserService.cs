@@ -130,7 +130,7 @@
                     CreatedOn = x.CreatedOn,
                     Year = x.PrimaryProperties.Year,
                     Price = x.PrimaryProperties.Price,
-                    ImageUrl = x.Images.ImageUrl1 //TODO imageurl1 should exist
+                    ImageUrl = x.Images.ImageUrl1 //TODO imageurl1 shouldnt exist
                 })
                 .ToList();
 
