@@ -16,5 +16,9 @@ namespace SPN.Auto.Services.Contracts
         public Task<AutomobileViewModel> GetAutomobileViewModelByIdAsync(int id);
 
         public Task<EditAutomobileInputModel> GetAutomobileEditInputModelAsync(int id);
+
+        public Task DeleteAutomobileAsync(int id);
+
+        public Task<DeleteInputModel> GetAutomobileDeleteInputModelAsync(int id);
     }
 }

@@ -63,5 +63,9 @@
         public const string SearchTitle = "Showing results for : Make: {2}, Model: {1}";
 
         public const string Unauthorized = "You are not authorized for this action!";
+
+        public const string AutomobileNull = "Automobile does not exist!";
+
+        public const string UserNotLoggedIn = "You are not logged in!";
     }
 }

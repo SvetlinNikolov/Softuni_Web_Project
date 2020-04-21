@@ -124,7 +124,7 @@ namespace SPN.Auto.Services.Services
         {
             Automobile automobile = await this.dbContext.Automobiles
                .Where(x => x.Id == id)
-               .Where(x => x.IsDeleted==false)
+               .Where(x => x.IsDeleted == false)
                .Include(x => x.User)
                .Include(x => x.Make)
                .Include(x => x.Model)
@@ -139,17 +139,6 @@ namespace SPN.Auto.Services.Services
 
             return automobile;
         }
-        private async Task<bool> UserOwnsAutomobileAsync(Automobile automobile)
-        {
-            var user = await this.userService.GetLoggedInUserAsync();
-
-            if (user.Automobiles.Count() == 0 || user.Automobiles.Any(x => x.UserId != automobile.UserId))
-            {
-                return false;
-            }
-
-            return true;
-        }
 
         public async Task DeleteAutomobileAsync(int id)
         {
@@ -163,6 +152,50 @@ namespace SPN.Auto.Services.Services
             automobile.IsDeleted = true;
             automobile.ModifiedOn = DateTime.UtcNow;
 
+            this.dbContext.Update(automobile);
+            await this.dbContext.SaveChangesAsync();
+
         }
+
+        public async Task<DeleteInputModel> GetAutomobileDeleteInputModelAsync(int id)
+        {
+            var automobile = await this.dbContext.Automobiles
+                .FirstOrDefaultAsync(x => x.Id == id);
+
+            if (automobile == null)
+            {
+                throw new ArgumentNullException(ModelConstants.AutomobileNull);
+            }
+
+            if (!await UserOwnsAutomobileAsync(automobile))
+            {
+                throw new UnauthorizedAccessException(ModelConstants.Unauthorized);
+            }
+
+            var inputModel = new DeleteInputModel { Id = automobile.Id, Title = automobile.Title };
+
+            return inputModel;
+
+        }
+
+        private async Task<bool> UserOwnsAutomobileAsync(Automobile automobile)
+        {
+            var user = await this.userService.GetLoggedInUserAsync();
+
+            if (user == null)
+            {
+                throw new ArgumentNullException(ModelConstants.UserNotLoggedIn);
+            }
+
+            if (user.Automobiles == null ||
+                user.Automobiles.Count() == 0 ||
+                user.Automobiles.Any(x => x.UserId != automobile.UserId))
+            {
+                return false;
+            }
+
+            return true;
+        }
+
     }
 }

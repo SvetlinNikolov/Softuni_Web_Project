@@ -12,6 +12,7 @@ using SPN.Services.Shared;
 
 namespace SPN.Web.Controllers
 {
+    [Authorize]
     public class AutomobileController : BaseController
     {
         private readonly ISearchService searchService;
@@ -24,6 +25,7 @@ namespace SPN.Web.Controllers
             this.autoService = autoService;
         }
 
+        [AllowAnonymous]
         public async Task<IActionResult> Index(int id)
         {
             AutomobileViewModel model = await this.autoService.GetAutomobileViewModelByIdAsync(id);
@@ -39,26 +41,43 @@ namespace SPN.Web.Controllers
             return this.View(inputModel);
         }
 
-        [Authorize]
+
         public IActionResult Create()
         {
             return this.View();
         }
 
-        [Authorize]
+
         public async Task<IActionResult> Edit(int id)
         {
             var viewModel = await this.autoService.GetAutomobileEditInputModelAsync(id);
             return this.View(viewModel);
         }
 
-        [Authorize]
         [HttpPost]
         public async Task<IActionResult> Edit(int id, EditAutomobileInputModel inputModel)
         {
             await this.autoService.EditAutomobileAsync(id, inputModel);
 
             return this.Redirect($"/Automobile/Index/{id}");
+        }
+
+        public async Task<IActionResult> Delete(int id)
+        {
+            var inputModel = await this.autoService.GetAutomobileDeleteInputModelAsync(id);
+
+            return this.View(inputModel);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Delete(DeleteInputModel model)
+        {
+            await this.autoService.DeleteAutomobileAsync(model.Id);
+
+            var user = await this.userService.GetLoggedInUserAsync();
+
+            return this.Redirect($"/User/Details/{user.Id}");
+          
         }
     }
 }

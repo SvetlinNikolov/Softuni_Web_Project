@@ -33,7 +33,8 @@
 
             @if (Context.User.Identity.Name == Model.Username)
             {
-                <td><a class="text-danger" asp-controller="Automobile" asp-action="Edit" asp-route-id="@auto.Id">Edit</a></td>
+                <td><a class="text-primary" asp-controller="Automobile" asp-action="Edit" asp-route-id="@auto.Id">Edit</a></td>
+                <td><a class="text-danger" asp-controller="Automobile" asp-action="Delete" asp-route-id="@auto.Id">Delete</a></td>
             }
 
         </tr>

@@ -1,0 +1,17 @@
+﻿@model DeleteInputModel
+
+<div class="text-center">
+    <h1>
+        Are you sure you want to delete "@Model.Title" ?
+    </h1>
+</div>
+<form asp-controller="Automobile" asp-action="Delete" asp-route-id ="@Model.Id" method="post">
+
+    <div class="form-group">
+        <input type="submit" value="Yes" class="btn btn-danger" />
+        <button class="btn btn-success" onclick="goBack()">No</button>
+    </div>
+
+</form>
+
+

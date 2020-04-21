@@ -35,7 +35,9 @@ namespace SPN.Auto.Services.Services
             ValidateSpecializedFeaturesSearch specializedFeaturesValidator,
             ValidateSuspensionsSearch suspensionsValidator,
             ValidateExtraFeaturesSearch extraFeaturesValidator)
-            : base(mapper, dbContext)
+            :
+
+            base(mapper, dbContext)
         {
             this.makeService = makeService;
             this.primaryPropertiesValidator = primaryPropertiesValidator;
@@ -56,8 +58,9 @@ namespace SPN.Auto.Services.Services
         public async Task<SearchResultListingViewModel> GetNewestAdvertsAsync(int? take = null, int skip = 0)
         {
             var results = await this.dbContext.Automobiles
-                .AsNoTracking()
+
                 .OrderByDescending(x => x.CreatedOn)
+                .Where(x => x.IsDeleted == false)
                 .Take(take ?? ItemsPerPage)
                 .Include(x => x.Make)
                 .Include(x => x.Model)
@@ -86,9 +89,10 @@ namespace SPN.Auto.Services.Services
             return viewModel;
         }
 
-        public async Task<IEnumerable<SearchResultConciseViewModel>> GetNewestAdvertsConciseAsync(int? take=null)
+        public async Task<IEnumerable<SearchResultConciseViewModel>> GetNewestAdvertsConciseAsync(int? take = null)
         {
             var results = await this.dbContext.Automobiles
+                .Where(x => x.IsDeleted == false)
                 .AsNoTracking()
                 .OrderByDescending(x => x.CreatedOn)
                 .Take(take ?? ItemsPerPage)
@@ -126,6 +130,7 @@ namespace SPN.Auto.Services.Services
             }
             var automobiles = this.dbContext
             .Automobiles
+            .Where(x => x.IsDeleted == false)
             .Include(x => x.Make)
             .Include(x => x.Model)
             .Include(x => x.User)
