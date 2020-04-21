@@ -8,37 +8,49 @@
             <th scope="col">Username</th>
             <th scope="col">Member Since</th>
             <th scope="col">Email</th>
+            <th scope="col">Phone Number</th>
+
         </tr>
     </thead>
     <tbody>
         <tr>
-            <td><img src="@Model.ProfileImage" alt="@Model.Username" /> </td>
+            <td><img src="@(Model?.ProfileImage==null ? "https://i.imgur.com/mCHMpLT.png" : Model.ProfileImage)" alt="@Model.Username" /> </td>
             <td>@Model.Username</td>
-            <td class="text-dark">@Model.MemberSince.Year</td>
-            <td>@Model.Email</td>
+            <td class="text-dark">@(Model.MemberSince.Year)</td>
+            <td>@(Model.Email == null ? "N/A" : Model.Email)</td>
+            <td>@(Model.PhoneNumber == null ? "N/A" : Model.PhoneNumber)</td>
     </tbody>
 </table>
 
-<table class="table table-hover">
-    <tbody>
 
-        @foreach (var auto in Model.Automobiles.SearchResults)
-        {
 
-        <tr>
-            <td><img src="@(auto.ImageUrl)" height="150" width="210" alt="@auto.Title" /> </td>
-            <td><a class="text-info" asp-controller="Automobile" asp-action="Index" asp-route-id="@auto.Id">@auto.Title</a></td>
-            <td class="text-info">@auto.Year</td>
-            <td class="text-info">@auto.Price GBP</td>
+@if (Model?.Automobiles != null)
+{
+    <table class="table table-hover">
+        <tbody>
 
-            @if (Context.User.Identity.Name == Model.Username)
+            @foreach (var auto in Model.Automobiles.SearchResults)
             {
-                <td><a class="text-primary" asp-controller="Automobile" asp-action="Edit" asp-route-id="@auto.Id">Edit</a></td>
-                <td><a class="text-danger" asp-controller="Automobile" asp-action="Delete" asp-route-id="@auto.Id">Delete</a></td>
+
+                <tr>
+                    <td><img src="@(auto.ImageUrl)" height="150" width="210" alt="@auto.Title" /> </td>
+                    <td><a class="text-info" asp-controller="Automobile" asp-action="Index" asp-route-id="@auto.Id">@auto.Title</a></td>
+                    <td class="text-info">@auto.Year</td>
+                    <td class="text-info">@auto.Price GBP</td>
+
+                    @if (Context.User.Identity.Name == Model.Username)
+                    {
+                        <td><a class="text-primary" asp-controller="Automobile" asp-action="Edit" asp-route-id="@auto.Id">Edit</a></td>
+                        <td><a class="text-danger" asp-controller="Automobile" asp-action="Delete" asp-route-id="@auto.Id">Delete</a></td>
+                    }
+
+                </tr>
             }
+        </tbody>
 
-        </tr>
-        }
-    </tbody>
-
-</table>
+    </table>
+}
+else
+{
+    <h4>User has no automobiles for sale.</h4>
+}

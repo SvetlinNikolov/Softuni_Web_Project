@@ -35,6 +35,7 @@ public class HomeController : BaseController
         {
             this.RedirectToAction("Results", "Search", model.SearchConcise);
         }
+
         model.NewestAdverts = await this.searchService.GetNewestAdvertsConciseAsync();
         return this.View(model);
     }
@@ -42,7 +43,6 @@ public class HomeController : BaseController
 
     public IActionResult Api()
     {
-
         return this.View();
     }
 }

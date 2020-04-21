@@ -14,6 +14,7 @@ namespace SPN.Web.Areas.Identity.Pages.Account
     using SPN.Data.Models.Shared.Identity.Enums;
     using SPN.Data.Models.Shared.Identity;
     using SPN.Data.Models.Auto.Enums;
+    using Microsoft.AspNetCore.Http;
 
     [AllowAnonymous]
     public class RegisterModel : PageModel
@@ -55,14 +56,12 @@ namespace SPN.Web.Areas.Identity.Pages.Account
             public string ConfirmPassword { get; set; }
 
             [Required]
-            [Display(Name = "Gender")] //TODO Add Gender Validation
-            public Gender Gender { get; set; }
-
-            [Required]
-            [Display(Name ="Phone number")]
+            [Display(Name = "Phone number")]
             [DataType(DataType.PhoneNumber)]
             [StringLength(10, MinimumLength = 4, ErrorMessage = "Invalid phone number")]
             public string PhoneNumber { get; set; }
+
+
         }
 
         public void OnGet(string returnUrl = null)
@@ -76,7 +75,11 @@ namespace SPN.Web.Areas.Identity.Pages.Account
 
             if (ModelState.IsValid)
             {
-                var user = new User { UserName = Input.Username, Email = Input.Email };
+                var user = new User { UserName = Input.Username,
+                    Email = Input.Email,
+                    PhoneNumber = Input.PhoneNumber,
+                    CreatedOn = DateTime.UtcNow };
+
                 var result = await _userManager.CreateAsync(user, Input.Password);
                 if (result.Succeeded)
                 {

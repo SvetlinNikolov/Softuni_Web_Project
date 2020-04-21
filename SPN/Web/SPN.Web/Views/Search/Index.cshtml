@@ -1,15 +1,181 @@
-﻿
-@{
-    Layout = null;
-}
+﻿@model IndexViewModel
 
-<!DOCTYPE html>
+<form asp-controller="Search" asp-action="Results" method="get" enctype="multipart/form-data">
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Index</title>
-</head>
-<body>
-</body>
-</html>
+    <div class="form-group">
+        <label asp-for="@Model.SearchConcise.Make" class="control-label"></label>
+        <select class="custom-select" id="primaryProperties.Make" name="primaryProperties.Make">
+            <option selected value=""></option>
+            <option value="Mercedes">Mercedes</option>
+            <option value="BMW">BMW</option>
+            <option value="Audi">Audi</option>
+        </select>
+        <span asp-validation-for="@Model.SearchConcise.Make" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="@Model.SearchConcise.Model" class="control-label"></label>
+        <select class="custom-select" id="primaryProperties.Model" name="primaryProperties.Model">
+            <option selected value=""></option>
+            <option value="E200">E200</option>
+            <option value="320d">320d</option>
+            <option value="A7">A7</option>
+        </select>
+        <span asp-validation-for="@Model.SearchConcise.Model" class="text-danger"></span>
+    </div>
+
+    <div class="form-row">
+        <div class="form-group col-md-3">
+            <label asp-for="@Model.SearchConcise.YearFrom">From Year:</label>
+            <select class="custom-select" id="primaryProperties.YearFrom" name="primaryProperties.YearFrom">
+                <option selected value="@null"></option>
+                @for (int i = 1970; i <= DateTime.UtcNow.Year; i++)
+                {
+                <option value="@i">
+                    From  @i
+                </option>
+                }
+            </select>
+            <span asp-validation-for="@Model.SearchConcise.YearFrom" class="text-danger"></span>
+        </div>
+
+        <div class="form-group col-md-3">
+            <label asp-for="@Model.SearchConcise.YearTo">To Year:</label>
+            <select class="custom-select" id="primaryProperties.YearTo" name="primaryProperties.YearTo">
+                <option selected value="@null"></option>
+                @for (int i = DateTime.UtcNow.Year; i >= 1970; i--)
+                {
+                <option value="@i">
+                    To  @i
+                </option>
+                }
+            </select>
+            <span asp-validation-for="@Model.SearchConcise.YearTo" class="text-danger"></span>
+        </div>
+
+        <div class="form-group col-md-3">
+            <label asp-for="@Model.SearchConcise.MileageTo">Max Mileage</label>
+            <select class="custom-select" id="PrimaryProperties.MileageTo" name="PrimaryProperties.MileageTo">
+                <option selected value="@null"></option>
+                @for (int i = 0; i <= 1_000_000; i += 100_000)
+                {
+                <option value="@i">
+                    @i miles
+                </option>
+                }
+            </select>
+            <span asp-validation-for="@Model.SearchConcise.MileageTo" class="text-danger"></span>
+        </div>
+
+        <div class="form-group col-md-3">
+            <label asp-for="@Model.SearchConcise.HorsepowerFrom">Min Horsepower</label>
+            <input asp-for="@Model.SearchConcise.HorsepowerFrom" class="form-control" />
+            <span asp-validation-for="@Model.SearchConcise.HorsepowerFrom" class="text-danger"></span>
+        </div>
+    </div>
+
+
+    <div class="form-row">
+        <div class="form-group col-md-3">
+            <label asp-for="@Model.SearchConcise.PriceFrom">Price From (GBP)</label>
+            <input asp-for="@Model.SearchConcise.PriceFrom" class="form-control" />
+            <span asp-validation-for="@Model.SearchConcise.PriceFrom" class="text-danger"></span>
+        </div>
+
+        <div class="form-group col-md-3">
+            <label asp-for="@Model.SearchConcise.PriceTo">Price To (GBP)</label>
+            <input asp-for="@Model.SearchConcise.PriceTo" class="form-control" />
+            <span asp-validation-for="@Model.SearchConcise.PriceTo" class="text-danger"></span>
+        </div>
+
+        <div class="form-group col-md-3">
+            <label asp-for="@Model.SearchConcise.Region"></label>
+            <select class="custom-select" asp-for="@Model.SearchConcise.Region" asp-items="Html.GetEnumSelectList<Region>()">
+                <option selected value="@null"></option>
+            </select>
+            <span asp-validation-for="@Model.SearchConcise.Region" class="text-danger"></span>
+        </div>
+
+        <div class="form-group col-md-3">
+            <label asp-for="@Model.SearchConcise.Engine"></label>
+            <select class="custom-select" asp-for="@Model.SearchConcise.Engine" asp-items="Html.GetEnumSelectList<Engine>()">
+                <option selected value="@null"></option>
+            </select>
+            <span asp-validation-for="@Model.SearchConcise.Engine" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="form-row">
+
+        <div class="form-group col-md-3">
+            <label asp-for="@Model.SearchConcise.Color">Colour</label>
+            <select class="custom-select" asp-for="@Model.SearchConcise.Color" asp-items="Html.GetEnumSelectList<Color>()">
+                <option selected value="@null"></option>
+            </select>
+            <span asp-validation-for="@Model.SearchConcise.Color" class="text-danger"></span>
+        </div>
+
+        <div class="form-group col-md-3">
+            <label asp-for="@Model.SearchConcise.Condition">Condition</label>
+            <select class="custom-select" asp-for="@Model.SearchConcise.Condition" asp-items="Html.GetEnumSelectList<Condition>()">
+                <option selected value="@null"></option>
+            </select>
+            <span asp-validation-for="@Model.SearchConcise.Condition" class="text-danger"></span>
+        </div>
+
+        <div class="form-group col-md-3">
+            <label asp-for="@Model.SearchConcise.GearBox">Gearbox</label>
+            <select class="custom-select" asp-for="@Model.SearchConcise.GearBox" asp-items="Html.GetEnumSelectList<GearBox>()">
+                <option selected value="@null"></option>
+            </select>
+            <span asp-validation-for="@Model.SearchConcise.GearBox" class="text-danger"></span>
+        </div>
+
+        <div class="form-group col-md-3">
+            <label asp-for="@Model.SearchConcise.Body">Body</label>
+            <select class="custom-select" asp-for="@Model.SearchConcise.Body" asp-items="Html.GetEnumSelectList<Body>()">
+                <option selected value="@null"></option>
+            </select>
+            <span asp-validation-for="@Model.SearchConcise.Body" class="text-danger"></span>
+        </div>
+
+    </div>
+
+    <div class="form-group">
+        <input type="submit" value="Search" class="btn btn-primary" />
+
+    </div>
+
+
+</form>
+
+
+<h4 class="text-center text-secondary">Newest Adverts</h4>
+
+<table class="table text-center">
+    <thead>
+        <tr>
+            <th></th>
+            <th></th>
+            <th class="text-info">Year</th>
+            <th class="text-info">Price</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var auto in Model.NewestAdverts)
+        {
+        <tr>
+            <td><img src="@auto.ImageUrl" height="100" width="150" alt="@auto.Title" /> </td>
+            <td><a class="p-3 mb-2 bg-gradient-light text-dark" asp-controller="Automobile" asp-action="Index" asp-route-id="@auto.Id">@auto.Title</a></td>
+            <td class="text-dark">@auto.Year</td>
+            <td>@auto.Price GBP</td>
+        </tr>
+        }
+
+    </tbody>
+
+</table>
+@*</div>*@
+
+

@@ -158,7 +158,7 @@ namespace SPN.Web
             {
                 endpoints.MapControllerRoute(
                  name: "category",
-                 pattern: "{controller=Home}/{action=Index}/{id?}");
+                 pattern: "{controller=Search}/{action=Index}/{id?}");
 
                 endpoints.MapRazorPages();
 

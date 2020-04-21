@@ -21,11 +21,6 @@
             Quotes = new HashSet<Quote>();
             Automobiles = new HashSet<Automobile>();
         }
-        public Gender Gender { get; set; }
-
-       
-
-        public string Description { get; set; }
 
         public string ProfileImage { get; set; }
 

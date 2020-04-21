@@ -5,6 +5,7 @@ using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using SPN.Auto.Services.Contracts;
 using SPN.Auto.Web.InputModels.Automobile;
+using SPN.Auto.Web.ViewModels.Index;
 using SPN.Auto.Web.ViewModels.Search;
 using SPN.Services.Shared;
 
@@ -20,6 +21,17 @@ namespace SPN.Web.Controllers
         {
             this.searchService = searchService;
         }
+
+        public async Task<IActionResult> Index(IndexViewModel model)
+        {
+            if (!this.searchService.SearchModelIsNull(model))
+            {
+                this.RedirectToAction("Results", "Search", model.SearchConcise);
+            }
+            model.NewestAdverts = await this.searchService.GetNewestAdvertsConciseAsync();
+            return this.View(model);
+        }
+
 
         public IActionResult Listing(SearchResultListingViewModel viewModel)
         {
@@ -57,9 +69,8 @@ namespace SPN.Web.Controllers
 
         }
 
-
         [HttpGet]
-        public IActionResult Index(MainSearchInputModel model)
+        public IActionResult AdvancedSearch(MainSearchInputModel model)
 
         {
             if (!this.searchService.SearchModelIsNull(model))

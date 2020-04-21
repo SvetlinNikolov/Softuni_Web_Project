@@ -1,10 +1,11 @@
 ﻿namespace SPN.Services.Shared
 {
+    using SPN.Auto.Web.InputModels.User;
     using SPN.Data.Models.Shared.Identity;
     using SPN.Forum.Web.ViewModels.Shared;
     using System.Collections.Generic;
     using System.Threading.Tasks;
-    
+
 
     public interface IUserService
     {
@@ -20,7 +21,8 @@
 
         Task<UserProfileViewModel> GetUserViewModelByUserIdAsync(string id);
 
+        Task<string> EditUserProfileAsync(UserEditInputModel model);
 
-
+    
     }
 }

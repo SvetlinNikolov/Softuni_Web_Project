@@ -16,6 +16,8 @@ namespace SPN.Forum.Web.ViewModels.Shared
 
         public string ProfileImage { get; set; }
 
+        public string PhoneNumber { get; set; }
+
         public SearchResultListingViewModel Automobiles { get; set; }
 
     }

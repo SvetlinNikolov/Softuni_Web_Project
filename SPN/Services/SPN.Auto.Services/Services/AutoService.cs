@@ -81,17 +81,43 @@ namespace SPN.Auto.Services.Services
             automobileToEdit.Comment = inputModel.Comment;
             automobile.ModifiedOn = DateTime.UtcNow;
 
-            automobileToEdit.PrimaryProperties = automobile.PrimaryProperties;
-            automobileToEdit.Safety = automobile.Safety;
-            automobileToEdit.Interiors = automobile.Interiors;
-            automobileToEdit.InteriorMaterials = automobile.InteriorMaterials;
-            automobileToEdit.Suspensions = automobile.Suspensions;
-            automobileToEdit.ExtraFeatures = automobile.ExtraFeatures;
-            automobileToEdit.SpecializedFeatures = automobile.SpecializedFeatures;
-            automobileToEdit.Images = await imagesHelper.SetAutomobileImages(inputModel.Images, this.cloudinary);
+            if (automobile.PrimaryProperties != null)
+            {
+                this.dbContext.PrimaryProperties.Attach(automobile.PrimaryProperties);
+                automobileToEdit.PrimaryProperties = automobile.PrimaryProperties;
+            }
+            if (automobile.Interiors != null)
+            {
+                this.dbContext.Interiors.Attach(automobile.Interiors);
+                automobileToEdit.Interiors = automobile.Interiors;
+            }
+            if (automobile.InteriorMaterials != null)
+            {
+                this.dbContext.InteriorMaterials.Attach(automobile.InteriorMaterials);
+                automobileToEdit.InteriorMaterials = automobile.InteriorMaterials;
+            }
+            if (automobile.Suspensions != null)
+            {
+                this.dbContext.Suspensions.Attach(automobile.Suspensions);
+                automobileToEdit.Suspensions = automobile.Suspensions;
+            }
+            if (automobile.ExtraFeatures != null)
+            {
+                this.dbContext.ExtraFeatures.Attach(automobile.ExtraFeatures);
+                automobileToEdit.ExtraFeatures = automobile.ExtraFeatures;
+            }
+            if (automobile.SpecializedFeatures != null)
+            {
+                this.dbContext.SpecializedFeatures.Attach(automobile.SpecializedFeatures);
+                automobileToEdit.SpecializedFeatures = automobile.SpecializedFeatures;
+            }
+            if (automobile.Images != null)
+            {
+                this.dbContext.Images.Attach(automobile.Images);
+                automobileToEdit.Images = await imagesHelper.SetAutomobileImages(inputModel.Images, this.cloudinary);
+            }
 
-
-            this.dbContext.Update(automobileToEdit);
+            //this.dbContext.Update(automobileToEdit); 
             await this.dbContext.SaveChangesAsync();
         }
 
@@ -106,7 +132,7 @@ namespace SPN.Auto.Services.Services
             }
 
             EditAutomobileInputModel viewModel = this.mapper.Map<EditAutomobileInputModel>(automobile);
-
+            
             return viewModel;
         }
 
@@ -116,6 +142,8 @@ namespace SPN.Auto.Services.Services
             Automobile automobile = await this.GetAutomobileByIdAsync(id);
 
             AutomobileViewModel viewModel = this.mapper.Map<AutomobileViewModel>(automobile);
+            viewModel.PrimaryProperties.Make = automobile.Make.Name;
+            viewModel.PrimaryProperties.Model = automobile.Model.Name;
 
             return viewModel;
         }

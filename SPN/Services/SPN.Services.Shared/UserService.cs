@@ -1,12 +1,16 @@
 ﻿namespace SPN.Services.Shared
 {
+    using CloudinaryDotNet;
     using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.EntityFrameworkCore;
+    using SPN.Auto.Web.InputModels.User;
     using SPN.Auto.Web.ViewModels.Search;
+    using SPN.Data.Common.Cloudinary;
     using SPN.Data.Models.Shared.Identity;
     using SPN.Forum.Data;
     using SPN.Forum.Web.ViewModels.Shared;
+    using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Security.Claims;
@@ -19,18 +23,20 @@
         private readonly IHttpContextAccessor httpContextAccessor;
         private readonly UserManager<User> userManager;
         private readonly SPNDbContext dbContext;
+        private readonly Cloudinary cloudinary;
 
         public UserService(SPNDbContext context,
                 IHttpContextAccessor httpContextAccessor,
                 UserManager<User> userManager,
-                SPNDbContext dbContext
+                SPNDbContext dbContext,
+                Cloudinary cloudinary
                 )
         {
             this.context = context;
             this.httpContextAccessor = httpContextAccessor;
             this.userManager = userManager;
             this.dbContext = dbContext;
-
+            this.cloudinary = cloudinary;
         }
 
 
@@ -52,14 +58,15 @@
         public async Task<User> GetUserById(string id)
         {
             var user = await dbContext.Users
+                 .Where(x => x.IsDeleted == false)
                  .Where(x => x.Id == id)
                  .Include(x => x.Automobiles)
-                  .ThenInclude(x => x.Model)
+                 .ThenInclude(x => x.Model)
                  .ThenInclude(x => x.Make)
-               .Include(x => x.Automobiles)
-               .ThenInclude(x => x.PrimaryProperties)
-               .Include(x => x.Automobiles)
-               .ThenInclude(x => x.Images)
+                 .Include(x => x.Automobiles)
+                 .ThenInclude(x => x.PrimaryProperties)
+                 .Include(x => x.Automobiles)
+                 .ThenInclude(x => x.Images)
                  .SingleOrDefaultAsync();
 
 
@@ -117,6 +124,12 @@
         {
             var user = await this.GetUserById(id);
 
+            var userProfileModel = new UserProfileViewModel();
+
+            if (user?.Automobiles == null)
+            {
+                return null;
+            }
             var searchResultsConcise = user.Automobiles
                 .Select(x => new SearchResultConciseViewModel
                 {
@@ -139,6 +152,7 @@
             var viewModel = new UserProfileViewModel
             {
                 Automobiles = searchResultsListing,
+                PhoneNumber = user.PhoneNumber,
                 Username = user.UserName,
                 MemberSince = user.CreatedOn,
                 Email = user.Email,
@@ -148,5 +162,21 @@
 
             return viewModel;
         }
+
+        public async Task<string> EditUserProfileAsync(UserEditInputModel model)
+        {
+            var user = await this.GetLoggedInUserAsync();
+
+            user.PhoneNumber = model.PhoneNumber;
+            user.Email = model.Email;
+            user.ProfileImage = await ApplicationCloudinary.UploadImage(cloudinary, model.ProfilePicture, Guid.NewGuid().ToString());
+
+            this.dbContext.Update(user);
+            await this.dbContext.SaveChangesAsync();
+
+            return user.Id;
+        }
+
+
     }
 }

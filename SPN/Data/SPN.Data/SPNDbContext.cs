@@ -52,6 +52,10 @@
 
         public DbSet<SpecializedFeatures> SpecializedFeatures { get; set; }
 
+        public DbSet<ExtraFeatures> ExtraFeatures { get; set; }
+
+        public DbSet<Images> Images { get; set; }
+
         protected override void OnModelCreating(ModelBuilder builder)
         {
 
