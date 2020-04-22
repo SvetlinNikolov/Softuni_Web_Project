@@ -67,7 +67,7 @@ namespace SPN.Auto.Services.Services
                 throw new UnauthorizedAccessException(ModelConstants.Unauthorized);
             }
 
-            Automobile automobile = this.mapper.Map<Automobile>(inputModel);
+            Automobile automobileMapping = this.mapper.Map<Automobile>(inputModel);
 
             automobileToEdit.Make = await this.dbContext.Makes
                 .Where(x => x.Name == inputModel.PrimaryProperties.Make)
@@ -79,45 +79,53 @@ namespace SPN.Auto.Services.Services
 
             automobileToEdit.Title = inputModel.Title;
             automobileToEdit.Comment = inputModel.Comment;
-            automobile.ModifiedOn = DateTime.UtcNow;
+            automobileMapping.ModifiedOn = DateTime.UtcNow;
 
-            if (automobile.PrimaryProperties != null)
+            if (automobileMapping.PrimaryProperties != null)
             {
-                this.dbContext.PrimaryProperties.Attach(automobile.PrimaryProperties);
-                automobileToEdit.PrimaryProperties = automobile.PrimaryProperties;
+                var primaryProperties = automobileMapping.PrimaryProperties;
+                primaryProperties.Id = (int)automobileToEdit.PrimaryPropertiesId;
+                this.dbContext.Entry(automobileToEdit.PrimaryProperties).CurrentValues.SetValues(automobileMapping.PrimaryProperties);
+                
             }
-            if (automobile.Interiors != null)
+            if (automobileMapping.Interiors != null)
             {
-                this.dbContext.Interiors.Attach(automobile.Interiors);
-                automobileToEdit.Interiors = automobile.Interiors;
+                var interiors = automobileMapping.Interiors;
+                interiors.Id = (int)automobileToEdit.InteriorsId;
+                this.dbContext.Entry(automobileToEdit.Interiors).CurrentValues.SetValues(automobileMapping.Interiors);
             }
-            if (automobile.InteriorMaterials != null)
+            if (automobileMapping.InteriorMaterials != null)
             {
-                this.dbContext.InteriorMaterials.Attach(automobile.InteriorMaterials);
-                automobileToEdit.InteriorMaterials = automobile.InteriorMaterials;
+                var interiorMaterials = automobileMapping.InteriorMaterials;
+                interiorMaterials.Id = (int)automobileToEdit.InteriorMaterialsId;
+                this.dbContext.Entry(automobileToEdit.InteriorMaterials).CurrentValues.SetValues(automobileMapping.InteriorMaterials);
             }
-            if (automobile.Suspensions != null)
+            if (automobileMapping.Suspensions != null)
             {
-                this.dbContext.Suspensions.Attach(automobile.Suspensions);
-                automobileToEdit.Suspensions = automobile.Suspensions;
+                var suspensions = automobileMapping.Suspensions;
+                suspensions.Id = (int)automobileToEdit.SuspensionsId;
+                this.dbContext.Entry(automobileToEdit.Suspensions).CurrentValues.SetValues(automobileMapping.Suspensions);
             }
-            if (automobile.ExtraFeatures != null)
+            if (automobileMapping.ExtraFeatures != null)
             {
-                this.dbContext.ExtraFeatures.Attach(automobile.ExtraFeatures);
-                automobileToEdit.ExtraFeatures = automobile.ExtraFeatures;
+                var extraFeatures = automobileMapping.ExtraFeatures;
+                extraFeatures.Id = (int)automobileToEdit.ExtraFeaturesId;
+                this.dbContext.Entry(automobileToEdit.ExtraFeatures).CurrentValues.SetValues(automobileMapping.ExtraFeatures);
             }
-            if (automobile.SpecializedFeatures != null)
+            if (automobileMapping.SpecializedFeatures != null)
             {
-                this.dbContext.SpecializedFeatures.Attach(automobile.SpecializedFeatures);
-                automobileToEdit.SpecializedFeatures = automobile.SpecializedFeatures;
+                var specializedFeatures = automobileMapping.SpecializedFeatures;
+                specializedFeatures.Id = (int)automobileToEdit.SpecializedFeaturesId;
+                this.dbContext.Entry(automobileToEdit.SpecializedFeatures).CurrentValues.SetValues(automobileMapping.SpecializedFeatures);
             }
-            if (automobile.Images != null)
+            if (automobileMapping.Images != null)
             {
-                this.dbContext.Images.Attach(automobile.Images);
-                automobileToEdit.Images = await imagesHelper.SetAutomobileImages(inputModel.Images, this.cloudinary);
+                var images = automobileMapping.Images;
+                images.Id = (int)automobileToEdit.ImagesId;
+                this.dbContext.Entry(automobileToEdit.Images).CurrentValues.SetValues(automobileMapping.Images); //TODO fix images they are not uploading
             }
 
-            //this.dbContext.Update(automobileToEdit); 
+            this.dbContext.Update(automobileToEdit);
             await this.dbContext.SaveChangesAsync();
         }
 
@@ -132,7 +140,7 @@ namespace SPN.Auto.Services.Services
             }
 
             EditAutomobileInputModel viewModel = this.mapper.Map<EditAutomobileInputModel>(automobile);
-            
+
             return viewModel;
         }
 
