@@ -111,42 +111,42 @@
 
 
 
-        <div class="form-row">
+    <div class="form-row">
 
-            <div class="form-group col-md-3">
-                <label asp-for="@Model.PrimaryProperties.Color">Colour</label>
-                <select class="custom-select" asp-for="@Model.PrimaryProperties.Color" asp-items="Html.GetEnumSelectList<Color>()">
-                    <option selected value="@null"></option>
-                </select>
-                <span asp-validation-for="@Model.PrimaryProperties.Color" class="text-danger"></span>
-            </div>
-
-            <div class="form-group col-md-3">
-                <label asp-for="@Model.PrimaryProperties.Condition">Condition</label>
-                <select class="custom-select" asp-for="@Model.PrimaryProperties.Condition" asp-items="Html.GetEnumSelectList<Condition>()">
-                    <option selected value="@null"></option>
-                </select>
-                <span asp-validation-for="@Model.PrimaryProperties.Condition" class="text-danger"></span>
-            </div>
-
-            <div class="form-group col-md-3">
-                <label asp-for="@Model.PrimaryProperties.GearBox">Gearbox</label>
-                <select class="custom-select" asp-for="@Model.PrimaryProperties.GearBox" asp-items="Html.GetEnumSelectList<GearBox>()">
-                    <option selected value="@null"></option>
-                </select>
-                <span asp-validation-for="@Model.PrimaryProperties.GearBox" class="text-danger"></span>
-            </div>
-
-            <div class="form-group col-md-3">
-                <label asp-for="@Model.PrimaryProperties.Body">Body</label>
-                <select class="custom-select" asp-for="@Model.PrimaryProperties.Body" asp-items="Html.GetEnumSelectList<Body>()">
-                    <option selected value="@null"></option>
-                </select>
-                <span asp-validation-for="@Model.PrimaryProperties.Body" class="text-danger"></span>
-            </div>
-
+        <div class="form-group col-md-3">
+            <label asp-for="@Model.PrimaryProperties.Color">Colour</label>
+            <select class="custom-select" asp-for="@Model.PrimaryProperties.Color" asp-items="Html.GetEnumSelectList<Color>()">
+                <option selected value="@null"></option>
+            </select>
+            <span asp-validation-for="@Model.PrimaryProperties.Color" class="text-danger"></span>
         </div>
-  
+
+        <div class="form-group col-md-3">
+            <label asp-for="@Model.PrimaryProperties.Condition">Condition</label>
+            <select class="custom-select" asp-for="@Model.PrimaryProperties.Condition" asp-items="Html.GetEnumSelectList<Condition>()">
+                <option selected value="@null"></option>
+            </select>
+            <span asp-validation-for="@Model.PrimaryProperties.Condition" class="text-danger"></span>
+        </div>
+
+        <div class="form-group col-md-3">
+            <label asp-for="@Model.PrimaryProperties.GearBox">Gearbox</label>
+            <select class="custom-select" asp-for="@Model.PrimaryProperties.GearBox" asp-items="Html.GetEnumSelectList<GearBox>()">
+                <option selected value="@null"></option>
+            </select>
+            <span asp-validation-for="@Model.PrimaryProperties.GearBox" class="text-danger"></span>
+        </div>
+
+        <div class="form-group col-md-3">
+            <label asp-for="@Model.PrimaryProperties.Body">Body</label>
+            <select class="custom-select" asp-for="@Model.PrimaryProperties.Body" asp-items="Html.GetEnumSelectList<Body>()">
+                <option selected value="@null"></option>
+            </select>
+            <span asp-validation-for="@Model.PrimaryProperties.Body" class="text-danger"></span>
+        </div>
+
+    </div>
+
     @*------------------*@
 
 
@@ -300,6 +300,48 @@
             <div class="row">
                 <input type="checkbox" value="true" name="InteriorMaterials.Velour" />Velour
             </div>
+            <br />
+
+            <h3>Extra Features</h3>
+
+            <div class="row">
+                <input type="checkbox" value="true" name="ExtraFeatures.KeylessEntry" />Keyless Entry
+            </div>
+
+            <div class="row">
+                <input type="checkbox" value="true" name="ExtraFeatures.KeylessIgnition" />Keyless Ignition
+            </div>
+
+            <div class="row">
+                <input type="checkbox" value="true" name="ExtraFeatures.LowGear" />Low Gear
+            </div>
+            <div class="row">
+                <input type="checkbox" value="true" name="ExtraFeatures.PanoramicRoof" />Panoramic Roof
+            </div>
+
+            <div class="row">
+                <input type="checkbox" value="true" name="ExtraFeatures.RoofRack" />Roof Rack
+            </div>
+
+            <div class="row">
+                <input type="checkbox" value="true" name="ExtraFeatures.ElectricTailgate" />Electric Tailgate
+            </div>
+
+            <div class="row">
+                <input type="checkbox" value="true" name="ExtraFeatures.LongBase" />Long Base
+            </div>
+
+            <div class="row">
+                <input type="checkbox" value="true" name="ExtraFeatures.ShortBase" />Short Base
+            </div>
+
+            <div class="row">
+                <input type="checkbox" value="true" name="ExtraFeatures.Registered" />Registered
+            </div>
+
+            <div class="row">
+                <input type="checkbox" value="true" name="ExtraFeatures.MOT" />MOT
+            </div>
 
 
         </div>
@@ -436,12 +478,32 @@
             <div class="row">
                 <input type="checkbox" value="true" name="Suspensions.ActiveSuspension" />Active Suspension
             </div>
+            <br />
+
+            <h3>Specialized Features</h3>
+
+            <div class="row">
+                <input type="checkbox" value="true" name="SpecializedFeatures.DisabledAccessible" />Disabled Accessible
+            </div>
+
+            <div class="row">
+                <input type="checkbox" value="true" name="SpecializedFeatures.Taxi" />Taxi
+            </div>
+
+            <div class="row">
+                <input type="checkbox" value="true" name="SpecializedFeatures.Ambulance" /> Ambulance
+            </div>
+
+            <div class="row">
+                <input type="checkbox" value="true" name="SpecializedFeatures.Hearse" /> Hearse
+            </div>
+
+            <div class="row">
+                <input type="checkbox" value="true" name="SpecializedFeatures.Learner" /> Learner
+            </div>
 
         </div>
     </div>
-
-
-
 
 
 

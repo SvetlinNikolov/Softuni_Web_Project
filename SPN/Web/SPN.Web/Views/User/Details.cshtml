@@ -14,7 +14,7 @@
     </thead>
     <tbody>
         <tr>
-            <td><img src="@(Model?.ProfileImage==null ? "https://i.imgur.com/mCHMpLT.png" : Model.ProfileImage)" alt="@Model.Username" /> </td>
+            <td><img src="@(Model?.ProfileImage==null ? "https://i.imgur.com/mCHMpLT.png" : Model.ProfileImage)" height="150" width="210" alt="@Model.Username" /> </td>
             <td>@Model.Username</td>
             <td class="text-dark">@(Model.MemberSince.Year)</td>
             <td>@(Model.Email == null ? "N/A" : Model.Email)</td>
@@ -22,35 +22,39 @@
     </tbody>
 </table>
 
+<h4 class="text-secondary text-center">@Model.Username's listed automobiles for sale</h4>
+<div>
 
 
-@if (Model?.Automobiles != null)
-{
-    <table class="table table-hover">
-        <tbody>
+    @if (Model?.Automobiles != null)
+    {
+        <table class="table table-hover">
+            <tbody>
 
-            @foreach (var auto in Model.Automobiles.SearchResults)
-            {
+                @foreach (var auto in Model.Automobiles.SearchResults)
+                {
 
-                <tr>
-                    <td><img src="@(auto.ImageUrl)" height="150" width="210" alt="@auto.Title" /> </td>
-                    <td><a class="text-info" asp-controller="Automobile" asp-action="Index" asp-route-id="@auto.Id">@auto.Title</a></td>
-                    <td class="text-info">@auto.Year</td>
-                    <td class="text-info">@auto.Price GBP</td>
+                    <tr>
+                        <td><img src="@(auto.ImageUrl==null? "https://www.autoduqaan.com/images/no-image-big.jpg":auto.ImageUrl)" height="150" width="210" alt="@auto.Title" /> </td>
+                        <td><a class="text-info" asp-controller="Automobile" asp-action="Index" asp-route-id="@auto.Id">@auto.Title</a></td>
+                        <td class="text-info">@auto.Year</td>
+                        <td class="text-info">@auto.Price GBP</td>
 
-                    @if (Context.User.Identity.Name == Model.Username)
-                    {
-                        <td><a class="text-primary" asp-controller="Automobile" asp-action="Edit" asp-route-id="@auto.Id">Edit</a></td>
-                        <td><a class="text-danger" asp-controller="Automobile" asp-action="Delete" asp-route-id="@auto.Id">Delete</a></td>
-                    }
+                        @if (Context.User.Identity.Name == Model.Username)
+                        {
+                            <td><a class="text-primary" asp-controller="Automobile" asp-action="Edit" asp-route-id="@auto.Id">Edit</a></td>
+                            <td><a class="text-danger" asp-controller="Automobile" asp-action="Delete" asp-route-id="@auto.Id">Delete</a></td>
+                        }
 
-                </tr>
-            }
-        </tbody>
+                    </tr>
+                }
+            </tbody>
 
-    </table>
-}
-else
-{
-    <h4>User has no automobiles for sale.</h4>
-}
+        </table>
+
+    }
+    else
+    {
+        <h4>User has no automobiles for sale.</h4>
+    }
+</div>

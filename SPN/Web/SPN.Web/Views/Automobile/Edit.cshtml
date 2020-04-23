@@ -1,12 +1,12 @@
 ﻿@model EditAutomobileInputModel
 
-    <head>
-        <link rel="stylesheet" href="~/lib/jquery-3.3.1.slim.min.js" />
-        <link rel="stylesheet" href="~/lib/bootstrap.bundle.min.js" />
-        <link rel="stylesheet" href="~/lib/font-awesome.min.css" />
-        <link href="~/js/site.js" />
+<head>
+    <link rel="stylesheet" href="~/lib/jquery-3.3.1.slim.min.js" />
+    <link rel="stylesheet" href="~/lib/bootstrap.bundle.min.js" />
+    <link rel="stylesheet" href="~/lib/font-awesome.min.css" />
+    <link href="~/js/site.js" />
 
-    </head>
+</head>
 
 <div class="text-center">
     <h1>Edit</h1>
@@ -35,7 +35,7 @@
     <div class="form-group">
         <label asp-for="@Model.PrimaryProperties.Make" class="control-label"></label>
         <select class="custom-select" id="primaryProperties.Make" name="primaryProperties.Make">
-            <option selected value="@Model.PrimaryProperties.Make"></option>
+            <option selected value="@Model.PrimaryProperties.Make">@Model.PrimaryProperties.Make</option>
             <option value="Mercedes">Mercedes</option>
             <option value="BMW">BMW</option>
             <option value="Audi">Audi</option>
@@ -46,7 +46,7 @@
     <div class="form-group">
         <label asp-for="@Model.PrimaryProperties.Model" class="control-label"></label>
         <select class="custom-select" id="primaryProperties.Model" name="primaryProperties.Model">
-            <option selected value="@Model.PrimaryProperties.Model"></option>
+            <option selected value="@Model.PrimaryProperties.Model">@Model.PrimaryProperties.Model</option>
             <option value="E200">E200</option>
             <option value="320d">20d</option>
             <option value="A7">A7</option>
@@ -58,7 +58,7 @@
         <div class="form-group col-md-3">
             <label asp-for="@Model.PrimaryProperties.Year">Year:</label>
             <select class="custom-select" id="primaryProperties.Year" name="primaryProperties.Year">
-                <option selected value="@null"></option>
+                <option selected value="@Model.PrimaryProperties.Year">@Model.PrimaryProperties.Year</option>
                 @for (int i = 1970; i <= DateTime.UtcNow.Year; i++)
                 {
                     <option value="@i">
@@ -71,15 +71,7 @@
 
         <div class="form-group col-md-3">
             <label asp-for="@Model.PrimaryProperties.Mileage">Mileage</label>
-            <select class="custom-select" id="PrimaryProperties.Mileage" name="PrimaryProperties.Mileage">
-                <option selected value="@null"></option>
-                @for (int i = 0; i <= 1_000_000; i += 100_000)
-                {
-                    <option value="@i">
-                        @i
-                    </option>
-                }
-            </select>
+            <input asp-for="@Model.PrimaryProperties.Mileage" class="form-control" />
             <span asp-validation-for="@Model.PrimaryProperties.Mileage" class="text-danger"></span>
         </div>
 
@@ -146,7 +138,6 @@
         </div>
     </div>
     @*------------------*@
-
 
 
     <div class="form-row">
@@ -298,6 +289,48 @@
             <div class="row">
                 <input type="checkbox" value="true" name="InteriorMaterials.Velour" />Velour
             </div>
+            <br />
+
+            <h3>Extra Features</h3>
+
+            <div class="row">
+                <input type="checkbox" value="true" name="ExtraFeatures.KeylessEntry" />Keyless Entry
+            </div>
+
+            <div class="row">
+                <input type="checkbox" value="true" name="ExtraFeatures.KeylessIgnition" />Keyless Ignition
+            </div>
+
+            <div class="row">
+                <input type="checkbox" value="true" name="ExtraFeatures.LowGear" />Low Gear
+            </div>
+            <div class="row">
+                <input type="checkbox" value="true" name="ExtraFeatures.PanoramicRoof" />Panoramic Roof
+            </div>
+
+            <div class="row">
+                <input type="checkbox" value="true" name="ExtraFeatures.RoofRack" />Roof Rack
+            </div>
+
+            <div class="row">
+                <input type="checkbox" value="true" name="ExtraFeatures.ElectricTailgate" />Electric Tailgate
+            </div>
+
+            <div class="row">
+                <input type="checkbox" value="true" name="ExtraFeatures.LongBase" />Long Base
+            </div>
+
+            <div class="row">
+                <input type="checkbox" value="true" name="ExtraFeatures.ShortBase" />Short Base
+            </div>
+
+            <div class="row">
+                <input type="checkbox" value="true" name="ExtraFeatures.Registered" />Registered
+            </div>
+
+            <div class="row">
+                <input type="checkbox" value="true" name="ExtraFeatures.MOT" />MOT
+            </div>
 
 
         </div>
@@ -434,9 +467,33 @@
             <div class="row">
                 <input type="checkbox" value="true" name="Suspensions.ActiveSuspension" />Active Suspension
             </div>
+            <br />
+
+            <h3>Specialized Features</h3>
+
+            <div class="row">
+                <input type="checkbox" value="true" name="SpecializedFeatures.DisabledAccessible" />Disabled Accessible
+            </div>
+
+            <div class="row">
+                <input type="checkbox" value="true" name="SpecializedFeatures.Taxi" />Taxi
+            </div>
+
+            <div class="row">
+                <input type="checkbox" value="true" name="SpecializedFeatures.Ambulance" /> Ambulance
+            </div>
+
+            <div class="row">
+                <input type="checkbox" value="true" name="SpecializedFeatures.Hearse" /> Hearse
+            </div>
+
+            <div class="row">
+                <input type="checkbox" value="true" name="SpecializedFeatures.Learner" /> Learner
+            </div>
 
         </div>
     </div>
+
 
     @*UPLOAD FORM ---------------*@
 
